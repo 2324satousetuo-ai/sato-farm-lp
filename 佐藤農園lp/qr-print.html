@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>案内用QRコード｜佐藤農園</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.goohttps://papaya-bombolone-4b3fd9.netlify.app/gleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #2d4a3e;
+      --forest-dark: #1a2e26;
+      --rice-gold: #c9a84c;
+      --cream: #faf7f0;
+      --text: #2c2420;
+      --text-muted: #6b5d54;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    .page {
+      width: min(800px, 92%);
+      margin: 0 auto;
+      padding: 40px 0 64px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .header h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      color: var(--forest-dark);
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .qr-card {
+      background: #fff;
+      border: 2px solid rgba(45, 74, 62, 0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(26, 46, 38, 0.08);
+    }
+
+    .qr-card h2 {
+      font-size: 1.05rem;
+      color: var(--forest);
+      margin-bottom: 16px;
+    }
+
+    .qr-card img {
+      display: block;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 16px;
+      padding: 12px;
+      background: #fff;
+      border: 2px solid var(--rice-gold);
+      border-radius: 12px;
+    }
+
+    .qr-card__note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .qr-card__url {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--forest);
+      word-break: break-all;
+    }
+
+    .qr-card--pending {
+      border-style: dashed;
+      background: #fffdf8;
+    }
+
+    .qr-card__placeholder {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      border: 2px dashed rgba(45, 74, 62, 0.25);
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid var(--forest);
+      color: var(--forest);
+      background: #fff;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .btn--primary {
+      background: var(--forest);
+      color: #fff;
+    }
+
+    .help {
+      background: #fff;
+      border-left: 4px solid var(--rice-gold);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .help strong {
+      color: var(--forest-dark);
+    }
+
+    .footer-link {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .footer-link a {
+      color: var(--forest);
+      font-weight: 700;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .actions,
+      .help,
+      .footer-link {
+        display: none;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .qr-card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>佐藤農園 案内用QRコード</h1>
+      <p>群馬県吾妻郡中之条町伊勢町15-6 — 代表 佐藤節雄</p>
+      <p>TEL 0279-75-2711 / 携帯 080-1256-8883</p>
+    </header>
+
+    <div class="actions">
+      <button class="btn btn--primary" type="button" onclick="window.print()">このページを印刷</button>
+      <a class="btn" href="index.html">ホームページへ戻る</a>
+    </div>
+
+    <div class="qr-grid">
+      <section class="qr-card">
+        <h2>地図案内</h2>
+        <img src="images/maps-qr-print.png" alt="佐藤農園の場所をGoogleマップで開くQRコード" width="220" height="220">
+        <p class="qr-card__note">スマホで読み取ると<br>Googleマップが開きます</p>
+        <p class="qr-card__url">群馬県吾妻郡中之条町伊勢町15-6</p>
+      </section>
+
+      <section class="qr-card qr-card--pending" id="site-qr-card">
+        <h2>ホームページ案内</h2>
+        <img
+          id="site-qr-image"
+          src="images/guide-qr-print.png"
+          alt="佐藤農園ホームページを開くQRコード"
+          width="220"
+          height="220"
+          hidden
+        >
+        <div class="qr-card__placeholder" id="site-qr-placeholder">
+          サイトURL設定後に<br>表示されます
+        </div>
+        <p class="qr-card__note">スマホで読み取ると<br>ホームページが開きます</p>
+        <p class="qr-card__url" id="site-qr-url"></p>
+      </section>
+    </div>
+
+    <p class="help">
+      <strong>ホームページ用QRの作り方：</strong>
+      フォルダ内の <code>site-url.config</code> に公開URL（例: <code>URL=https://example.netlify.app</code>）を書き、
+      <code>generate-qr.py</code> を実行してください。
+    </p>
+
+    <p class="footer-link"><a href="index.html">← 佐藤農園ホームページ</a></p>
+  </div>
+
+  <script>
+    (function () {
+      const img = document.getElementById('site-qr-image');
+      const placeholder = document.getElementById('site-qr-placeholder');
+      const card = document.getElementById('site-qr-card');
+      const urlEl = document.getElementById('site-qr-url');
+
+      img.addEventListener('load', function () {
+        if (img.naturalWidth > 0) {
+          img.hidden = false;
+          placeholder.hidden = true;
+          card.classList.remove('qr-card--pending');
+        }
+      });
+
+      img.addEventListener('error', function () {
+        img.hidden = true;
+        placeholder.hidden = false;
+      });
+
+      fetch('site-url.config')
+        .then(function (response) { return response.text(); })
+        .then(function (text) {
+          text.split('\n').forEach(function (line) {
+            line = line.trim();
+            if (line.startsWith('URL=')) {
+              const value = line.slice(4).trim();
+              if (value) {
+                urlEl.textContent = value;
+              }
+            }
+          });
+        })
+        .catch(function () {});
+    })();
+  </script>
+</body>
+</html>

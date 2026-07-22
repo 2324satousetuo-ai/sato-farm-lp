@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" role="img" aria-label="Representative caricature">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f3ea"/>
+      <stop offset="100%" stop-color="#ebe4d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="220" rx="16" fill="url(#bg)"/>
+  <ellipse cx="80" cy="206" rx="46" ry="8" fill="#d8d0c0" opacity="0.55"/>
+
+  <!-- Shoulders & shirt -->
+  <path d="M28 124c10-22 28-34 52-34s42 12 52 34" fill="#3d5a4a"/>
+  <path d="M34 124c8-16 22-26 46-26s38 10 46 26" fill="#4a6b58"/>
+  <path d="M54 128h52v38c0 10-11 16-26 16s-26-6-26-16v-38z" fill="#2d4a3e"/>
+
+  <!-- Legs & shoes -->
+  <path d="M62 166h14v28H62z" fill="#3d5a4a"/>
+  <path d="M84 166h14v28H84z" fill="#3d5a4a"/>
+  <path d="M60 192h18v8H60z" fill="#5c4a3a"/>
+  <path d="M82 192h18v8H82z" fill="#5c4a3a"/>
+
+  <!-- Neck -->
+  <rect x="72" y="104" width="16" height="20" rx="6" fill="#f0dcc0"/>
+
+  <!-- Shirt collar -->
+  <path d="M64 122 L80 132 L96 122 L92 118 H68 Z" fill="#1e3a30"/>
+  <path d="M68 118h24v6H68z" fill="#2d4a3e"/>
+
+  <!-- Face -->
+  <ellipse cx="80" cy="86" rx="30" ry="34" fill="#f0dcc0"/>
+
+  <!-- Side hair -->
+  <path d="M50 82c0 10 3 18 10 24" fill="none" stroke="#8a8a88" stroke-width="7" stroke-linecap="round"/>
+  <path d="M110 82c0 10-3 18-10 24" fill="none" stroke="#8a8a88" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- White tenugui -->
+  <path d="M48 72 Q80 58 112 72" fill="#f5f5f2"/>
+  <path d="M44 76 Q80 46 116 76 L114 84 Q80 78 46 84 Z" fill="#fafaf8"/>
+  <path d="M44 76 Q80 46 116 76 L114 84 Q80 78 46 84 Z" fill="none" stroke="#7a7268" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M48 72 Q80 58 112 72" fill="none" stroke="#7a7268" stroke-width="2" stroke-linecap="round"/>
+  <path d="M52 68 Q80 54 108 68" fill="none" stroke="#9a9080" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M50 76 Q80 70 110 76" fill="none" stroke="#c8c0b4" stroke-width="1.2"/>
+  <path d="M54 80 Q80 76 106 80" fill="none" stroke="#d8d0c4" stroke-width="1"/>
+  <ellipse cx="112" cy="70" rx="6" ry="8" fill="#f2f0ea" stroke="#7a7268" stroke-width="2" transform="rotate(-12 112 70)"/>
+  <path d="M108 74c2 4 6 6 10 4" fill="none" stroke="#7a7268" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M114 78 L118 92" fill="none" stroke="#fafaf8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M114 78 L118 92" fill="none" stroke="#7a7268" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Eyes -->
+  <ellipse cx="68" cy="86" rx="5" ry="6" fill="#fff"/>
+  <ellipse cx="92" cy="86" rx="5" ry="6" fill="#fff"/>
+  <circle cx="69" cy="87" r="2.4" fill="#2d4a3e"/>
+  <circle cx="93" cy="87" r="2.4" fill="#2d4a3e"/>
+  <circle cx="70" cy="86" r="0.8" fill="#fff"/>
+  <circle cx="94" cy="86" r="0.8" fill="#fff"/>
+
+  <!-- Eyebrows -->
+  <path d="M62 80c4-3 8-3 12 0" fill="none" stroke="#8a7a6a" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M86 80c4-3 8-3 12 0" fill="none" stroke="#8a7a6a" stroke-width="1.4" stroke-linecap="round"/>
+
+  <!-- Nose & mouth -->
+  <ellipse cx="80" cy="92" rx="3" ry="2.2" fill="#e0b8a8" opacity="0.45"/>
+  <path d="M66 98c6 8 22 8 28 0" fill="none" stroke="#c07a62" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M74 102c4 2 8 2 12 0" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Character's right arm (viewer's left) -->
+  <path d="M58 122 C46 118 36 112 34 132" fill="none" stroke="#f0dcc0" stroke-width="10" stroke-linecap="round"/>
+  <ellipse cx="34" cy="136" rx="6" ry="7" fill="#f0dcc0" stroke="#d4a894" stroke-width="1.2"/>
+
+  <!-- Character's left arm & cabbage (viewer's right) -->
+  <path d="M120 112c10 8 14 18 10 28" fill="none" stroke="#f0dcc0" stroke-width="10" stroke-linecap="round"/>
+  <g transform="translate(120 122) rotate(18)">
+    <ellipse cx="0" cy="0" rx="14" ry="9" fill="#7cb342"/>
+    <path d="M-10 0c0-8 8-12 10-12s10 4 10 12" fill="#689f38"/>
+    <path d="M-8 2h16" stroke="#558b2f" stroke-width="1"/>
+  </g>
+</svg>
