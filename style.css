@@ -987,6 +987,14 @@ main {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
+.hero__offer--notice {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(0.95rem, 2.1vw, 1.15rem);
+  border-radius: 22px;
+  max-width: 460px;
+  text-align: center;
+}
+
 .hero__order-qr {
   display: flex;
   flex-direction: column;
@@ -1593,6 +1601,16 @@ html[lang="en"] .notice__label {
   padding: 0;
   border-bottom: none;
   background: none;
+}
+
+.notice__highlight-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: inherit;
+}
+
+.notice__highlight-link:hover {
+  color: var(--forest);
 }
 
 html[lang="en"] .notice__highlight {
@@ -3230,11 +3248,11 @@ body.faq-popup-open {
   padding: 22px 28px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Serif JP', serif;
 }
 
 html[lang="en"] .soliloquy__box {
-  font-family: 'Noto Sans', 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Serif', Georgia, serif;
 }
 
 .soliloquy__list {
@@ -3276,8 +3294,7 @@ html[lang="en"] .soliloquy__box {
 
 .soliloquy__item--prose br {
   display: block;
-  line-height: 0;
-  margin-top: 0.6em;
+  margin-top: 0.9em;
 }
 
 .soliloquy__item--prose .soliloquy__title {
@@ -3323,47 +3340,6 @@ html[lang="ja"] .soliloquy__emphasis {
 
 .soliloquy__item + .soliloquy__item {
   margin-top: 16px;
-}
-
-details.soliloquy__item {
-  cursor: default;
-}
-
-details.soliloquy__item summary {
-  cursor: pointer;
-  list-style: none;
-  padding-right: 30px;
-  position: relative;
-}
-
-details.soliloquy__item summary::-webkit-details-marker {
-  display: none;
-}
-
-details.soliloquy__item summary::marker {
-  content: '';
-}
-
-details.soliloquy__item summary::after {
-  content: '+';
-  position: absolute;
-  right: 2px;
-  top: -2px;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--forest-light);
-}
-
-details.soliloquy__item[open] summary::after {
-  content: '−';
-}
-
-details.soliloquy__item summary.soliloquy__title {
-  display: block;
-}
-
-.soliloquy__content {
-  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -4403,6 +4379,7 @@ html[lang="en"] .thank-you-page .form-success h1 {
   .hero__title,
   .hero__lead,
   .hero__offer,
+  .hero__offer--notice,
   .hero__image-note {
     max-width: 100%;
   }
