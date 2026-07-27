@@ -380,4 +380,40 @@ if (target) {
       }
     });
   }
+
+  // Old LP anchors (#news / #field-report / #soliloquy): highlight the "moved to blog" notice
+  var legacyHashes = {
+    news: true,
+    'field-report': true,
+    soliloquy: true
+  };
+
+  function clearLegacyAnchorHighlight() {
+    document.querySelectorAll('.is-legacy-anchor').forEach(function (el) {
+      el.classList.remove('is-legacy-anchor');
+    });
+    document.querySelectorAll('.lp-moved-notice.is-emphasized').forEach(function (el) {
+      el.classList.remove('is-emphasized');
+    });
+  }
+
+  function highlightLegacyAnchorFromHash() {
+    clearLegacyAnchorHighlight();
+    var id = (window.location.hash || '').replace(/^#/, '');
+    if (!legacyHashes[id]) {
+      return;
+    }
+    var section = document.getElementById(id);
+    if (!section) {
+      return;
+    }
+    section.classList.add('is-legacy-anchor');
+    var notice = section.querySelector('.lp-moved-notice[data-legacy-hash="' + id + '"]');
+    if (notice) {
+      notice.classList.add('is-emphasized');
+    }
+  }
+
+  highlightLegacyAnchorFromHash();
+  window.addEventListener('hashchange', highlightLegacyAnchorFromHash);
 });
