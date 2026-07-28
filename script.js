@@ -381,11 +381,12 @@ if (target) {
     });
   }
 
-  // Old LP anchors (#news / #field-report / #soliloquy): highlight the "moved to blog" notice
+  // Old LP anchors (#news / #field-report / #soliloquy / #spots): highlight the "moved to blog" notice
   var legacyHashes = {
     news: true,
     'field-report': true,
-    soliloquy: true
+    soliloquy: true,
+    spots: true
   };
 
   function clearLegacyAnchorHighlight() {
