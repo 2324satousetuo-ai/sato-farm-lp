@@ -204,7 +204,7 @@ def page_ja(post: dict, body_html: str) -> str:
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=16">
+  <link rel="stylesheet" href="../../style.css?v=17">
 </head>
 <body class="notranslate blog-page">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
@@ -248,6 +248,11 @@ def page_ja(post: dict, body_html: str) -> str:
       </div>
     </article>
   </main>
+  <div class="blog-home-bar">
+    <div class="container blog-home-bar__inner">
+      <a class="blog-home-bar__btn" href="../../index.html">← 佐藤農園トップへ戻る</a>
+    </div>
+  </div>
   <footer class="footer">
     <div class="container footer__inner">
       <p class="footer__logo">佐藤農園</p>
@@ -278,7 +283,7 @@ def page_en(post: dict, body_html: str) -> str:
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=16">
+  <link rel="stylesheet" href="../../style.css?v=17">
 </head>
 <body class="notranslate blog-page">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
@@ -322,6 +327,11 @@ def page_en(post: dict, body_html: str) -> str:
       </div>
     </article>
   </main>
+  <div class="blog-home-bar">
+    <div class="container blog-home-bar__inner">
+      <a class="blog-home-bar__btn" href="../../index-en.html">← Back to Sato Farms Home</a>
+    </div>
+  </div>
   <footer class="footer">
     <div class="container footer__inner">
       <p class="footer__logo">Sato Farms</p>

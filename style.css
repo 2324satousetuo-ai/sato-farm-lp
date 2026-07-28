@@ -4806,6 +4806,74 @@ a.blog-list__row:hover .blog-list__title {
   text-decoration: underline;
 }
 
+.blog-home-bar {
+  background: linear-gradient(180deg, rgba(45, 74, 62, 0.08), rgba(45, 74, 62, 0.16));
+  border-top: 1px solid rgba(45, 74, 62, 0.18);
+  border-bottom: 1px solid rgba(45, 74, 62, 0.18);
+  padding: 1.75rem 0;
+}
+
+.blog-home-bar__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-home-bar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-width: min(100%, 22rem);
+  padding: 1rem 1.75rem;
+  border-radius: 10px;
+  background: var(--forest);
+  color: var(--white);
+  font-family: "Noto Serif JP", "Noto Serif", serif;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(45, 74, 62, 0.22);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-home-bar__btn:hover {
+  background: var(--forest-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(45, 74, 62, 0.28);
+}
+
+.blog-page .blog-header .nav > a[href$="index.html"],
+.blog-page .blog-header .nav > a[href$="index-en.html"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  background: var(--forest);
+  color: var(--white) !important;
+  font-weight: 700;
+}
+
+.blog-page .blog-header .nav > a[href$="index.html"]:hover,
+.blog-page .blog-header .nav > a[href$="index-en.html"]:hover {
+  background: var(--forest-dark);
+  color: var(--white) !important;
+  text-decoration: none;
+}
+
+.blog-page .footer__note a[href$="index.html"],
+.blog-page .footer__note a[href$="index-en.html"] {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--rice-light);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .blog-template-note {
   margin: 0 0 1.5rem;
   padding: 0.85rem 1rem;
