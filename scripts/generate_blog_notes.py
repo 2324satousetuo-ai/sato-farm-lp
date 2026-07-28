@@ -37,7 +37,7 @@ POSTS = [
         "title_ja": "VSコードとClaude AI、実に優秀だ。",
         "title_en": "VS Code and Claude AI: A Surprisingly Powerful Duo",
         "body_ja": """生成AIのCursor Proが使えなくなったとき、正直かなり困った。佐藤農園LPの制作は、ほとんどCursor頼みだったからだ。<br>天を仰いで嘆いたのも束の間、代打として登場したのがVSコード。これが思いのほか働き者で、派手さはないが実に堅実。助っ人外国人より、生え抜きの中堅選手のほうが頼もしい──そんな存在感を放っている。<br>そして、その代打を陰で支えてくれたのが無料版Claude AIだ。コードの相談、文章の整理、ときには愚痴の聞き役まで。課金もしていないのに、ここまで付き合ってくれるとは、本当に頭が下がる。<br>Web公開の窓口だけは、課金版Netlifyを使い続けている。財布を開いているのはここだけ。あとはドラッグ＆ドロップ一つで世界へ公開できる。つまり、農園のホームページは「ほぼ無料布陣」で元気に稼働しているというわけだ。<br>さて、問題はここからである。<br>もうすぐCursorが復活する。では、どうするか。<br>せっかく築き上げた「ほぼ無料布陣」をベンチへ戻すのは惜しい。しかし、Cursorを遊ばせておくのも本末転倒だ。すでに1年分の利用料は支払っている。道具は使ってこそ価値がある。眠らせてしまえば宝の持ち腐れである。<br>となれば、Cursor Proには新しい持ち場を用意するしかない。封印中のブログ移行か、それとも温めているCloudflare Pagesへの移行か。そうした仕事があれば、Cursorも十分に力を発揮できるだろう。<br>というわけで、今の結論はこうだ。<br>VSコードとClaude AIの「ほぼ無料コンビ」は、このままLP運営の主力とする。Cursorが戻ってきたら、新しい仕事を任せればいい。焦る必要はない。一歩ずつ進めばいい。<br>今回の回り道で、思いがけず「道具を使い分ける力」という副産物まで手に入れた。これもまた、遠回りの効用なのだろう。<br>さて、そろそろ田んぼの様子も見てこなければならない。""",
-        "body_en": """When Cursor Pro suddenly became unavailable, I was honestly in trouble. I had built most of the Sato Farm landing page with Cursor doing the heavy lifting.<br>But after only a brief moment of staring helplessly at the sky, VS Code stepped in as the pinch hitter. It turned out to be far more capable than I expected—not flashy, but remarkably dependable. More like a seasoned homegrown player than a high-priced foreign import.<br>Working quietly behind the scenes was the free version of Claude AI. It helped me debug code, organize my writing, and even listened to my occasional complaints. I have to take my hat off to an AI that does all this without charging me a cent.<br>The only service I'm still paying for is Netlify, which handles hosting. That's the only place I'm opening my wallet. Everything else is as simple as dragging and dropping files to publish my website to the world. In other words, my farm's website is running on an almost entirely free lineup.<br>Now comes the interesting part.<br>Cursor Pro will be back soon. So what should I do?<br>It seems a shame to bench the "almost-free team" I've put together. But leaving Cursor idle makes no sense either—I've already paid for a full year's subscription. Tools are meant to be used. Otherwise, they're just gathering dust.<br>So the answer is simple: Cursor Pro needs a new assignment. Perhaps it can finally tackle my long-delayed blog migration, or help move the site to Cloudflare Pages. Either way, it deserves a job worthy of its abilities.<br>So here's my plan.<br>VS Code and Claude AI—the "almost-free duo"—will remain the main force behind the landing page. When Cursor returns, I'll give it a new mission. No rush. One step at a time.<br>Looking back, this detour turned out to be a blessing in disguise. It taught me not only how to use good tools, but also when to use each one. Sometimes, the long way around leads to the best lessons.<br>Now, I'd better go check on the rice fields.""",
+        "body_en": """When Cursor Pro suddenly became unavailable, I was honestly in trouble. I had built most of the Sato Farms landing page with Cursor doing the heavy lifting.<br>But after only a brief moment of staring helplessly at the sky, VS Code stepped in as the pinch hitter. It turned out to be far more capable than I expected—not flashy, but remarkably dependable. More like a seasoned homegrown player than a high-priced foreign import.<br>Working quietly behind the scenes was the free version of Claude AI. It helped me debug code, organize my writing, and even listened to my occasional complaints. I have to take my hat off to an AI that does all this without charging me a cent.<br>The only service I'm still paying for is Netlify, which handles hosting. That's the only place I'm opening my wallet. Everything else is as simple as dragging and dropping files to publish my website to the world. In other words, my farm's website is running on an almost entirely free lineup.<br>Now comes the interesting part.<br>Cursor Pro will be back soon. So what should I do?<br>It seems a shame to bench the "almost-free team" I've put together. But leaving Cursor idle makes no sense either—I've already paid for a full year's subscription. Tools are meant to be used. Otherwise, they're just gathering dust.<br>So the answer is simple: Cursor Pro needs a new assignment. Perhaps it can finally tackle my long-delayed blog migration, or help move the site to Cloudflare Pages. Either way, it deserves a job worthy of its abilities.<br>So here's my plan.<br>VS Code and Claude AI—the "almost-free duo"—will remain the main force behind the landing page. When Cursor returns, I'll give it a new mission. No rush. One step at a time.<br>Looking back, this detour turned out to be a blessing in disguise. It taught me not only how to use good tools, but also when to use each one. Sometimes, the long way around leads to the best lessons.<br>Now, I'd better go check on the rice fields.""",
     },
     {
         "slug": "cabbage-miracle",
@@ -144,6 +144,16 @@ POSTS = [
         "title_en": "Beloved rabbit Lemon's memorial day",
         "body_ja": """今日は愛しの兎レモンの命日だ。あの子が旅立ってから、ちょうど五か月になる。<br>九年間、ともに暮らした。妻も、娘も、息子も、そして私も、みんなレモンに夢中だった。あの小さな体が、いつも家族の中心にいた。<br>別れの悲しみは、覚悟していたはずなのに、その想像をはるかに超えていた。正直、つらかった。<br>それでも、時間は静かに流れていく。あれほど胸を締めつけていた悲しみも、少しずつ過去のものへと変わり始めている。それは少し寂しいけれど、それもまた生きていくということなのだろう。<br>けれど、九年という歳月の思い出だけは、色褪せることはない。レモンがくれた笑顔も、ぬくもりも、家族みんなで過ごした時間も、これから先ずっと私たちの心の中で生き続ける。ありがとう、レモン。九年間の夢物語。""",
         "body_en": """Today is the memorial day of our beloved rabbit Lemon. It has been exactly five months since she left us.<br>We lived together for nine years. My wife, my daughter, my son, and I—we were all absolutely devoted to Lemon. That small body was always at the very center of our family.<br>I thought I was prepared for the grief of parting, but it far exceeded anything I had imagined. Honestly, it really took a toll on me.<br>Still, time flows heartlessly on. The sorrow that was once so raw has begun, little by little, to fade into the past. It feels lonely to admit, but I suppose that is just the reality of life.<br>Yet the memories of those nine years do not fade. The smiles Lemon gave us, the warmth, and the time our whole family spent together—they will live on in our hearts forever. Thank you, Lemon. A nine-year dream story.""",
+    },
+    {
+        "slug": "potato-massacre",
+        "date": "2026-07-07",
+        "date_ja": "2026.7.7",
+        "date_en": "July 7, 2026",
+        "title_ja": "丸腰の代償——じゃがいも全滅記",
+        "title_en": "Unarmed and Defeated: The Potato Massacre",
+        "body_ja": """「熊が出てきてないからまだましだ」——近場の長老の言葉だ。応桑の実家を１週間ぶりに訪ねた。裏の畑に植えたじゃがいもと里芋。この春には、ウリ坊を３匹目撃していて、近場も掘られていて、いつやられるかと気をもんでいたのだ。１週間前は無事だったのだが、本日訪ねるとーーーー根こそぎ全滅！芋は皆無で、荒れ放題。<br>一方で、長老さん宅の畑は、トタンで全面を囲い、電熱線を３本敷きつめて、イノシシもハクビシンも撃退中とのこと。無防備な私のじゃがいもがやられたことを伝えると、返答は、同情ではなく叱責に近かった。確かに、丸腰。完全に負け戦。来年に向けてトタンと電熱線を揃えるなら、数万円はいってしまいそう。""",
+        "body_en": """“Well, at least no bears showed up, so I guess I should count my blessings” — that's what the old-timer nearby said. I visited my family home in Ōkuwa for the first time in a week. In the back field, I'd planted potatoes and taros. This spring I'd already spotted three wild boar piglets, and the area nearby had already been dug up, so I'd been on edge wondering when my potatoes would get hit. A week ago everything was fine, but when I checked today, it was all wiped out, root and all — not a single potato left, the whole field left in ruins.<br>The old-timer's field is fully enclosed with corrugated tin sheeting and lined with three rows of electric wire, keeping both the wild boars and the raccoon dogs at bay, he told me. When I mentioned that my defenseless potatoes had been wiped out, his reply felt less like sympathy and more like a scolding. Fair enough — completely unguarded. A total defeat. If I'm going to set up tin sheeting and electric wire for next year, it'll probably run me tens of thousands of yen.""",
     },
 ]
 
@@ -259,11 +269,11 @@ def page_en(post: dict, body_html: str) -> str:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{esc} | Sato Farm Blog">
+  <meta name="description" content="{esc} | Sato Farms Blog">
   <link rel="alternate" hreflang="en" href="{post['slug']}.html">
   <link rel="alternate" hreflang="ja" href="../../blog/notes/{post['slug']}.html">
   <meta name="google" content="notranslate">
-  <title>{esc} | Sato Farm Blog</title>
+  <title>{esc} | Sato Farms Blog</title>
   <link rel="canonical" href="https://satofarms.com/blog-en/notes/{post['slug']}.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -274,7 +284,7 @@ def page_en(post: dict, body_html: str) -> str:
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
   <header class="header blog-header">
     <div class="header__inner">
-      <a href="../../index-en.html" class="logo">Sato Farm<span>Blog</span></a>
+      <a href="../../index-en.html" class="logo">Sato Farms<span>Blog</span></a>
       <div class="header__tools">
         <div class="header__actions">
           <a href="../../blog/notes/{post['slug']}.html" class="header__lang-btn" lang="ja">日本語</a>
@@ -314,9 +324,9 @@ def page_en(post: dict, body_html: str) -> str:
   </main>
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="footer__logo">Sato Farm</p>
+      <p class="footer__logo">Sato Farms</p>
       <p class="footer__note"><a href="../">Blog index</a> · <a href="../../index-en.html">Home</a></p>
-      <p class="footer__copy">&copy; 2026 Sato Farm</p>
+      <p class="footer__copy">&copy; 2026 Sato Farms</p>
     </div>
   </footer>
   <script src="../../script.js"></script>

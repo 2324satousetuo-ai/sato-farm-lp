@@ -61,8 +61,8 @@
     const isEn = document.documentElement.lang === 'en';
     const payload = Object.fromEntries(new FormData(form).entries());
     payload.access_key = web3formsAccessKey;
-    payload.subject = isEn ? '[Sato Farm] Website contact' : '【佐藤農園】ホームページお問い合わせ';
-    payload.from_name = isEn ? 'Sato Farm website' : '佐藤農園ホームページ';
+    payload.subject = isEn ? '[Sato Farms] Website contact' : '【佐藤農園】ホームページお問い合わせ';
+    payload.from_name = isEn ? 'Sato Farms website' : '佐藤農園ホームページ';
     payload.botcheck = '';
 
     const response = await fetch('https://api.web3forms.com/submit', {

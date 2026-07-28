@@ -55,7 +55,7 @@ FIELD_JA = """    <section class="field-report section section--alt field-report
             </figure>
           </article>
         </div>
-        <p class="lp-blog-more"><a href="blog/field-report/">近況の写真と「じゃがいも全滅記」を見る →</a></p>
+        <p class="lp-blog-more"><a href="blog/field-report/">近況の写真をもっと見る →</a></p>
       </div>
     </section>"""
 
@@ -140,7 +140,7 @@ FIELD_EN = """    <section class="field-report section section--alt field-report
             </figure>
           </article>
         </div>
-        <p class="lp-blog-more"><a href="blog-en/field-report/">See all photos and “The Potato Massacre” →</a></p>
+        <p class="lp-blog-more"><a href="blog-en/field-report/">See more farm photos →</a></p>
       </div>
     </section>"""
 
