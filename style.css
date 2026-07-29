@@ -4782,6 +4782,15 @@ a.blog-list__row:hover .blog-list__title {
   margin: 0 0 1.1rem;
 }
 
+.blog-article__body h2 {
+  margin: 2rem 0 0.85rem;
+  font-family: "Noto Serif JP", "Noto Serif", serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--forest-dark);
+}
+
 .blog-article__body strong {
   color: var(--forest-dark);
 }
