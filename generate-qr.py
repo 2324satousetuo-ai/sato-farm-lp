@@ -54,6 +54,7 @@ def main() -> None:
     if site_url:
         make_qr(site_url, IMAGES / "guide-qr.png", box_size=10, border=2)
         make_qr(site_url, IMAGES / "guide-qr-print.png", box_size=20, border=3)
+        make_qr(site_url, IMAGES / "url-qr.png", box_size=10, border=2)
         print(f"サイトURL: {site_url}")
     else:
         print()
