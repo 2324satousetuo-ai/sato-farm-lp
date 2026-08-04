@@ -4806,6 +4806,15 @@ a.blog-list__row:hover .blog-list__title {
   margin-bottom: 0;
 }
 
+.blog-article__body ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.35rem;
+}
+
+.blog-article__body li {
+  margin: 0 0 0.45rem;
+}
+
 .blog-article__nav {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
