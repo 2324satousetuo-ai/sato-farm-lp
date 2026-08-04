@@ -4795,6 +4795,17 @@ a.blog-list__row:hover .blog-list__title {
   color: var(--forest-dark);
 }
 
+.blog-article__body blockquote {
+  margin: 1.5rem 0 1.75rem;
+  padding: 1rem 1.1rem 1rem 1.25rem;
+  border-left: 3px solid var(--forest);
+  background: rgba(45, 74, 62, 0.06);
+}
+
+.blog-article__body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 .blog-article__nav {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
