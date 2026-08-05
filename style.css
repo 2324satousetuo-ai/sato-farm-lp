@@ -4815,6 +4815,24 @@ a.blog-list__row:hover .blog-list__title {
   margin: 0 0 0.45rem;
 }
 
+.blog-article__figure {
+  margin: 1.5rem 0 1.85rem;
+}
+
+.blog-article__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+.blog-article__figure figcaption {
+  margin-top: 0.55rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
 .blog-article__nav {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
