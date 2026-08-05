@@ -70,7 +70,7 @@ def page_ja() -> str:
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=20">
+  <link rel="stylesheet" href="../../style.css?v=21">
 </head>
 <body class="notranslate blog-page">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
@@ -148,7 +148,7 @@ def page_en() -> str:
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=20">
+  <link rel="stylesheet" href="../../style.css?v=21">
 </head>
 <body class="notranslate blog-page">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>

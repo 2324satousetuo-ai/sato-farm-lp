@@ -4816,12 +4816,14 @@ a.blog-list__row:hover .blog-list__title {
 }
 
 .blog-article__figure {
-  margin: 1.5rem 0 1.85rem;
+  margin: 1.5rem auto 1.85rem;
+  max-width: 22rem;
 }
 
 .blog-article__figure img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 2px;
 }
