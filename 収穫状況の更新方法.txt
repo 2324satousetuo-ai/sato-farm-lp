@@ -1,0 +1,43 @@
+【収穫状況の更新方法】佐藤農園LP
+
+■ 目的
+LPの「収穫しました／収穫中です」（英語も同じ）を、
+ご自身で簡単に書き換えられるようにしたものです。
+
+■ いちばん簡単なやり方
+1. フォルダ「佐藤農園LP」を開く
+2. 「収穫状況を更新.bat」をダブルクリック
+3. 出てきた質問に、テキストで答える
+4. 最後に y を押す → 日本語・英語の両方のLPが更新される
+
+■ 入力例
+① 収穫しました（日本語）
+   にんにく
+
+② 収穫中です（日本語）
+   キャベツ, きゅうり, 玉ねぎ, にんじん（間引き）, じゃがいも
+
+③ Harvested (English)
+   Garlic
+
+④ Currently harvesting (English)
+   Cabbage, Cucumber, Onion, Carrot (thinning), Potato
+
+■ 入力のコツ
+・野菜はカンマ（,）または読点（、）で区切る
+・空欄のまま Enter すると、その項目はいまの内容のまま残る
+・日本語と英語の両方を入力する
+
+■ Cursor / VSコードのターミナルから行う場合
+python scripts/update_harvest.py
+
+■ 関連ファイル
+・scripts/update_harvest.py … 更新用プログラム
+・data/harvest.json … 入力内容の保存先
+・index.html … 日本語LP
+・index-en.html … 英語LP
+
+■ 公開について
+この操作でローカルのLPは更新されます。
+Webに反映するには、いつもどおりコミット／push
+（または Netlify アップロード）が必要です。
