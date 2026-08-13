@@ -4102,7 +4102,11 @@ html[lang="en"] .thank-you-page .form-success h1 {
     white-space: nowrap;
   }
 
-  html[lang="ja"] .header__lang-btn,
+  /* 最上部の English 切替は常時表示（ブログ記事にも必須） */
+  html[lang="ja"] .header__lang-btn {
+    display: inline-flex !important;
+  }
+
   html[lang="ja"] .nav__lang,
   html[lang="ja"] .notice .lang-guide {
     display: none !important;
