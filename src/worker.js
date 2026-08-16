@@ -151,6 +151,7 @@ async function sendRegistrationEmail(env, { deliveryId, memberId, to }) {
     });
   } catch (error) {
     await updateDelivery(env, deliveryId, {
+      status: 'failed',
       lastError: 'network_error: ' + String((error && error.message) || error),
     });
     return;
@@ -161,6 +162,7 @@ async function sendRegistrationEmail(env, { deliveryId, memberId, to }) {
     data = await response.json();
   } catch {
     await updateDelivery(env, deliveryId, {
+      status: 'failed',
       lastError: 'resend_response_unreadable status=' + response.status,
     });
     return;
@@ -176,7 +178,9 @@ async function sendRegistrationEmail(env, { deliveryId, memberId, to }) {
 
   if (response.status === 409) {
     await updateDelivery(env, deliveryId, {
-      lastError: 'resend_conflict: ' + JSON.stringify(data),
+      status: 'sent',
+      providerMessageId: data && data.id ? data.id : null,
+      lastError: 'resend_conflict（冪等性による再受理）: ' + JSON.stringify(data),
     });
     return;
   }
@@ -199,11 +203,11 @@ async function updateDelivery(env, deliveryId, fields) {
        SET status = 'sent',
            provider_message_id = ?,
            attempt_count = attempt_count + 1,
-           last_error = NULL,
+           last_error = ?,
            sent_at = ?
        WHERE id = ? AND status = 'pending'`
     )
-      .bind(providerMessageId, sentAt, deliveryId)
+      .bind(providerMessageId, lastError, sentAt, deliveryId)
       .run();
     return;
   }

@@ -16,9 +16,30 @@
         <p class="form-success__icon" aria-hidden="true">✓</p>
         <h1>登録ありがとうございました</h1>
         <p>佐藤農園のお米にご関心をお寄せいただき、ありがとうございます。<br>販売の準備が整いましたら、ご登録のメールアドレスへご案内します。</p>
+
+        <div class="form-success__line" id="line-friend-section">
+          <p class="form-success__line-lead">佐藤農園のLINE公式アカウントを友だち追加していただくと、生育レポートなどのお知らせをいち早くお届けできます。（任意）</p>
+          <a id="line-friend-btn" class="btn btn--line" href="#" hidden>LINE友だち追加</a>
+        </div>
+
         <a href="index.html" class="btn btn--primary">トップページへ戻る</a>
       </div>
     </div>
   </main>
+  <script src="line-friend.config.js"></script>
+  <script>
+    (function () {
+      var config = window.SATO_FARM_LINE_FRIEND || {};
+      var url = String(config.addFriendUrl || '').trim();
+      var button = document.getElementById('line-friend-btn');
+      if (!button || !url) {
+        return;
+      }
+      button.href = url;
+      button.hidden = false;
+      button.setAttribute('target', '_blank');
+      button.setAttribute('rel', 'noopener noreferrer');
+    })();
+  </script>
 </body>
 </html>

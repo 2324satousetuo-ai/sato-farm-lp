@@ -13,8 +13,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "sato-farm-members",
-      "database_id": "00000000-0000-0000-0000-000000000001",
+      "database_name": "satofarms-members",
+      "database_id": "cb9391b0-abf1-4189-b2c9-90f7a2155df6",
       "migrations_dir": "migrations"
     }
   ],
