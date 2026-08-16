@@ -5395,3 +5395,82 @@ html[lang="en"] .rice-direct__block h4,
 html[lang="en"] .rice-direct__cta h3 {
   font-family: 'Noto Serif', 'Noto Serif JP', serif;
 }
+
+/* Sightseeing URL entrance */
+.spots--teaser .section__title {
+  font-size: clamp(2rem, 5vw, 2.85rem);
+  margin-bottom: 16px;
+}
+
+.spots-teaser__lead {
+  font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+  color: var(--text);
+  margin: 0 0 28px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+.spots-teaser__gates {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+}
+
+.spots-teaser__gate {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 28px 24px;
+  background: var(--white);
+  border: 2px solid var(--forest);
+  border-radius: var(--radius-lg);
+  color: var(--forest-dark);
+  box-shadow: var(--shadow);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.spots-teaser__gate:hover {
+  background: var(--rice-light);
+  transform: translateY(-2px);
+}
+
+.spots-teaser__gate-label {
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--forest);
+}
+
+.spots-teaser__gate-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.45rem, 3.8vw, 2rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.spots-teaser__gate-note {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.nakanojo__content .spots-teaser__gates {
+  margin-top: 28px;
+}
+
+.spots .spots__group-title {
+  font-size: clamp(1.85rem, 4.2vw, 2.6rem);
+}
+
+html[lang="en"] .spots-teaser__gate-title,
+html[lang="en"] .spots .spots__group-title {
+  font-family: 'Noto Serif', 'Noto Serif JP', serif;
+}
+
+@media (max-width: 640px) {
+  .spots-teaser__gates {
+    grid-template-columns: 1fr;
+  }
+}
