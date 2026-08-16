@@ -1114,6 +1114,16 @@ html[lang="en"] .spots__hanayukari-title {
   box-sizing: border-box;
 }
 
+.product-card__price--note a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.product-card__price--note a:hover {
+  color: var(--forest-dark);
+}
+
 .product-card__achievement + .product-card__price--note {
   margin-top: 20px;
 }
@@ -1555,7 +1565,21 @@ html[lang="en"] .notice__label {
   margin-bottom: 0;
 }
 
+.notice__text + .notice__text {
+  margin-top: 12px;
+}
+
 .notice__text strong {
+  color: var(--forest-dark);
+}
+
+.notice__text a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.notice__text a:hover {
   color: var(--forest-dark);
 }
 
@@ -5124,4 +5148,250 @@ section.is-legacy-anchor {
   margin: 0 0 0.5rem;
   font-size: 0.9rem;
   color: var(--text-muted);
+}
+
+/* Rice registration (member signup) */
+.register-section {
+  scroll-margin-top: calc(var(--header-height) + 12px);
+}
+
+.register-section__lead {
+  color: var(--text-muted);
+  margin: 0 0 28px;
+  line-height: 1.8;
+}
+
+.register-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.register-form {
+  position: relative;
+}
+
+.register-intent {
+  border: 0;
+  padding: 0;
+  margin: 0 0 20px;
+  min-width: 0;
+}
+
+.register-intent legend {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+.register-intent__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-weight: 400;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.register-form .register-intent input[type="radio"] {
+  width: auto;
+  margin-top: 4px;
+  flex: 0 0 auto;
+  accent-color: var(--forest);
+}
+
+.register-form .register-intent input[type="radio"].error {
+  outline: 1px solid var(--tomato);
+}
+
+.register-consent__label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 400;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.register-form .register-consent input[type="checkbox"] {
+  width: auto;
+  margin-top: 4px;
+  flex: 0 0 auto;
+  accent-color: var(--forest);
+}
+
+.register-consent__label a {
+  color: var(--forest);
+  text-decoration: underline;
+}
+
+.footer__legal {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+}
+
+.footer__legal a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.privacy-page .header {
+  position: relative;
+}
+
+.privacy-article {
+  padding: 48px 0 72px;
+}
+
+.privacy-article__title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--forest-dark);
+  margin: 0 0 8px;
+}
+
+.privacy-article__updated {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 28px;
+}
+
+.privacy-article h2 {
+  font-size: 1.1rem;
+  margin: 28px 0 10px;
+  color: var(--forest-dark);
+}
+
+.privacy-article p,
+.privacy-article li {
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.privacy-article ul {
+  margin: 0 0 16px 1.2em;
+}
+
+.privacy-article__back {
+  margin-top: 36px;
+}
+
+@media (max-width: 720px) {
+  .register-card {
+    padding: 24px 18px;
+  }
+}
+
+/* 2026 direct-sale rice membership */
+.rice-direct {
+  scroll-margin-top: calc(var(--header-height) + 12px);
+}
+
+.rice-direct__kicker {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--rice-light);
+  color: var(--forest-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.rice-direct__catch {
+  color: var(--forest-dark);
+  margin-bottom: 16px;
+}
+
+.rice-direct__lead {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.8;
+  margin: 0 0 40px;
+}
+
+.rice-direct__block {
+  margin: 0 0 40px;
+}
+
+.rice-direct__block h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  font-weight: 700;
+  color: var(--forest-dark);
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--rice-gold);
+}
+
+.rice-direct__block h4 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin: 28px 0 12px;
+}
+
+.rice-direct__block p {
+  margin: 0 0 16px;
+  line-height: 2;
+}
+
+.rice-direct__block p:last-child {
+  margin-bottom: 0;
+}
+
+.rice-direct__steps,
+.rice-direct__levels {
+  list-style: none;
+  margin: 16px 0 20px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.rice-direct__steps li,
+.rice-direct__levels li {
+  background: var(--white);
+  border: 1px solid rgba(45, 74, 62, 0.12);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  line-height: 1.7;
+}
+
+.rice-direct__cta {
+  margin-top: 48px;
+  padding: 32px 28px;
+  text-align: center;
+  background: var(--white);
+  border: 2px solid var(--rice-gold);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.rice-direct__cta h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  color: var(--forest-dark);
+  margin: 0 0 12px;
+}
+
+.rice-direct__cta p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+html[lang="en"] .rice-direct__lead,
+html[lang="en"] .rice-direct__catch,
+html[lang="en"] .rice-direct__block h3,
+html[lang="en"] .rice-direct__block h4,
+html[lang="en"] .rice-direct__cta h3 {
+  font-family: 'Noto Serif', 'Noto Serif JP', serif;
 }
