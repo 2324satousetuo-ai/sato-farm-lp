@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=25">
+  <link rel="stylesheet" href="style.css?v=26">
 </head>
 <body class="notranslate">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
@@ -35,6 +35,7 @@
         <a href="#news">新着</a>
         <a href="#about">農園について</a>
         <a href="#nakanojo">中之条町</a>
+        <a href="#spots">名所URL</a>
         <a href="#products">商品</a>
         <a href="#field-report">近況</a>
         <a href="#profile">プロフィール</a>
@@ -128,7 +129,7 @@
         <ul class="news__list"> 
         <li class="news__item">
             <time class="news__date" datetime="2026-08-16">2026.8.16</time>
-            <p class="news__text"><span class="news__headline">「2026年産 直販米」会員募集のご案内を掲載しました。</span>—<a href="#rice-register">ご案内を見る</a></p>
+            <p class="news__text"><span class="news__headline">「2026年産 直販米」会員募集のご案内を掲載しました。</span>—<a href="blog/notes/rice-membership-2026.html">独り言を読む</a></p>
         </li>
         <li class="news__item">
             <time class="news__date" datetime="2026-08-15">2026.8.15</time>
@@ -185,6 +186,18 @@
               <span>四万・沢渡・尻焼など、全国に名を轟く温泉郷</span>
             </li>
           </ul>
+          <div class="spots-teaser__gates">
+            <a class="spots-teaser__gate" href="blog/links/#spots-nakanojo">
+              <span class="spots-teaser__gate-label">中之条町</span>
+              <strong class="spots-teaser__gate-title">名所URL集を見る</strong>
+              <span class="spots-teaser__gate-note">温泉・自然・文化のリンク</span>
+            </a>
+            <a class="spots-teaser__gate" href="blog/links/#spots-agatsuma">
+              <span class="spots-teaser__gate-label">吾妻郡</span>
+              <strong class="spots-teaser__gate-title">名所URL集を見る</strong>
+              <span class="spots-teaser__gate-note">草津・八ッ場・嬬恋など</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -468,6 +481,13 @@
         <p class="lp-blog-teaser__lead">独り言・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。</p>
         <ul class="lp-blog-teaser__list">
           <li>
+            <a class="lp-blog-teaser__card" href="blog/notes/rice-membership-2026.html">
+              <time datetime="2026-08-16">2026.8.16</time>
+              <strong>2026年産 直販米 — 育てる直販のご案内</strong>
+              <span>山あいの恵みを、一番おいしい状態のまま食卓へ。</span>
+            </a>
+          </li>
+          <li>
             <a class="lp-blog-teaser__card" href="blog/notes/cabbage-seeds-and-strength.html">
               <time datetime="2026-08-15">2026.8.15</time>
               <strong>白菜の種まきと、自然の猛威。そして「日本の底力」</strong>
@@ -479,13 +499,6 @@
               <time datetime="2026-08-14">2026.8.14</time>
               <strong>スーパーの米と農家の米。買い方を、少し変えてみませんか。</strong>
               <span>スーパーの米も、農家の米も。違いを知ったうえで、自分に合った買い方を。</span>
-            </a>
-          </li>
-          <li>
-            <a class="lp-blog-teaser__card" href="blog/notes/typhoon-and-fields.html">
-              <time datetime="2026-08-13">2026.8.13</time>
-              <strong>台風の非常識と、畑の正直さ</strong>
-              <span>常識を疑え。そして、自分の目で確かめろ。</span>
             </a>
           </li>
         </ul>
@@ -605,11 +618,19 @@
       <div class="container">
         <p class="section__label">Links</p>
         <h2 class="section__title">名所URL集</h2>
-        <p class="lp-moved-notice" data-legacy-hash="spots">
-          中之条町・吾妻郡の名所リンク集は <a href="blog/links/">ブログの名所URL集</a> へ移しました。
-        </p>
-        <p class="spots__lead">温泉・自然・文化へのリンクをまとめています。興味のある方はブログ側をご覧ください。</p>
-        <p class="lp-blog-more"><a href="blog/links/">名所URL集を見る →</a></p>
+        <p class="spots-teaser__lead">中之条町と吾妻郡の温泉・自然・文化。入口はこちらです。</p>
+        <div class="spots-teaser__gates">
+          <a class="spots-teaser__gate" href="blog/links/#spots-nakanojo">
+            <span class="spots-teaser__gate-label">中之条町</span>
+            <strong class="spots-teaser__gate-title">名所URL集を見る</strong>
+            <span class="spots-teaser__gate-note">四万・沢渡・野反湖・ビエンナーレなど</span>
+          </a>
+          <a class="spots-teaser__gate" href="blog/links/#spots-agatsuma">
+            <span class="spots-teaser__gate-label">吾妻郡</span>
+            <strong class="spots-teaser__gate-title">名所URL集を見る</strong>
+            <span class="spots-teaser__gate-note">草津・八ッ場・嬬恋・高山・東吾妻など</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -673,59 +694,9 @@
           <p>中之条町のおいしいお米の直販に共感していただける方は、ぜひ会員登録をお願いいたします。あなたの食卓と、私たちの田んぼを繋ぐ一歩を、ここから始めませんか。</p>
         </article>
 
-        <div class="rice-direct__cta register-section">
+        <div class="rice-direct__cta">
           <h3>【無料】2026年産米 事前会員登録はこちら</h3>
-          <p class="register-section__lead">
-            今年のお米の販売準備が整いましたら、ご登録のメールアドレスへご案内します。<br>
-            住所の登録は不要です。パスワードもありません。
-          </p>
-          <div class="register-card">
-            <form class="register-form" id="rice-register-form" novalidate data-complete-url="register-complete.html">
-              <p class="form-honeypot" aria-hidden="true">
-                <label>記入しないでください<input name="website" tabindex="-1" autocomplete="off"></label>
-              </p>
-
-              <div class="form-group">
-                <label for="register-name">お名前 <span class="required">必須</span></label>
-                <input type="text" id="register-name" name="name" required autocomplete="name" maxlength="80" placeholder="例：山田 太郎">
-                <p class="form-error" data-error-for="name"></p>
-              </div>
-
-              <div class="form-group">
-                <label for="register-email">メールアドレス <span class="required">必須</span></label>
-                <input type="email" id="register-email" name="email" required autocomplete="email" maxlength="254" placeholder="例：example@email.com">
-                <p class="form-error" data-error-for="email"></p>
-              </div>
-
-              <fieldset class="form-group register-intent">
-                <legend>お米の購入希望レベル <span class="required">必須</span></legend>
-                <label class="register-intent__option">
-                  <input type="radio" name="purchase_intent" value="lv1" required>
-                  <span>Lv.1：ぜひ購入したい</span>
-                </label>
-                <label class="register-intent__option">
-                  <input type="radio" name="purchase_intent" value="lv2">
-                  <span>Lv.2：関心あり。価格により購入したい</span>
-                </label>
-                <label class="register-intent__option">
-                  <input type="radio" name="purchase_intent" value="lv3">
-                  <span>Lv.3：関心あり。今後の動向を見たい</span>
-                </label>
-                <p class="form-error" data-error-for="purchase_intent"></p>
-              </fieldset>
-
-              <div class="form-group register-consent">
-                <label class="register-consent__label" for="register-privacy">
-                  <input type="checkbox" id="register-privacy" name="privacy_agreed" value="1" required>
-                  <span><a href="privacy.html">プライバシーポリシー</a>に同意する <span class="required">必須</span></span>
-                </label>
-                <p class="form-error" data-error-for="privacy_agreed"></p>
-              </div>
-
-              <p class="form-status" role="status" aria-live="polite"></p>
-              <button type="submit" class="btn btn--primary btn--block">会員登録する</button>
-            </form>
-          </div>
+          <p>※ただいま準備中です。近日中にご案内を開始いたします。</p>
         </div>
       </div>
     </section>
