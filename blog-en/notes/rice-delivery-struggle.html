@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Struggle to Deliver Delicious Rice | Sato Farms Blog">
+  <link rel="alternate" hreflang="en" href="rice-delivery-struggle.html">
+  <link rel="alternate" hreflang="ja" href="../../blog/notes/rice-delivery-struggle.html">
+  <meta name="google" content="notranslate">
+  <title>The Struggle to Deliver Delicious Rice | Sato Farms Blog</title>
+  <link rel="canonical" href="https://satofarms.com/blog-en/notes/rice-delivery-struggle.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=27">
+</head>
+<body class="notranslate blog-page">
+  <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
+  <header class="header blog-header">
+    <div class="header__inner">
+      <a href="../../index-en.html" class="logo">Sato Farms<span>Blog</span></a>
+      <div class="header__tools">
+        <div class="header__actions">
+          <a href="../../blog/notes/rice-delivery-struggle.html" class="header__lang-btn" lang="ja">日本語</a>
+          <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../../index-en.html">Home</a>
+          <a href="../">Blog</a>
+          <a href="../#notes">Notes</a>
+          <a href="../../index-en.html#contact" class="nav__cta">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main>
+    <article class="blog-article">
+      <div class="container">
+        <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+          <a href="../../index-en.html">Home</a><span aria-hidden="true">/</span>
+          <a href="../">Blog</a><span aria-hidden="true">/</span>
+          <span>Notes</span>
+        </nav>
+        <p class="blog-article__meta">
+          <span class="blog-article__category">Random Thoughts</span>
+          <time datetime="2026-08-18">August 18, 2026</time>
+        </p>
+        <h1 class="blog-article__title">Sato Farm — The Story Behind Making a Simple Registration Button Work</h1>
+        <div class="blog-article__body">
+<h2>The Struggle to Deliver Delicious Rice</h2>
+<p>Everything started with one small button.</p>
+<p>“Register for Delicious Rice from Nakanojo — 2026 Season.”</p>
+<p>I clicked the button, expecting to see the registration form.</p>
+<p>But instead, I saw this message:</p>
+<p><em>We are preparing the page. Please wait for further updates.</em></p>
+<p>That made no sense.</p>
+<p>The form was already finished.</p>
+<p>Name, email address, and purchase interest level.</p>
+<p>Saving the information to D1 worked.<br>
+The automatic confirmation email worked.</p>
+<p>I had checked everything the night before.</p>
+<p>So I started looking for the culprit.</p>
+<p>Git has a useful way to go back in time.</p>
+<p><code>git log -S"rice-register-form"</code></p>
+<p>With one command, I found the exact moment the form had disappeared.</p>
+<p>It happened during a small update to the LP text the night before.</p>
+<p>While I was adjusting the writing and layout, the form had quietly disappeared with it.</p>
+<p>No one had meant to delete it.</p>
+<p>It was just an accident.</p>
+<p>Luckily, the correct code was still in the previous commit.</p>
+<p>I carefully restored only the missing part.</p>
+<p>Problem solved.</p>
+<p>Or so I thought.</p>
+<h2>A Hidden Trap</h2>
+<p>I tested the form again in my local environment.</p>
+<p>I pressed the submit button.</p>
+<p>A red message appeared:</p>
+<p><em>Registration failed.</em></p>
+<p>The developer tools showed:</p>
+<p>“500 Internal Server Error.”</p>
+<p>Then the <code>wrangler dev</code> log gave me an even clearer answer:</p>
+<p><code>no such table: members</code></p>
+<p>The table existed in the production environment, but not in my local database.</p>
+<p>I had forgotten to run the migration.</p>
+<p>I fixed it.</p>
+<p>Finally, the screen showed:</p>
+<p>“Thank you for registering.”</p>
+<p>This time, surely everything was fine.</p>
+<p>But the email did not arrive.</p>
+<p>It had arrived yesterday.</p>
+<p>Today, nothing.</p>
+<p>The system was supposed to be the same.</p>
+<p>So why?</p>
+<h2>The Trap of AI “Kindness”</h2>
+<p>While I was looking for the answer, something unexpected happened.</p>
+<p>I had asked Cursor AI to review my code.</p>
+<p>But the AI decided, on its own, that my LP text was too long.</p>
+<p>Then it started deleting parts of my writing.</p>
+<p>I had not asked it to do that.</p>
+<p>It was simply trying to help.</p>
+<p>Luckily, I noticed it and stopped it.</p>
+<p>If I had not noticed, the writing I had worked so hard on might have quietly disappeared.</p>
+<p>AI is smart.</p>
+<p>But sometimes it tries to help too much.</p>
+<p>Today, I learned that even “helpful” AI can cause problems when it goes beyond what you asked.</p>
+<h2>The Final Key</h2>
+<p>Then came the final test.</p>
+<p>I merged the code into the main branch and tried the registration form on <code>satofarms.com</code>.</p>
+<p>The screen showed:</p>
+<p>“Thank you for registering.”</p>
+<p>But again, no email arrived.</p>
+<p>This time, the problem was the location of the key.</p>
+<p>The API key was there.</p>
+<p>But it was stored in the “Pages” drawer.</p>
+<p>The code was looking for it in another drawer called “Worker.”</p>
+<p>The key existed.</p>
+<p>It was simply in the wrong place.</p>
+<p>I moved the key to the correct place and pressed the submit button again.</p>
+<p>A few minutes later, my smartphone quietly vibrated.</p>
+<p>“Thank you for your interest in Sato Farm’s rice.”</p>
+<p>At that moment, all the struggles of the day suddenly felt worth it.</p>
+<h2>From a Rice Field in Nakanojo to One Simple Email</h2>
+<p>Behind the registration form, there was a very real, very messy story.</p>
+<p>A missing form.</p>
+<p>A hidden bug.</p>
+<p>An AI that tried to help too much.</p>
+<p>And a key that was in the wrong place.</p>
+<p>Step by step, I solved each problem.</p>
+<p>Finally, I reached the words:</p>
+<p>“Registration complete.”</p>
+<p>Growing rice is one thing.</p>
+<p>Delivering that rice to someone is another.</p>
+<p>Between a rice field in Nakanojo and a customer’s smartphone, there is a system that has to work.</p>
+<p>From the rice fields of Nakanojo to your smartphone.</p>
+<p>That system, built to deliver “Delicious Rice from Nakanojo,” is finally up and running.</p>
+<p>Quietly.</p>
+<p>But surely.</p>
+<p>(August 17, 2026)</p>
+        </div>
+        <nav class="blog-article__nav" aria-label="Article footer navigation">
+          <a href="../">← Back to blog</a>
+          <a href="../../blog/notes/rice-delivery-struggle.html" lang="ja">日本語</a>
+        </nav>
+      </div>
+    </article>
+  </main>
+  <div class="blog-home-bar">
+    <div class="container blog-home-bar__inner">
+      <a class="blog-home-bar__btn" href="../../index-en.html">← Back to Sato Farms Home</a>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Sato Farms</p>
+      <p class="footer__note"><a href="../">Back to blog</a> · <a href="../../index-en.html">Home</a></p>
+      <p class="footer__copy">&copy; 2026 Sato Farms</p>
+    </div>
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>
