@@ -1565,6 +1565,13 @@ html[lang="en"] .notice__label {
   margin-bottom: 0;
 }
 
+.notice__text--lead {
+  margin-top: 18px;
+  font-size: clamp(1.12rem, 2.6vw, 1.38rem);
+  line-height: 1.85;
+  color: var(--text);
+}
+
 .notice__text + .notice__text {
   margin-top: 12px;
 }
