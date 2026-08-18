@@ -5121,6 +5121,24 @@ a.blog-list__row:hover .blog-list__title {
   color: #2c2622;
 }
 
+.blog-article__photos {
+  display: grid;
+  gap: 1.1rem;
+  margin: 1.7rem 0 0.4rem;
+}
+
+.blog-article__photos .blog-article__figure {
+  margin: 0;
+  max-width: none;
+}
+
+@media (min-width: 640px) {
+  .blog-article__photos {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
 .blog-article__nav {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
