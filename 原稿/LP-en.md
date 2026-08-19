@@ -47,11 +47,11 @@ Sato Farms = satofarms.com
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- August 20, 2026　Sato Farm LP — What Happened with Cursor—[Read the post](../blog-en/notes/cursor-runaway.html).
 - August 19, 2026　A Day on the Farm—[Read the post](../blog-en/notes/a-day-on-the-farm.html).
 - August 18, 2026　The Struggle to Deliver Delicious Rice—[Read the post](../blog-en/notes/rice-delivery-struggle.html).
 - August 17, 2026　About Sato Farm’s Direct Sales System—[Read the post](../blog-en/notes/rice-direct-system.html).
 - August 16, 2026　2026 “Grow-as-We-Go Direct Sales” for Our Rice—[Read the post](../blog-en/notes/rice-membership-2026.html).
-- August 15, 2026　Planting Chinese Cabbage Seeds, the Power of Nature, and Japan's Inner Strength—[Read the post](../blog-en/notes/cabbage-seeds-and-strength.html).
 
 [See all news →](../blog-en/news/)
 
@@ -200,9 +200,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Notes, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- August 20, 2026　[Sato Farm LP — What Happened with Cursor](../blog-en/notes/cursor-runaway.html)　Even a smart tool like Cursor can make trouble sometimes.
 - August 19, 2026　[A Day on the Farm](../blog-en/notes/a-day-on-the-farm.html)　The soil is honest. The market is not always so honest.
 - August 18, 2026　[The Struggle to Deliver Delicious Rice](../blog-en/notes/rice-delivery-struggle.html)　Everything started with one small button.
-- August 17, 2026　[About Sato Farm’s Direct Sales System](../blog-en/notes/rice-direct-system.html)　We are building more than an online store.
 
 [View the blog](../blog-en/)
 

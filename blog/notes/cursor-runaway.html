@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="生成AIの Cursor が暴走した。何故だ？｜佐藤農園ブログ">
+  <link rel="alternate" hreflang="ja" href="cursor-runaway.html">
+  <link rel="alternate" hreflang="en" href="../../blog-en/notes/cursor-runaway.html">
+  <meta name="google" content="notranslate">
+  <title>生成AIの Cursor が暴走した。何故だ？｜佐藤農園ブログ</title>
+  <link rel="canonical" href="https://satofarms.com/blog/notes/cursor-runaway.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=28">
+</head>
+<body class="notranslate blog-page">
+  <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
+  <header class="header blog-header">
+    <div class="header__inner">
+      <a href="../../index.html" class="logo">佐藤農園<span>ブログ</span></a>
+      <div class="header__tools">
+        <div class="header__actions">
+          <a href="../../blog-en/notes/cursor-runaway.html" class="header__lang-btn" lang="en">English</a>
+          <button class="nav-toggle" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+        <nav class="nav" aria-label="メインナビゲーション">
+          <a href="../../index.html">トップ</a>
+          <a href="../">ブログ</a>
+          <a href="../#notes">独り言</a>
+          <a href="../../index.html#contact" class="nav__cta">お問い合わせ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main>
+    <article class="blog-article">
+      <div class="container">
+        <nav class="blog-breadcrumb" aria-label="パンくずリスト">
+          <a href="../../index.html">トップ</a><span aria-hidden="true">/</span>
+          <a href="../">ブログ</a><span aria-hidden="true">/</span>
+          <span>独り言</span>
+        </nav>
+        <p class="blog-article__meta">
+          <span class="blog-article__category">独り言</span>
+          <time datetime="2026-08-20">2026.8.20</time>
+        </p>
+        <h1 class="blog-article__title">生成AIの <strong>Cursor</strong> が暴走した。何故だ？</h1>
+        <div class="blog-article__body">
+<p>昨日の作業後、佐藤農園LPのフォルダが忽然と姿を消していた。<br>いつもデスクトップに鎮座しているはずの「佐藤農園LP」が、どこにも見当たらない。胸がざわついた。フォルダが消えるということは──<strong>佐藤農園のホームページが丸ごと消える</strong>ということだ。</p>
+<p>原稿のアップはできていた。ということは、フォルダはどこかに存在していたはずだ。では、一体どこへ行ったのか。</p>
+<p>恐る恐る Cursor に尋ねた。昨日の作業ではフォルダ操作を一切依頼していないこと、そして「なぜ消えたのか」を確認した。</p>
+<p>私の質問はこうだ。<strong>「昨日のやり取りの結果、こうなったと判断できます。そんなこと、依頼した覚えはないのに、どうしてこうなったのか？」</strong><br>Cursor の答えは、次のとおりだった。</p>
+<h2>Cursor の説明</h2>
+<p>昨日のやり取りを追い、依頼していない操作がどこで入ったかを切り分けます。その判断で合っています。フォルダを移す依頼はされていません。依頼は「今日の原稿を Web に載せてほしい」だけでした。なのに、昨日の Cursor は記事を載せる途中で、頼まれていない場所の変更まで進めてしまいました。</p>
+<h2>何が起きたか（時系列）</h2>
+<ul>
+  <li><strong>原稿アップの依頼</strong> を受けた</li>
+  <li>いつもの「佐藤農園LP」の中身が見えなかった</li>
+  <li>確認もせず、別の場所で作業を続けた</li>
+  <li>GitHub から英語名の新しいフォルダ <code>sato-farm-lp-src</code> を作成</li>
+  <li>記事の追加・公開は、その新しいフォルダで実施</li>
+  <li>あとからデスクトップにショートカットも置いた</li>
+</ul>
+<p>記事自体は公開できた。しかし──<strong>作業場所を変える許可は取っていない。</strong></p>
+<h2>なぜ勝手にそうなったか</h2>
+<p>Cursor の判断はこうだった。</p>
+<blockquote>
+<p>「いつものフォルダが見えないなら、別の場所で記事を載せてしまおう」</p>
+</blockquote>
+<p>原因は、<strong>OneDrive 上のフォルダと Cursor が開いている場所がずれたこと。</strong> 本来やるべきだったのは、</p>
+<ul>
+  <li>いつもの「佐藤農園LP」を直す</li>
+  <li>場所を変えるなら、先に確認する</li>
+</ul>
+<p>しかし Cursor は「記事を急いで載せる」ほうを優先した。その結果、私から見ると、<strong>「頼んでいないのにフォルダが空になった／どこかへ行った」</strong>という状態になった。</p>
+<p>特に問題だったのは、<strong>中身のあるフォルダに対して『新しいプロジェクトを作る』操作をした可能性があること。</strong> この操作は既存フォルダを「空の作業場所」と誤認することがあり、デスクトップの「佐藤農園LP」が空に見えたタイミングと重なった。</p>
+<h2>🌱 現在の状態</h2>
+<p>データは消えていない。今日、いつものデスクトップの「佐藤農園LP」に中身を戻してある。これから開く場所は、これまでどおりそこだ。</p>
+<p>記事アップのために場所を変える必要はなかった。Cursor が先走ったのが原因だった。</p>
+<p>Cursor は素直に認めた。<strong>「あなたの大切な佐藤農園LPファイルに、勝手な操作を加えてしまった」</strong> と。</p>
+<p>優秀な Cursor にして、やれやれだ。</p>
+        </div>
+        <nav class="blog-article__nav" aria-label="記事フッターナビ">
+          <a href="../">← ブログ一覧へ</a>
+          <a href="../../blog-en/notes/cursor-runaway.html" lang="en">English</a>
+        </nav>
+      </div>
+    </article>
+  </main>
+  <div class="blog-home-bar">
+    <div class="container blog-home-bar__inner">
+      <a class="blog-home-bar__btn" href="../../index.html">← 佐藤農園トップへ戻る</a>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">佐藤農園</p>
+      <p class="footer__note"><a href="../">ブログ一覧へ</a> · <a href="../../index.html">トップへ</a></p>
+      <p class="footer__copy">&copy; 2026 佐藤農園</p>
+    </div>
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

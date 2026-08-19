@@ -44,6 +44,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.8.20　「生成AIの Cursor が暴走した。何故だ？」を更新しました。— [独り言を読む](../blog/notes/cursor-runaway.html)
 - 2026.8.19　「今日の一日」を更新しました。— [独り言を読む](../blog/notes/a-day-on-the-farm.html)
 - 2026.8.18　「美味しいお米を届ける仕組み奮闘記」を更新しました。— [独り言を読む](../blog/notes/rice-delivery-struggle.html)
 - 2026.8.17　「佐藤農園の直販システムについて」を更新しました。— [独り言を読む](../blog/notes/rice-direct-system.html)
@@ -53,7 +54,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.13　「台風の非常識と、畑の正直さ」— [記事を読む](../blog/notes/typhoon-and-fields.html)
 - 2026.8.12　「佐藤農園LPが「Google翻訳」を使わない理由」— [独り言を読む](../blog/notes/no-google-translate.html)
 - 2026.8.11　「健康か？」— [独り言を読む](../blog/notes/am-i-healthy.html)
-- 2026.8.10　「玉ねぎの種購入：固定種に決めた」— [独り言を読む](../blog/notes/onion-heirloom-seeds.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -201,9 +201,9 @@ URL：https://satofarms.com（satofarms.com）
 
 独り言・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.8.20　[生成AIの Cursor が暴走した。何故だ？](../blog/notes/cursor-runaway.html)　優秀な Cursor にして、やれやれだ。
 - 2026.8.19　[今日の一日](../blog/notes/a-day-on-the-farm.html)　土は正直だ。市場は、そうでもない。
 - 2026.8.18　[美味しいお米を届ける仕組み奮闘記](../blog/notes/rice-delivery-struggle.html)　すべては、一枚のボタンから始まった。
-- 2026.8.17　[佐藤農園の直販システムについて](../blog/notes/rice-direct-system.html)　「売る仕組み」ではなく、「育てる仕組み」を。
 
 [ブログ一覧を見る](../blog/)
 
