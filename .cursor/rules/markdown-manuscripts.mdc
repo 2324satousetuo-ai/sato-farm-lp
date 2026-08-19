@@ -1,0 +1,21 @@
+---
+description: 文章の正本は Markdown。HTML は公開用の器として残す
+alwaysApply: true
+---
+
+# 文章は Markdown で管理する
+
+このプロジェクトの文章の正本は `原稿/` 配下の Markdown です。
+
+- LP 日本語：`原稿/LP.md`
+- LP 英語：`原稿/LP-en.md`
+- ブログ日本語：`原稿/blog/notes/`
+- ブログ英語：`原稿/blog-en/notes/`
+
+## 作業の分け方
+
+- 推敲・追記・言い回しの直しは Markdown だけで行う
+- ユーザーから文章を預かったら、まず Markdown として整形して返す
+- HTML タグで原稿を書かない
+- 公開サイト（`index.html` など）はブラウザ表示用の器なので削除しない
+- サイトへの反映は、Markdown の内容を HTML に移す作業として、依頼されたときだけ行う
