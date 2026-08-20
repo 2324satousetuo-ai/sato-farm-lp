@@ -1950,6 +1950,10 @@ html[lang="en"] .notice__highlight {
   background: var(--cream-dark);
 }
 
+.field-report__photo--portrait {
+  aspect-ratio: 3 / 4;
+}
+
 .field-report__caption {
   margin-top: 14px;
   font-size: 0.92rem;
