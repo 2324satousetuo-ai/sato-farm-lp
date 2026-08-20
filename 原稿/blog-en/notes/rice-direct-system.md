@@ -14,11 +14,11 @@ First, people who are interested in our rice can join our membership.
 
 There are three levels:
 
-“I definitely want to buy.”
+“I just want to know what is happening.”
 
 “I may buy, depending on the price.”
 
-“I just want to know what is happening.”
+“I definitely want to buy.”
 
 This helps us understand how much rice people may want.
 

@@ -48,14 +48,14 @@ Membership is free.
 
 Please choose the level that best matches your interest.
 
-**Level 1 — I definitely want to buy**
-→ We will give you priority when we set aside rice.
+**Level 1 — I just want to receive information**
+→ We will send you updates about the rice and the farm.
 
 **Level 2 — I may buy, depending on the price**
 → We will contact you when the final price is decided.
 
-**Level 3 — I just want to receive information**
-→ We will send you updates about the rice and the farm.
+**Level 3 — I definitely want to buy**
+→ We will give you priority when we set aside rice.
 
 ## Why We Recommend Brown Rice
 

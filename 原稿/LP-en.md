@@ -47,11 +47,11 @@ Sato Farms = satofarms.com
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- August 21, 2026　A Story That Begins in the Fields Before Dawn—[Read the post](../blog-en/notes/fields-before-dawn.html).
 - August 20, 2026　Sato Farm LP — What Happened with Cursor—[Read the post](../blog-en/notes/cursor-runaway.html).
 - August 19, 2026　A Day on the Farm—[Read the post](../blog-en/notes/a-day-on-the-farm.html).
 - August 18, 2026　The Struggle to Deliver Delicious Rice—[Read the post](../blog-en/notes/rice-delivery-struggle.html).
 - August 17, 2026　About Sato Farm’s Direct Sales System—[Read the post](../blog-en/notes/rice-direct-system.html).
-- August 16, 2026　2026 “Grow-as-We-Go Direct Sales” for Our Rice—[Read the post](../blog-en/notes/rice-membership-2026.html).
 
 [See all news →](../blog-en/news/)
 
@@ -123,8 +123,8 @@ Stock & sales — inquire
 
 ### Harvest
 
-- Harvested　Garlic / Cabbage / Potato
-- Currently harvesting　Cucumber / Tomato / Eggplant / Onion
+- Harvested　Garlic / Cabbage / Potato / Onion
+- Currently harvesting　Cucumber / Tomato / Eggplant
 
 ---
 
@@ -156,6 +156,14 @@ We hope to share, even a little, the everyday joys and struggles of small-scale 
 The photo gallery now lives on the [farm updates page](../blog-en/field-report/). This is just a preview. “The Potato Massacre” has moved to a [Farm Blog post](../blog-en/notes/potato-massacre.html).
 
 Photos and short notes from our fields and paddies, updated from time to time.
+
+![Rice paddy scene](../images/field-report/004.jpg)
+
+August 19, 2026. Our rice paddies.
+
+![Vegetable fields](../images/field-report/005.jpg)
+
+August 19, 2026. Our vegetable fields.
 
 ![Rice paddy scene](../images/field-report/001.jpg)
 
@@ -200,9 +208,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Notes, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- August 21, 2026　[A Story That Begins in the Fields Before Dawn](../blog-en/notes/fields-before-dawn.html)　We will deliver that rice to your dining table, carefully and honestly.
 - August 20, 2026　[Sato Farm LP — What Happened with Cursor](../blog-en/notes/cursor-runaway.html)　Even a smart tool like Cursor can make trouble sometimes.
 - August 19, 2026　[A Day on the Farm](../blog-en/notes/a-day-on-the-farm.html)　The soil is honest. The market is not always so honest.
-- August 18, 2026　[The Struggle to Deliver Delicious Rice](../blog-en/notes/rice-delivery-struggle.html)　Everything started with one small button.
 
 [View the blog](../blog-en/)
 
@@ -334,9 +342,9 @@ Membership is free.
 
 Please choose the level that best matches your interest.
 
-- **Level 1 — I definitely want to buy**　→ We will give you priority when we set aside rice.
+- **Level 1 — I just want to receive information**　→ We will send you updates about the rice and the farm.
 - **Level 2 — I may buy, depending on the price**　→ We will contact you when the final price is decided.
-- **Level 3 — I just want to receive information**　→ We will send you updates about the rice and the farm.
+- **Level 3 — I definitely want to buy**　→ We will give you priority when we set aside rice.
 
 #### Why We Recommend Brown Rice
 
@@ -384,11 +392,11 @@ First, people who are interested in our rice can join our membership.
 
 There are three levels:
 
-“I definitely want to buy.”
+“I just want to know what is happening.”
 
 “I may buy, depending on the price.”
 
-“I just want to know what is happening.”
+“I definitely want to buy.”
 
 This helps us understand how much rice people may want.
 
@@ -457,6 +465,48 @@ We want farmers and customers to stay connected, share the harvest, and build a 
 2026 “Grow-as-We-Go Direct Sales”
 
 If you like this idea, please join our membership. When the rice is ready for sale, we will contact you by email.
+
+---
+
+## A Story That Begins in the Fields Before Dawn
+
+August 21, 2026
+
+Before sunrise, the fields are still quiet, as if the world is holding its breath. A thin mist hangs over the rice paddies, and the tips of the rice plants slowly begin to catch the morning light. Here in Nakanojo Town, Gunma Prefecture, a day at Sato Farms begins like this.
+
+For twenty years, I have stood in these same rice paddies. I have come to understand the ways of the wind, the mood of the soil, and the temperament of the irrigation channels. Even so, every year the rice shows us a different face. Some days, the plants stretch up shyly, as if to say, "This is how we will grow this year." Other days, they stand tall and straight, as if to warn us, "Don't let your guard down yet."
+
+It would be a waste to simply harvest these rice plants and sell them. We want to deliver not just the rice, but also the time we spent growing it, the air of the fields, and the changing of the seasons — all of it, if we possibly can. That is why we treasure this small sales system of ours.
+
+### How Sato Farm's Rice Reaches You
+
+**When we receive your order**, we first listen carefully to what you are feeling. "I'm interested." "It depends on the price." "I really want to buy it." We meet you at whatever stage you are at, while also checking the farm's energy, and we carefully prepare our order slots within a range that is not too much for us.
+
+**Once your order is confirmed**, the next step is confirming your payment. This is an iron rule that we hold dear. Rice is a living thing, and a farmer's time is also limited. That is why, only after we have confirmed your payment, we quietly switch into gear and say to ourselves, "Alright, let's give this rice our full attention."
+
+**Once payment is confirmed**, we open our A4 work instruction sheet. This sheet is the command center of our farm. Measuring the brown rice, milling it carefully, dividing it into portions, packing it into bags, and checking the shipping size — we write all of these steps down on this single sheet of paper. Then, without ever glancing at our smartphones, we quietly work with our hands in the workshop.
+
+**Finally, we bring the packages to the post office**, and when we write down the tracking number on the instruction sheet, all the steps are complete. This tracking number is like a "signpost" that guides our rice safely to your dining table, no matter how far away you are. We file the instruction sheets in a binder and keep them as precious records of the year. The actual weight after milling, the memory of the day the rice left for our customers — each of these becomes data, and that data becomes nourishment for Sato Farms.
+
+### What We Want to Protect with This System
+
+At Sato Farm, we value "the rhythm of farm life" more than "efficiency."
+
+- **The peace of mind that comes from facing each grain of rice after payment is confirmed**
+- **The flexibility to carefully adjust our order slots according to the farm's energy**
+- **The clarity of using an A4 instruction sheet, so we can focus on our work without distraction**
+- **The long-lasting relationships with faces we can see, built by meeting customers where they are**
+- **And above all, delivering Sato Farm's rice straight from the heart of our farm, in our own words**
+
+We want our writing to convey not just mechanical words, but the air of the fields, the voice of the rice, and the feel of our hands at work. We believe that is the true value of the Sato Farm LP.
+
+### Looking Forward to the Harvest Season
+
+This year, too, the rice has been working hard for us. When it sways in the wind, it looks as if it is telling us, "We are fully ready for the harvest."
+
+We will deliver that rice to your dining table, carefully and honestly. Please look forward to Sato Farm's rice. We will continue to write the story of our fields, little by little, from now on.
+
+[You can also read this on Random Thoughts.](../blog-en/notes/fields-before-dawn.html)
 
 ---
 
