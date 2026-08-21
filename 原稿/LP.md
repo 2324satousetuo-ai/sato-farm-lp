@@ -44,6 +44,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.8.22　「佐藤農園 お米直販システム 公開です」を更新しました。— [独り言を読む](../blog/notes/rice-direct-ready.html)
 - 2026.8.21　「夜明け前の畑と田んぼからはじまる物語」を更新しました。— [独り言を読む](../blog/notes/fields-before-dawn.html)
 - 2026.8.20　「生成AIの Cursor が暴走した。何故だ？」を更新しました。— [独り言を読む](../blog/notes/cursor-runaway.html)
 - 2026.8.19　「今日の一日」を更新しました。— [独り言を読む](../blog/notes/a-day-on-the-farm.html)
@@ -53,7 +54,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.15　「白菜の種まきと、自然の猛威。そして「日本の底力」」— [記事を読む](../blog/notes/cabbage-seeds-and-strength.html)
 - 2026.8.14　「スーパーの米と農家の米。買い方を、少し変えてみませんか。」— [記事を読む](../blog/notes/supermarket-rice-or-farmer.html)
 - 2026.8.13　「台風の非常識と、畑の正直さ」— [記事を読む](../blog/notes/typhoon-and-fields.html)
-- 2026.8.12　「佐藤農園LPが「Google翻訳」を使わない理由」— [独り言を読む](../blog/notes/no-google-translate.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -209,9 +209,9 @@ URL：https://satofarms.com（satofarms.com）
 
 独り言・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.8.22　[佐藤農園 お米直販システム 公開です](../blog/notes/rice-direct-ready.html)　直販システムは、もうすぐ“稼働”という収穫期を迎える。
 - 2026.8.21　[夜明け前の畑と田んぼからはじまる物語](../blog/notes/fields-before-dawn.html)　その稲を、丁寧に、まっすぐに、あなたの食卓へ。
 - 2026.8.20　[生成AIの Cursor が暴走した。何故だ？](../blog/notes/cursor-runaway.html)　優秀な Cursor にして、やれやれだ。
-- 2026.8.19　[今日の一日](../blog/notes/a-day-on-the-farm.html)　土は正直だ。市場は、そうでもない。
 
 [ブログ一覧を見る](../blog/)
 
