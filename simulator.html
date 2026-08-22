@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お見積もりシミュレーター | 佐藤農園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F1E1;
+    --ink: #2B2A22;
+    --ink-soft: #5B5646;
+    --gold: #B8862F;
+    --gold-deep: #8C6420;
+    --green: #3F5C3E;
+    --green-soft: #E7ECDD;
+    --line: rgba(43, 42, 34, 0.14);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 44px 20px 80px;
+  }
+
+  header { text-align: center; margin-bottom: 8px; }
+
+  .ear-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 12px;
+    display: block;
+    color: var(--gold);
+  }
+
+  header h1 {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    margin: 0 0 8px;
+  }
+
+  header p {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 700;
+    margin: 0 0 6px;
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .lead {
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+  }
+  .lead strong { color: var(--green); font-weight: 500; }
+
+  section.step {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin-bottom: 18px;
+  }
+
+  .step-eyebrow {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .step-num {
+    font-family: "Shippori Mincho", serif;
+    font-size: 12px;
+    color: var(--gold-deep);
+    border: 1px solid var(--gold);
+    border-radius: 100px;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-title { font-family: "Shippori Mincho", serif; font-weight: 700; font-size: 16px; }
+
+  .product-grid { display: grid; gap: 10px; }
+
+  .product-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 13px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .product-card:hover { border-color: var(--gold); }
+  .product-card.selected { border-color: var(--gold); background: var(--green-soft); }
+  .product-card .label { font-weight: 500; font-size: 14px; }
+  .product-card .sub { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+  .product-card .price { font-family: "Shippori Mincho", serif; font-size: 16px; color: var(--gold-deep); }
+
+  label.field { display: block; margin-bottom: 12px; }
+  label.field span.field-label {
+    display: block; font-size: 13px; color: var(--ink-soft); margin-bottom: 6px;
+  }
+
+  select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  select:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+  .checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 10px;
+    margin-top: 4px;
+    border-top: 1px solid var(--line);
+  }
+  .checkbox-row input[type="checkbox"] {
+    margin-top: 3px; width: 17px; height: 17px; accent-color: var(--gold-deep); flex-shrink: 0;
+  }
+  .checkbox-row .ctext { font-size: 14px; }
+  .checkbox-row .cnote { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+  .quote-box {
+    background: var(--green-soft);
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+  .quote-row { display: flex; justify-content: space-between; padding: 4px 0; }
+  .quote-row.total {
+    border-top: 1px solid rgba(63, 92, 62, 0.3);
+    margin-top: 8px; padding-top: 10px;
+    font-family: "Shippori Mincho", serif; font-size: 19px; font-weight: 700; color: var(--green);
+  }
+  .quote-placeholder {
+    font-size: 13px; color: var(--ink-soft); text-align: center; padding: 8px 0;
+  }
+
+  a.cta {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    background: var(--gold-deep);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: "Shippori Mincho", serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: background 0.15s ease, opacity 0.15s ease;
+  }
+  a.cta:hover { background: #74530F; }
+  a.cta.disabled {
+    background: #C9C2AC;
+    pointer-events: none;
+  }
+
+  .note-bottom {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <svg class="ear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+      <path d="M12 2c0 5 2 7 2 11s-2 7-2 9c0-2-2-5-2-9s2-6 2-11z"/>
+      <path d="M12 6c1.5 0 3 .6 3 2M12 6c-1.5 0-3 .6-3 2M12 9c1.5 0 3 .6 3 2M12 9c-1.5 0-3 .6-3 2M12 12c1.5 0 3 .6 3 2M12 12c-1.5 0-3 .6-3 2"/>
+    </svg>
+    <h1>お見積もりシミュレーター</h1>
+    <p>中之条町のおいしいお米「さとう米」（コシヒカリ）</p>
+  </header>
+  <p class="lead">お名前やご住所の入力は不要です。<strong>気になる組み合わせを、気軽にお試しください。</strong></p>
+
+  <section class="step">
+    <div class="step-eyebrow">
+      <span class="step-num">1</span>
+      <span class="step-title">商品を選ぶ</span>
+    </div>
+    <div id="productGrid" class="product-grid">
+      <p class="quote-placeholder">商品を読み込んでいます…</p>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="step-eyebrow">
+      <span class="step-num">2</span>
+      <span class="step-title">お届け先の都道府県</span>
+    </div>
+    <label class="field">
+      <span class="field-label">都道府県</span>
+      <select id="prefecture">
+        <option value="">選択してください</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="step">
+    <div class="step-eyebrow">
+      <span class="step-num">3</span>
+      <span class="step-title">お見積もり結果</span>
+    </div>
+    <div id="quoteBox" class="quote-box">
+      <p class="quote-placeholder">商品と都道府県を選択すると、金額が表示されます。</p>
+    </div>
+
+    <a href="#" id="ctaLink" class="cta disabled">この内容で注文へ進む</a>
+  </section>
+
+  <p class="note-bottom">実際のご注文には、お名前・ご住所の入力が別途必要です。</p>
+
+</div>
+
+<script>
+const API_BASE = "";
+const ORDER_PAGE_URL = "order.html";
+
+const PREFECTURES = [
+  "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県",
+  "茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県",
+  "新潟県","富山県","石川県","福井県","山梨県","長野県",
+  "岐阜県","静岡県","愛知県","三重県",
+  "滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県",
+  "鳥取県","島根県","岡山県","広島県","山口県",
+  "徳島県","香川県","愛媛県","高知県",
+  "福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県",
+  "沖縄県"
+];
+
+let products = [];
+let selectedProductId = null;
+let quoteDebounceTimer = null;
+
+const el = (id) => document.getElementById(id);
+const yen = (n) => "¥" + Number(n).toLocaleString("ja-JP");
+
+function populatePrefectures() {
+  const select = el("prefecture");
+  for (const pref of PREFECTURES) {
+    const opt = document.createElement("option");
+    opt.value = pref;
+    opt.textContent = pref;
+    select.appendChild(opt);
+  }
+}
+
+async function loadProducts() {
+  try {
+    const res = await fetch(API_BASE + "/api/products");
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || "商品の取得に失敗しました");
+    products = data.products;
+    renderProducts();
+  } catch (err) {
+    el("productGrid").innerHTML =
+      '<p class="quote-placeholder">商品を読み込めませんでした。時間をおいて再度お試しください。</p>';
+  }
+}
+
+// 精米後の仕上がり重量の目安（歩留まり実測に基づく既定値）
+const MILLED_WEIGHT_ESTIMATE = {
+  "30kg": 28,
+  "20kg相当": 18.5,
+  "15kg相当": 13.5,
+  "10kg相当": 8.5,
+};
+
+function renderProducts() {
+  const grid = el("productGrid");
+  grid.innerHTML = "";
+  for (const p of products) {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.dataset.id = p.id;
+    const kindLabel = p.milled ? "精米（標準）" : "玄米";
+    const sub = p.milled
+      ? `標準精米のみ対応。仕上がり重量は目安（実質約${MILLED_WEIGHT_ESTIMATE[p.weight_label] ?? "-"}kg）`
+      : `手作業計量のため実測値でお届け（実質約${p.actual_weight_kg}kg）`;
+    card.innerHTML = `
+      <div>
+        <div class="label">${p.weight_label}　${kindLabel}</div>
+        <div class="sub">${sub}</div>
+      </div>
+      <div class="price">${yen(p.price)}</div>
+    `;
+    card.addEventListener("click", () => selectProduct(p.id));
+    grid.appendChild(card);
+  }
+}
+
+function selectProduct(id) {
+  selectedProductId = id;
+  document.querySelectorAll(".product-card").forEach((c) => {
+    c.classList.toggle("selected", Number(c.dataset.id) === id);
+  });
+  requestQuote();
+}
+
+function requestQuote() {
+  clearTimeout(quoteDebounceTimer);
+  quoteDebounceTimer = setTimeout(fetchQuote, 250);
+}
+
+function updateCta(prefecture) {
+  const link = el("ctaLink");
+  if (!selectedProductId || !prefecture) {
+    link.classList.add("disabled");
+    link.removeAttribute("href");
+    return;
+  }
+  const params = new URLSearchParams({
+    productId: selectedProductId,
+    prefecture,
+  });
+  link.href = ORDER_PAGE_URL + "?" + params.toString();
+  link.classList.remove("disabled");
+}
+
+async function fetchQuote() {
+  const prefecture = el("prefecture").value;
+  updateCta(prefecture);
+
+  if (!selectedProductId || !prefecture) {
+    el("quoteBox").innerHTML = '<p class="quote-placeholder">商品と都道府県を選択すると、金額が表示されます。</p>';
+    return;
+  }
+
+  try {
+    const res = await fetch(API_BASE + "/api/quote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ productId: selectedProductId, prefecture }),
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error);
+
+    el("quoteBox").innerHTML = `
+      <div class="quote-row"><span>商品代</span><span>${yen(data.productPrice)}</span></div>
+      ${data.millingFee ? `<div class="quote-row"><span>精米代</span><span>${yen(data.millingFee)}</span></div>` : ""}
+      <div class="quote-row"><span>送料</span><span>${yen(data.shippingFee)}</span></div>
+      <div class="quote-row total"><span>合計金額</span><span>${yen(data.totalAmount)}</span></div>
+    `;
+  } catch (err) {
+    el("quoteBox").innerHTML = '<p class="quote-placeholder">見積もりを取得できませんでした。</p>';
+  }
+}
+
+el("prefecture").addEventListener("change", requestQuote);
+
+populatePrefectures();
+loadProducts();
+</script>
+
+</body>
+</html>

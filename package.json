@@ -1,5 +1,9 @@
 {
   "private": true,
+  "scripts": {
+    "サイトに載せる": "node scripts/publish-notes.mjs --push",
+    "原稿を写す": "node scripts/publish-notes.mjs"
+  },
   "devDependencies": {
     "wrangler": "^4.123.0"
   }

@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "サイトに載せる",
+      "type": "shell",
+      "command": "npm run サイトに載せる",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "detail": "独り言の原稿をHTMLに写し、GitHubへ送る"
+    },
+    {
+      "label": "原稿を写す（まだ送らない）",
+      "type": "shell",
+      "command": "npm run 原稿を写す",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "detail": "独り言の原稿をHTMLに写す。GitHubへは送らない"
+    }
+  ]
+}

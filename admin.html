@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理画面 | 佐藤農園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F1E1;
+    --ink: #2B2A22;
+    --ink-soft: #5B5646;
+    --gold: #B8862F;
+    --gold-deep: #8C6420;
+    --green: #3F5C3E;
+    --green-soft: #E7ECDD;
+    --error: #A8402A;
+    --line: rgba(43, 42, 34, 0.14);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 90px;
+  }
+
+  header { text-align: center; margin-bottom: 32px; }
+
+  header h1 {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    margin: 0 0 6px;
+  }
+  header p { font-size: 13px; color: var(--ink-soft); margin: 0; }
+
+  #loginGate {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    max-width: 380px;
+    margin: 60px auto 0;
+    text-align: center;
+  }
+  #loginGate p { font-size: 13px; color: var(--ink-soft); margin: 0 0 16px; }
+  #loginGate input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 15px;
+    margin-bottom: 12px;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  #loginGate input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  #loginGate button {
+    width: 100%;
+    padding: 12px;
+    background: var(--gold-deep);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  #loginGate button:hover { background: #74530F; }
+  #loginError { color: var(--error); font-size: 12px; margin-top: 10px; display: none; }
+  #loginError.show { display: block; }
+
+  #main { display: none; }
+  #main.show { display: block; }
+
+  .toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .toolbar button {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .toolbar button:hover { border-color: var(--gold); color: var(--ink); }
+
+  section.group { margin-bottom: 28px; }
+
+  .group-title {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .group-count {
+    font-size: 12px;
+    background: var(--green-soft);
+    color: var(--green);
+    border-radius: 100px;
+    padding: 2px 10px;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-weight: 500;
+  }
+
+  .order-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .order-card.pending { border-left: 3px solid var(--gold); }
+  .order-card.preparing { border-left: 3px solid var(--green); }
+
+  .order-info { flex: 1; min-width: 220px; }
+  .order-info .oid {
+    font-family: "Shippori Mincho", serif;
+    font-size: 13px;
+    color: var(--gold-deep);
+    margin-bottom: 4px;
+  }
+  .order-info .member { font-size: 15px; font-weight: 500; }
+  .order-info .shipping {
+    font-size: 13px;
+    color: var(--ink);
+    margin-top: 6px;
+    line-height: 1.55;
+  }
+  .order-info .shipping-missing { color: var(--ink-soft); }
+  .order-info .product { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+  .order-info .date { font-size: 11px; color: var(--ink-soft); margin-top: 4px; }
+
+  .order-amount {
+    font-family: "Shippori Mincho", serif;
+    font-size: 18px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .confirm-btn {
+    background: var(--gold-deep);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .confirm-btn:hover:not(:disabled) { background: #74530F; }
+  .confirm-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
+
+  .complete-btn {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .complete-btn:hover:not(:disabled) { background: #2E452E; }
+  .complete-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
+
+  .status-tag {
+    font-size: 11px;
+    background: var(--green-soft);
+    color: var(--green);
+    border-radius: 100px;
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+
+  .empty-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 24px 0;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .toast.show { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>佐藤農園 管理画面</h1>
+    <p>入金確認・注文状況の確認</p>
+  </header>
+
+  <div id="loginGate">
+    <p>管理用パスワードを入力してください</p>
+    <input type="password" id="secretInput" placeholder="パスワード" autocomplete="off">
+    <button id="loginBtn">ログイン</button>
+    <p id="loginError">パスワードが正しくありません</p>
+  </div>
+
+  <div id="main">
+    <div class="toolbar">
+      <button id="refreshBtn">一覧を更新</button>
+      <button id="logoutBtn">ログアウト</button>
+    </div>
+
+    <section class="group">
+      <div class="group-title">
+        支払い待ち
+        <span class="group-count" id="pendingCount">0</span>
+      </div>
+      <div id="pendingList"></div>
+    </section>
+
+    <section class="group">
+      <div class="group-title">
+        発送準備中（入金確認済み）
+        <span class="group-count" id="preparingCount">0</span>
+      </div>
+      <div id="preparingList"></div>
+    </section>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const API_BASE = "";
+const STORAGE_KEY = "satofarms_admin_secret";
+
+let adminSecret = sessionStorage.getItem(STORAGE_KEY) || "";
+
+const el = (id) => document.getElementById(id);
+const yen = (n) => "¥" + Number(n).toLocaleString("ja-JP");
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function shippingHtml(order) {
+  const postal = order.shipping_postal_code ? "〒" + order.shipping_postal_code : "";
+  const line = [postal, order.shipping_prefecture, order.shipping_address]
+    .filter(Boolean)
+    .join(" ");
+  const parts = [];
+  if (line) parts.push(escapeHtml(line));
+  if (order.shipping_phone) parts.push("TEL " + escapeHtml(order.shipping_phone));
+  if (!parts.length) {
+    return '<span class="shipping-missing">注文時の届け先が記録されていません</span>';
+  }
+  return parts.join("<br>");
+}
+
+function showToast(message) {
+  const t = el("toast");
+  t.textContent = message;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+function formatDate(iso) {
+  if (!iso) return "";
+  return iso.replace("T", " ").slice(0, 16);
+}
+
+async function tryLogin(secret) {
+  const res = await fetch(API_BASE + "/api/admin/orders", {
+    headers: { "X-Admin-Secret": secret },
+  });
+  if (res.status === 401) return false;
+  const data = await res.json();
+  if (!data.success) return false;
+  return true;
+}
+
+el("loginBtn").addEventListener("click", async () => {
+  const secret = el("secretInput").value.trim();
+  if (!secret) return;
+  el("loginBtn").disabled = true;
+  el("loginBtn").textContent = "確認しています…";
+
+  const ok = await tryLogin(secret);
+  el("loginBtn").disabled = false;
+  el("loginBtn").textContent = "ログイン";
+
+  if (!ok) {
+    el("loginError").classList.add("show");
+    return;
+  }
+  el("loginError").classList.remove("show");
+  adminSecret = secret;
+  sessionStorage.setItem(STORAGE_KEY, secret);
+  showMain();
+});
+
+el("secretInput").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") el("loginBtn").click();
+});
+
+el("logoutBtn").addEventListener("click", () => {
+  adminSecret = "";
+  sessionStorage.removeItem(STORAGE_KEY);
+  el("main").classList.remove("show");
+  el("loginGate").style.display = "block";
+  el("secretInput").value = "";
+});
+
+async function showMain() {
+  el("loginGate").style.display = "none";
+  el("main").classList.add("show");
+  await loadOrders();
+}
+
+async function loadOrders() {
+  try {
+    const res = await fetch(API_BASE + "/api/admin/orders", {
+      headers: { "X-Admin-Secret": adminSecret },
+    });
+    if (res.status === 401) {
+      showToast("認証が切れました。再度ログインしてください。");
+      el("logoutBtn").click();
+      return;
+    }
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error);
+    renderOrders(data.orders);
+  } catch (err) {
+    showToast("一覧の取得に失敗しました");
+  }
+}
+
+function productLabel(order) {
+  return order.weight_label + "　" + (order.milled ? "精米" : "玄米");
+}
+
+function orderInfoHtml(order) {
+  const name = order.recipient_name || "（宛名なし）";
+  return `
+      <div class="order-info">
+        <div class="oid">No.${escapeHtml(order.id)}</div>
+        <div class="member">${escapeHtml(name)}</div>
+        <div class="shipping">${shippingHtml(order)}</div>
+        <div class="product">${escapeHtml(productLabel(order))}</div>
+        <div class="date">注文日時：${escapeHtml(formatDate(order.ordered_at))}</div>
+      </div>`;
+}
+
+function renderOrders(orders) {
+  const pending = orders.filter((o) => o.payment_status === "pending_payment");
+  const preparing = orders.filter((o) => o.status === "preparing");
+
+  el("pendingCount").textContent = pending.length;
+  el("preparingCount").textContent = preparing.length;
+
+  const pendingList = el("pendingList");
+  pendingList.innerHTML = pending.length
+    ? ""
+    : '<p class="empty-note">支払い待ちの注文はありません。</p>';
+  for (const o of pending) {
+    const card = document.createElement("div");
+    card.className = "order-card pending";
+    card.innerHTML = `
+      ${orderInfoHtml(o)}
+      <div class="order-amount">${yen(o.total_amount)}</div>
+      <button class="confirm-btn" data-id="${escapeHtml(o.id)}">入金確認</button>
+    `;
+    pendingList.appendChild(card);
+  }
+
+  const preparingList = el("preparingList");
+  preparingList.innerHTML = preparing.length
+    ? ""
+    : '<p class="empty-note">発送準備中の注文はありません。</p>';
+  for (const o of preparing) {
+    const card = document.createElement("div");
+    card.className = "order-card preparing";
+    card.innerHTML = `
+      ${orderInfoHtml(o)}
+      <div class="order-amount">${yen(o.total_amount)}</div>
+      <button class="complete-btn" data-id="${escapeHtml(o.id)}">発送完了</button>
+    `;
+    preparingList.appendChild(card);
+  }
+
+  document.querySelectorAll(".confirm-btn").forEach((btn) => {
+    btn.addEventListener("click", () => confirmPayment(btn.dataset.id, btn));
+  });
+  document.querySelectorAll(".complete-btn").forEach((btn) => {
+    btn.addEventListener("click", () => completeShipment(btn.dataset.id, btn));
+  });
+}
+
+async function confirmPayment(orderId, btn) {
+  const ok = confirm(`注文 No.${orderId} を入金確認済みにします。よろしいですか？`);
+  if (!ok) return;
+
+  btn.disabled = true;
+  btn.textContent = "処理中…";
+
+  try {
+    const res = await fetch(API_BASE + `/api/admin/orders/${orderId}/paid`, {
+      method: "POST",
+      headers: { "X-Admin-Secret": adminSecret },
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || "処理に失敗しました");
+
+    showToast(`注文 No.${orderId} を発送準備OKにしました`);
+    await loadOrders();
+  } catch (err) {
+    showToast(err.message);
+    btn.disabled = false;
+    btn.textContent = "入金確認";
+  }
+}
+
+async function completeShipment(orderId, btn) {
+  const ok = confirm(`注文 No.${orderId} を発送完了にします。よろしいですか？`);
+  if (!ok) return;
+
+  btn.disabled = true;
+  btn.textContent = "処理中…";
+
+  try {
+    const res = await fetch(API_BASE + `/api/admin/orders/${orderId}/completed`, {
+      method: "POST",
+      headers: { "X-Admin-Secret": adminSecret },
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || "処理に失敗しました");
+
+    showToast(`注文 No.${orderId} を発送完了にしました`);
+    await loadOrders();
+  } catch (err) {
+    showToast(err.message);
+    btn.disabled = false;
+    btn.textContent = "発送完了";
+  }
+}
+
+el("refreshBtn").addEventListener("click", loadOrders);
+
+(async function init() {
+  if (adminSecret) {
+    const ok = await tryLogin(adminSecret);
+    if (ok) {
+      showMain();
+      return;
+    }
+    sessionStorage.removeItem(STORAGE_KEY);
+    adminSecret = "";
+  }
+})();
+</script>
+
+</body>
+</html>
