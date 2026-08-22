@@ -44,6 +44,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.8.23　「三層構造でつくる、健全で壊れにくい受注システム」を更新しました。— [独り言を読む](../blog/notes/three-layer-order-system.html)
 - 2026.8.22　「佐藤農園 お米直販システム 公開です」を更新しました。— [独り言を読む](../blog/notes/rice-direct-ready.html)
 - 2026.8.21　「夜明け前の畑と田んぼからはじまる物語」を更新しました。— [独り言を読む](../blog/notes/fields-before-dawn.html)
 - 2026.8.20　「生成AIの Cursor が暴走した。何故だ？」を更新しました。— [独り言を読む](../blog/notes/cursor-runaway.html)
@@ -53,7 +54,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.16　「2026年産 育てる直販米のご案内」を更新しました。— [独り言を読む](../blog/notes/rice-membership-2026.html)
 - 2026.8.15　「白菜の種まきと、自然の猛威。そして「日本の底力」」— [記事を読む](../blog/notes/cabbage-seeds-and-strength.html)
 - 2026.8.14　「スーパーの米と農家の米。買い方を、少し変えてみませんか。」— [記事を読む](../blog/notes/supermarket-rice-or-farmer.html)
-- 2026.8.13　「台風の非常識と、畑の正直さ」— [記事を読む](../blog/notes/typhoon-and-fields.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -209,9 +209,9 @@ URL：https://satofarms.com（satofarms.com）
 
 独り言・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.8.23　[三層構造でつくる、健全で壊れにくい受注システム](../blog/notes/three-layer-order-system.html)　システムはシンプルに。案内は明確に。例外は私が判断する。
 - 2026.8.22　[佐藤農園 お米直販システム 公開です](../blog/notes/rice-direct-ready.html)　直販システムは、もうすぐ“稼働”という収穫期を迎える。
 - 2026.8.21　[夜明け前の畑と田んぼからはじまる物語](../blog/notes/fields-before-dawn.html)　その稲を、丁寧に、まっすぐに、あなたの食卓へ。
-- 2026.8.20　[生成AIの Cursor が暴走した。何故だ？](../blog/notes/cursor-runaway.html)　優秀な Cursor にして、やれやれだ。
 
 [ブログ一覧を見る](../blog/)
 
