@@ -1733,6 +1733,30 @@ html[lang="en"] .notice__label {
   color: var(--forest-dark);
 }
 
+.notice__text--links {
+  margin-top: 10px;
+  font-size: clamp(1.05rem, 2.4vw, 1.28rem);
+  color: var(--text);
+}
+
+.notice__text a strong {
+  font-weight: 700;
+}
+
+.notice__em {
+  font-weight: 700;
+  color: var(--forest-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.notice__shade {
+  background: #fff3b0;
+  padding: 0.12em 0.35em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 .notice__highlight {
   font-family: 'Noto Serif JP', serif;
   font-size: clamp(1.15rem, 2.8vw, 1.45rem);
