@@ -2,11 +2,15 @@ import { getPlatformProxy } from 'wrangler';
 import worker from '../src/worker.js';
 
 const { env, dispose } = await getPlatformProxy({ persist: true });
+const testEnv = {
+  ...env,
+  ADMIN_SECRET: env.ADMIN_SECRET || 'local-test-secret',
+};
 
-function jsonRequest(path, method, body) {
+function jsonRequest(path, method, body, headers = {}) {
   return new Request('http://127.0.0.1' + path, {
     method,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...headers },
     body: body == null ? undefined : JSON.stringify(body),
   });
 }
@@ -168,6 +172,39 @@ try {
     throw new Error('phone-only order should reuse the same member');
   }
 
+  const paid = await read(
+    await worker.fetch(
+      jsonRequest('/api/admin/orders/' + phoneOrder.data.orderId + '/paid', 'POST', null, {
+        'X-Admin-Secret': testEnv.ADMIN_SECRET,
+      }),
+      testEnv
+    )
+  );
+  if (!paid.data.success) {
+    throw new Error('phone-only paid failed: ' + JSON.stringify(paid));
+  }
+
+  const completed = await read(
+    await worker.fetch(
+      jsonRequest('/api/admin/orders/' + phoneOrder.data.orderId + '/completed', 'POST', null, {
+        'X-Admin-Secret': testEnv.ADMIN_SECRET,
+      }),
+      testEnv
+    )
+  );
+  if (!completed.data.success) {
+    throw new Error('phone-only completed failed: ' + JSON.stringify(completed));
+  }
+
+  const finishedOrder = await env.DB.prepare(
+    'SELECT status, payment_status FROM orders WHERE id = ?'
+  )
+    .bind(phoneOrder.data.orderId)
+    .first();
+  if (finishedOrder.status !== 'completed' || finishedOrder.payment_status !== 'paid') {
+    throw new Error('phone-only order did not finish as expected: ' + JSON.stringify(finishedOrder));
+  }
+
   const { results: afterOrderDeliveries } = await env.DB.prepare(
     'SELECT email_type FROM email_deliveries WHERE member_id = ?'
   )
@@ -209,6 +246,8 @@ try {
         ok: true,
         phoneMemberId: phoneMember.id,
         phoneOrderId: phoneOrder.data.orderId,
+        phoneOrderStatus: finishedOrder.status,
+        phonePaymentStatus: finishedOrder.payment_status,
         email,
       },
       null,
