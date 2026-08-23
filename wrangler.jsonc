@@ -20,6 +20,7 @@
   ],
   "vars": {
     "MAIL_FROM": "佐藤農園 <noreply@satofarms.com>",
-    "MAIL_REPLY_TO": "2324satou.setuo@gmail.com"
+    "MAIL_REPLY_TO": "2324satou.setuo@gmail.com",
+    "BANK_TRANSFER_ACCOUNT": "楽天銀行　ダンス（208）　普通　2095392　サトウ セツオ"
   }
 }

@@ -1,9 +1,9 @@
 import sqlite3
 from pathlib import Path
 
-sql = Path("migrations/0001_init.sql").read_text(encoding="utf-8")
 con = sqlite3.connect(":memory:")
-con.executescript(sql)
+for path in sorted(Path("migrations").glob("*.sql")):
+    con.executescript(path.read_text(encoding="utf-8"))
 cur = con.cursor()
 
 cur.execute(
@@ -37,7 +37,38 @@ try:
     )
     raise SystemExit("FAIL: duplicate delivery was allowed")
 except sqlite3.IntegrityError:
-    print("OK duplicate delivery rejected")
+    print("OK duplicate registration delivery rejected")
+
+cur.execute(
+    """INSERT INTO orders (
+         id, member_id, product_id, shipping_zone_id, pickup_discount,
+         payment_method, payment_status, status
+       ) VALUES (1, 'm1', 1, 1, 0, 'bank_transfer', 'pending_payment', 'pending_payment')"""
+)
+cur.execute(
+    """INSERT INTO orders (
+         id, member_id, product_id, shipping_zone_id, pickup_discount,
+         payment_method, payment_status, status
+       ) VALUES (2, 'm1', 1, 1, 0, 'bank_transfer', 'pending_payment', 'pending_payment')"""
+)
+cur.execute(
+    "INSERT INTO email_deliveries (id,member_id,email_type,status,order_id) VALUES (?,?,?,?,?)",
+    ("d3", "m1", "order_confirmation", "pending", 1),
+)
+cur.execute(
+    "INSERT INTO email_deliveries (id,member_id,email_type,status,order_id) VALUES (?,?,?,?,?)",
+    ("d4", "m1", "order_confirmation", "pending", 2),
+)
+print("OK same member can have confirmation per order")
+
+try:
+    cur.execute(
+        "INSERT INTO email_deliveries (id,member_id,email_type,status,order_id) VALUES (?,?,?,?,?)",
+        ("d5", "m1", "order_confirmation", "pending", 1),
+    )
+    raise SystemExit("FAIL: duplicate order delivery was allowed")
+except sqlite3.IntegrityError:
+    print("OK duplicate order delivery rejected")
 
 row = cur.execute("SELECT name,email_normalized,purchase_intent FROM members WHERE id='m1'").fetchone()
 assert row == ("佐藤 節雄", "example@gmail.com", "lv1"), row

@@ -1,7 +1,14 @@
 import {
+  buildOrderConfirmationEmail,
+  buildOrderShippedEmail,
+  formatProductName,
+  getBankTransferAccount,
+} from './order-emails.js';
+import {
   REGISTRATION_EMAIL_SUBJECT,
   REGISTRATION_EMAIL_TEXT,
 } from './registration-email.js';
+import { sendEmail } from './send-email.js';
 import {
   isHoneypotTriggered,
   normalizeEmail,
@@ -97,11 +104,15 @@ async function handleRegister(request, env) {
     );
   }
 
-  await sendRegistrationEmail(env, {
-    deliveryId,
+  await sendEmail(
+    env,
+    emailNormalized,
+    REGISTRATION_EMAIL_SUBJECT,
+    REGISTRATION_EMAIL_TEXT,
+    'registration_complete',
     memberId,
-    to: emailNormalized,
-  });
+    { deliveryId, memberId }
+  );
 
   return json({ ok: true });
 }
@@ -117,7 +128,11 @@ async function handleDirectSales(request, env, url) {
          WHERE status = 'available'
          ORDER BY milled, actual_weight_kg DESC`
       ).all();
-      return json({ success: true, products: results });
+      return json({
+        success: true,
+        products: results,
+        bankAccount: getBankTransferAccount(env),
+      });
     }
 
     if (path === '/api/quote' && request.method === 'POST') {
@@ -305,7 +320,13 @@ function isAdmin(request, env) {
 
 async function markOrderCompleted(env, orderId) {
   const existing = await env.DB.prepare(
-    'SELECT status, payment_status, member_id FROM orders WHERE id = ?'
+    `SELECT o.status, o.payment_status, o.member_id, o.tracking_number,
+            m.email_normalized,
+            p.weight_label, p.milled
+     FROM orders o
+     JOIN members m ON o.member_id = m.id
+     JOIN products p ON o.product_id = p.id
+     WHERE o.id = ?`
   )
     .bind(orderId)
     .first();
@@ -331,6 +352,21 @@ async function markOrderCompleted(env, orderId) {
        WHERE id = ? AND member_level < 4`
     ).bind(existing.member_id),
   ]);
+
+  const shipped = buildOrderShippedEmail({
+    orderId,
+    productName: formatProductName(existing),
+    trackingNumber: existing.tracking_number,
+  });
+  await sendEmail(
+    env,
+    existing.email_normalized,
+    shipped.subject,
+    shipped.text,
+    'order_shipped',
+    String(orderId),
+    { memberId: existing.member_id, orderId, html: shipped.html }
+  );
 
   return json({
     success: true,
@@ -392,7 +428,7 @@ async function handleCreateOrder(request, env) {
   const memberId = await findOrCreateMemberForOrder(env, memberInput);
 
   const member = await env.DB.prepare(
-    'SELECT name, postal_code, prefecture, address, phone FROM members WHERE id = ?'
+    'SELECT name, email_normalized, postal_code, prefecture, address, phone FROM members WHERE id = ?'
   )
     .bind(memberId)
     .first();
@@ -440,10 +476,28 @@ async function handleCreateOrder(request, env) {
     .bind(orderId, confirmations.millingStandard ? 1 : 0, confirmations.millingLoss ? 1 : 0)
     .run();
 
+  const bankAccount = getBankTransferAccount(env);
+  const confirmation = buildOrderConfirmationEmail({
+    orderId,
+    productName: formatProductName(quote.product),
+    totalAmount: quote.totalAmount,
+    bankAccount,
+  });
+  await sendEmail(
+    env,
+    member.email_normalized,
+    confirmation.subject,
+    confirmation.text,
+    'order_confirmation',
+    String(orderId),
+    { memberId, orderId, html: confirmation.html }
+  );
+
   return json({
     success: true,
     orderId,
     totalAmount: quote.totalAmount,
+    bankAccount,
     message: 'ご注文を受け付けました。ご案内する口座へお振り込みをお願いいたします。',
   });
 }
@@ -550,118 +604,6 @@ function isUniqueConstraint(error) {
     .filter(Boolean)
     .join(' ');
   return /UNIQUE constraint failed/i.test(text) || /SQLITE_CONSTRAINT/i.test(text);
-}
-
-async function sendRegistrationEmail(env, { deliveryId, memberId, to }) {
-  if (!env.RESEND_API_KEY) {
-    await updateDelivery(env, deliveryId, {
-      status: 'failed',
-      lastError: 'RESEND_API_KEY is not configured',
-    });
-    return;
-  }
-
-  let response;
-  try {
-    response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer ' + env.RESEND_API_KEY,
-        'Content-Type': 'application/json',
-        'Idempotency-Key': 'registration-complete/' + memberId,
-      },
-      body: JSON.stringify({
-        from: env.MAIL_FROM,
-        to: [to],
-        reply_to: env.MAIL_REPLY_TO,
-        subject: REGISTRATION_EMAIL_SUBJECT,
-        text: REGISTRATION_EMAIL_TEXT,
-      }),
-    });
-  } catch (error) {
-    await updateDelivery(env, deliveryId, {
-      status: 'failed',
-      lastError: 'network_error: ' + String((error && error.message) || error),
-    });
-    return;
-  }
-
-  let data = {};
-  try {
-    data = await response.json();
-  } catch {
-    await updateDelivery(env, deliveryId, {
-      status: 'failed',
-      lastError: 'resend_response_unreadable status=' + response.status,
-    });
-    return;
-  }
-
-  if (response.ok && data && data.id) {
-    await updateDelivery(env, deliveryId, {
-      status: 'sent',
-      providerMessageId: data.id,
-    });
-    return;
-  }
-
-  if (response.status === 409) {
-    await updateDelivery(env, deliveryId, {
-      status: 'sent',
-      providerMessageId: data && data.id ? data.id : null,
-      lastError: 'resend_conflict（冪等性による再受理）: ' + JSON.stringify(data),
-    });
-    return;
-  }
-
-  await updateDelivery(env, deliveryId, {
-    status: 'failed',
-    lastError: 'resend_http_' + response.status + ': ' + JSON.stringify(data),
-  });
-}
-
-async function updateDelivery(env, deliveryId, fields) {
-  const status = fields.status || null;
-  const lastError = fields.lastError || null;
-  const providerMessageId = fields.providerMessageId || null;
-  const sentAt = status === 'sent' ? new Date().toISOString() : null;
-
-  if (status === 'sent') {
-    await env.DB.prepare(
-      `UPDATE email_deliveries
-       SET status = 'sent',
-           provider_message_id = ?,
-           attempt_count = attempt_count + 1,
-           last_error = ?,
-           sent_at = ?
-       WHERE id = ? AND status = 'pending'`
-    )
-      .bind(providerMessageId, lastError, sentAt, deliveryId)
-      .run();
-    return;
-  }
-
-  if (status === 'failed') {
-    await env.DB.prepare(
-      `UPDATE email_deliveries
-       SET status = 'failed',
-           attempt_count = attempt_count + 1,
-           last_error = ?
-       WHERE id = ? AND status = 'pending'`
-    )
-      .bind(lastError, deliveryId)
-      .run();
-    return;
-  }
-
-  await env.DB.prepare(
-    `UPDATE email_deliveries
-     SET attempt_count = attempt_count + 1,
-         last_error = ?
-     WHERE id = ? AND status = 'pending'`
-  )
-    .bind(lastError, deliveryId)
-    .run();
 }
 
 function json(data, status) {

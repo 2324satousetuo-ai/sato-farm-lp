@@ -457,7 +457,7 @@
       <dt>お振込金額</dt>
       <dd id="doneTotal"></dd>
       <dt>お振込先</dt>
-      <dd>群馬銀行　中之条支店　普通　0000000　サトウ セツオ</dd>
+      <dd id="doneBankAccount"></dd>
       <dt>お願い</dt>
       <dd style="font-size:13px;">振込時、通信欄に注文番号（No.<span id="doneOrderIdInline"></span>）をご記入ください。</dd>
     </div>
@@ -516,6 +516,9 @@ async function loadProducts() {
     const data = await res.json();
     if (!data.success) throw new Error(data.error || "商品の取得に失敗しました");
     products = data.products;
+    if (data.bankAccount) {
+      el("doneBankAccount").textContent = data.bankAccount;
+    }
     renderProducts();
     applyPrefillFromUrl();
   } catch (err) {
@@ -699,6 +702,9 @@ el("orderForm").addEventListener("submit", async (e) => {
     el("doneOrderId").textContent = data.orderId;
     el("doneOrderIdInline").textContent = data.orderId;
     el("doneTotal").textContent = yen(data.totalAmount);
+    if (data.bankAccount) {
+      el("doneBankAccount").textContent = data.bankAccount;
+    }
     document.querySelector(".wrap > header").style.display = "none";
     el("orderForm").style.display = "none";
     el("doneScreen").classList.add("show");
