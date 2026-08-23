@@ -148,7 +148,9 @@ We hope to share, even a little, the everyday joys and struggles of small-scale 
 - "Niji no Kirameki" features Koshihikari-level taste, plus heat tolerance, higher yield, lodging resistance, and strong resistance to rice stripe disease.
 - Koshihikari remains dominant in the district, but heat-tolerant varieties are likely to be adopted and used alongside it in the future.　July 5, 2026
 
-[![Hanayukari](../images/hanayukari.png)](https://hanayukari.base.ec/) is here → [Hanayukari](https://hanayukari.base.ec/)
+[![Hanayukari](../images/hanayukari.png)](https://hanayukari.base.ec/)
+
+Nakanojo brand rice “Hanayukari” is here → [Hanayukari](https://hanayukari.base.ec/)
 
 Nakanojo rice “Sato Rice” is here → [Member registration](#pre-register)
 

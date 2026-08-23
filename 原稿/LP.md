@@ -189,7 +189,9 @@ URL：https://satofarms.com（satofarms.com）
 - 「にじのきらめき」の特徴は、コシヒカリ並みの食味に加えて、高温耐性・多収・倒伏しにくい・縞葉枯病に強いということです。
 - 郡内の主力は依然としてコシヒカリですが、今後は高温耐性品種の導入・併用がさらに進む可能性がありそうです。　2026.7.5
 
-[![花ゆかり](../images/hanayukari.png)](https://hanayukari.base.ec/) はこちら⇒ [花ゆかり](https://hanayukari.base.ec/)
+[![花ゆかり](../images/hanayukari.png)](https://hanayukari.base.ec/)
+
+中之条町ブランド米「花ゆかり」はこちら⇒ [花ゆかり](https://hanayukari.base.ec/)
 
 中之条町のおいしいお米「さとう米」はこちら⇒ [会員登録へ](#pre-register)
 
