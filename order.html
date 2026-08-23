@@ -264,6 +264,18 @@
     cursor: not-allowed;
   }
 
+  .legal-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin: 12px 0 0;
+    text-align: center;
+  }
+  .legal-note a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
   .error-banner {
     background: #FBEAE5;
     color: var(--error);
@@ -468,7 +480,7 @@
 
       <label class="field" style="margin-top:16px; margin-bottom:0;">
         <span class="field-label">備考（任意）</span>
-        <textarea id="orderNotes" maxlength="1000" placeholder="手渡し希望など、ご連絡事項があればご記入ください"></textarea>
+        <textarea id="orderNotes" maxlength="1000" placeholder="手渡し希望など、ご要望があればご記入ください"></textarea>
       </label>
     </section>
 
@@ -478,6 +490,7 @@
         <span class="step-title">注文を確定する</span>
       </div>
       <button type="submit" class="submit" id="submitBtn" disabled>この内容で注文する</button>
+      <p class="legal-note"><a href="tokushoho.html">特定商取引法に基づく表記</a></p>
     </section>
 
   </form>

@@ -149,6 +149,7 @@ try {
         },
         productId: product.id,
         desiredTiming: 'asap',
+        notes: '手渡し希望（ローカル試験）',
         confirmations: {
           packaging: true,
           damageRisk: true,
@@ -165,11 +166,29 @@ try {
     throw new Error('phone-only order failed: ' + JSON.stringify(phoneOrder));
   }
 
-  const reused = await env.DB.prepare('SELECT member_id FROM orders WHERE id = ?')
+  const reused = await env.DB.prepare('SELECT member_id, notes FROM orders WHERE id = ?')
     .bind(phoneOrder.data.orderId)
     .first();
   if (reused.member_id !== phoneMember.id) {
     throw new Error('phone-only order should reuse the same member');
+  }
+  if (reused.notes !== '手渡し希望（ローカル試験）') {
+    throw new Error('notes were not saved: ' + JSON.stringify(reused));
+  }
+
+  const adminOrders = await read(
+    await worker.fetch(
+      jsonRequest('/api/admin/orders', 'GET', null, {
+        'X-Admin-Secret': testEnv.ADMIN_SECRET,
+      }),
+      testEnv
+    )
+  );
+  const adminRow = (adminOrders.data.orders || []).find(
+    (row) => Number(row.id) === Number(phoneOrder.data.orderId)
+  );
+  if (!adminRow || adminRow.notes !== '手渡し希望（ローカル試験）') {
+    throw new Error('admin list missing notes: ' + JSON.stringify(adminRow));
   }
 
   const paid = await read(

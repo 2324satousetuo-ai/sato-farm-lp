@@ -5652,6 +5652,10 @@ section.is-legacy-anchor {
   text-decoration: underline;
 }
 
+.footer__legal-sep {
+  margin: 0 0.35em;
+}
+
 .privacy-page .header {
   position: relative;
 }

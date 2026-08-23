@@ -543,6 +543,6 @@ URL：https://satofarms.com（satofarms.com）
 
 個人農家として「佐藤農園」と称しています。
 
-[プライバシーポリシー](../privacy.html)
+[プライバシーポリシー](../privacy.html) / [特定商取引法に基づく表記](../tokushoho.html)
 
 © 2026 佐藤農園
