@@ -44,7 +44,9 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
-- August 23, 2026　A Three-Layer Structure for a Healthy, Durable Order System—[Read the post](../blog-en/notes/three-layer-order-system.html).
+Random Thoughts are informal asides. Articles speak to readers and customers.
+
+- August 23, 2026　A Three-Layer Structure for a Healthy, Durable Order System—[Read the article](../blog-en/notes/three-layer-order-system.html).
 - August 22, 2026　Sato Farms Rice Direct Sales System Is Ready—[Read the post](../blog-en/notes/rice-direct-ready.html).
 - August 21, 2026　A Story That Begins in the Fields Before Dawn—[Read the post](../blog-en/notes/fields-before-dawn.html).
 - August 20, 2026　Sato Farm LP — What Happened with Cursor—[Read the post](../blog-en/notes/cursor-runaway.html).
@@ -145,6 +147,10 @@ We hope to share, even a little, the everyday joys and struggles of small-scale 
 - In recent years, cultivation of the new variety "Niji no Kirameki" has been expanding in the prefecture, and it was added to Gunma's official regional variety list for the 2025 harvest.
 - "Niji no Kirameki" features Koshihikari-level taste, plus heat tolerance, higher yield, lodging resistance, and strong resistance to rice stripe disease.
 - Koshihikari remains dominant in the district, but heat-tolerant varieties are likely to be adopted and used alongside it in the future.　July 5, 2026
+
+[![Hanayukari](../images/hanayukari.png)](https://hanayukari.base.ec/) is here → [Hanayukari](https://hanayukari.base.ec/)
+
+Nakanojo rice “Sato Rice” is here → [Member registration](#pre-register)
 
 ---
 
@@ -369,7 +375,7 @@ When the rice is ready for sale, we will contact you by email.
 
 Let’s take the first step together—from our rice fields to your table.
 
-[You can also read this on Random Thoughts.](../blog-en/notes/rice-membership-2026.html)
+[You can also read this article.](../blog-en/notes/rice-membership-2026.html)
 
 ---
 

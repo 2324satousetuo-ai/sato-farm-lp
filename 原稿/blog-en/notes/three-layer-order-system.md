@@ -1,6 +1,6 @@
 # A Three-Layer Structure for a Healthy, Durable Order System
 
-Random Thoughts　August 23, 2026
+Article　August 23, 2026
 
 As an order system approaches its final stage of development, the most challenging issue becomes how to handle **exceptions that fall outside the system**.
 

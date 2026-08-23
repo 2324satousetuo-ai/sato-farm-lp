@@ -1,6 +1,6 @@
 # 2026 &quot;Grow-as-We-Go Direct Sales&quot; for Our Rice
 
-Random Thoughts　August 16, 2026
+Article　August 16, 2026
 
 We are now preparing to sell our 2026 rice harvest directly to you.
 

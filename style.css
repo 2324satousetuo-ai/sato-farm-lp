@@ -709,6 +709,13 @@ html[lang="en"] .news__date {
   text-underline-offset: 2px;
 }
 
+.news__guide {
+  margin: 0 0 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
 .news__text a {
   color: var(--forest);
   font-weight: 600;
@@ -717,6 +724,35 @@ html[lang="en"] .news__date {
 
 .news__text a:hover {
   color: var(--forest-dark);
+}
+
+.news__kind {
+  display: inline-block;
+  margin-left: 0.15rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 0.12rem 0.45rem;
+  border: 1px solid;
+  font-weight: 700;
+  text-decoration: none;
+  vertical-align: 0.08em;
+}
+
+.news__kind--note {
+  border-color: rgba(45, 74, 62, 0.45);
+  background: rgba(45, 74, 62, 0.1);
+  color: #2d4a3e;
+}
+
+.news__kind--article {
+  border-color: #8a6a1a;
+  background: rgba(201, 168, 76, 0.32);
+  color: #5c4708;
+}
+
+.news__text a.news__kind:hover {
+  color: inherit;
+  opacity: 0.86;
 }
 
 @media (min-width: 640px) {
@@ -2138,7 +2174,7 @@ html[lang="en"] .field-report__story-title {
   .profile__grid {
     display: flex;
     flex-direction: column;
-    gap: 56px;
+    gap: 80px;
     align-items: stretch;
   }
 
@@ -2252,6 +2288,52 @@ html[lang="en"] .field-report__story-title {
 .profile__rice-trends-date {
   font-weight: 400;
   color: var(--text-muted);
+}
+
+.profile__rice-offers {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(45, 74, 62, 0.14);
+}
+
+.profile__rice-offers__row {
+  margin: 0 0 0.7rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.profile__rice-offers__row:last-child {
+  margin-bottom: 0;
+}
+
+.profile__rice-offers__row--logo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+}
+
+.profile__rice-offers__logo {
+  display: inline-block;
+  flex: 0 1 auto;
+}
+
+.profile__rice-offers__logo img {
+  display: block;
+  width: min(395px, 100%);
+  height: auto;
+}
+
+.profile__rice-offers a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.profile__rice-offers a:hover {
+  color: var(--forest-dark);
 }
 
 html[lang="en"] .profile__rice-trends {
@@ -5048,6 +5130,19 @@ a.blog-list__row:hover .blog-list__title {
   background: rgba(201, 168, 76, 0.15);
 }
 
+.blog-list__badge--note {
+  border-color: rgba(45, 74, 62, 0.45);
+  background: rgba(45, 74, 62, 0.1);
+  color: #2d4a3e;
+}
+
+.blog-list__badge--article {
+  border-color: #8a6a1a;
+  background: rgba(201, 168, 76, 0.32);
+  color: #5c4708;
+  font-weight: 700;
+}
+
 .blog-article {
   padding: calc(var(--header-height) + 2rem) 0 3rem;
 }
@@ -5066,8 +5161,24 @@ a.blog-list__row:hover .blog-list__title {
 }
 
 .blog-article__category {
-  color: #141210;
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(20, 18, 16, 0.35);
   font-weight: 700;
+}
+
+.blog-article__category--note {
+  border-color: rgba(45, 74, 62, 0.45);
+  background: rgba(45, 74, 62, 0.1);
+  color: #2d4a3e;
+}
+
+.blog-article__category--article {
+  border-color: #8a6a1a;
+  background: rgba(201, 168, 76, 0.32);
+  color: #5c4708;
 }
 
 .blog-article__title {
@@ -5289,7 +5400,7 @@ a.blog-list__row:hover .blog-list__title {
 }
 
 .blog-list__row--news {
-  grid-template-columns: 6.5rem 1fr;
+  grid-template-columns: 6.5rem 1fr auto;
   align-items: start;
 }
 
@@ -5366,6 +5477,13 @@ a.blog-list__row:hover .blog-list__title {
   transform: translateY(-2px);
 }
 
+.lp-blog-teaser__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
 .lp-blog-teaser__card time {
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -5378,7 +5496,8 @@ a.blog-list__row:hover .blog-list__title {
   line-height: 1.45;
 }
 
-.lp-blog-teaser__card span {
+.lp-blog-teaser__card > span,
+.lp-blog-teaser__excerpt {
   font-size: 0.92rem;
   color: var(--text-muted);
   line-height: 1.6;

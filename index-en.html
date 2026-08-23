@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=35">
+  <link rel="stylesheet" href="style.css?v=37">
 </head>
 <body class="notranslate">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
@@ -123,26 +123,27 @@
         <p class="lp-moved-notice" data-legacy-hash="news">
           The full news list has moved to the <a href="blog-en/news/">blog news archive</a>. Only the latest 5 items appear here.
         </p>
+        <p class="news__guide">Random Thoughts are informal asides. Articles speak to readers and customers.</p>
         <ul class="news__list">
           <li class="news__item">
             <time class="news__date" datetime="2026-08-23">August 23, 2026</time>
-            <p class="news__text"><span class="news__headline">A Three-Layer Structure for a Healthy, Durable Order System</span>—<a href="blog-en/notes/three-layer-order-system.html">Read the post</a>.</p>
+            <p class="news__text"><span class="news__headline">A Three-Layer Structure for a Healthy, Durable Order System</span>—<a href="blog-en/notes/three-layer-order-system.html" class="news__kind news__kind--article">Read the article</a>.</p>
           </li>
           <li class="news__item">
             <time class="news__date" datetime="2026-08-22">August 22, 2026</time>
-            <p class="news__text"><span class="news__headline">Sato Farms Rice Direct Sales System Is Ready</span>—<a href="blog-en/notes/rice-direct-ready.html">Read the post</a>.</p>
+            <p class="news__text"><span class="news__headline">Sato Farms Rice Direct Sales System Is Ready</span>—<a href="blog-en/notes/rice-direct-ready.html" class="news__kind news__kind--note">Read the post</a>.</p>
           </li>
           <li class="news__item">
             <time class="news__date" datetime="2026-08-21">August 21, 2026</time>
-            <p class="news__text"><span class="news__headline">A Story That Begins in the Fields Before Dawn</span>—<a href="blog-en/notes/fields-before-dawn.html">Read the post</a>.</p>
+            <p class="news__text"><span class="news__headline">A Story That Begins in the Fields Before Dawn</span>—<a href="blog-en/notes/fields-before-dawn.html" class="news__kind news__kind--note">Read the post</a>.</p>
           </li>
           <li class="news__item">
             <time class="news__date" datetime="2026-08-20">August 20, 2026</time>
-            <p class="news__text"><span class="news__headline">Sato Farm LP — What Happened with Cursor</span>—<a href="blog-en/notes/cursor-runaway.html">Read the post</a>.</p>
+            <p class="news__text"><span class="news__headline">Sato Farm LP — What Happened with Cursor</span>—<a href="blog-en/notes/cursor-runaway.html" class="news__kind news__kind--note">Read the post</a>.</p>
           </li>
           <li class="news__item">
             <time class="news__date" datetime="2026-08-19">August 19, 2026</time>
-            <p class="news__text"><span class="news__headline">A Day on the Farm</span>—<a href="blog-en/notes/a-day-on-the-farm.html">Read the post</a>.</p>
+            <p class="news__text"><span class="news__headline">A Day on the Farm</span>—<a href="blog-en/notes/a-day-on-the-farm.html" class="news__kind news__kind--note">Read the post</a>.</p>
           </li>
         </ul>
         <p class="lp-blog-more"><a href="blog-en/news/">See all news →</a></p>
@@ -323,6 +324,15 @@
             <li>"Niji no Kirameki" features Koshihikari-level taste, plus heat tolerance, higher yield, lodging resistance, and strong resistance to rice stripe disease.</li>
             <li>Koshihikari remains dominant in the district, but heat-tolerant varieties are likely to be adopted and used alongside it in the future. <span class="profile__rice-trends-date">July 5, 2026</span></li>
           </ul>
+          <div class="profile__rice-offers">
+            <p class="profile__rice-offers__row profile__rice-offers__row--logo">
+              <a href="https://hanayukari.base.ec/" class="profile__rice-offers__logo" rel="external noopener" target="_blank">
+                <img src="images/hanayukari.png" alt="Hanayukari" width="395" height="140">
+              </a>
+              <span>is here → <a href="https://hanayukari.base.ec/" rel="external noopener" target="_blank">Hanayukari</a></span>
+            </p>
+            <p class="profile__rice-offers__row">Nakanojo rice “Sato Rice” is here → <a href="#pre-register">Member registration</a></p>
+          </div>
         </aside>
       </div>
     </section>
@@ -506,21 +516,24 @@
         <ul class="lp-blog-teaser__list">
           <li>
             <a class="lp-blog-teaser__card" href="blog-en/notes/three-layer-order-system.html">
-              <time datetime="2026-08-23">August 23, 2026</time>
+              <div class="lp-blog-teaser__meta"><time datetime="2026-08-23">August 23, 2026</time>
+              <span class="blog-list__badge blog-list__badge--article">Article</span></div>
               <strong>A Three-Layer Structure for a Healthy, Durable Order System</strong>
               <span>Keep the system simple. Make the guidance clear. Let exceptions be decided by me.</span>
             </a>
           </li>
           <li>
             <a class="lp-blog-teaser__card" href="blog-en/notes/rice-direct-ready.html">
-              <time datetime="2026-08-22">August 22, 2026</time>
+              <div class="lp-blog-teaser__meta"><time datetime="2026-08-22">August 22, 2026</time>
+              <span class="blog-list__badge blog-list__badge--note">Random Thoughts</span></div>
               <strong>Sato Farms Rice Direct Sales System Is Ready</strong>
               <span>The Direct Sales System is almost ready for its own “harvest.”</span>
             </a>
           </li>
           <li>
             <a class="lp-blog-teaser__card" href="blog-en/notes/fields-before-dawn.html">
-              <time datetime="2026-08-21">August 21, 2026</time>
+              <div class="lp-blog-teaser__meta"><time datetime="2026-08-21">August 21, 2026</time>
+              <span class="blog-list__badge blog-list__badge--note">Random Thoughts</span></div>
               <strong>A Story That Begins in the Fields Before Dawn</strong>
               <span>We will deliver that rice to your dining table, carefully and honestly.</span>
             </a>
@@ -713,7 +726,7 @@
           <p>If you like this idea, please join our membership.</p>
           <p>When the rice is ready for sale, we will contact you by email.</p>
           <p>Let’s take the first step together—from our rice fields to your table.</p>
-          <p><a href="blog-en/notes/rice-membership-2026.html">You can also read this on Random Thoughts.</a></p>
+          <p><a href="blog-en/notes/rice-membership-2026.html">You can also read this article.</a></p>
         </article>
 
         <article class="rice-direct__block">
