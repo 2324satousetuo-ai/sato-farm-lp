@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import {
+  hasSendableEmail,
   isHoneypotTriggered,
   normalizeEmail,
+  normalizePhoneKey,
   validateRegistration,
 } from '../src/validate.js';
 
@@ -13,11 +15,19 @@ const valid = {
 };
 
 assert.deepEqual(validateRegistration(valid), {});
+assert.deepEqual(validateRegistration({ ...valid, email: '', phone: '0279-75-2711' }), {});
 assert.equal(normalizeEmail(valid.email), 'example@gmail.com');
 assert.equal(normalizeEmail('  TARO@SatoFarms.COM  '), 'taro@satofarms.com');
+assert.equal(normalizePhoneKey('080-1256-8883'), '08012568883');
+assert.equal(normalizePhoneKey('０８０１２５６８８８３'), '08012568883');
+assert.equal(hasSendableEmail(''), false);
+assert.equal(hasSendableEmail('a@example.com'), true);
 
 assert.equal(validateRegistration({ ...valid, name: '' }).name, '入力してください。');
-assert.equal(validateRegistration({ ...valid, email: '' }).email, '入力してください。');
+assert.equal(
+  validateRegistration({ ...valid, email: '', phone: '' }).contact,
+  'メールアドレスまたは電話番号のいずれかは必須です'
+);
 assert.equal(
   validateRegistration({ ...valid, email: 'not-an-email' }).email,
   '正しいメールアドレスを入力してください。'

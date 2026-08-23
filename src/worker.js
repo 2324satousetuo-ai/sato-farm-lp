@@ -10,8 +10,11 @@ import {
 } from './registration-email.js';
 import { sendEmail } from './send-email.js';
 import {
+  hasSendableEmail,
   isHoneypotTriggered,
   normalizeEmail,
+  normalizePhoneKey,
+  validateMemberContact,
   validateRegistration,
 } from './validate.js';
 
@@ -61,32 +64,51 @@ async function handleRegister(request, env) {
   }
 
   const name = String(body.name).trim();
-  const emailOriginal = String(body.email).trim();
-  const emailNormalized = normalizeEmail(emailOriginal);
+  const emailOriginal = typeof body.email === 'string' ? body.email.trim() : '';
+  const emailNormalized = emailOriginal ? normalizeEmail(emailOriginal) : '';
+  const phone = typeof body.phone === 'string' && body.phone.trim() ? body.phone.trim() : null;
   const purchaseIntent = String(body.purchase_intent);
 
   if (!env.DB) {
     return json({ ok: false, message: '登録を完了できませんでした。しばらくしてから再度お試しください。' }, 500);
   }
 
+  if (!emailNormalized && phone) {
+    const existingPhone = await findMemberByPhone(env, phone);
+    if (existingPhone) {
+      return json(
+        {
+          ok: false,
+          errors: { phone: 'この電話番号は既に登録されています' },
+        },
+        409
+      );
+    }
+  }
+
   const memberId = crypto.randomUUID();
   const deliveryId = crypto.randomUUID();
   const now = new Date().toISOString();
+  const memberInsert = env.DB.prepare(
+    `INSERT INTO members (
+       id, name, email_original, email_normalized, purchase_intent, line_user_id,
+       created_at, updated_at, member_level, phone
+     ) VALUES (?, ?, ?, ?, ?, NULL, ?, ?, 1, ?)`
+  ).bind(memberId, name, emailOriginal, emailNormalized, purchaseIntent, now, now, phone);
 
   try {
-    await env.DB.batch([
-      env.DB.prepare(
-        `INSERT INTO members (
-           id, name, email_original, email_normalized, purchase_intent, line_user_id,
-           created_at, updated_at, member_level
-         ) VALUES (?, ?, ?, ?, ?, NULL, ?, ?, 1)`
-      ).bind(memberId, name, emailOriginal, emailNormalized, purchaseIntent, now, now),
-      env.DB.prepare(
-        `INSERT INTO email_deliveries (
-           id, member_id, email_type, status, attempt_count, created_at
-         ) VALUES (?, ?, 'registration_complete', 'pending', 0, ?)`
-      ).bind(deliveryId, memberId, now),
-    ]);
+    if (emailNormalized) {
+      await env.DB.batch([
+        memberInsert,
+        env.DB.prepare(
+          `INSERT INTO email_deliveries (
+             id, member_id, email_type, status, attempt_count, created_at
+           ) VALUES (?, ?, 'registration_complete', 'pending', 0, ?)`
+        ).bind(deliveryId, memberId, now),
+      ]);
+    } else {
+      await memberInsert.run();
+    }
   } catch (error) {
     if (isUniqueConstraint(error)) {
       return json(
@@ -104,15 +126,17 @@ async function handleRegister(request, env) {
     );
   }
 
-  await sendEmail(
-    env,
-    emailNormalized,
-    REGISTRATION_EMAIL_SUBJECT,
-    REGISTRATION_EMAIL_TEXT,
-    'registration_complete',
-    memberId,
-    { deliveryId, memberId }
-  );
+  if (hasSendableEmail(emailNormalized)) {
+    await sendEmail(
+      env,
+      emailNormalized,
+      REGISTRATION_EMAIL_SUBJECT,
+      REGISTRATION_EMAIL_TEXT,
+      'registration_complete',
+      memberId,
+      { deliveryId, memberId }
+    );
+  }
 
   return json({ ok: true });
 }
@@ -243,7 +267,7 @@ async function handleDirectSales(request, env, url) {
       const { results } = await env.DB.prepare(
         `SELECT o.id, o.status, o.payment_status, o.total_amount, o.ordered_at,
                 o.recipient_name, o.shipping_postal_code, o.shipping_prefecture,
-                o.shipping_address, o.shipping_phone,
+                o.shipping_address, o.shipping_phone, o.notes,
                 p.weight_label, p.milled
          FROM orders o
          JOIN products p ON o.product_id = p.id
@@ -353,20 +377,22 @@ async function markOrderCompleted(env, orderId) {
     ).bind(existing.member_id),
   ]);
 
-  const shipped = buildOrderShippedEmail({
-    orderId,
-    productName: formatProductName(existing),
-    trackingNumber: existing.tracking_number,
-  });
-  await sendEmail(
-    env,
-    existing.email_normalized,
-    shipped.subject,
-    shipped.text,
-    'order_shipped',
-    String(orderId),
-    { memberId: existing.member_id, orderId, html: shipped.html }
-  );
+  if (hasSendableEmail(existing.email_normalized)) {
+    const shipped = buildOrderShippedEmail({
+      orderId,
+      productName: formatProductName(existing),
+      trackingNumber: existing.tracking_number,
+    });
+    await sendEmail(
+      env,
+      existing.email_normalized,
+      shipped.subject,
+      shipped.text,
+      'order_shipped',
+      String(orderId),
+      { memberId: existing.member_id, orderId, html: shipped.html }
+    );
+  }
 
   return json({
     success: true,
@@ -383,15 +409,20 @@ async function handleCreateOrder(request, env) {
   }
 
   const memberInput = body.member || {};
-  if (
-    !memberInput.name ||
-    !memberInput.email ||
-    !memberInput.prefecture ||
-    !memberInput.address ||
-    !body.productId
-  ) {
+  if (!memberInput.name || !memberInput.prefecture || !memberInput.address || !body.productId) {
     return json(
-      { success: false, error: '会員情報（氏名・メール・都道府県・住所）と productId は必須です' },
+      { success: false, error: '会員情報（氏名・都道府県・住所）と productId は必須です' },
+      400
+    );
+  }
+
+  const contactErrors = validateMemberContact(memberInput.email, memberInput.phone);
+  if (Object.keys(contactErrors).length > 0) {
+    return json(
+      {
+        success: false,
+        error: contactErrors.contact || contactErrors.email || contactErrors.phone,
+      },
       400
     );
   }
@@ -425,6 +456,11 @@ async function handleCreateOrder(request, env) {
     return json({ success: false, error: '購入希望時期の指定が正しくありません' }, 400);
   }
 
+  const notes = body.notes == null ? '' : String(body.notes).trim();
+  if (notes.length > 1000) {
+    return json({ success: false, error: '備考は1000文字以内でご記入ください' }, 400);
+  }
+
   const memberId = await findOrCreateMemberForOrder(env, memberInput);
 
   const member = await env.DB.prepare(
@@ -444,8 +480,8 @@ async function handleCreateOrder(request, env) {
        payment_method, payment_status, status,
        desired_timing,
        recipient_name, shipping_postal_code, shipping_prefecture,
-       shipping_address, shipping_phone
-     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'bank_transfer', 'pending_payment', 'pending_payment', ?, ?, ?, ?, ?, ?)`
+       shipping_address, shipping_phone, notes
+     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'bank_transfer', 'pending_payment', 'pending_payment', ?, ?, ?, ?, ?, ?, ?)`
   )
     .bind(
       memberId,
@@ -461,7 +497,8 @@ async function handleCreateOrder(request, env) {
       member.postal_code,
       member.prefecture,
       member.address,
-      member.phone
+      member.phone,
+      notes || null
     )
     .run();
 
@@ -477,21 +514,23 @@ async function handleCreateOrder(request, env) {
     .run();
 
   const bankAccount = getBankTransferAccount(env);
-  const confirmation = buildOrderConfirmationEmail({
-    orderId,
-    productName: formatProductName(quote.product),
-    totalAmount: quote.totalAmount,
-    bankAccount,
-  });
-  await sendEmail(
-    env,
-    member.email_normalized,
-    confirmation.subject,
-    confirmation.text,
-    'order_confirmation',
-    String(orderId),
-    { memberId, orderId, html: confirmation.html }
-  );
+  if (hasSendableEmail(member.email_normalized)) {
+    const confirmation = buildOrderConfirmationEmail({
+      orderId,
+      productName: formatProductName(quote.product),
+      totalAmount: quote.totalAmount,
+      bankAccount,
+    });
+    await sendEmail(
+      env,
+      member.email_normalized,
+      confirmation.subject,
+      confirmation.text,
+      'order_confirmation',
+      String(orderId),
+      { memberId, orderId, html: confirmation.html }
+    );
+  }
 
   return json({
     success: true,
@@ -502,21 +541,44 @@ async function handleCreateOrder(request, env) {
   });
 }
 
+async function findMemberByPhone(env, phone) {
+  const trimmed = String(phone || '').trim();
+  const key = normalizePhoneKey(trimmed);
+  if (!key) {
+    return null;
+  }
+
+  const exact = await env.DB.prepare('SELECT id FROM members WHERE phone = ?')
+    .bind(trimmed)
+    .first();
+  if (exact) {
+    return exact;
+  }
+
+  const { results } = await env.DB.prepare(
+    `SELECT id, phone FROM members WHERE phone IS NOT NULL AND TRIM(phone) != ''`
+  ).all();
+  return (results || []).find((row) => normalizePhoneKey(row.phone) === key) || null;
+}
+
 async function findOrCreateMemberForOrder(env, memberInput) {
   const name = String(memberInput.name).trim();
-  const emailOriginal = String(memberInput.email).trim();
-  const emailNormalized = normalizeEmail(emailOriginal);
+  const emailOriginal = typeof memberInput.email === 'string' ? memberInput.email.trim() : '';
+  const emailNormalized = emailOriginal ? normalizeEmail(emailOriginal) : '';
   const postalCode = memberInput.postalCode ? String(memberInput.postalCode).trim() : null;
   const prefecture = String(memberInput.prefecture).trim();
   const address = String(memberInput.address).trim();
   const phone = memberInput.phone ? String(memberInput.phone).trim() : null;
   const now = new Date().toISOString();
 
-  const existing = await env.DB.prepare(
-    'SELECT id FROM members WHERE email_normalized = ?'
-  )
-    .bind(emailNormalized)
-    .first();
+  let existing = null;
+  if (emailNormalized) {
+    existing = await env.DB.prepare('SELECT id FROM members WHERE email_normalized = ?')
+      .bind(emailNormalized)
+      .first();
+  } else if (phone) {
+    existing = await findMemberByPhone(env, phone);
+  }
 
   if (existing) {
     await env.DB.prepare(
@@ -552,10 +614,8 @@ async function findOrCreateMemberForOrder(env, memberInput) {
       .run();
     return memberId;
   } catch (error) {
-    if (isUniqueConstraint(error)) {
-      const raced = await env.DB.prepare(
-        'SELECT id FROM members WHERE email_normalized = ?'
-      )
+    if (isUniqueConstraint(error) && emailNormalized) {
+      const raced = await env.DB.prepare('SELECT id FROM members WHERE email_normalized = ?')
         .bind(emailNormalized)
         .first();
       if (raced) {

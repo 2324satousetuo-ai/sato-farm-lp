@@ -151,7 +151,7 @@
     margin-bottom: 6px;
   }
 
-  input[type="text"], input[type="email"], input[type="tel"], select {
+  input[type="text"], input[type="email"], input[type="tel"], select, textarea {
     width: 100%;
     padding: 11px 12px;
     border: 1px solid var(--line);
@@ -162,9 +162,29 @@
     color: var(--ink);
   }
 
-  input:focus, select:focus {
+  textarea {
+    min-height: 96px;
+    resize: vertical;
+    line-height: 1.7;
+  }
+
+  input:focus, select:focus, textarea:focus {
     outline: 2px solid var(--gold);
     outline-offset: 1px;
+  }
+
+  .pickup-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin: 2px 0 0;
+  }
+
+  .contact-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin: -4px 0 14px;
   }
 
   .row-2 {
@@ -334,6 +354,13 @@
         </select>
       </label>
 
+      <p class="pickup-note">
+        ※中之条町周辺にお住まいの方へ<br>
+        直接お手渡しでのお受け取りも承ります（送料相当額は後日調整いたします）。<br>
+        ご希望の場合は、通常通りご注文のうえ、備考にその旨をご記入いただくか、<br>
+        別途ご連絡ください。
+      </p>
+
       <div id="quoteBox" class="quote-box" style="margin-top:16px;">
         <p class="quote-placeholder">商品と都道府県を選択すると、金額が表示されます。</p>
       </div>
@@ -352,7 +379,7 @@
 
       <label class="field">
         <span class="field-label">メールアドレス</span>
-        <input type="email" id="memberEmail" required autocomplete="email">
+        <input type="email" id="memberEmail" autocomplete="email">
       </label>
 
       <div class="row-2">
@@ -365,6 +392,7 @@
           <input type="tel" id="memberPhone" autocomplete="tel">
         </label>
       </div>
+      <p class="contact-note">メールアドレスまたは電話番号のいずれかは必須です</p>
 
       <label class="field">
         <span class="field-label">ご住所（市区町村・番地）</span>
@@ -437,6 +465,11 @@
           </div>
         </div>
       </div>
+
+      <label class="field" style="margin-top:16px; margin-bottom:0;">
+        <span class="field-label">備考（任意）</span>
+        <textarea id="orderNotes" maxlength="1000" placeholder="手渡し希望など、ご連絡事項があればご記入ください"></textarea>
+      </label>
     </section>
 
     <section class="step">
@@ -647,7 +680,7 @@ function updateSubmitState() {
   const formOk =
     currentQuote &&
     el("memberName").value.trim() &&
-    el("memberEmail").value.trim() &&
+    (el("memberEmail").value.trim() || el("memberPhone").value.trim()) &&
     el("memberPrefecture").value &&
     el("memberAddress").value.trim() &&
     requiredChecks.every(Boolean);
@@ -680,6 +713,7 @@ el("orderForm").addEventListener("submit", async (e) => {
     },
     productId: selectedProductId,
     desiredTiming: el("desiredTiming").value || "asap",
+    notes: el("orderNotes").value.trim(),
     confirmations: {
       packaging: el("cPackaging").checked,
       damageRisk: el("cDamage").checked,

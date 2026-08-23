@@ -4074,6 +4074,13 @@ html[lang="en"] .contact-form__heading {
   line-height: 1.7;
 }
 
+.form-field-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: -8px 0 8px;
+  line-height: 1.6;
+}
+
 .form-honeypot {
   position: absolute;
   left: -9999px;

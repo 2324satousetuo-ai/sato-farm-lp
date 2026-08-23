@@ -810,7 +810,7 @@
         <div class="rice-direct__cta register-section" id="pre-register">
           <h3>【美味しいお米 中之条】2026年産米 事前会員登録はこちら</h3>
           <p class="register-section__lead">
-            今年のお米の販売準備が整いましたら、ご登録のメールアドレスへご案内します。<br>
+            今年のお米の販売準備が整いましたら、ご登録のご連絡先へご案内します。<br>
             住所の登録は不要です。パスワードもありません。
           </p>
           <div class="register-card">
@@ -826,10 +826,18 @@
               </div>
 
               <div class="form-group">
-                <label for="register-email">メールアドレス <span class="required">必須</span></label>
-                <input type="email" id="register-email" name="email" required autocomplete="email" maxlength="254" placeholder="例：example@email.com">
+                <label for="register-email">メールアドレス</label>
+                <input type="email" id="register-email" name="email" autocomplete="email" maxlength="254" placeholder="例：example@email.com">
                 <p class="form-error" data-error-for="email"></p>
               </div>
+
+              <div class="form-group">
+                <label for="register-phone">電話番号</label>
+                <input type="tel" id="register-phone" name="phone" autocomplete="tel" maxlength="30" placeholder="例：0279-75-2711">
+                <p class="form-error" data-error-for="phone"></p>
+              </div>
+              <p class="form-field-note">メールアドレスまたは電話番号のいずれかは必須です</p>
+              <p class="form-error" data-error-for="contact"></p>
 
               <fieldset class="form-group register-intent">
                 <legend>お米の購入希望レベル <span class="required">必須</span></legend>

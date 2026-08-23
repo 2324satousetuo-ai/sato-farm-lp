@@ -96,6 +96,10 @@ async function ensureDelivery(env, { deliveryId, memberId, kind, orderId }) {
  * referenceId: 冪等キー用。会員登録は memberId、産直は orderId。
  */
 export async function sendEmail(env, to, subject, text, kind, referenceId, options = {}) {
+  if (!to || !String(to).trim()) {
+    return { status: 'skipped' };
+  }
+
   const memberId = options.memberId || referenceId;
   const orderId = options.orderId == null ? null : options.orderId;
   const deliveryId = await ensureDelivery(env, {

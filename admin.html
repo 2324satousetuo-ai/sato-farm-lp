@@ -160,6 +160,7 @@
   }
   .order-info .shipping-missing { color: var(--ink-soft); }
   .order-info .product { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+  .order-info .notes { font-size: 13px; color: var(--ink); margin-top: 8px; white-space: pre-wrap; }
   .order-info .date { font-size: 11px; color: var(--ink-soft); margin-top: 4px; }
 
   .order-amount {
@@ -390,12 +391,17 @@ function productLabel(order) {
 
 function orderInfoHtml(order) {
   const name = order.recipient_name || "（宛名なし）";
+  const notes = order.notes ? String(order.notes).trim() : "";
+  const notesHtml = notes
+    ? `<div class="notes">備考：${escapeHtml(notes)}</div>`
+    : "";
   return `
       <div class="order-info">
         <div class="oid">No.${escapeHtml(order.id)}</div>
         <div class="member">${escapeHtml(name)}</div>
         <div class="shipping">${shippingHtml(order)}</div>
         <div class="product">${escapeHtml(productLabel(order))}</div>
+        ${notesHtml}
         <div class="date">注文日時：${escapeHtml(formatDate(order.ordered_at))}</div>
       </div>`;
 }

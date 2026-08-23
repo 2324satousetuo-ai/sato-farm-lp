@@ -43,6 +43,16 @@
       return;
     }
 
+    if (fieldName === 'contact') {
+      ['email', 'phone'].forEach(function (name) {
+        const input = form.querySelector('[name="' + name + '"]');
+        if (input) {
+          input.classList.toggle('error', !!message);
+        }
+      });
+      return;
+    }
+
     const input = form.querySelector('[name="' + fieldName + '"]');
     if (input) {
       input.classList.toggle('error', !!message);
@@ -50,7 +60,7 @@
   }
 
   function clearErrors() {
-    ['name', 'email', 'purchase_intent', 'privacy_agreed'].forEach(function (fieldName) {
+    ['name', 'email', 'phone', 'contact', 'purchase_intent', 'privacy_agreed'].forEach(function (fieldName) {
       setFieldError(fieldName, '');
     });
   }
@@ -58,6 +68,7 @@
   function validateClient() {
     const name = (form.elements.name && form.elements.name.value || '').trim();
     const email = (form.elements.email && form.elements.email.value || '').trim();
+    const phone = (form.elements.phone && form.elements.phone.value || '').trim();
     const purchaseIntent = form.querySelector('input[name="purchase_intent"]:checked');
     const privacy = form.querySelector('#register-privacy');
     let valid = true;
@@ -67,11 +78,13 @@
       valid = false;
     }
 
-    if (!email) {
-      setFieldError('email', '入力してください。');
-      valid = false;
-    } else if (form.elements.email.validity && form.elements.email.validity.typeMismatch) {
+    if (email && form.elements.email.validity && form.elements.email.validity.typeMismatch) {
       setFieldError('email', '正しいメールアドレスを入力してください。');
+      valid = false;
+    }
+
+    if (!email && !phone) {
+      setFieldError('contact', 'メールアドレスまたは電話番号のいずれかは必須です');
       valid = false;
     }
 
@@ -92,10 +105,16 @@
     field.addEventListener('input', function () {
       const errorName = field.name === 'privacy_agreed' ? 'privacy_agreed' : field.name;
       setFieldError(errorName, '');
+      if (field.name === 'email' || field.name === 'phone') {
+        setFieldError('contact', '');
+      }
     });
     field.addEventListener('change', function () {
       const errorName = field.name === 'privacy_agreed' ? 'privacy_agreed' : field.name;
       setFieldError(errorName, '');
+      if (field.name === 'email' || field.name === 'phone') {
+        setFieldError('contact', '');
+      }
     });
   });
 
@@ -126,6 +145,7 @@
     const payload = {
       name: (form.elements.name.value || '').trim(),
       email: (form.elements.email.value || '').trim(),
+      phone: (form.elements.phone && form.elements.phone.value || '').trim(),
       purchase_intent: form.querySelector('input[name="purchase_intent"]:checked').value,
       privacy_agreed: form.querySelector('#register-privacy').checked,
       website: (form.elements.website && form.elements.website.value) || '',
