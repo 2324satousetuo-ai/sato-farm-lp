@@ -46,11 +46,11 @@ The full news list has moved to the [blog news archive](../blog-en/news/). Only 
 
 Random Thoughts are informal asides. Articles speak to readers and customers.
 
+- August 24, 2026　Koshihikari: Good rice comes from the time in the rice field—[Read the post](../blog-en/notes/koshihikari-field-time.html).
 - August 23, 2026　A Three-Layer Structure for a Healthy, Durable Order System—[Read the article](../blog-en/notes/three-layer-order-system.html).
 - August 22, 2026　Sato Farms Rice Direct Sales System Is Ready—[Read the post](../blog-en/notes/rice-direct-ready.html).
 - August 21, 2026　A Story That Begins in the Fields Before Dawn—[Read the post](../blog-en/notes/fields-before-dawn.html).
 - August 20, 2026　Sato Farm LP — What Happened with Cursor—[Read the post](../blog-en/notes/cursor-runaway.html).
-- August 19, 2026　A Day on the Farm—[Read the post](../blog-en/notes/a-day-on-the-farm.html).
 
 [See all news →](../blog-en/news/)
 
@@ -213,9 +213,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Notes, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- August 24, 2026　[Koshihikari: Good rice comes from the time in the rice field](../blog-en/notes/koshihikari-field-time.html)　It is tasting a whole year's story.
 - August 23, 2026　[A Three-Layer Structure for a Healthy, Durable Order System](../blog-en/notes/three-layer-order-system.html)　Keep the system simple. Make the guidance clear. Let exceptions be decided by me.
 - August 22, 2026　[Sato Farms Rice Direct Sales System Is Ready](../blog-en/notes/rice-direct-ready.html)　The Direct Sales System is almost ready for its own “harvest.”
-- August 21, 2026　[A Story That Begins in the Fields Before Dawn](../blog-en/notes/fields-before-dawn.html)　We will deliver that rice to your dining table, carefully and honestly.
 
 [View the blog](../blog-en/)
 
