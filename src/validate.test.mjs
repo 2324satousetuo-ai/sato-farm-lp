@@ -16,6 +16,16 @@ const valid = {
 
 assert.deepEqual(validateRegistration(valid), {});
 assert.deepEqual(validateRegistration({ ...valid, email: '', phone: '0279-75-2711' }), {});
+assert.deepEqual(validateRegistration({ ...valid, email: '', phone: '0278-22-111' }), {});
+assert.deepEqual(validateRegistration({ ...valid, email: '', phone: '080-1256-8883' }), {});
+assert.equal(
+  validateRegistration({ ...valid, email: '', phone: '080-182704-0000' }).phone,
+  '電話番号は9〜11桁で入力してください。'
+);
+assert.equal(
+  validateRegistration({ ...valid, email: '', phone: '12345678' }).phone,
+  '電話番号は9〜11桁で入力してください。'
+);
 assert.equal(normalizeEmail(valid.email), 'example@gmail.com');
 assert.equal(normalizeEmail('  TARO@SatoFarms.COM  '), 'taro@satofarms.com');
 assert.equal(normalizePhoneKey('080-1256-8883'), '08012568883');

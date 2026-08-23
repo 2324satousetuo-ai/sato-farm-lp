@@ -2,6 +2,7 @@ const PURCHASE_INTENTS = new Set(['lv1', 'lv2', 'lv3']);
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CONTROL_CHARS = /[\u0000-\u001F\u007F]/;
 const CONTACT_REQUIRED = 'メールアドレスまたは電話番号のいずれかは必須です';
+const PHONE_DIGITS_REQUIRED = '電話番号は9〜11桁で入力してください。';
 
 export function normalizeEmail(email) {
   return String(email || '').trim().toLowerCase();
@@ -13,6 +14,10 @@ export function normalizePhoneKey(phone) {
       return String.fromCharCode(ch.charCodeAt(0) - 0xfee0);
     })
     .replace(/[-ー－−‐\s　()（）]/g, '');
+}
+
+export function countPhoneDigits(phone) {
+  return (normalizePhoneKey(phone).match(/\d/g) || []).length;
 }
 
 export function hasSendableEmail(email) {
@@ -35,6 +40,11 @@ export function validateMemberContact(email, phone) {
       errors.phone = '使用できない文字が含まれています。';
     } else if (Array.from(phoneValue).length > 30) {
       errors.phone = '電話番号は30文字以内で入力してください。';
+    } else {
+      const digits = countPhoneDigits(phoneValue);
+      if (digits < 9 || digits > 11) {
+        errors.phone = PHONE_DIGITS_REQUIRED;
+      }
     }
   }
 
