@@ -229,12 +229,52 @@
     margin-top: 28px;
   }
 
+  .back-home {
+    text-align: center;
+    margin: 18px 0 0;
+    font-size: 13px;
+  }
+  .back-home a {
+    color: var(--green);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .back-home a:hover { text-decoration: underline; }
+  .back-home--top {
+    text-align: left;
+    margin: 0 0 20px;
+  }
+
+  .exit-guide {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .exit-guide__lead {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+    text-align: center;
+  }
+  .exit-guide__links {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    line-height: 2.1;
+  }
+  .exit-guide__links a {
+    color: var(--green);
+    font-weight: 700;
+  }
+
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
 <div class="wrap">
+
+  <p class="back-home back-home--top"><a href="index.html">← 佐藤農園トップへ</a></p>
 
   <header>
     <svg class="ear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
@@ -285,9 +325,19 @@
     </div>
 
     <a href="#" id="ctaLink" class="cta disabled">この内容で注文へ進む</a>
+
+    <div id="exitGuide" class="exit-guide" hidden>
+      <p class="exit-guide__lead">お見積もりは以上です。このページを離れるときは、こちらからどうぞ。</p>
+      <p class="exit-guide__links">
+        ■<a href="index.html#rice-register">2026年産：ご購入のご案内</a>はこちら<br>
+        ■<a href="index.html#pre-register">事前会員登録</a>はこちら<br>
+        ■<a href="index.html">佐藤農園トップへ戻る</a>
+      </p>
+    </div>
   </section>
 
   <p class="note-bottom">実際のご注文には、お名前・ご住所の入力が別途必要です。</p>
+  <p class="back-home"><a href="index.html">← 佐藤農園トップへ戻る</a></p>
 
 </div>
 
@@ -402,12 +452,17 @@ function updateCta(prefecture) {
   link.classList.remove("disabled");
 }
 
+function showExitGuide(visible) {
+  el("exitGuide").hidden = !visible;
+}
+
 async function fetchQuote() {
   const prefecture = el("prefecture").value;
   updateCta(prefecture);
 
   if (!selectedProductId || !prefecture) {
     el("quoteBox").innerHTML = '<p class="quote-placeholder">商品と都道府県を選択すると、金額が表示されます。</p>';
+    showExitGuide(false);
     return;
   }
 
@@ -426,8 +481,10 @@ async function fetchQuote() {
       <div class="quote-row"><span>送料</span><span>${yen(data.shippingFee)}</span></div>
       <div class="quote-row total"><span>合計金額</span><span>${yen(data.totalAmount)}</span></div>
     `;
+    showExitGuide(true);
   } catch (err) {
     el("quoteBox").innerHTML = '<p class="quote-placeholder">見積もりを取得できませんでした。</p>';
+    showExitGuide(false);
   }
 }
 
