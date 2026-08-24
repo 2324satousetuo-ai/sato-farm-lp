@@ -1733,7 +1733,8 @@ html[lang="en"] .product-card__achievement {
   text-align: center;
 }
 
-html[lang="en"] .notice__label {
+html[lang="en"] .notice__label,
+html[lang="en"] .notice__em {
   font-family: 'Noto Serif', 'Noto Serif JP', serif;
   letter-spacing: 0.03em;
 }
@@ -1775,6 +1776,19 @@ html[lang="en"] .notice__label {
   font-size: clamp(1.05rem, 2.4vw, 1.28rem);
   color: var(--text);
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 1em;
+  row-gap: 0.35em;
+}
+
+.notice__link-item {
+  white-space: nowrap;
+}
+
+.notice__link-item--break {
+  flex-basis: 100%;
 }
 
 .notice__text a strong {
@@ -1782,10 +1796,10 @@ html[lang="en"] .notice__label {
 }
 
 .notice__em {
+  font-family: 'Noto Serif JP', serif;
   font-weight: 700;
   color: var(--forest-dark);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .notice__shade {
@@ -5781,6 +5795,34 @@ section.is-legacy-anchor {
   border-radius: var(--radius);
   padding: 16px 18px;
   line-height: 1.7;
+}
+
+.rice-direct__try {
+  margin: 8px 0 28px;
+  padding: 18px 20px;
+  background: rgba(45, 74, 62, 0.04);
+  border: 1px solid rgba(45, 74, 62, 0.12);
+  border-radius: var(--radius);
+}
+
+.rice-direct__try p {
+  margin: 0;
+  line-height: 1.9;
+}
+
+.rice-direct__try p + p {
+  margin-top: 10px;
+}
+
+.rice-direct__try a {
+  color: var(--forest);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rice-direct__try a:hover {
+  color: var(--forest-dark);
 }
 
 .rice-direct__cta {
