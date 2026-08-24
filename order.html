@@ -139,6 +139,23 @@
     cursor: not-allowed;
   }
 
+  .product-card[data-unavailable="1"]:hover {
+    border-color: var(--line);
+  }
+
+  .preparing-label {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 7px;
+    border: 1px solid var(--ink-soft);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    vertical-align: middle;
+  }
+
   label.field {
     display: block;
     margin-bottom: 14px;
@@ -582,7 +599,7 @@ function applyPrefillFromUrl() {
   if (prefecture && [...el("memberPrefecture").options].some((o) => o.value === prefecture)) {
     el("memberPrefecture").value = prefecture;
   }
-  if (productId && products.some((p) => String(p.id) === productId)) {
+  if (productId && products.some((p) => String(p.id) === productId && p.status === "available")) {
     selectProduct(Number(productId));
   } else {
     requestQuote();
@@ -604,29 +621,34 @@ function renderProducts() {
     const card = document.createElement("div");
     card.className = "product-card";
     card.dataset.id = p.id;
+    const unavailable = p.status === "preparing";
+    if (unavailable) card.dataset.unavailable = "1";
     const kindLabel = p.milled ? "精米（標準）" : "玄米";
     const sub = p.milled
       ? `標準精米のみ対応。仕上がり重量は目安（実質約${MILLED_WEIGHT_ESTIMATE[p.weight_label] ?? "-"}kg）`
       : `手作業計量のため実測値でお届け（実質約${p.actual_weight_kg}kg）`;
     card.innerHTML = `
       <div>
-        <div class="label">${p.weight_label}　${kindLabel}</div>
+        <div class="label">${p.weight_label}　${kindLabel}${unavailable ? '<span class="preparing-label">準備中</span>' : ""}</div>
         <div class="sub">${sub}</div>
       </div>
       <div class="price">${yen(p.price)}</div>
     `;
-    card.addEventListener("click", () => selectProduct(p.id));
+    if (!unavailable) {
+      card.addEventListener("click", () => selectProduct(p.id));
+    }
     grid.appendChild(card);
   }
 }
 
 function selectProduct(id) {
+  const product = products.find((p) => p.id === id);
+  if (!product || product.status === "preparing") return;
   selectedProductId = id;
   document.querySelectorAll(".product-card").forEach((c) => {
     c.classList.toggle("selected", Number(c.dataset.id) === id);
   });
 
-  const product = products.find((p) => p.id === id);
   el("millingConfirmGroup").style.display = product && product.milled ? "block" : "none";
   if (!product || !product.milled) {
     el("cMillingStandard").checked = false;

@@ -123,6 +123,28 @@
   .product-card .sub { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
   .product-card .price { font-family: "Shippori Mincho", serif; font-size: 16px; color: var(--gold-deep); }
 
+  .product-card[data-unavailable="1"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .product-card[data-unavailable="1"]:hover {
+    border-color: var(--line);
+  }
+
+  .preparing-label {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 7px;
+    border: 1px solid var(--ink-soft);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    vertical-align: middle;
+  }
+
   label.field { display: block; margin-bottom: 12px; }
   label.field span.field-label {
     display: block; font-size: 13px; color: var(--ink-soft); margin-bottom: 6px;
@@ -330,23 +352,29 @@ function renderProducts() {
     const card = document.createElement("div");
     card.className = "product-card";
     card.dataset.id = p.id;
+    const unavailable = p.status === "preparing";
+    if (unavailable) card.dataset.unavailable = "1";
     const kindLabel = p.milled ? "精米（標準）" : "玄米";
     const sub = p.milled
       ? `標準精米のみ対応。仕上がり重量は目安（実質約${MILLED_WEIGHT_ESTIMATE[p.weight_label] ?? "-"}kg）`
       : `手作業計量のため実測値でお届け（実質約${p.actual_weight_kg}kg）`;
     card.innerHTML = `
       <div>
-        <div class="label">${p.weight_label}　${kindLabel}</div>
+        <div class="label">${p.weight_label}　${kindLabel}${unavailable ? '<span class="preparing-label">準備中</span>' : ""}</div>
         <div class="sub">${sub}</div>
       </div>
       <div class="price">${yen(p.price)}</div>
     `;
-    card.addEventListener("click", () => selectProduct(p.id));
+    if (!unavailable) {
+      card.addEventListener("click", () => selectProduct(p.id));
+    }
     grid.appendChild(card);
   }
 }
 
 function selectProduct(id) {
+  const product = products.find((p) => p.id === id);
+  if (!product || product.status === "preparing") return;
   selectedProductId = id;
   document.querySelectorAll(".product-card").forEach((c) => {
     c.classList.toggle("selected", Number(c.dataset.id) === id);

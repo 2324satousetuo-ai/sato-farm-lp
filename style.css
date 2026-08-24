@@ -1791,6 +1791,13 @@ html[lang="en"] .notice__em {
   flex-basis: 100%;
 }
 
+.notice__text--soon {
+  margin-top: 10px;
+  text-align: center;
+  font-size: clamp(0.95rem, 2.2vw, 1.12rem);
+  color: var(--text-muted);
+}
+
 .notice__text a strong {
   font-weight: 700;
 }

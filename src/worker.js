@@ -147,9 +147,9 @@ async function handleDirectSales(request, env, url) {
   try {
     if (path === '/api/products' && request.method === 'GET') {
       const { results } = await env.DB.prepare(
-        `SELECT id, weight_label, actual_weight_kg, milled, price, milling_fee, size_class
+        `SELECT id, weight_label, actual_weight_kg, milled, price, milling_fee, size_class, status
          FROM products
-         WHERE status = 'available'
+         WHERE status IN ('available', 'preparing')
          ORDER BY milled, actual_weight_kg DESC`
       ).all();
       return json({
