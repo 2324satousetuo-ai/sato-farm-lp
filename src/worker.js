@@ -276,6 +276,18 @@ async function handleDirectSales(request, env, url) {
       ).all();
       return json({ success: true, orders: results });
     }
+
+    if (path === '/api/admin/members' && request.method === 'GET') {
+      if (!isAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      const { results } = await env.DB.prepare(
+        `SELECT name, email_original, phone, purchase_intent, created_at
+         FROM members
+         ORDER BY created_at DESC`
+      ).all();
+      return json({ success: true, members: results });
+    }
   } catch (error) {
     console.error('direct_sales_failed', error);
     return json(

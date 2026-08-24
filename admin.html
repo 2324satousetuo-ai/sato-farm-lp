@@ -209,6 +209,14 @@
     white-space: nowrap;
   }
 
+  .member-counts {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: -4px 0 12px;
+  }
+
+  .order-card.member { border-left: 3px solid var(--ink-soft); }
+
   .empty-note {
     text-align: center;
     font-size: 13px;
@@ -240,7 +248,7 @@
 <div class="wrap">
   <header>
     <h1>佐藤農園 管理画面</h1>
-    <p>入金確認・注文状況の確認</p>
+    <p>入金確認・注文状況・事前登録者の確認</p>
   </header>
 
   <div id="loginGate">
@@ -270,6 +278,19 @@
         <span class="group-count" id="preparingCount">0</span>
       </div>
       <div id="preparingList"></div>
+    </section>
+
+    <section class="group">
+      <div class="group-title">
+        事前登録者
+        <span class="group-count" id="memberCount">0</span>
+      </div>
+      <p class="member-counts">
+        Lv.1 <span id="lv1Count">0</span>
+        　／　Lv.2 <span id="lv2Count">0</span>
+        　／　Lv.3 <span id="lv3Count">0</span>
+      </p>
+      <div id="memberList"></div>
     </section>
   </div>
 </div>
@@ -364,7 +385,11 @@ el("logoutBtn").addEventListener("click", () => {
 async function showMain() {
   el("loginGate").style.display = "none";
   el("main").classList.add("show");
-  await loadOrders();
+  await loadAll();
+}
+
+async function loadAll() {
+  await Promise.all([loadOrders(), loadMembers()]);
 }
 
 async function loadOrders() {
@@ -499,7 +524,69 @@ async function completeShipment(orderId, btn) {
   }
 }
 
-el("refreshBtn").addEventListener("click", loadOrders);
+function memberContact(member) {
+  const email = String(member.email_original || "").trim();
+  const phone = String(member.phone || "").trim();
+  if (email && phone) return email + " ／ " + phone;
+  return email || phone || "（連絡先なし）";
+}
+
+function intentLabel(intent) {
+  if (intent === "lv1") return "Lv.1";
+  if (intent === "lv2") return "Lv.2";
+  if (intent === "lv3") return "Lv.3";
+  return intent || "—";
+}
+
+async function loadMembers() {
+  try {
+    const res = await fetch(API_BASE + "/api/admin/members", {
+      headers: { "X-Admin-Secret": adminSecret },
+    });
+    if (res.status === 401) {
+      showToast("認証が切れました。再度ログインしてください。");
+      el("logoutBtn").click();
+      return;
+    }
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error);
+    renderMembers(data.members || []);
+  } catch (err) {
+    showToast("事前登録者の取得に失敗しました");
+  }
+}
+
+function renderMembers(members) {
+  const lv1 = members.filter((m) => m.purchase_intent === "lv1").length;
+  const lv2 = members.filter((m) => m.purchase_intent === "lv2").length;
+  const lv3 = members.filter((m) => m.purchase_intent === "lv3").length;
+
+  el("memberCount").textContent = members.length;
+  el("lv1Count").textContent = lv1;
+  el("lv2Count").textContent = lv2;
+  el("lv3Count").textContent = lv3;
+
+  const list = el("memberList");
+  list.innerHTML = members.length
+    ? ""
+    : '<p class="empty-note">事前登録者はまだいません。</p>';
+
+  for (const m of members) {
+    const card = document.createElement("div");
+    card.className = "order-card member";
+    card.innerHTML = `
+      <div class="order-info">
+        <div class="member">${escapeHtml(m.name || "（名前なし）")}</div>
+        <div class="product">${escapeHtml(memberContact(m))}</div>
+        <div class="date">登録日時：${escapeHtml(formatDate(m.created_at))}</div>
+      </div>
+      <span class="status-tag">${escapeHtml(intentLabel(m.purchase_intent))}</span>
+    `;
+    list.appendChild(card);
+  }
+}
+
+el("refreshBtn").addEventListener("click", loadAll);
 
 (async function init() {
   if (adminSecret) {
