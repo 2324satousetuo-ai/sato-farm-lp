@@ -44,13 +44,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
-Random Thoughts are informal asides. Articles speak to readers and customers.
-
+- August 25, 2026　Taking a Short Break—[Read the post](../blog-en/notes/taking-a-short-break.html).
 - August 24, 2026　Koshihikari: Good rice comes from the time in the rice field—[Read the post](../blog-en/notes/koshihikari-field-time.html).
 - August 23, 2026　A Three-Layer Structure for a Healthy, Durable Order System—[Read the article](../blog-en/notes/three-layer-order-system.html).
 - August 22, 2026　Sato Farms Rice Direct Sales System Is Ready—[Read the post](../blog-en/notes/rice-direct-ready.html).
 - August 21, 2026　A Story That Begins in the Fields Before Dawn—[Read the post](../blog-en/notes/fields-before-dawn.html).
-- August 20, 2026　Sato Farm LP — What Happened with Cursor—[Read the post](../blog-en/notes/cursor-runaway.html).
 
 [See all news →](../blog-en/news/)
 
@@ -162,14 +160,6 @@ The photo gallery now lives on the [farm updates page](../blog-en/field-report/)
 
 Photos and short notes from our fields and paddies, updated from time to time.
 
-![Rice paddy scene](../images/field-report/004.jpg)
-
-August 19, 2026. Our rice paddies.
-
-![Vegetable fields](../images/field-report/005.jpg)
-
-August 19, 2026. Our vegetable fields.
-
 ![Rice paddy scene](../images/field-report/001.jpg)
 
 July 5, 2026. Our rice paddies.
@@ -177,6 +167,14 @@ July 5, 2026. Our rice paddies.
 ![Red hot pokers and lilies](../images/field-report/003.jpg)
 
 July 15, 2026. Red hot pokers and lilies.
+
+![Rice paddy scene](../images/field-report/004.jpg)
+
+August 19, 2026. Our rice paddies.
+
+![Vegetable fields](../images/field-report/005.jpg)
+
+August 19, 2026. Our vegetable fields.
 
 [See more farm photos →](../blog-en/field-report/)
 
@@ -213,9 +211,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Notes, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- August 25, 2026　[Taking a Short Break](../blog-en/notes/taking-a-short-break.html)　See you soon!
 - August 24, 2026　[Koshihikari: Good rice comes from the time in the rice field](../blog-en/notes/koshihikari-field-time.html)　It is tasting a whole year's story.
 - August 23, 2026　[A Three-Layer Structure for a Healthy, Durable Order System](../blog-en/notes/three-layer-order-system.html)　Keep the system simple. Make the guidance clear. Let exceptions be decided by me.
-- August 22, 2026　[Sato Farms Rice Direct Sales System Is Ready](../blog-en/notes/rice-direct-ready.html)　The Direct Sales System is almost ready for its own “harvest.”
 
 [View the blog](../blog-en/)
 

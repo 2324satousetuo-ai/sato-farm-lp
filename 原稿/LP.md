@@ -46,18 +46,16 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
-独り言は「だ・する・と思う」。記事は読者・お客様向けの「です・ます」。
-
+- 2026.8.25　「しばらくお休みします」— [独り言を読む](../blog/notes/taking-a-short-break.html)
 - 2026.8.24　「コシヒカリ――おいしさは、田んぼの時間から生まれる」を更新しました。— [独り言を読む](../blog/notes/koshihikari-field-time.html)
-- 2026.8.23　「三層構造でつくる、健全で壊れにくい受注システム」を更新しました。— [記事を読む](../blog/notes/three-layer-order-system.html)
-- 2026.8.22　「佐藤農園 お米直販システム 公開です」を更新しました。— [独り言を読む](../blog/notes/rice-direct-ready.html)
-- 2026.8.21　「夜明け前の畑と田んぼからはじまる物語」を更新しました。— [独り言を読む](../blog/notes/fields-before-dawn.html)
-- 2026.8.20　「生成AIの Cursor が暴走した。何故だ？」を更新しました。— [独り言を読む](../blog/notes/cursor-runaway.html)
-- 2026.8.19　「今日の一日」を更新しました。— [独り言を読む](../blog/notes/a-day-on-the-farm.html)
-- 2026.8.18　「美味しいお米を届ける仕組み奮闘記」を更新しました。— [独り言を読む](../blog/notes/rice-delivery-struggle.html)
-- 2026.8.17　「佐藤農園の直販システムについて」を更新しました。— [独り言を読む](../blog/notes/rice-direct-system.html)
-- 2026.8.16　「2026年産 育てる直販米のご案内」を更新しました。— [記事を読む](../blog/notes/rice-membership-2026.html)
-- 2026.8.15　「白菜の種まきと、自然の猛威。そして「日本の底力」」— [独り言を読む](../blog/notes/cabbage-seeds-and-strength.html)
+- 2026.8.23　「三層構造でつくる、健全で壊れにくい受注システム」— [記事を読む](../blog/notes/three-layer-order-system.html)
+- 2026.8.22　「佐藤農園 お米直販システム 公開です」— [独り言を読む](../blog/notes/rice-direct-ready.html)
+- 2026.8.21　「夜明け前の畑と田んぼからはじまる物語」— [独り言を読む](../blog/notes/fields-before-dawn.html)
+- 2026.8.20　「生成AIの Cursor が暴走した。何故だ？」— [独り言を読む](../blog/notes/cursor-runaway.html)
+- 2026.8.19　「今日の一日」— [独り言を読む](../blog/notes/a-day-on-the-farm.html)
+- 2026.8.18　「美味しいお米を届ける仕組み奮闘記」— [独り言を読む](../blog/notes/rice-delivery-struggle.html)
+- 2026.8.17　「佐藤農園の直販システムについて」— [独り言を読む](../blog/notes/rice-direct-system.html)
+- 2026.8.16　「2026年産 育てる直販米のご案内」— [記事を読む](../blog/notes/rice-membership-2026.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -154,14 +152,6 @@ URL：https://satofarms.com（satofarms.com）
 
 畑と田んぼの様子を、写真と短文で不定期に更新しています。
 
-![田んぼの様子](../images/field-report/004.jpg)
-
-2026.8.19. 田んぼの様子。
-
-![畑の様子](../images/field-report/005.jpg)
-
-2026.8.19. 畑の様子。
-
 ![田んぼの様子](../images/field-report/001.jpg)
 
 2026.7.5. 田んぼの様子。
@@ -169,6 +159,14 @@ URL：https://satofarms.com（satofarms.com）
 ![トリトマとゆりの花](../images/field-report/003.jpg)
 
 2026.7.15. トリトマとゆりの花。
+
+![田んぼの様子](../images/field-report/004.jpg)
+
+2026.8.19. 田んぼの様子。
+
+![畑の様子](../images/field-report/005.jpg)
+
+2026.8.19. 畑の様子。
 
 [近況の写真をもっと見る →](../blog/field-report/)
 
@@ -219,9 +217,9 @@ URL：https://satofarms.com（satofarms.com）
 
 独り言・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.8.25　[しばらくお休みします](../blog/notes/taking-a-short-break.html)　また元気に戻ってきますので、しばしお待ちを！
 - 2026.8.24　[コシヒカリ――おいしさは、田んぼの時間から生まれる](../blog/notes/koshihikari-field-time.html)　一年という物語を、味わうことなのだ。
 - 2026.8.23　[三層構造でつくる、健全で壊れにくい受注システム](../blog/notes/three-layer-order-system.html)　システムはシンプルに。案内は明確に。例外は私が判断する。
-- 2026.8.22　[佐藤農園 お米直販システム 公開です](../blog/notes/rice-direct-ready.html)　直販システムは、もうすぐ“稼働”という収穫期を迎える。
 
 [ブログ一覧を見る](../blog/)
 
