@@ -44,11 +44,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- August 26, 2026　Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation—[Read the post](../blog-en/notes/cursor-to-vscode.html).
 - August 25, 2026　Taking a Short Break—[Read the post](../blog-en/notes/taking-a-short-break.html).
 - August 24, 2026　Koshihikari: Good rice comes from the time in the rice field—[Read the post](../blog-en/notes/koshihikari-field-time.html).
 - August 23, 2026　A Three-Layer Structure for a Healthy, Durable Order System—[Read the article](../blog-en/notes/three-layer-order-system.html).
 - August 22, 2026　Sato Farms Rice Direct Sales System Is Ready—[Read the post](../blog-en/notes/rice-direct-ready.html).
-- August 21, 2026　A Story That Begins in the Fields Before Dawn—[Read the post](../blog-en/notes/fields-before-dawn.html).
 
 [See all news →](../blog-en/news/)
 
@@ -211,9 +211,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Notes, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- August 26, 2026　[Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation](../blog-en/notes/cursor-to-vscode.html)　The work in the fields and the work on the computer will continue side by side.
 - August 25, 2026　[Taking a Short Break](../blog-en/notes/taking-a-short-break.html)　See you soon!
 - August 24, 2026　[Koshihikari: Good rice comes from the time in the rice field](../blog-en/notes/koshihikari-field-time.html)　It is tasting a whole year's story.
-- August 23, 2026　[A Three-Layer Structure for a Healthy, Durable Order System](../blog-en/notes/three-layer-order-system.html)　Keep the system simple. Make the guidance clear. Let exceptions be decided by me.
 
 [View the blog](../blog-en/)
 

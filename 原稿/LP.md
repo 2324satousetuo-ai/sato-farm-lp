@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.8.26　「AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ」— [独り言を読む](../blog/notes/cursor-to-vscode.html)
 - 2026.8.25　「しばらくお休みします」— [独り言を読む](../blog/notes/taking-a-short-break.html)
 - 2026.8.24　「コシヒカリ――おいしさは、田んぼの時間から生まれる」を更新しました。— [独り言を読む](../blog/notes/koshihikari-field-time.html)
 - 2026.8.23　「三層構造でつくる、健全で壊れにくい受注システム」— [記事を読む](../blog/notes/three-layer-order-system.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.19　「今日の一日」— [独り言を読む](../blog/notes/a-day-on-the-farm.html)
 - 2026.8.18　「美味しいお米を届ける仕組み奮闘記」— [独り言を読む](../blog/notes/rice-delivery-struggle.html)
 - 2026.8.17　「佐藤農園の直販システムについて」— [独り言を読む](../blog/notes/rice-direct-system.html)
-- 2026.8.16　「2026年産 育てる直販米のご案内」— [記事を読む](../blog/notes/rice-membership-2026.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -217,9 +217,9 @@ URL：https://satofarms.com（satofarms.com）
 
 独り言・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.8.26　[AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ](../blog/notes/cursor-to-vscode.html)　農園の営みとデジタルの営みが、静かに並走していく。
 - 2026.8.25　[しばらくお休みします](../blog/notes/taking-a-short-break.html)　また元気に戻ってきますので、しばしお待ちを！
 - 2026.8.24　[コシヒカリ――おいしさは、田んぼの時間から生まれる](../blog/notes/koshihikari-field-time.html)　一年という物語を、味わうことなのだ。
-- 2026.8.23　[三層構造でつくる、健全で壊れにくい受注システム](../blog/notes/three-layer-order-system.html)　システムはシンプルに。案内は明確に。例外は私が判断する。
 
 [ブログ一覧を見る](../blog/)
 
