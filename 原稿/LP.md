@@ -46,6 +46,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.8.28　「毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み」— [独り言を読む](../blog/notes/daily-automation.html)
+- 2026.8.27　「コシヒカリ――美味しさと、農家の技術が育てた米」— [独り言を読む](../blog/notes/Koshihikari-rice.html)
 - 2026.8.26　「AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ」— [独り言を読む](../blog/notes/cursor-to-vscode.html)
 - 2026.8.25　「しばらくお休みします」— [独り言を読む](../blog/notes/taking-a-short-break.html)
 - 2026.8.24　「コシヒカリ――おいしさは、田んぼの時間から生まれる」を更新しました。— [独り言を読む](../blog/notes/koshihikari-field-time.html)
@@ -54,8 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.21　「夜明け前の畑と田んぼからはじまる物語」— [独り言を読む](../blog/notes/fields-before-dawn.html)
 - 2026.8.20　「生成AIの Cursor が暴走した。何故だ？」— [独り言を読む](../blog/notes/cursor-runaway.html)
 - 2026.8.19　「今日の一日」— [独り言を読む](../blog/notes/a-day-on-the-farm.html)
-- 2026.8.18　「美味しいお米を届ける仕組み奮闘記」— [独り言を読む](../blog/notes/rice-delivery-struggle.html)
-- 2026.8.17　「佐藤農園の直販システムについて」— [独り言を読む](../blog/notes/rice-direct-system.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 

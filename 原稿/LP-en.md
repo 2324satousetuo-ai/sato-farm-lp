@@ -44,11 +44,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- August 27, 2026　Koshihikari — The Rice That Became Japan’s Favorite—[Read the article](../blog-en/notes/koshihikari-rice.html).
+- August 27, 2026　Getting Rid of the Daily Hassle: A System That Took Two Months to Build—[Read the post](../blog-en/notes/daily-automation.html).
 - August 26, 2026　Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation—[Read the post](../blog-en/notes/cursor-to-vscode.html).
 - August 25, 2026　Taking a Short Break—[Read the post](../blog-en/notes/taking-a-short-break.html).
 - August 24, 2026　Koshihikari: Good rice comes from the time in the rice field—[Read the post](../blog-en/notes/koshihikari-field-time.html).
-- August 23, 2026　A Three-Layer Structure for a Healthy, Durable Order System—[Read the article](../blog-en/notes/three-layer-order-system.html).
-- August 22, 2026　Sato Farms Rice Direct Sales System Is Ready—[Read the post](../blog-en/notes/rice-direct-ready.html).
 
 [See all news →](../blog-en/news/)
 
