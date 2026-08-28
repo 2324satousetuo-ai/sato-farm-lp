@@ -1,6 +1,6 @@
 # Koshihikari — The Rice That Became Japan’s Favorite
 
-Article　August 27, 2026
+Article　August 28, 2026
 
 ## The History and Features of Koshihikari
 
