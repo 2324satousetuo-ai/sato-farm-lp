@@ -1,8 +1,9 @@
 /**
- * ブログの話題バッジ。独り言 / 記事とは別軸。
+ * ブログの話題バッジ。
  *
- * タイトルから辞書で自動付与する。日付行に 1〜3 語あれば、そちらを優先する。
- * 例: 記事　コシヒカリ　2026.8.27
+ * タイトルを主に、本文は空き枠の補充。本文では弱い語を無視する。
+ * 日付行に 1〜3 語あれば、そちらを優先する。
+ * 例: コシヒカリ　2026.8.27
  *
  *   node scripts/note-topics.mjs
  */
@@ -163,6 +164,51 @@ const BLOCKED_COMPOUNDS = {
   水: ["花水", "水やり", "水稲", "水を引く", "水管理"],
 };
 
+export const BODY_WEAK_TERMS = new Set([
+  "水",
+  "飲む",
+  "食べる",
+  "土",
+  "米",
+  "農園",
+  "農業",
+  "農家",
+  "英語",
+  "円",
+  "町",
+  "地域",
+  "雪",
+  "収穫",
+  "妻",
+  "子供",
+  "ご飯",
+  "食事",
+  "料理",
+  "おかず",
+  "販売",
+  "出荷",
+  "water",
+  "drink",
+  "eat",
+  "soil",
+  "rice",
+  "farm",
+  "farming",
+  "farmer",
+  "english",
+  "yen",
+  "town",
+  "region",
+  "snow",
+  "harvest",
+  "wife",
+  "child",
+  "meal",
+  "cook",
+  "recipe",
+  "shipping",
+]);
+
 function toHiragana(text) {
   return String(text || "").replace(/[\u30A1-\u30F6]/g, (ch) =>
     String.fromCharCode(ch.charCodeAt(0) - 0x60),
@@ -304,20 +350,43 @@ export function topicsFromTokens(tokens) {
   return TOPIC_ORDER.filter((id) => found.includes(id)).slice(0, MAX_TOPICS);
 }
 
-export function extractTopicsFromTitle(title) {
-  const text = String(title || "").replace(/\*\*/g, "");
-  const found = new Set();
-  for (const term of TERMS) {
-    if (termIndex(text, term.surface) >= 0) found.add(term.topic);
-  }
-  return TOPIC_ORDER.filter((id) => found.has(id)).slice(0, MAX_TOPICS);
+function isWeakBodyTerm(surface) {
+  const text = String(surface || "");
+  if (BODY_WEAK_TERMS.has(text) || BODY_WEAK_TERMS.has(toHiragana(text))) return true;
+  return BODY_WEAK_TERMS.has(text.toLowerCase());
 }
 
-export function resolveNoteTopics({ title, keywords, forcedTopics } = {}) {
+function extractTopicsFromText(text, { allowWeak = true } = {}) {
+  const hay = String(text || "").replace(/\*\*/g, "");
+  const found = new Set();
+  for (const term of TERMS) {
+    if (!allowWeak && isWeakBodyTerm(term.surface)) continue;
+    if (termIndex(hay, term.surface) >= 0) found.add(term.topic);
+  }
+  return TOPIC_ORDER.filter((id) => found.has(id));
+}
+
+export function extractTopicsFromTitle(title) {
+  return extractTopicsFromText(title, { allowWeak: true }).slice(0, MAX_TOPICS);
+}
+
+export function extractTopicsFromBody(body) {
+  return extractTopicsFromText(body, { allowWeak: false });
+}
+
+export function resolveNoteTopics({ title, body, keywords, forcedTopics } = {}) {
   if (Array.isArray(forcedTopics)) return forcedTopics.slice(0, MAX_TOPICS);
   const manual = topicsFromTokens(keywords);
   if (manual.length) return manual;
-  return extractTopicsFromTitle(title);
+  const fromTitle = extractTopicsFromTitle(title);
+  if (fromTitle.length >= MAX_TOPICS) return fromTitle;
+  const merged = [...fromTitle];
+  for (const id of extractTopicsFromBody(body)) {
+    if (merged.includes(id)) continue;
+    merged.push(id);
+    if (merged.length >= MAX_TOPICS) break;
+  }
+  return merged;
 }
 
 function isMain() {
@@ -336,8 +405,10 @@ if (isMain()) {
 
   for (const file of files) {
     const raw = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
-    const title = (raw.split("\n")[0] || "").replace(/^#\s+/, "");
-    const topics = extractTopicsFromTitle(title);
+    const lines = raw.split("\n");
+    const title = (lines[0] || "").replace(/^#\s+/, "");
+    const body = lines.slice(2).join("\n");
+    const topics = resolveNoteTopics({ title, body });
     const labels = topics.map((id) => topicLabel(id, "ja")).join("・") || "—";
     console.log(`${path.basename(file)}\t${labels}\t${title}`);
   }

@@ -732,7 +732,9 @@ html[lang="en"] .news__date {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   padding: 0.12rem 0.45rem;
-  border: 1px solid;
+  border: 1px solid rgba(45, 74, 62, 0.45);
+  background: rgba(45, 74, 62, 0.1);
+  color: #2d4a3e;
   font-weight: 700;
   text-decoration: none;
   vertical-align: 0.08em;

@@ -1,7 +1,6 @@
 # 2026 &quot;Grow-as-We-Go Direct Sales&quot; for Our Rice
 
-Article　August 16, 2026
-
+August 16, 2026
 We are now preparing to sell our 2026 rice harvest directly to you.
 
 Our farm is in Nakanojo, Gunma Prefecture, surrounded by mountains, clean water, and cool air.

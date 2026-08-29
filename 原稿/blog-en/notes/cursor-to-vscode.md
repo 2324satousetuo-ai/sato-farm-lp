@@ -1,7 +1,6 @@
 # Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation
 
-Random Thoughts　August 26, 2026
-
+August 26, 2026
 For a long time, I used Cursor Pro to upload new articles.
 
 It was careful, reliable, and always ready to help.

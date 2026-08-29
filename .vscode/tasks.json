@@ -14,7 +14,7 @@
         "panel": "shared",
         "focus": true
       },
-      "detail": "独り言の原稿をHTMLに写し、GitHubへ送る"
+      "detail": "ブログ原稿をHTMLに写し、GitHubへ送る"
     },
     {
       "label": "原稿を写す（まだ送らない）",
@@ -29,7 +29,7 @@
         "panel": "shared",
         "focus": true
       },
-      "detail": "独り言の原稿をHTMLに写す。GitHubへは送らない"
+      "detail": "ブログ原稿をHTMLに写す。GitHubへは送らない"
     }
   ]
 }

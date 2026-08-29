@@ -1,7 +1,6 @@
 # Corn — A Battle of Wits with the Civet
 
-Random Thoughts　August 8, 2026
-
+August 8, 2026
 Yesterday, my wife came home with five freshly picked ears of Honey Bantam corn.
 I ate three of them. Maybe I was a little greedy.
 But they were good. Really good.

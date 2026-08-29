@@ -1,7 +1,6 @@
 # Buying Onion Seeds: I Chose Heirloom Varieties
 
-Random Thoughts　August 10, 2026
-
+August 10, 2026
 I had no plan to buy onion seeds this year. But now my plan has changed. **I will buy seeds. And I will choose heirloom varieties only.**
 
 This decision came from one moment in my field.

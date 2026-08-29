@@ -1,7 +1,6 @@
 # A Day on the Farm
 
-Random Thoughts　August 19, 2026
-
+August 19, 2026
 I got up before 5 a.m.
 It was still quite dark outside.
 Autumn is coming.

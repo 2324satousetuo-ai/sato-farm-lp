@@ -1,7 +1,6 @@
 # The Unusual Typhoon and the Honesty of the Fields
 
-Random Thoughts　August 13, 2026
-
+August 13, 2026
 Typhoon No. 15 made landfall in Ibaraki Prefecture for the first time. What was even more unusual was its path—from east to west, going against what we normally expect from a typhoon. There was no clear blue sky after the storm. Instead, the rain just kept falling slowly. The news showed areas that had suffered serious damage, and it was painful to watch.
 
 Fortunately, Nakanojo was spared. The wind and rain were not severe, and for our fields, the rain was a long-awaited gift. Even the same typhoon can show a completely different face depending on the place. Once again, I feel that nature is not something we can understand only from a human point of view.

@@ -44,11 +44,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
-- August 27, 2026　Koshihikari — The Rice That Became Japan’s Favorite—[Read the article](../blog-en/notes/koshihikari-rice.html).
-- August 27, 2026　Getting Rid of the Daily Hassle: A System That Took Two Months to Build—[Read the post](../blog-en/notes/daily-automation.html).
-- August 26, 2026　Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation—[Read the post](../blog-en/notes/cursor-to-vscode.html).
-- August 25, 2026　Taking a Short Break—[Read the post](../blog-en/notes/taking-a-short-break.html).
-- August 24, 2026　Koshihikari: Good rice comes from the time in the rice field—[Read the post](../blog-en/notes/koshihikari-field-time.html).
+- August 27, 2026　Koshihikari — The Rice That Became Japan’s Favorite—[Read](../blog-en/notes/koshihikari-rice.html).
+- August 27, 2026　Getting Rid of the Daily Hassle: A System That Took Two Months to Build—[Read](../blog-en/notes/daily-automation.html).
+- August 26, 2026　Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation—[Read](../blog-en/notes/cursor-to-vscode.html).
+- August 25, 2026　Taking a Short Break—[Read](../blog-en/notes/taking-a-short-break.html).
+- August 24, 2026　Koshihikari: Good rice comes from the time in the rice field—[Read](../blog-en/notes/koshihikari-field-time.html).
 
 [See all news →](../blog-en/news/)
 
@@ -209,7 +209,7 @@ During the winter, I work as a full-time ski instructor, sharing the joy of skii
 
 The old Random Thoughts section (#soliloquy) has moved to the [blog index](../blog-en/). Full posts are there.
 
-Notes, news, and farm updates now live on dedicated pages. Here are a few featured posts.
+Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
 - August 26, 2026　[Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation](../blog-en/notes/cursor-to-vscode.html)　The work in the fields and the work on the computer will continue side by side.
 - August 25, 2026　[Taking a Short Break](../blog-en/notes/taking-a-short-break.html)　See you soon!
@@ -461,7 +461,7 @@ We want farmers and customers to stay connected, share the harvest, and build a 
 
 **That is the kind of direct sales system Sato Farm wants to create.**
 
-[You can also read this on Random Thoughts.](../blog-en/notes/rice-direct-system.html)
+[You can also read this on the Farm Blog.](../blog-en/notes/rice-direct-system.html)
 
 ### Membership
 
@@ -509,7 +509,7 @@ This year, too, the rice has been working hard for us. When it sways in the wind
 
 We will deliver that rice to your dining table, carefully and honestly. Please look forward to Sato Farm's rice. We will continue to write the story of our fields, little by little, from now on.
 
-[You can also read this on Random Thoughts.](../blog-en/notes/fields-before-dawn.html)
+[You can also read this on the Farm Blog.](../blog-en/notes/fields-before-dawn.html)
 
 ---
 

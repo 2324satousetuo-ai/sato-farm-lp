@@ -1,7 +1,6 @@
 # Planting Chinese Cabbage Seeds, the Power of Nature, and Japan's Inner Strength
 
-Random Thoughts　August 15, 2026
-
+August 15, 2026
 I visited the family grave during the Obon holiday, in the heavy rain.
 I could not light the incense because of the rain. But I was able to finish planting the Chinese cabbage seeds as planned.
 

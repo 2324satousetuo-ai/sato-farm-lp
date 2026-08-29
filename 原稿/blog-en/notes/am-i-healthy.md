@@ -1,7 +1,6 @@
 # Am I Healthy?
 
-Random Thoughts　August 11, 2026
-
+August 11, 2026
 If I am not healthy, I cannot work in the fields.
 But to be honest, I am not always in good shape. I have several health problems. I am always worried that I might have a stroke one day.
 

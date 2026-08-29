@@ -1,7 +1,6 @@
 # Growing a Dot-Com Like Growing a Field
 
-Random Thoughts　August 1, 2026
-
+August 1, 2026
 ## My First Field: Netlify
 
 When I started my website, my first home was a free service called **Netlify**. It let me publish my website to the world with a simple drag and drop. For a beginner like me, it was a wonderful tool.

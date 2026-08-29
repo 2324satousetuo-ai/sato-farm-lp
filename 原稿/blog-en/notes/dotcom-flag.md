@@ -1,7 +1,6 @@
 # A .com Is My Flag---satofarms.com
 
-Random Thoughts　July 25, 2026
-
+July 25, 2026
 *"You have no talent for business. So why on earth did you register a .com domain?"*
 
 I can almost hear that question.

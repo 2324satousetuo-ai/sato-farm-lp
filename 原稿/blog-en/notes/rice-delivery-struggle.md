@@ -1,7 +1,6 @@
 # Sato Farm — The Story Behind Making a Simple Registration Button Work
 
-Random Thoughts　August 18, 2026
-
+August 18, 2026
 ## The Struggle to Deliver Delicious Rice
 
 Everything started with one small button.

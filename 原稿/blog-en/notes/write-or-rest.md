@@ -1,7 +1,6 @@
 # If you want to write, write. If you don&#x27;t want to write, put down your pen and rest.
 
-Random Thoughts　August 3, 2026
-
+August 3, 2026
 I built a website. I wrote more and more articles. So I needed a place to keep them. I made a blog. That part was working fine.
 
 But then I thought about what comes next. And everything got blurry.

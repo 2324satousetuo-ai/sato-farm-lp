@@ -1,7 +1,6 @@
 # Japan's Food Security Begins with a Single Field
 
-Random Thoughts　July 31, 2026
-
+July 31, 2026
 Seasonal. Limited in quantity. The cabbages I grow completely without pesticides sell for just **100 yen each**. Every year, they bring smiles to many people.
 
 *“I can eat this with confidence.”*

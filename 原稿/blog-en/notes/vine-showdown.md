@@ -1,7 +1,6 @@
 # The Great Vine Showdown: Pumpkin vs. Sweet Potato
 
-Random Thoughts　August 7, 2026
-
+August 7, 2026
 **How a Vine Grows Reveals a Way of Working**
 
 The pumpkin starts from a seed. The sweet potato starts from a purchased seedling. A "homegrown" worker and a "new hire," yet both end up crawling across the same field.

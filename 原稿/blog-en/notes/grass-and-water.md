@@ -1,7 +1,6 @@
 # Cutting Grass, Bringing Water
 
-Random Thoughts　August 2, 2026
-
+August 2, 2026
 ## The First Weekend of August
 
 The first weekend of August always feels special.

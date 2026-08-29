@@ -1,7 +1,6 @@
 # My First Landing Page
 
-Random Thoughts　July 11, 2026
-
+July 11, 2026
 Ten years of hoping came together, right here.
 
 It started with the arrival of generative AI. "I don't want to miss this wave" — no one felt that more than I did. I'd failed at programming more times than I can count, but after binge-watching YouTube tutorials, I became convinced: "I can actually do this."

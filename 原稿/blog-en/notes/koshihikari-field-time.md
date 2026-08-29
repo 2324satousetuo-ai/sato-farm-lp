@@ -1,7 +1,6 @@
 # Koshihikari: Good rice comes from the time in the rice field
 
-Random Thoughts　August 24, 2026
-
+August 24, 2026
 Standing in the autumn rice field makes my heart quiet and calm. The sound of the wind blowing through the rice plants is like turning the pages of a yearly story.
 
 In spring, we filled the empty soil with water and planted tiny, finger-sized seedlings. At first, they looked weak and easy to break, but they reached up toward the sky. They shook in the wind, took the heavy rain, and silently stood the heat of midsummer. Watching them makes me want to stand tall, too.

@@ -1,7 +1,6 @@
 # A Rice Field Behind in Tillering — Choosing Not to Drain the Water
 
-Random Thoughts　July 13, 2026
-
+July 13, 2026
 The rainy season is ending, and the village paddies are entering the time of nakaboshi—the mid-season drainage. Pull the water. Dry the soil. Strengthen the roots. A principle of rice farming, handed down for generations.
 
 “Is there even a rice field that skips nakaboshi?” Such silent pressure drifts along the levee paths.

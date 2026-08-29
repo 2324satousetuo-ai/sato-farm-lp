@@ -1,7 +1,6 @@
 # The Season of &quot;Hana-Mizu&quot; — When New Life Begins
 
-Random Thoughts　August 6, 2026
-
+August 6, 2026
 We planted the rice on May 20. Now it's August 6, and summer sunlight fills the fields. In Nakanojo, the first young rice ears, called “hashiri-ho,” the earliest heads to appear in the season, are beginning to emerge.
 
 This is called "shussui." It happens when the young ear, which has been growing deep inside the stem, breaks through its leaf sheath. This is one of the most important moments in rice farming.

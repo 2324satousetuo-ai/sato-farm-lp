@@ -1,7 +1,6 @@
 # Short Notes (collected)
 
-Random Thoughts　July 6, 2026
-
+July 6, 2026
 Short notes from the landing page Random Thoughts section, collected here.
 
 July 6, 2026

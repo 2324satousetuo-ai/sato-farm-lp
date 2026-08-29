@@ -1,7 +1,6 @@
 # A Story That Begins in the Fields Before Dawn
 
-Random Thoughts　August 21, 2026
-
+August 21, 2026
 Before sunrise, the fields are still quiet, as if the world is holding its breath. A thin mist hangs over the rice paddies, and the tips of the rice plants slowly begin to catch the morning light. Here in Nakanojo Town, Gunma Prefecture, a day at Sato Farms begins like this.
 
 For twenty years, I have stood in these same rice paddies. I have come to understand the ways of the wind, the mood of the soil, and the temperament of the irrigation channels. Even so, every year the rice shows us a different face. Some days, the plants stretch up shyly, as if to say, "This is how we will grow this year." Other days, they stand tall and straight, as if to warn us, "Don't let your guard down yet."

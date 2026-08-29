@@ -1,7 +1,6 @@
 # A Difficult Time — Natural Disasters and Human Crime
 
-Random Thoughts　July 30, 2026
-
+July 30, 2026
 Nature can be very powerful. People can also cause great harm. Sometimes life brings problems that seem unfair. In recent years, Japan has faced many natural disasters. Farmers have also suffered from serious crimes. These are not problems for other people alone. They could happen to any of us.
 
 ## The 2026 Kumamoto Earthquake

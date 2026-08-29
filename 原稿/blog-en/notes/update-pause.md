@@ -1,7 +1,6 @@
 # Pausing My Update Work — I Lost the Stare‑Down with the Code!
 
-Random Thoughts　July 15, 2026
-
+July 15, 2026
 After about ten days, I find myself hesitating over my next move. The sense of ease is gone, and even what I want to do has become unclear.
 
 With Cursor down, I thought I could enjoy taking the long way around. But it turned out to be a tougher battle than expected. I can write the drafts, yes—but every upload has to be done manually. Day after day I stare at lines of code, and my eyes are worn out. I can't keep going like this.

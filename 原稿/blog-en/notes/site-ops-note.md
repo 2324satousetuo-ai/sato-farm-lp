@@ -1,7 +1,6 @@
 # A Note on How This Site Is Run
 
-Random Thoughts　July 8, 2026
-
+July 8, 2026
 Until now, this website has been growing on what you might call "borrowed free farmland." Today, the landlord let us know that keeping it free any longer would be difficult. As a complete beginner with websites, I felt a little shaken — but after looking into it, I've decided to proceed as follows.
 
 1. First, pay a small rent for one month to keep going.

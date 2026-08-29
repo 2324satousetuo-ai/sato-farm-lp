@@ -1,7 +1,6 @@
 # VS Code and Claude AI: A Surprisingly Powerful Duo
 
-Random Thoughts　July 27, 2026
-
+July 27, 2026
 When Cursor Pro suddenly became unavailable, I was honestly in trouble. I had built most of the Sato Farms landing page with Cursor doing the heavy lifting.
 
 But after only a brief moment of staring helplessly at the sky, VS Code stepped in as the pinch hitter. It turned out to be far more capable than I expected—not flashy, but remarkably dependable. More like a seasoned homegrown player than a high-priced foreign import.

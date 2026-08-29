@@ -1,7 +1,6 @@
 # Sato Farm LP — What Happened with Cursor
 
-Random Thoughts　August 20, 2026
-
+August 20, 2026
 Yesterday, something strange happened. After finishing my work, the **Sato Farm LP folder disappeared**. It was always on my desktop, but suddenly it was gone. I panicked. If the folder disappears, **the whole Sato Farm website disappears too**.
 
 But the article upload had worked. So the folder must have existed somewhere. Where did it go?

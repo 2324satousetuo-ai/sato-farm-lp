@@ -1,7 +1,6 @@
 # Even the Third Time, It Didn't Get Through
 
-Random Thoughts　July 29, 2026
-
+July 29, 2026
 Decluttering.
 
 This one word has helped me many times in my life.

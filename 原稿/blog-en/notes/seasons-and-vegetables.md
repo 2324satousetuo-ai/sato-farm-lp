@@ -1,7 +1,6 @@
 # The Four Seasons and Vegetable Growing at Sato Farms
 
-Random Thoughts　August 4, 2026
-
+August 4, 2026
 ## From Summer to Autumn: Getting Ready for the Next Season
 
 At our farm, summer vegetables such as tomatoes, eggplants, and cucumbers are now at their best.

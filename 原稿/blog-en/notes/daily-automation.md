@@ -1,8 +1,6 @@
 # Getting Rid of the Daily Hassle: A System That Took Two Months to Build
 
-Random Thoughts　August 27, 2026
-
-
+August 27, 2026
 On the Sato Farm website, I have been updating both the Japanese and English versions of my articles almost every day.
 
 But I noticed something.

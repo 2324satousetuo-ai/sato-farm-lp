@@ -1,7 +1,6 @@
 # About Sato Farm’s Direct Sales System
 
-Random Thoughts　August 17, 2026
-
+August 17, 2026
 ## We Are Building More Than an Online Store
 
 Why is this system necessary?

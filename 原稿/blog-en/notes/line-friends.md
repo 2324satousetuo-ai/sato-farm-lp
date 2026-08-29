@@ -1,7 +1,6 @@
 # How My Website Launch Sparked a LINE Friend &quot;Purge&quot;
 
-Random Thoughts　July 10, 2026
-
+July 10, 2026
 "As a senior, one ought to clear out human relationships at a brisk pace"—or so I had firmly resolved. Yet, my LINE account is still cluttered with a vast crowd of friends and groups. To make matters worse, I've just shared my new homepage with everyone. Do I actually want to keep expanding my circle? I am nothing if not a walking contradiction.
 
 Still, this announcement served as the perfect litmus test. The reactions were split cleanly down the middle: the "geniuses of joy" who instantly sent warm praise, and the "masters of ghosting" who met it with absolute silence.

@@ -1,7 +1,6 @@
 # Beloved rabbit Lemon&#x27;s memorial day
 
-Random Thoughts　July 8, 2026
-
+July 8, 2026
 Today is the memorial day of our beloved rabbit Lemon. It has been exactly five months since she left us.
 
 We lived together for nine years. My wife, my daughter, my son, and I—we were all absolutely devoted to Lemon. That small body was always at the very center of our family.

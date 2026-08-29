@@ -1,7 +1,6 @@
 # The Stars of Summer: Cucumber and Eggplant — Similar, Yet So Different
 
-Random Thoughts　August 5, 2026
-
+August 5, 2026
 When people think of summer vegetables, cucumbers and eggplants often come first. They are almost like childhood friends. Both came from Asia, both have a long history, and both can be cooked in many ways. Most of all, they help cool our bodies during the hot summer.
 
 But their personalities are not the same.

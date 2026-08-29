@@ -1,7 +1,6 @@
 # Koshihikari — The Rice That Became Japan’s Favorite
 
-Article　August 28, 2026
-
+August 28, 2026
 ## The History and Features of Koshihikari
 
 Koshihikari was officially named in 1956. It is a Japanese rice variety developed from two parent varieties, Norin 22 and Norin 1.

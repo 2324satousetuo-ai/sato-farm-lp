@@ -1,7 +1,6 @@
 # Cursor Pro Is Back—And Sato Farms' Landing Page Has Entered a New Stage
 
-Random Thoughts　July 28, 2026
-
+July 28, 2026
 Cursor Pro is back. My first thought was, “Now I can start developing again without limits.” But what came to mind wasn’t a new feature. It was something simpler: **“Make it lighter. Make it easier to read.”** That became the starting point of this redesign.
 
 Over time, more and more articles found their home on the Sato Farms landing page. Each one may be small, but together they’ve become one of the farm’s greatest assets. As the collection grew, though, the page grew with it—and began loading a little more slowly.

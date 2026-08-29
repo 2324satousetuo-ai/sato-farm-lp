@@ -1,7 +1,6 @@
 # A Three-Layer Structure for a Healthy, Durable Order System
 
-Article　August 23, 2026
-
+August 23, 2026
 As an order system approaches its final stage of development, the most challenging issue becomes how to handle **exceptions that fall outside the system**.
 
 For Sato Farms, the most representative example is **“receiving the rice directly by hand.”**

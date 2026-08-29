@@ -1,7 +1,6 @@
 # Japan&#x27;s Food Self-Sufficiency Rate Falls to a Record Low of 37% — What Happens Next? No, What Should We Do?
 
-Random Thoughts　August 9, 2026
-
+August 9, 2026
 In August 2026, Japan's Ministry of Agriculture announced a new number: **37%**.
 
 This is Japan's food self-sufficiency rate based on calories. It fell one point from the previous year and reached a record low.
