@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.8.29　「佐藤農園：秋の生育メモ（独り言）」— [読む](../blog/notes/satofarms-autumn-note.html)
 - 2026.8.28　「毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み」— [読む](../blog/notes/daily-automation.html)
 - 2026.8.27　「コシヒカリ――美味しさと、農家の技術が育てた米」— [読む](../blog/notes/Koshihikari-rice.html)
 - 2026.8.26　「AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ」— [読む](../blog/notes/cursor-to-vscode.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.22　「佐藤農園 お米直販システム 公開です」— [読む](../blog/notes/rice-direct-ready.html)
 - 2026.8.21　「夜明け前の畑と田んぼからはじまる物語」— [読む](../blog/notes/fields-before-dawn.html)
 - 2026.8.20　「生成AIの Cursor が暴走した。何故だ？」— [読む](../blog/notes/cursor-runaway.html)
-- 2026.8.19　「今日の一日」— [読む](../blog/notes/a-day-on-the-farm.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -217,9 +217,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
-- 2026.8.26　[AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ](../blog/notes/cursor-to-vscode.html)　農園の営みとデジタルの営みが、静かに並走していく。
-- 2026.8.25　[しばらくお休みします](../blog/notes/taking-a-short-break.html)　また元気に戻ってきますので、しばしお待ちを！
-- 2026.8.24　[コシヒカリ――おいしさは、田んぼの時間から生まれる](../blog/notes/koshihikari-field-time.html)　一年という物語を、味わうことなのだ。
+- 2026.8.29　[佐藤農園：秋の生育メモ（独り言）](../blog/notes/satofarms-autumn-note.html)　畑にはいつも、育つものと、終わりを迎えるものが同時に並んでいる。
+- 2026.8.28　[毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み](../blog/notes/daily-automation.html)　これからは、この仕組みを軸に、日々の発信をもっと無理なく、もっとスムーズに続けていこうと思う。
+- 2026.8.27　[コシヒカリ――美味しさと、農家の技術が育てた米](../blog/notes/Koshihikari-rice.html)　栽培の特性
 
 [ブログ一覧を見る](../blog/)
 

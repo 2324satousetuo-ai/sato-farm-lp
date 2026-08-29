@@ -44,11 +44,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- August 29, 2026　Sato Farms: An Autumn Growing Note — Just Talking to Myself—[Read](../blog-en/notes/satofarms-autumn-note.html).
 - August 27, 2026　Koshihikari — The Rice That Became Japan’s Favorite—[Read](../blog-en/notes/koshihikari-rice.html).
 - August 27, 2026　Getting Rid of the Daily Hassle: A System That Took Two Months to Build—[Read](../blog-en/notes/daily-automation.html).
 - August 26, 2026　Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation—[Read](../blog-en/notes/cursor-to-vscode.html).
 - August 25, 2026　Taking a Short Break—[Read](../blog-en/notes/taking-a-short-break.html).
-- August 24, 2026　Koshihikari: Good rice comes from the time in the rice field—[Read](../blog-en/notes/koshihikari-field-time.html).
 
 [See all news →](../blog-en/news/)
 
@@ -211,9 +211,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
-- August 26, 2026　[Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation](../blog-en/notes/cursor-to-vscode.html)　The work in the fields and the work on the computer will continue side by side.
-- August 25, 2026　[Taking a Short Break](../blog-en/notes/taking-a-short-break.html)　See you soon!
-- August 24, 2026　[Koshihikari: Good rice comes from the time in the rice field](../blog-en/notes/koshihikari-field-time.html)　It is tasting a whole year's story.
+- August 29, 2026　[Sato Farms: An Autumn Growing Note — Just Talking to Myself](../blog-en/notes/satofarms-autumn-note.html)　Just what I need. Just what I need for today.
+- August 28, 2026　[Koshihikari — The Rice That Became Japan’s Favorite](../blog-en/notes/koshihikari-rice.html)　For this reason, farmers need good skills in water and fertilizer management.
+- August 27, 2026　[Getting Rid of the Daily Hassle: A System That Took Two Months to Build](../blog-en/notes/daily-automation.html)　But now, I am free from the daily manual work.
 
 [View the blog](../blog-en/)
 

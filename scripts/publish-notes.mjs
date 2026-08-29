@@ -757,23 +757,32 @@ function updateTeaser(file, slugMeta, lang) {
   return rel(file);
 }
 
-function insertIntoFirstUl(html, ulClass, itemHtml, hrefNeedle, max) {
-  if (html.includes(hrefNeedle)) return html;
+function ulRange(html, ulClass) {
   const open = `<ul class="${ulClass}">`;
   const start = html.indexOf(open);
   if (start < 0) throw new Error(`リストが見つかりません: ${ulClass}`);
   const innerStart = start + open.length;
   const end = html.indexOf("</ul>", innerStart);
   if (end < 0) throw new Error(`リストの閉じタグが見つかりません: ${ulClass}`);
+  return { innerStart, end };
+}
+
+function insertIntoFirstUl(html, ulClass, itemHtml, hrefNeedle, max) {
+  const { innerStart, end } = ulRange(html, ulClass);
   const inner = html.slice(innerStart, end);
+  if (inner.includes(hrefNeedle)) return html;
   const items = inner.match(/<li[\s\S]*?<\/li>/g) || [];
   const kept = [itemHtml.trim(), ...items];
   const nextItems = max ? kept.slice(0, max) : kept;
   return `${html.slice(0, innerStart)}\n${nextItems.join("\n")}\n        ${html.slice(end)}`;
 }
 
-function insertMarkdownNews(md, heading, newLine, hrefNeedle, max) {
-  if (md.includes(hrefNeedle)) return md;
+function replaceFirstUlItems(html, ulClass, itemHtmls) {
+  const { innerStart, end } = ulRange(html, ulClass);
+  return `${html.slice(0, innerStart)}\n${itemHtmls.map((item) => item.trim()).join("\n")}\n        ${html.slice(end)}`;
+}
+
+function markdownSectionItems(md, heading) {
   const headingToken = `## ${heading}`;
   const headingIdx = md.indexOf(headingToken);
   if (headingIdx < 0) throw new Error(`見出しがありません: ${heading}`);
@@ -785,14 +794,31 @@ function insertMarkdownNews(md, heading, newLine, hrefNeedle, max) {
   const itemIdx = lines.findIndex((line) => line.startsWith("- "));
   if (itemIdx < 0) throw new Error(`リストがありません: ${heading}`);
   let j = itemIdx;
-  const itemLines = [];
-  while (j < lines.length && lines[j].startsWith("- ")) {
-    itemLines.push(lines[j]);
-    j += 1;
-  }
+  while (j < lines.length && lines[j].startsWith("- ")) j += 1;
+  return { afterHeading, sectionEnd, lines, itemIdx, itemEnd: j };
+}
+
+function insertMarkdownNews(md, heading, newLine, hrefNeedle, max) {
+  const section = markdownSectionItems(md, heading);
+  const itemLines = section.lines.slice(section.itemIdx, section.itemEnd);
+  if (itemLines.some((line) => line.includes(hrefNeedle))) return md;
   const nextItems = [newLine, ...itemLines].slice(0, max);
-  const newSection = [...lines.slice(0, itemIdx), ...nextItems, ...lines.slice(j)].join("\n");
-  return md.slice(0, afterHeading + 1) + newSection + md.slice(sectionEnd);
+  const newSection = [
+    ...section.lines.slice(0, section.itemIdx),
+    ...nextItems,
+    ...section.lines.slice(section.itemEnd),
+  ].join("\n");
+  return md.slice(0, section.afterHeading + 1) + newSection + md.slice(section.sectionEnd);
+}
+
+function replaceMarkdownList(md, heading, newLines) {
+  const section = markdownSectionItems(md, heading);
+  const newSection = [
+    ...section.lines.slice(0, section.itemIdx),
+    ...newLines,
+    ...section.lines.slice(section.itemEnd),
+  ].join("\n");
+  return md.slice(0, section.afterHeading + 1) + newSection + md.slice(section.sectionEnd);
 }
 
 function blogListItemHtml(item, lang) {
@@ -868,6 +894,40 @@ function writeIfChanged(file, next) {
   return rel(file);
 }
 
+function latestNotes(items, n = 3) {
+  return [...items]
+    .filter((item) => item.slug && item.datetime)
+    .sort((a, b) => b.datetime.localeCompare(a.datetime) || a.slug.localeCompare(b.slug))
+    .slice(0, n);
+}
+
+function syncLpTeaser(lang, items) {
+  const written = [];
+  const latest = latestNotes(items, 3);
+  if (!latest.length) return written;
+  const lpHtml = path.join(root, lang === "ja" ? "index.html" : "index-en.html");
+  const lpMd = path.join(root, "原稿", lang === "ja" ? "LP.md" : "LP-en.md");
+  const htmlChanged = writeIfChanged(
+    lpHtml,
+    replaceFirstUlItems(
+      readUtf8(lpHtml),
+      "lp-blog-teaser__list",
+      latest.map((item) => teaserItemHtml(item, lang)),
+    ),
+  );
+  if (htmlChanged) written.push(htmlChanged);
+  const mdChanged = writeIfChanged(
+    lpMd,
+    replaceMarkdownList(
+      readUtf8(lpMd),
+      lang === "ja" ? "農園ブログ" : "Farm Blog",
+      latest.map((item) => lpMarkdownTeaserLine(item, lang)),
+    ),
+  );
+  if (mdChanged) written.push(mdChanged);
+  return written;
+}
+
 function addNewNoteListings(item, lang) {
   const written = [];
   const listFile = path.join(root, lang === "ja" ? "blog" : "blog-en", "index.html");
@@ -891,28 +951,22 @@ function addNewNoteListings(item, lang) {
   );
   if (newsChanged) written.push(newsChanged);
 
-  let lp = readUtf8(lpHtml);
-  lp = insertIntoFirstUl(lp, "news__list", lpNewsItemHtml(item, lang), lpHref, newsMax);
-  lp = insertIntoFirstUl(lp, "lp-blog-teaser__list", teaserItemHtml(item, lang), lpHref, 3);
-  const lpChanged = writeIfChanged(lpHtml, lp);
+  const lpChanged = writeIfChanged(
+    lpHtml,
+    insertIntoFirstUl(readUtf8(lpHtml), "news__list", lpNewsItemHtml(item, lang), lpHref, newsMax),
+  );
   if (lpChanged) written.push(lpChanged);
 
-  let md = readUtf8(lpMd);
-  md = insertMarkdownNews(
-    md,
-    lang === "ja" ? "新着情報" : "What's New",
-    lpMarkdownNewsLine(item, lang),
-    mdHref,
-    newsMax,
+  const mdChanged = writeIfChanged(
+    lpMd,
+    insertMarkdownNews(
+      readUtf8(lpMd),
+      lang === "ja" ? "新着情報" : "What's New",
+      lpMarkdownNewsLine(item, lang),
+      mdHref,
+      newsMax,
+    ),
   );
-  md = insertMarkdownNews(
-    md,
-    lang === "ja" ? "農園ブログ" : "Farm Blog",
-    lpMarkdownTeaserLine(item, lang),
-    mdHref,
-    3,
-  );
-  const mdChanged = writeIfChanged(lpMd, md);
   if (mdChanged) written.push(mdChanged);
 
   return written;
@@ -924,6 +978,7 @@ function publish() {
   const unchanged = [];
   const slugMeta = {};
   const created = [];
+  const listings = { ja: [], en: [] };
 
   const ja = TARGETS.find((t) => t.lang === "ja");
   const en = TARGETS.find((t) => t.lang === "en");
@@ -933,7 +988,10 @@ function publish() {
     if (result.unchanged) unchanged.push(result.unchanged);
     if (result.written) written.push(result.written);
     if (result.created) created.push({ ...result, lang: "ja" });
-    if (result.slug) slugMeta[result.slug] = { topics: result.topics || [] };
+    if (result.slug) {
+      slugMeta[result.slug] = { topics: result.topics || [] };
+      listings.ja.push(result);
+    }
   }
 
   const jaSlugs = new Set(listMarkdown(ja.mdDir).map((file) => path.basename(file, ".md")));
@@ -950,6 +1008,7 @@ function publish() {
     if (result.unchanged) unchanged.push(result.unchanged);
     if (result.written) written.push(result.written);
     if (result.created) created.push({ ...result, lang: "en" });
+    if (result.slug) listings.en.push(result);
   }
 
   for (const slug of jaSlugs) {
@@ -960,6 +1019,9 @@ function publish() {
   for (const item of created) {
     written.push(...addNewNoteListings(item, item.lang));
   }
+
+  written.push(...syncLpTeaser("ja", listings.ja));
+  written.push(...syncLpTeaser("en", listings.en));
 
   for (const file of [
     updateListPage(path.join(root, "blog", "index.html"), slugMeta, "ja"),
@@ -1063,6 +1125,9 @@ if (isMain()) {
 export {
   insertIntoFirstUl,
   insertMarkdownNews,
+  replaceFirstUlItems,
+  replaceMarkdownList,
+  latestNotes,
   teaserExcerpt,
   lpMarkdownNewsLine,
   lpMarkdownTeaserLine,
