@@ -32,7 +32,13 @@ alwaysApply: true
 独り言　2026.8.19
 ```
 
-英語は対になる日本語と同じ分類にする。
+話題バッジを手で決めたいときだけ、分類と日付のあいだに辞書の語を 1〜3 個書く。
+
+```
+記事　コシヒカリ　2026.8.27
+```
+
+英語は対になる日本語と同じ分類・同じ話題にする。
 
 ```
 Article　August 16, 2026
@@ -42,12 +48,16 @@ Article　August 16, 2026
 Random Thoughts　August 19, 2026
 ```
 
-判定は `scripts/note-category.mjs` に合わせる。既存の直しをサイトへ写すときは `node scripts/publish-notes.mjs` が日本語を判定し、英語へ写し、HTML の分類表記も更新する。トップの新着リンク（記事を読む / 独り言を読む）も同じ判定にそろえる。
+```
+Article　Rice　August 27, 2026
+```
+
+判定は `scripts/note-category.mjs` に合わせる。話題は `scripts/note-topics.mjs` の辞書でタイトルから自動付与する。当てはまらなければ話題バッジは付けない。既存の直しをサイトへ写すときは `node scripts/publish-notes.mjs` が日本語を判定し、英語へ写し、HTML の分類表記も更新する。トップの新着リンク（記事を読む / 独り言を読む）も同じ判定にそろえる。
 
 ## 掲載時にそろえる場所
 
 - 原稿の日付行
 - 記事ページの分類とパンくず
-- ブログ一覧のバッジ（独り言 / 記事）
-- 新着情報のリンク文言（`記事を読む` / `独り言を読む`）
-- 英語は `Article` / `Random Thoughts`、新着は `Read the article` / `Read the note` または `Read the post`
+- ブログ一覧のバッジ（独り言 / 記事 と、話題があれば話題）
+- 新着情報のリンク文言（`記事を読む` / `独り言を読む`）と話題バッジ
+- 英語は `Article` / `Random Thoughts`、新着は `Read the article` / `Read the note` または `Read the post`。話題は Rice / Vegetables / Fields など

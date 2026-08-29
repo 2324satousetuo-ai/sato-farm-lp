@@ -13,6 +13,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { extractTopicsFromTitle, parseManualTokens, topicLabel } from "./note-topics.mjs";
 
 const READER_MARKERS = [
   "お客様",
@@ -83,35 +84,47 @@ export function classifyJapaneseBody(title, body) {
 
 export function parseCategoryLine(line, lang) {
   if (lang === "ja") {
-    const m = String(line || "").match(/^(独り言|記事)(固定)?\s*[　 ]\s*(\d{4})\.(\d{1,2})\.(\d{1,2})\s*$/);
+    const m = String(line || "").match(/^(独り言|記事)(固定)?[　 ]+(.+)$/);
     if (!m) return null;
+    const tail = m[3].trim();
+    const date = tail.match(/(\d{4})\.(\d{1,2})\.(\d{1,2})\s*$/);
+    if (!date) return null;
     return {
       kind: m[1] === "記事" ? "article" : "note",
       locked: Boolean(m[2]),
-      year: Number(m[3]),
-      month: Number(m[4]),
-      day: Number(m[5]),
+      keywords: parseManualTokens(tail.slice(0, date.index)),
+      year: Number(date[1]),
+      month: Number(date[2]),
+      day: Number(date[3]),
     };
   }
-  const m = String(line || "").match(
-    /^(Random Thoughts|Article)( Fixed)?\s*[　 ]\s*([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})\s*$/i,
-  );
+  const m = String(line || "").match(/^(Random Thoughts|Article)( Fixed)?[　 ]+(.+)$/i);
   if (!m) return null;
+  const tail = m[3].trim();
+  const date = tail.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})\s*$/);
+  if (!date) return null;
   return {
     kind: /^article$/i.test(m[1]) ? "article" : "note",
     locked: Boolean(m[2]),
-    monthName: m[3],
-    day: Number(m[4]),
-    year: Number(m[5]),
+    keywords: parseManualTokens(tail.slice(0, date.index)),
+    monthName: date[1],
+    day: Number(date[2]),
+    year: Number(date[3]),
   };
 }
 
+function keywordMiddle(parsed) {
+  const keywords = (parsed?.keywords || []).filter(Boolean).slice(0, 3);
+  return keywords.length ? `${keywords.join("　")}　` : "";
+}
+
 export function formatCategoryLine(kind, parsed, lang, locked = false) {
+  const mid = keywordMiddle(parsed);
   if (lang === "ja") {
-    return `${categoryLabel(kind, "ja")}${locked ? "固定" : ""}　${parsed.year}.${parsed.month}.${parsed.day}`;
+    return `${categoryLabel(kind, "ja")}${locked ? "固定" : ""}　${mid}${parsed.year}.${parsed.month}.${parsed.day}`;
   }
   const lock = locked ? " Fixed" : "";
-  return `${categoryLabel(kind, "en")}${lock}　${parsed.monthName} ${parsed.day}, ${parsed.year}`;
+  return `${categoryLabel(kind, "en")}${lock}　${mid}${parsed.monthName} ${parsed.day}, ${parsed.year}`;
 }
 
 export function replaceCategoryLine(md, nextLine) {
@@ -152,8 +165,9 @@ if (isMain()) {
     const current = meta ? (meta.kind === "article" ? "記事" : "独り言") : "?";
     const next = judged.kind === "article" ? "記事" : "独り言";
     const mark = current === next ? " " : "*";
+    const topics = extractTopicsFromTitle(title).map((id) => topicLabel(id, "ja")).join("・") || "—";
     console.log(
-      `${mark} ${path.basename(file)}\t${current} → ${next}\tですます:${judged.polite} だ:${judged.plain} 読者:${judged.readerHits}`,
+      `${mark} ${path.basename(file)}\t${current} → ${next}\t${topics}\tですます:${judged.polite} だ:${judged.plain} 読者:${judged.readerHits}`,
     );
   }
 }

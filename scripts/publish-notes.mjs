@@ -1,5 +1,6 @@
 /**
  * 独り言・記事の Markdown 原稿を、公開用 HTML に写す。
+ * 新しい原稿の初回掲載（記事ページ・一覧・新着・トップの案内）も行う。
  * VS Code からは「サイトに載せる」タスク、または npm run サイトに載せる で実行する。
  * 日本語原稿は口調と読者意識から分類を自動判定する。英語は対になる日本語に合わせる。
  */
@@ -16,6 +17,9 @@ import {
   readLinkLabel,
   replaceCategoryLine,
 } from "./note-category.mjs";
+import { resolveNoteTopics, topicLabel } from "./note-topics.mjs";
+
+const CSS_VERSION = 37;
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = new Set(process.argv.slice(2));
@@ -116,6 +120,7 @@ function parseMeta(line, lang) {
       kind: parsed.kind,
       locked: parsed.locked,
       parsed,
+      keywords: parsed.keywords || [],
       category: categoryLabel(parsed.kind, "ja"),
       datetime: `${parsed.year}-${pad2(parsed.month)}-${pad2(parsed.day)}`,
       display: `${parsed.year}.${parsed.month}.${parsed.day}`,
@@ -127,6 +132,7 @@ function parseMeta(line, lang) {
     kind: parsed.kind,
     locked: parsed.locked,
     parsed,
+    keywords: parsed.keywords || [],
     category: categoryLabel(parsed.kind, "en"),
     datetime: `${parsed.year}-${pad2(month)}-${pad2(parsed.day)}`,
     display: `${parsed.monthName} ${parsed.day}, ${parsed.year}`,
@@ -373,8 +379,8 @@ function updateHtml(html, note, titleSuffix, body) {
   );
   next = replaceFirst(
     next,
-    /<span class="blog-article__category(?:\s+blog-article__category--(?:note|article))?">[^<]*<\/span>/,
-    `<span class="blog-article__category blog-article__category--${note.kind}">${escapeHtml(note.category)}</span>`,
+    /<span class="blog-article__category(?:\s+blog-article__category--(?:note|article|topic))?">[^<]*<\/span>(?:\s*<span class="blog-article__category blog-article__category--topic">[^<]*<\/span>)*/,
+    articleCategoryHtml(note),
   );
   if (/<nav class="blog-breadcrumb"[\s\S]*?<\/nav>/.test(next)) {
     next = next.replace(/<nav class="blog-breadcrumb"[\s\S]*?<\/nav>/, (block) =>
@@ -392,7 +398,7 @@ function updateHtml(html, note, titleSuffix, body) {
     /<h1 class="blog-article__title">[\s\S]*?<\/h1>/,
     `<h1 class="blog-article__title">${inline(note.titleMd)}</h1>`,
   );
-  next = next.replace(/style\.css\?v=\d+/, "style.css?v=36");
+  next = next.replace(/style\.css\?v=\d+/, `style.css?v=${CSS_VERSION}`);
   next = replaceBody(next, body);
   return next;
 }
@@ -451,7 +457,7 @@ function warnIfLpChanged() {
   try {
     const names = git(["diff", "--name-only", "HEAD", "--", "原稿/LP.md", "原稿/LP-en.md"]);
     if (!names) return;
-    console.log("※ トップページ原稿（LP.md / LP-en.md）の直しは、この命令では写しません。Cursor に頼んでください。");
+    console.log("※ トップページ原稿のうち、新着・農園ブログ以外の直しは、この命令では写しません。");
   } catch {
     // git が使えないときは無視
   }
@@ -465,21 +471,77 @@ function applyKind(note, kind, lang) {
   };
 }
 
+function applyTopics(note, topics, lang) {
+  return {
+    ...note,
+    topics,
+    topicLabels: topics.map((id) => topicLabel(id, lang)),
+  };
+}
+
+function articleCategoryHtml(note) {
+  const parts = [
+    `<span class="blog-article__category blog-article__category--${note.kind}">${escapeHtml(note.category)}</span>`,
+    ...(note.topicLabels || []).map(
+      (label) => `<span class="blog-article__category blog-article__category--topic">${escapeHtml(label)}</span>`,
+    ),
+  ];
+  return parts.join("\n          ");
+}
+
 function classifyJaNote(note) {
   if (note.locked) return note.kind;
   const judged = classifyJapaneseBody(note.titleMd, note.bodyLines.join("\n"));
   return judged.kind;
 }
 
-function publishNote(target, mdFile, forcedKind) {
+function articleShell(lang, slug) {
+  const seedSlug = "koshihikari-field-time";
+  const dir = lang === "ja" ? path.join(root, "blog", "notes") : path.join(root, "blog-en", "notes");
+  const seed = path.join(dir, `${seedSlug}.html`);
+  if (!fs.existsSync(seed)) {
+    throw new Error(`ひな型がありません: ${rel(seed)}`);
+  }
+  return readUtf8(seed).replaceAll(`${seedSlug}.html`, `${slug}.html`);
+}
+
+function teaserExcerpt(bodyLines) {
+  const lines = bodyLines
+    .map((line) =>
+      line
+        .replace(/\*\*([^*]+)\*\*/g, "$1")
+        .replace(/`([^`]+)`/g, "$1")
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+        .trim(),
+    )
+    .filter(Boolean);
+  for (let i = lines.length - 1; i >= 0; i -= 1) {
+    if (lines[i].length <= 80) return lines[i];
+  }
+  return lines[lines.length - 1] || "";
+}
+
+function listingMeta(slug, note) {
+  return {
+    slug,
+    kind: note.kind,
+    category: note.category,
+    topics: note.topics || [],
+    topicLabels: note.topicLabels || [],
+    title: note.titleMd.replace(/\*\*/g, ""),
+    datetime: note.datetime,
+    display: note.display,
+    excerpt: teaserExcerpt(note.bodyLines),
+  };
+}
+
+function publishNote(target, mdFile, forcedKind, forcedTopics) {
   const slug = path.basename(mdFile, ".md");
   const htmlFile = path.join(target.htmlDir, `${slug}.html`);
-  if (!fs.existsSync(htmlFile)) {
-    return { slug, skipped: rel(mdFile) };
-  }
+  const created = !fs.existsSync(htmlFile);
   const rawMd = readUtf8(mdFile);
   const md = decodeMdEntities(rawMd);
-  const html = readUtf8(htmlFile);
+  const html = created ? articleShell(target.lang, slug) : readUtf8(htmlFile);
   let note;
   let body;
   let next;
@@ -487,6 +549,12 @@ function publishNote(target, mdFile, forcedKind) {
     note = parseNote(md, target.lang);
     const kind = forcedKind || (target.lang === "ja" ? classifyJaNote(note) : note.kind);
     note = applyKind(note, kind, target.lang);
+    const topics = resolveNoteTopics({
+      title: note.titleMd,
+      keywords: note.keywords,
+      forcedTopics,
+    });
+    note = applyTopics(note, topics, target.lang);
     if (!note.locked && note.parsed) {
       const nextLine = formatCategoryLine(kind, note.parsed, target.lang, false);
       const nextMd = replaceCategoryLine(rawMd, nextLine);
@@ -497,84 +565,119 @@ function publishNote(target, mdFile, forcedKind) {
   } catch (error) {
     throw new Error(`${rel(mdFile)}: ${error.message}`);
   }
-  const titleText = note.titleMd.replace(/\*\*/g, "");
+  const meta = listingMeta(slug, note);
+  const titleText = meta.title;
   const currentTitle = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || "";
   const currentH1 = (html.match(/<h1 class="blog-article__title">([\s\S]*?)<\/h1>/) || [])[1] || "";
   const currentCategory =
     (html.match(/<span class="blog-article__category(?:\s+blog-article__category--(?:note|article))?">([^<]*)<\/span>/) ||
       [])[1] || "";
+  const currentTopics = [...html.matchAll(/blog-article__category--topic">([^<]*)<\/span>/g)].map((m) => m[1]);
+  const sameTopics =
+    currentTopics.length === note.topicLabels.length &&
+    currentTopics.every((label, i) => label === note.topicLabels[i]);
   const same =
+    !created &&
     plainText(currentTitle) === plainText(`${titleText}${target.titleSuffix}`) &&
     plainText(currentH1) === plainText(inline(note.titleMd)) &&
     html.includes(`datetime="${note.datetime}"`) &&
     html.includes(`>${note.display}</time>`) &&
     currentCategory === note.category &&
     html.includes(`blog-article__category--${note.kind}`) &&
-    html.includes("style.css?v=36") &&
+    sameTopics &&
+    html.includes(`style.css?v=${CSS_VERSION}`) &&
     plainText(extractBody(html)) === plainText(body);
   if (same) {
-    return { slug, kind: note.kind, unchanged: rel(mdFile) };
+    return { ...meta, unchanged: rel(mdFile) };
   }
   if (!dryRun) fs.writeFileSync(htmlFile, next, "utf8");
-  return { slug, kind: note.kind, written: rel(htmlFile) };
+  return { ...meta, created, written: rel(htmlFile) };
 }
 
 function badgeClass(kind) {
   return kind === "article" ? "blog-list__badge--article" : "blog-list__badge--note";
 }
 
-function updateListPage(file, slugToKind, lang) {
+function metaForSlug(slugMeta, slug) {
+  if (slugMeta[slug]) return slugMeta[slug];
+  const key = Object.keys(slugMeta).find((name) => name.toLowerCase() === String(slug).toLowerCase());
+  return key ? slugMeta[key] : null;
+}
+
+function rowBadgesHtml(kind, topics, lang) {
+  const inner = [
+    `<span class="blog-list__badge ${badgeClass(kind)}">${escapeHtml(categoryLabel(kind, lang))}</span>`,
+    ...(topics || []).map(
+      (id) => `<span class="blog-list__badge blog-list__badge--topic">${escapeHtml(topicLabel(id, lang))}</span>`,
+    ),
+  ].join("");
+  return `<span class="blog-list__badges">${inner}</span>`;
+}
+
+function replaceRowBadges(inner, badges) {
+  let out = inner.replace(/\s*<span class="blog-list__badges">[\s\S]*?<\/span>\s*$/, "");
+  out = out.replace(/(?:\s*<span class="blog-list__badge[^"]*"[^>]*>[^<]*<\/span>)+\s*$/, "");
+  return `${out}\n              ${badges}`;
+}
+
+function bumpStylesheet(html) {
+  return html.replace(/style\.css\?v=\d+/, `style.css?v=${CSS_VERSION}`);
+}
+
+function updateListPage(file, slugMeta, lang) {
   if (!fs.existsSync(file)) return null;
   const html = readUtf8(file);
-  const next = html.replace(
-    /(<a class="blog-list__row" href="notes\/([^"]+)\.html">[\s\S]*?<span class="blog-list__badge)[^"]*("[^>]*>)[^<]*<\/span>/g,
-    (all, start, slug, mid) => {
-      const kind = slugToKind[slug];
-      if (!kind) return all;
-      return `${start} ${badgeClass(kind)}${mid}${categoryLabel(kind, lang)}</span>`;
+  let next = html.replace(
+    /(<a class="blog-list__row" href="notes\/([^"]+)\.html">)([\s\S]*?)<\/a>/g,
+    (all, start, slug, inner) => {
+      const meta = metaForSlug(slugMeta, slug);
+      if (!meta) return all;
+      return `${start}${replaceRowBadges(inner, rowBadgesHtml(meta.kind, meta.topics, lang))}</a>`;
     },
   );
+  next = bumpStylesheet(next);
   if (next === html) return null;
   if (!dryRun) fs.writeFileSync(file, next, "utf8");
   return rel(file);
 }
 
-function updateNewsPage(file, slugToKind, lang) {
+function updateNewsPage(file, slugMeta, lang) {
   if (!fs.existsSync(file)) return null;
   const html = readUtf8(file);
-  const next = html.replace(/<div class="blog-list__row blog-list__row--news">[\s\S]*?<\/div>/g, (block) => {
+  let next = html.replace(/<div class="blog-list__row blog-list__row--news">[\s\S]*?<\/div>/g, (block) => {
     const m = block.match(/notes\/([^"]+)\.html/);
     if (!m) return block;
-    const kind = slugToKind[m[1]];
-    if (!kind) return block;
+    const meta = metaForSlug(slugMeta, m[1]);
+    if (!meta) return block;
     const linkLabel =
-      lang === "en" && !/Read the /.test(block) ? categoryLabel(kind, "en") : readLinkLabel(kind, lang);
+      lang === "en" && !/Read the /.test(block) ? categoryLabel(meta.kind, "en") : readLinkLabel(meta.kind, lang);
     let out = block.replace(/(<a href="\.\.\/notes\/[^"]+\.html">)[^<]*(<\/a>)/, `$1${linkLabel}$2`);
-    const badge = `<span class="blog-list__badge ${badgeClass(kind)}">${categoryLabel(kind, lang)}</span>`;
-    if (/blog-list__badge/.test(out)) {
-      out = out.replace(/<span class="blog-list__badge[^"]*"[^>]*>[^<]*<\/span>/, badge);
+    const badges = rowBadgesHtml(meta.kind, meta.topics, lang);
+    if (/blog-list__badges|blog-list__badge/.test(out)) {
+      out = replaceRowBadges(out.replace(/\s*<\/div>\s*$/, ""), badges) + "\n            </div>";
     } else {
-      out = out.replace(/<\/div>\s*$/, `\n              ${badge}\n            </div>`);
+      out = out.replace(/<\/div>\s*$/, `\n              ${badges}\n            </div>`);
     }
     return out;
   });
+  next = bumpStylesheet(next);
   if (next === html) return null;
   if (!dryRun) fs.writeFileSync(file, next, "utf8");
   return rel(file);
 }
 
-function updateLpNews(file, slugToKind, lang) {
+function updateLpNews(file, slugMeta, lang) {
   if (!fs.existsSync(file)) return null;
   const html = readUtf8(file);
   const next = html.replace(
     /<a href="(blog(?:-en)?\/notes\/)([^"]+)\.html"([^>]*)>([^<]*)<\/a>/g,
     (all, prefix, slug, attrs, text) => {
-      const kind = slugToKind[slug];
-      if (!kind) return all;
+      const meta = metaForSlug(slugMeta, slug);
+      if (!meta) return all;
       if (!/記事を読む|独り言を読む|Read the article|Read the note|Read the post/.test(text)) return all;
-      const kindClass = `news__kind ${kind === "article" ? "news__kind--article" : "news__kind--note"}`;
+      const kindClass = `news__kind ${meta.kind === "article" ? "news__kind--article" : "news__kind--note"}`;
       const cleaned = attrs.replace(/\s*class="[^"]*"/, "");
-      return `<a href="${prefix}${slug}.html" class="${kindClass}"${cleaned}>${lpReadLinkLabel(kind, lang)}</a>`;
+      return `<a href="${prefix}${slug}.html" class="${kindClass}"${cleaned}>${lpReadLinkLabel(meta.kind, lang)}</a>`;
     },
   );
   if (next === html) return null;
@@ -582,22 +685,25 @@ function updateLpNews(file, slugToKind, lang) {
   return rel(file);
 }
 
-function updateTeaser(file, slugToKind, lang) {
+function updateTeaser(file, slugMeta, lang) {
   if (!fs.existsSync(file)) return null;
   const html = readUtf8(file);
   const next = html.replace(
     /<a class="lp-blog-teaser__card" href="(blog(?:-en)?\/notes\/)([^"]+)\.html">([\s\S]*?)<\/a>/g,
     (all, prefix, slug, inner) => {
-      const kind = slugToKind[slug];
-      if (!kind) return all;
-      const badge = `<span class="blog-list__badge ${badgeClass(kind)}">${categoryLabel(kind, lang)}</span>`;
+      const meta = metaForSlug(slugMeta, slug);
+      if (!meta) return all;
+      const badges = rowBadgesHtml(meta.kind, meta.topics, lang);
       let body = inner;
       if (/lp-blog-teaser__meta/.test(body)) {
-        body = body.replace(/<span class="blog-list__badge[^"]*"[^>]*>[^<]*<\/span>/, badge);
+        body = body.replace(
+          /(<time[\s\S]*?<\/time>)\s*(?:<span class="blog-list__badges">[\s\S]*?<\/span>|<span class="blog-list__badge[^"]*"[^>]*>[^<]*<\/span>)/,
+          `$1\n              ${badges}`,
+        );
       } else {
         body = body.replace(
           /<time([^>]*)>([^<]*)<\/time>/,
-          `<div class="lp-blog-teaser__meta"><time$1>$2</time>\n              ${badge}</div>`,
+          `<div class="lp-blog-teaser__meta"><time$1>$2</time>\n              ${badges}</div>`,
         );
       }
       return `<a class="lp-blog-teaser__card" href="${prefix}${slug}.html">${body}</a>`;
@@ -608,48 +714,228 @@ function updateTeaser(file, slugToKind, lang) {
   return rel(file);
 }
 
+function insertIntoFirstUl(html, ulClass, itemHtml, hrefNeedle, max) {
+  if (html.includes(hrefNeedle)) return html;
+  const open = `<ul class="${ulClass}">`;
+  const start = html.indexOf(open);
+  if (start < 0) throw new Error(`リストが見つかりません: ${ulClass}`);
+  const innerStart = start + open.length;
+  const end = html.indexOf("</ul>", innerStart);
+  if (end < 0) throw new Error(`リストの閉じタグが見つかりません: ${ulClass}`);
+  const inner = html.slice(innerStart, end);
+  const items = inner.match(/<li[\s\S]*?<\/li>/g) || [];
+  const kept = [itemHtml.trim(), ...items];
+  const nextItems = max ? kept.slice(0, max) : kept;
+  return `${html.slice(0, innerStart)}\n${nextItems.join("\n")}\n        ${html.slice(end)}`;
+}
+
+function insertMarkdownNews(md, heading, newLine, hrefNeedle, max) {
+  if (md.includes(hrefNeedle)) return md;
+  const headingToken = `## ${heading}`;
+  const headingIdx = md.indexOf(headingToken);
+  if (headingIdx < 0) throw new Error(`見出しがありません: ${heading}`);
+  const afterHeading = md.indexOf("\n", headingIdx);
+  const nextHeading = md.indexOf("\n## ", afterHeading);
+  const sectionEnd = nextHeading === -1 ? md.length : nextHeading;
+  const section = md.slice(afterHeading + 1, sectionEnd);
+  const lines = section.split("\n");
+  const itemIdx = lines.findIndex((line) => line.startsWith("- "));
+  if (itemIdx < 0) throw new Error(`リストがありません: ${heading}`);
+  let j = itemIdx;
+  const itemLines = [];
+  while (j < lines.length && lines[j].startsWith("- ")) {
+    itemLines.push(lines[j]);
+    j += 1;
+  }
+  const nextItems = [newLine, ...itemLines].slice(0, max);
+  const newSection = [...lines.slice(0, itemIdx), ...nextItems, ...lines.slice(j)].join("\n");
+  return md.slice(0, afterHeading + 1) + newSection + md.slice(sectionEnd);
+}
+
+function blogListItemHtml(item, lang) {
+  return `          <li class="blog-list__item">
+            <a class="blog-list__row" href="notes/${item.slug}.html">
+              <time class="blog-list__date" datetime="${item.datetime}">${escapeHtml(item.display)}</time>
+              <p class="blog-list__title">${escapeHtml(item.title)}</p>
+              ${rowBadgesHtml(item.kind, item.topics, lang)}
+            </a>
+          </li>`;
+}
+
+function newsArchiveItemHtml(item, lang) {
+  const titleHtml =
+    lang === "ja"
+      ? `「${escapeHtml(item.title)}」—<a href="../notes/${item.slug}.html">${escapeHtml(readLinkLabel(item.kind, "ja"))}</a>`
+      : `${escapeHtml(item.title)}—see <a href="../notes/${item.slug}.html">${escapeHtml(categoryLabel(item.kind, "en"))}</a>.`;
+  return `          <li class="blog-list__item">
+            <div class="blog-list__row blog-list__row--news">
+              <time class="blog-list__date" datetime="${item.datetime}">${escapeHtml(item.display)}</time>
+              <p class="blog-list__title">${titleHtml}</p>
+              ${rowBadgesHtml(item.kind, item.topics, lang)}
+            </div>
+          </li>`;
+}
+
+function lpNewsItemHtml(item, lang) {
+  const href = lang === "ja" ? `blog/notes/${item.slug}.html` : `blog-en/notes/${item.slug}.html`;
+  const kindClass = `news__kind ${item.kind === "article" ? "news__kind--article" : "news__kind--note"}`;
+  const headline = lang === "ja" ? `「${escapeHtml(item.title)}」` : escapeHtml(item.title);
+  const link = `<a href="${href}" class="${kindClass}">${escapeHtml(lpReadLinkLabel(item.kind, lang))}</a>`;
+  const text =
+    lang === "ja"
+      ? `<span class="news__headline">${headline}</span>—${link}`
+      : `<span class="news__headline">${headline}</span>—${link}.`;
+  const indent = lang === "ja" ? "        " : "          ";
+  return `${indent}<li class="news__item">
+${indent}    <time class="news__date" datetime="${item.datetime}">${escapeHtml(item.display)}</time>
+${indent}    <p class="news__text">${text}</p>
+${indent}</li>`;
+}
+
+function teaserItemHtml(item, lang) {
+  const href = lang === "ja" ? `blog/notes/${item.slug}.html` : `blog-en/notes/${item.slug}.html`;
+  return `          <li>
+            <a class="lp-blog-teaser__card" href="${href}">
+              <div class="lp-blog-teaser__meta"><time datetime="${item.datetime}">${escapeHtml(item.display)}</time>
+              ${rowBadgesHtml(item.kind, item.topics, lang)}</div>
+              <strong>${escapeHtml(item.title)}</strong>
+              <span>${escapeHtml(item.excerpt)}</span>
+            </a>
+          </li>`;
+}
+
+function lpMarkdownNewsLine(item, lang) {
+  const href =
+    lang === "ja" ? `../blog/notes/${item.slug}.html` : `../blog-en/notes/${item.slug}.html`;
+  if (lang === "ja") {
+    return `- ${item.display}　「${item.title}」— [${readLinkLabel(item.kind, "ja")}](${href})`;
+  }
+  return `- ${item.display}　${item.title}—[${lpReadLinkLabel(item.kind, "en")}](${href}).`;
+}
+
+function lpMarkdownTeaserLine(item, lang) {
+  const href =
+    lang === "ja" ? `../blog/notes/${item.slug}.html` : `../blog-en/notes/${item.slug}.html`;
+  return `- ${item.display}　[${item.title}](${href})　${item.excerpt}`;
+}
+
+function writeIfChanged(file, next) {
+  const current = readUtf8(file);
+  if (next === current) return null;
+  if (!dryRun) fs.writeFileSync(file, next, "utf8");
+  return rel(file);
+}
+
+function addNewNoteListings(item, lang) {
+  const written = [];
+  const listFile = path.join(root, lang === "ja" ? "blog" : "blog-en", "index.html");
+  const newsFile = path.join(root, lang === "ja" ? "blog" : "blog-en", "news", "index.html");
+  const lpHtml = path.join(root, lang === "ja" ? "index.html" : "index-en.html");
+  const lpMd = path.join(root, "原稿", lang === "ja" ? "LP.md" : "LP-en.md");
+  const noteHref = `notes/${item.slug}.html`;
+  const lpHref = lang === "ja" ? `blog/notes/${item.slug}.html` : `blog-en/notes/${item.slug}.html`;
+  const mdHref = lang === "ja" ? `../blog/notes/${item.slug}.html` : `../blog-en/notes/${item.slug}.html`;
+  const newsMax = lang === "ja" ? 10 : 5;
+
+  const listChanged = writeIfChanged(
+    listFile,
+    insertIntoFirstUl(readUtf8(listFile), "blog-list", blogListItemHtml(item, lang), noteHref),
+  );
+  if (listChanged) written.push(listChanged);
+
+  const newsChanged = writeIfChanged(
+    newsFile,
+    insertIntoFirstUl(readUtf8(newsFile), "blog-list", newsArchiveItemHtml(item, lang), noteHref),
+  );
+  if (newsChanged) written.push(newsChanged);
+
+  let lp = readUtf8(lpHtml);
+  lp = insertIntoFirstUl(lp, "news__list", lpNewsItemHtml(item, lang), lpHref, newsMax);
+  lp = insertIntoFirstUl(lp, "lp-blog-teaser__list", teaserItemHtml(item, lang), lpHref, 3);
+  const lpChanged = writeIfChanged(lpHtml, lp);
+  if (lpChanged) written.push(lpChanged);
+
+  let md = readUtf8(lpMd);
+  md = insertMarkdownNews(
+    md,
+    lang === "ja" ? "新着情報" : "What's New",
+    lpMarkdownNewsLine(item, lang),
+    mdHref,
+    newsMax,
+  );
+  md = insertMarkdownNews(
+    md,
+    lang === "ja" ? "農園ブログ" : "Farm Blog",
+    lpMarkdownTeaserLine(item, lang),
+    mdHref,
+    3,
+  );
+  const mdChanged = writeIfChanged(lpMd, md);
+  if (mdChanged) written.push(mdChanged);
+
+  return written;
+}
+
 function publish() {
   const written = [];
-  const skippedNew = [];
+  const missingPair = [];
   const unchanged = [];
-  const slugToKind = {};
+  const slugMeta = {};
+  const created = [];
 
   const ja = TARGETS.find((t) => t.lang === "ja");
   const en = TARGETS.find((t) => t.lang === "en");
 
   for (const mdFile of listMarkdown(ja.mdDir)) {
     const result = publishNote(ja, mdFile);
-    if (result.skipped) skippedNew.push(result.skipped);
     if (result.unchanged) unchanged.push(result.unchanged);
     if (result.written) written.push(result.written);
-    if (result.kind) slugToKind[result.slug] = result.kind;
+    if (result.created) created.push({ ...result, lang: "ja" });
+    if (result.kind) slugMeta[result.slug] = { kind: result.kind, topics: result.topics || [] };
   }
+
+  const jaSlugs = new Set(listMarkdown(ja.mdDir).map((file) => path.basename(file, ".md")));
+  const enSlugs = new Set(listMarkdown(en.mdDir).map((file) => path.basename(file, ".md")));
+
+  const jaSlugLower = new Set([...jaSlugs].map((slug) => slug.toLowerCase()));
+  const enSlugLower = new Set([...enSlugs].map((slug) => slug.toLowerCase()));
 
   for (const mdFile of listMarkdown(en.mdDir)) {
     const slug = path.basename(mdFile, ".md");
-    const result = publishNote(en, mdFile, slugToKind[slug]);
-    if (result.skipped) skippedNew.push(result.skipped);
+    if (!jaSlugLower.has(slug.toLowerCase())) missingPair.push(rel(mdFile));
+    const jaMeta = metaForSlug(slugMeta, slug);
+    const result = publishNote(en, mdFile, jaMeta?.kind, jaMeta?.topics);
     if (result.unchanged) unchanged.push(result.unchanged);
     if (result.written) written.push(result.written);
+    if (result.created) created.push({ ...result, lang: "en" });
+  }
+
+  for (const slug of jaSlugs) {
+    if (!enSlugLower.has(slug.toLowerCase())) missingPair.push(rel(path.join(ja.mdDir, `${slug}.md`)));
+  }
+
+  created.sort((a, b) => a.datetime.localeCompare(b.datetime) || a.slug.localeCompare(b.slug));
+  for (const item of created) {
+    written.push(...addNewNoteListings(item, item.lang));
   }
 
   for (const file of [
-    updateListPage(path.join(root, "blog", "index.html"), slugToKind, "ja"),
-    updateListPage(path.join(root, "blog-en", "index.html"), slugToKind, "en"),
-    updateNewsPage(path.join(root, "blog", "news", "index.html"), slugToKind, "ja"),
-    updateNewsPage(path.join(root, "blog-en", "news", "index.html"), slugToKind, "en"),
-    updateLpNews(path.join(root, "index.html"), slugToKind, "ja"),
-    updateLpNews(path.join(root, "index-en.html"), slugToKind, "en"),
-    updateTeaser(path.join(root, "index.html"), slugToKind, "ja"),
-    updateTeaser(path.join(root, "index-en.html"), slugToKind, "en"),
+    updateListPage(path.join(root, "blog", "index.html"), slugMeta, "ja"),
+    updateListPage(path.join(root, "blog-en", "index.html"), slugMeta, "en"),
+    updateNewsPage(path.join(root, "blog", "news", "index.html"), slugMeta, "ja"),
+    updateNewsPage(path.join(root, "blog-en", "news", "index.html"), slugMeta, "en"),
+    updateLpNews(path.join(root, "index.html"), slugMeta, "ja"),
+    updateLpNews(path.join(root, "index-en.html"), slugMeta, "en"),
+    updateTeaser(path.join(root, "index.html"), slugMeta, "ja"),
+    updateTeaser(path.join(root, "index-en.html"), slugMeta, "en"),
   ]) {
     if (file) written.push(file);
   }
 
-  return { written, skippedNew, unchanged };
+  return { written: [...new Set(written)], missingPair, unchanged, created };
 }
 
-function addAndPush(written) {
+function addAndPush(written, created = []) {
   if (!written.length) {
     console.log("GitHub へ送る変更はありません。");
     return;
@@ -672,7 +958,8 @@ function addAndPush(written) {
     return;
   }
   git(["add", "--", ...files]);
-  git(["commit", "-m", "独り言の原稿をサイトへ写す。", "--", ...files]);
+  const message = created.length ? "新しい原稿をサイトへ載せる。" : "独り言の原稿をサイトへ写す。";
+  git(["commit", "-m", message, "--", ...files]);
   try {
     git(["push"], { stdio: "inherit" });
   } catch (error) {
@@ -685,7 +972,12 @@ function addAndPush(written) {
 function main() {
   console.log(doPush ? "原稿をサイト用HTMLに写し、GitHub へ送ります。" : "原稿をサイト用HTMLに写します。まだ GitHub へは送りません。");
   warnIfLpChanged();
-  const { written, skippedNew } = publish();
+  const { written, missingPair, created } = publish();
+
+  if (created.length) {
+    console.log(dryRun ? "新しく載せる原稿:" : "新しい原稿を載せました:");
+    for (const item of created) console.log(`  ${item.lang === "ja" ? "日本語" : "英語"} ${item.slug}`);
+  }
 
   if (written.length) {
     console.log(dryRun ? "写す対象:" : "写しました:");
@@ -694,13 +986,13 @@ function main() {
     console.log("写す直しはありません。公開ページは原稿と同じ文面です。");
   }
 
-  if (skippedNew.length) {
-    console.log("ページがまだない原稿（新しい記事の掲載は Cursor へ）:");
-    for (const file of skippedNew) console.log(`  ${file}`);
+  if (missingPair.length) {
+    console.log("対になる日英の原稿がまだそろっていません:");
+    for (const file of missingPair) console.log(`  ${file}`);
   }
 
   if (dryRun) return;
-  if (doPush) addAndPush(written);
+  if (doPush) addAndPush(written, created);
   else if (written.length) {
     console.log("");
     console.log("サイトに載せるには、VS Code でタスク「サイトに載せる」を実行するか、ターミナルで次を打ってください。");
@@ -708,10 +1000,26 @@ function main() {
   }
 }
 
-try {
-  main();
-} catch (error) {
-  console.error("失敗しました。");
-  console.error(error.message || error);
-  process.exitCode = 1;
+function isMain() {
+  const self = fileURLToPath(import.meta.url);
+  const argv1 = process.argv[1] ? path.resolve(process.argv[1]) : "";
+  return Boolean(argv1) && path.normalize(self) === path.normalize(argv1);
 }
+
+if (isMain()) {
+  try {
+    main();
+  } catch (error) {
+    console.error("失敗しました。");
+    console.error(error.message || error);
+    process.exitCode = 1;
+  }
+}
+
+export {
+  insertIntoFirstUl,
+  insertMarkdownNews,
+  teaserExcerpt,
+  lpMarkdownNewsLine,
+  lpMarkdownTeaserLine,
+};
