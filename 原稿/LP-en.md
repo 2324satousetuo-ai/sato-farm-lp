@@ -211,7 +211,7 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
-- August 30, 2026　[A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo](../blog-en/notes/sagiso-festival.html)　（Photos will be added later.）
+- August 30, 2026　[A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo](../blog-en/notes/sagiso-festival.html)　A sign about Sagi-so at the exhibition
 - August 29, 2026　[Sato Farms: An Autumn Growing Note — Just Talking to Myself](../blog-en/notes/satofarms-autumn-note.html)　Just what I need. Just what I need for today.
 - August 28, 2026　[Koshihikari — The Rice That Became Japan’s Favorite](../blog-en/notes/koshihikari-rice.html)　For this reason, farmers need good skills in water and fertilizer management.
 
