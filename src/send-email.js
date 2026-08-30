@@ -91,9 +91,9 @@ async function ensureDelivery(env, { deliveryId, memberId, kind, orderId }) {
 }
 
 /**
- * 共通のメール送信。会員登録も産直もここを通す。
+ * 共通のメール送信。会員登録も直販もここを通す。
  * kind: email_type（registration_complete / order_confirmation / order_shipped）
- * referenceId: 冪等キー用。会員登録は memberId、産直は orderId。
+ * referenceId: 冪等キー用。会員登録は memberId、直販は orderId。
  */
 export async function sendEmail(env, to, subject, text, kind, referenceId, options = {}) {
   if (!to || !String(to).trim()) {

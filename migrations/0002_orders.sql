@@ -1,4 +1,4 @@
--- 産直注文テーブル。既存の members（UUID/TEXT）は再作成しない。
+-- 直販注文テーブル。既存の members（UUID/TEXT）は再作成しない。
 -- orders.member_id は members.id と同じ TEXT。
 -- 注文フォームの住所を残すため、members に配送先カラムだけ足す。
 -- member_level は実績（1〜5）。purchase_intent（意思の lv1〜lv3）とは別列。

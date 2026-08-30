@@ -1,4 +1,4 @@
--- 産直メール用。会員登録メールは order_id が NULL のまま、従来どおり一意。
+-- 直販メール用。会員登録メールは order_id が NULL のまま、従来どおり一意。
 ALTER TABLE email_deliveries ADD COLUMN order_id INTEGER REFERENCES orders(id);
 
 DROP INDEX idx_email_deliveries_member_type;
