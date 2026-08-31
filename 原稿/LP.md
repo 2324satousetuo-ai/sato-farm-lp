@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦見合わせます」— [読む](../blog/notes/a-difficult-decision.html)
 - 2026.8.30　「涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」」— [読む](../blog/notes/sagiso-festival.html)
 - 2026.8.29　「佐藤農園：秋の生育メモ（独り言）」— [読む](../blog/notes/satofarms-autumn-note.html)
 - 2026.8.28　「毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み」— [読む](../blog/notes/daily-automation.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.24　「コシヒカリ――おいしさは、田んぼの時間から生まれる」を更新しました。— [読む](../blog/notes/koshihikari-field-time.html)
 - 2026.8.23　「三層構造でつくる、健全で壊れにくい受注システム」— [読む](../blog/notes/three-layer-order-system.html)
 - 2026.8.22　「佐藤農園 お米直販システム 公開です」— [読む](../blog/notes/rice-direct-ready.html)
-- 2026.8.21　「夜明け前の畑と田んぼからはじまる物語」— [読む](../blog/notes/fields-before-dawn.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -217,9 +217,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.8.31　[苦渋の決断――直販システム立ち上げ、一旦見合わせます](../blog/notes/a-difficult-decision.html)　佐藤農園
 - 2026.8.30　[涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」](../blog/notes/sagiso-festival.html)　さぎ草について
 - 2026.8.29　[佐藤農園：秋の生育メモ（独り言）](../blog/notes/satofarms-autumn-note.html)　畑にはいつも、育つものと、終わりを迎えるものが同時に並んでいる。
-- 2026.8.28　[毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み](../blog/notes/daily-automation.html)　これからは、この仕組みを軸に、日々の発信をもっと無理なく、もっとスムーズに続けていこうと思う。
 
 [ブログ一覧を見る](../blog/)
 

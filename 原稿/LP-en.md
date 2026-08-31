@@ -44,11 +44,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- August 31, 2026　A Difficult Decision — We Are Putting Our Direct Sales System on Hold—[Read](../blog-en/notes/a-difficult-decision.html).
 - August 30, 2026　A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo—[Read](../blog-en/notes/sagiso-festival.html).
 - August 29, 2026　Sato Farms: An Autumn Growing Note — Just Talking to Myself—[Read](../blog-en/notes/satofarms-autumn-note.html).
 - August 27, 2026　Koshihikari — The Rice That Became Japan’s Favorite—[Read](../blog-en/notes/koshihikari-rice.html).
 - August 27, 2026　Getting Rid of the Daily Hassle: A System That Took Two Months to Build—[Read](../blog-en/notes/daily-automation.html).
-- August 26, 2026　Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation—[Read](../blog-en/notes/cursor-to-vscode.html).
 
 [See all news →](../blog-en/news/)
 
@@ -211,9 +211,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- August 31, 2026　[A Difficult Decision — We Are Putting Our Direct Sales System on Hold](../blog-en/notes/a-difficult-decision.html)　Sato Farms
 - August 30, 2026　[A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo](../blog-en/notes/sagiso-festival.html)　A sign about Sagi-so at the exhibition
 - August 29, 2026　[Sato Farms: An Autumn Growing Note — Just Talking to Myself](../blog-en/notes/satofarms-autumn-note.html)　Just what I need. Just what I need for today.
-- August 28, 2026　[Koshihikari — The Rice That Became Japan’s Favorite](../blog-en/notes/koshihikari-rice.html)　For this reason, farmers need good skills in water and fertilizer management.
 
 [View the blog](../blog-en/)
 
