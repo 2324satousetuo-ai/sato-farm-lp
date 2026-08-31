@@ -1736,9 +1736,47 @@ html[lang="en"] .product-card__achievement {
 }
 
 html[lang="en"] .notice__label,
-html[lang="en"] .notice__em {
+html[lang="en"] .notice__em,
+html[lang="en"] .notice__decision {
   font-family: 'Noto Serif', 'Noto Serif JP', serif;
   letter-spacing: 0.03em;
+}
+
+.notice__decision {
+  margin: 4px 0 0;
+  text-align: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.08rem, 2.5vw, 1.32rem);
+  line-height: 1.8;
+  color: var(--forest-dark);
+}
+
+.notice__decision a {
+  color: var(--forest-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.notice__decision a:hover {
+  color: var(--forest);
+}
+
+.notice__paused {
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+  cursor: default;
+}
+
+.notice__paused .notice__text,
+.notice__paused .notice__text strong {
+  color: var(--text-muted);
+}
+
+.notice__paused .notice__text--links strong {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
 }
 
 .notice__text {
