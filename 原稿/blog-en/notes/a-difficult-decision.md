@@ -1,4 +1,4 @@
-# A Difficult Decision — We Are Putting Our Direct Sales System on Hold
+# A Difficult Decision — We Are Putting Our Direct Sales System off
 
 August 31, 2026
 This is Sato Farms. Thank you, as always, for your interest in our "Sato Rice."

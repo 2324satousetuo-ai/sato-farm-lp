@@ -213,7 +213,7 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
-- August 31, 2026　[A Difficult Decision — We Are Putting Our Direct Sales System on Hold](../blog-en/notes/a-difficult-decision.html)　Sato Farms
+- August 31, 2026　[A Difficult Decision — We Are Putting Our Direct Sales System off](../blog-en/notes/a-difficult-decision.html)　Sato Farms
 - August 30, 2026　[A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo](../blog-en/notes/sagiso-festival.html)　A sign about Sagi-so at the exhibition
 - August 29, 2026　[Sato Farms: An Autumn Growing Note — Just Talking to Myself](../blog-en/notes/satofarms-autumn-note.html)　Just what I need. Just what I need for today.
 

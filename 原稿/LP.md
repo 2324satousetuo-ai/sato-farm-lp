@@ -219,7 +219,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
-- 2026.8.31　[苦渋の決断――直販システム立ち上げ、一旦見合わせます](../blog/notes/a-difficult-decision.html)　佐藤農園
+- 2026.8.31　[苦渋の決断――直販システム立ち上げ、一旦延期します](../blog/notes/a-difficult-decision.html)　佐藤農園
 - 2026.8.30　[涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」](../blog/notes/sagiso-festival.html)　さぎ草について
 - 2026.8.29　[佐藤農園：秋の生育メモ（独り言）](../blog/notes/satofarms-autumn-note.html)　畑にはいつも、育つものと、終わりを迎えるものが同時に並んでいる。
 
