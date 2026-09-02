@@ -32,7 +32,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ## 現在のご案内
 
-**[苦渋の決断――直販システム立ち上げ、一旦見合わせます](../blog/notes/a-difficult-decision.html)**
+**[苦渋の決断――直販システム立ち上げ、一旦延期します](../blog/notes/a-difficult-decision.html)**
 
 **[育てる直販] 中之条町のおいしいお米「さとう米」（コシヒカリ）**
 
@@ -48,7 +48,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
-- 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦見合わせます」— [読む](../blog/notes/a-difficult-decision.html)
+- 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦延期します」— [読む](../blog/notes/a-difficult-decision.html)
 - 2026.8.30　「涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」」— [読む](../blog/notes/sagiso-festival.html)
 - 2026.8.29　「佐藤農園：秋の生育メモ（独り言）」— [読む](../blog/notes/satofarms-autumn-note.html)
 - 2026.8.28　「毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み」— [読む](../blog/notes/daily-automation.html)

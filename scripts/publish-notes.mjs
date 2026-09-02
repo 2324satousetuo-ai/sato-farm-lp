@@ -651,13 +651,48 @@ function restyleNewsPage(html, lang) {
   return html;
 }
 
-function updateLpMarkdownNews(file, lang) {
+function listingSlugMeta(items) {
+  const map = {};
+  for (const item of items) {
+    if (item.slug) map[item.slug] = item;
+  }
+  return map;
+}
+
+function newsItemTitleHtml(item, lang) {
+  const href = `../notes/${item.slug}.html`;
+  if (lang === "ja") {
+    return `「${escapeHtml(item.title)}」—<a href="${href}">${escapeHtml(readLinkLabel("ja"))}</a>`;
+  }
+  return `${escapeHtml(item.title)}—<a href="${href}">${escapeHtml(readLinkLabel("en"))}</a>.`;
+}
+
+function lpNewsHeadline(item, lang) {
+  return lang === "ja" ? `「${escapeHtml(item.title)}」` : escapeHtml(item.title);
+}
+
+function updateLpMarkdownNews(file, slugMeta, lang) {
   if (!fs.existsSync(file)) return null;
-  const md = readUtf8(file);
-  const next =
+  let md = readUtf8(file);
+  const heading = lang === "ja" ? "新着情報" : "What's New";
+  const section = markdownSectionItems(md, heading);
+  const itemLines = section.lines.slice(section.itemIdx, section.itemEnd);
+  const nextItems = itemLines.map((line) => {
+    const m = line.match(/blog(?:-en)?\/notes\/([^")\s]+)\.html/);
+    if (!m) return line;
+    const meta = metaForSlug(slugMeta, m[1]);
+    if (!meta?.title) return line;
+    if (line.includes(meta.title)) return line;
+    return lpMarkdownNewsLine(meta, lang);
+  });
+  let next =
+    md.slice(0, section.afterHeading + 1) +
+    [...section.lines.slice(0, section.itemIdx), ...nextItems, ...section.lines.slice(section.itemEnd)].join("\n") +
+    md.slice(section.sectionEnd);
+  next =
     lang === "ja"
-      ? md.replace(/\[(?:記事を読む|独り言を読む)\]/g, "[読む]")
-      : md.replace(/\[(?:Read the article|Read the note|Read the post)\]/g, "[Read]");
+      ? next.replace(/\[(?:記事を読む|独り言を読む)\]/g, "[読む]")
+      : next.replace(/\[(?:Read the article|Read the note|Read the post)\]/g, "[Read]");
   if (next === md) return null;
   if (!dryRun) fs.writeFileSync(file, next, "utf8");
   return rel(file);
@@ -671,7 +706,14 @@ function updateListPage(file, slugMeta, lang) {
     (all, start, slug, inner) => {
       const meta = metaForSlug(slugMeta, slug);
       if (!meta) return all;
-      return `${start}${replaceRowBadges(inner, rowBadgesHtml(meta.topics, lang))}</a>`;
+      let body = inner;
+      if (meta.title) {
+        body = body.replace(
+          /<p class="blog-list__title">[\s\S]*?<\/p>/,
+          `<p class="blog-list__title">${escapeHtml(meta.title)}</p>`,
+        );
+      }
+      return `${start}${replaceRowBadges(body, rowBadgesHtml(meta.topics, lang))}</a>`;
     },
   );
   next = bumpStylesheet(next);
@@ -689,8 +731,17 @@ function updateNewsPage(file, slugMeta, lang) {
     const meta = metaForSlug(slugMeta, m[1]);
     if (!meta) return block;
     const linkLabel = readLinkLabel(lang);
-    let out = block.replace(/—see (<a href="\.\.\/notes\/[^"]+\.html">)[^<]*(<\/a>)/, `—$1${linkLabel}$2`);
-    out = out.replace(/(<a href="\.\.\/notes\/[^"]+\.html">)[^<]*(<\/a>)/, `$1${linkLabel}$2`);
+    let out = block;
+    const titleHtml = (block.match(/<p class="blog-list__title">([\s\S]*?)<\/p>/) || [])[1] || "";
+    if (meta.title && !plainText(titleHtml).includes(meta.title)) {
+      out = out.replace(
+        /<p class="blog-list__title">[\s\S]*?<\/p>/,
+        `<p class="blog-list__title">${newsItemTitleHtml(meta, lang)}</p>`,
+      );
+    } else {
+      out = out.replace(/—see (<a href="\.\.\/notes\/[^"]+\.html">)[^<]*(<\/a>)/, `—$1${linkLabel}$2`);
+      out = out.replace(/(<a href="\.\.\/notes\/[^"]+\.html">)[^<]*(<\/a>)/, `$1${linkLabel}$2`);
+    }
     const badges = rowBadgesHtml(meta.topics, lang);
     if (/blog-list__badges|blog-list__badge/.test(out)) {
       out = out.replace(
@@ -711,7 +762,19 @@ function updateNewsPage(file, slugMeta, lang) {
 function updateLpNews(file, slugMeta, lang) {
   if (!fs.existsSync(file)) return null;
   const html = readUtf8(file);
-  let next = html.replace(
+  let next = html.replace(/<li class="news__item">[\s\S]*?<\/li>/g, (block) => {
+    const m = block.match(/blog(?:-en)?\/notes\/([^"]+)\.html/);
+    if (!m) return block;
+    const meta = metaForSlug(slugMeta, m[1]);
+    if (!meta?.title) return block;
+    const headlineHtml = (block.match(/<span class="news__headline">([\s\S]*?)<\/span>/) || [])[1] || "";
+    if (plainText(headlineHtml).includes(meta.title)) return block;
+    return block.replace(
+      /<span class="news__headline">[\s\S]*?<\/span>/,
+      `<span class="news__headline">${lpNewsHeadline(meta, lang)}</span>`,
+    );
+  });
+  next = next.replace(
     /<a href="(blog(?:-en)?\/notes\/)([^"]+)\.html"([^>]*)>([^<]*)<\/a>/g,
     (all, prefix, slug, attrs, text) => {
       const meta = metaForSlug(slugMeta, slug);
@@ -832,14 +895,10 @@ function blogListItemHtml(item, lang) {
 }
 
 function newsArchiveItemHtml(item, lang) {
-  const titleHtml =
-    lang === "ja"
-      ? `「${escapeHtml(item.title)}」—<a href="../notes/${item.slug}.html">${escapeHtml(readLinkLabel("ja"))}</a>`
-      : `${escapeHtml(item.title)}—<a href="../notes/${item.slug}.html">${escapeHtml(readLinkLabel("en"))}</a>.`;
   return `          <li class="blog-list__item">
             <div class="blog-list__row blog-list__row--news">
               <time class="blog-list__date" datetime="${item.datetime}">${escapeHtml(item.display)}</time>
-              <p class="blog-list__title">${titleHtml}</p>
+              <p class="blog-list__title">${newsItemTitleHtml(item, lang)}</p>
               ${rowBadgesHtml(item.topics, lang)}
             </div>
           </li>`;
@@ -847,7 +906,7 @@ function newsArchiveItemHtml(item, lang) {
 
 function lpNewsItemHtml(item, lang) {
   const href = lang === "ja" ? `blog/notes/${item.slug}.html` : `blog-en/notes/${item.slug}.html`;
-  const headline = lang === "ja" ? `「${escapeHtml(item.title)}」` : escapeHtml(item.title);
+  const headline = lpNewsHeadline(item, lang);
   const link = `<a href="${href}" class="news__kind">${escapeHtml(lpReadLinkLabel(lang))}</a>`;
   const text =
     lang === "ja"
@@ -989,7 +1048,7 @@ function publish() {
     if (result.written) written.push(result.written);
     if (result.created) created.push({ ...result, lang: "ja" });
     if (result.slug) {
-      slugMeta[result.slug] = { topics: result.topics || [] };
+      slugMeta[result.slug] = result;
       listings.ja.push(result);
     }
   }
@@ -1023,17 +1082,20 @@ function publish() {
   written.push(...syncLpTeaser("ja", listings.ja));
   written.push(...syncLpTeaser("en", listings.en));
 
+  const jaListings = listingSlugMeta(listings.ja);
+  const enListings = listingSlugMeta(listings.en);
+
   for (const file of [
-    updateListPage(path.join(root, "blog", "index.html"), slugMeta, "ja"),
-    updateListPage(path.join(root, "blog-en", "index.html"), slugMeta, "en"),
-    updateNewsPage(path.join(root, "blog", "news", "index.html"), slugMeta, "ja"),
-    updateNewsPage(path.join(root, "blog-en", "news", "index.html"), slugMeta, "en"),
-    updateLpNews(path.join(root, "index.html"), slugMeta, "ja"),
-    updateLpNews(path.join(root, "index-en.html"), slugMeta, "en"),
-    updateTeaser(path.join(root, "index.html"), slugMeta, "ja"),
-    updateTeaser(path.join(root, "index-en.html"), slugMeta, "en"),
-    updateLpMarkdownNews(path.join(root, "原稿", "LP.md"), "ja"),
-    updateLpMarkdownNews(path.join(root, "原稿", "LP-en.md"), "en"),
+    updateListPage(path.join(root, "blog", "index.html"), jaListings, "ja"),
+    updateListPage(path.join(root, "blog-en", "index.html"), enListings, "en"),
+    updateNewsPage(path.join(root, "blog", "news", "index.html"), jaListings, "ja"),
+    updateNewsPage(path.join(root, "blog-en", "news", "index.html"), enListings, "en"),
+    updateLpNews(path.join(root, "index.html"), jaListings, "ja"),
+    updateLpNews(path.join(root, "index-en.html"), enListings, "en"),
+    updateTeaser(path.join(root, "index.html"), jaListings, "ja"),
+    updateTeaser(path.join(root, "index-en.html"), enListings, "en"),
+    updateLpMarkdownNews(path.join(root, "原稿", "LP.md"), jaListings, "ja"),
+    updateLpMarkdownNews(path.join(root, "原稿", "LP-en.md"), enListings, "en"),
   ]) {
     if (file) written.push(file);
   }

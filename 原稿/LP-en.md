@@ -32,7 +32,7 @@ Japanese version available: [日本語で読む](../index.html)
 
 ## Current notices
 
-**[A Difficult Decision — We Are Putting Our Direct Sales System on Hold](../blog-en/notes/a-difficult-decision.html)**
+**[A Difficult Decision — We Are Putting Our Direct Sales System off](../blog-en/notes/a-difficult-decision.html)**
 
 **[Grow-as-We-Go Direct Sales] Nakanojo's delicious rice “Sato Rice” (Koshihikari)**
 
@@ -46,7 +46,7 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
-- August 31, 2026　A Difficult Decision — We Are Putting Our Direct Sales System on Hold—[Read](../blog-en/notes/a-difficult-decision.html).
+- August 31, 2026　A Difficult Decision — We Are Putting Our Direct Sales System off—[Read](../blog-en/notes/a-difficult-decision.html).
 - August 30, 2026　A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo—[Read](../blog-en/notes/sagiso-festival.html).
 - August 29, 2026　Sato Farms: An Autumn Growing Note — Just Talking to Myself—[Read](../blog-en/notes/satofarms-autumn-note.html).
 - August 27, 2026　Koshihikari — The Rice That Became Japan’s Favorite—[Read](../blog-en/notes/koshihikari-rice.html).
