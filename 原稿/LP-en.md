@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- September 7, 2026　Added photos of our rice paddies and Chinese cabbage to [Farm Updates](../blog-en/field-report/).
 - September 6, 2026　Rooted in the Community—[Read](../blog-en/notes/rooted-in-the-community.html).
 - August 31, 2026　A Difficult Decision — We Are Putting Our Direct Sales System off—[Read](../blog-en/notes/a-difficult-decision.html).
 - August 30, 2026　A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo—[Read](../blog-en/notes/sagiso-festival.html).
 - August 29, 2026　Sato Farms: An Autumn Growing Note — Just Talking to Myself—[Read](../blog-en/notes/satofarms-autumn-note.html).
-- August 27, 2026　Koshihikari — The Rice That Became Japan’s Favorite—[Read](../blog-en/notes/koshihikari-rice.html).
 
 [See all news →](../blog-en/news/)
 
@@ -161,6 +161,12 @@ Nakanojo rice “Sato Rice” is here → [Member registration](#pre-register)
 The photo gallery now lives on the [farm updates page](../blog-en/field-report/). This is just a preview. “The Potato Massacre” has moved to a [Farm Blog post](../blog-en/notes/potato-massacre.html).
 
 Photos and short notes from our fields and paddies, updated from time to time.
+
+![Rice paddies and Chinese cabbage seedlings](../images/9.7.jpg)
+
+September 7, 2026.
+
+Rice paddies: About 20 days until harvest.　Chinese cabbage: Now being transplanted into the fields.
 
 ![Rice paddy scene](../images/field-report/001.jpg)
 

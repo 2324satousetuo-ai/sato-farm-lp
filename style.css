@@ -2086,6 +2086,48 @@ html[lang="en"] .notice__highlight {
   border-left: 3px solid var(--rice-gold);
 }
 
+.field-report__item--pano {
+  max-width: 960px;
+  margin: 0 auto 32px;
+}
+
+.field-report__photo--pano {
+  aspect-ratio: auto;
+}
+
+.field-report__photo--pano img {
+  height: auto;
+  object-fit: contain;
+}
+
+.field-report__caption--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 8px;
+  padding-left: 0;
+  border-left: none;
+}
+
+.field-report__caption-date {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.field-report__caption-left,
+.field-report__caption-right {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--rice-gold);
+}
+
+@media (max-width: 520px) {
+  .field-report__caption--split {
+    column-gap: 10px;
+    font-size: 0.82rem;
+  }
+}
+
 .field-report__story {
   margin-top: 32px;
 }

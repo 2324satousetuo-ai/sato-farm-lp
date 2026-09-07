@@ -48,6 +48,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.9.7　田んぼと白菜の写真を[田畑の近況報告](../blog/field-report/)に追加しました。
 - 2026.9.6　「地域に根を張るということ」— [読む](../blog/notes/rooted-in-the-community.html)
 - 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦延期します」— [読む](../blog/notes/a-difficult-decision.html)
 - 2026.8.30　「涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」」— [読む](../blog/notes/sagiso-festival.html)
@@ -57,7 +58,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.26　「AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ」— [読む](../blog/notes/cursor-to-vscode.html)
 - 2026.8.25　「しばらくお休みします」— [読む](../blog/notes/taking-a-short-break.html)
 - 2026.8.24　「コシヒカリ――おいしさは、田んぼの時間から生まれる」を更新しました。— [読む](../blog/notes/koshihikari-field-time.html)
-- 2026.8.23　「三層構造でつくる、健全で壊れにくい受注システム」— [読む](../blog/notes/three-layer-order-system.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -153,6 +153,12 @@ URL：https://satofarms.com（satofarms.com）
 写真ギャラリーは [近況ページ](../blog/field-report/) へ移しました。ここには抜粋だけ載せています。「じゃがいも全滅記」は [ブログ記事](../blog/notes/potato-massacre.html) へ移しています。
 
 畑と田んぼの様子を、写真と短文で不定期に更新しています。
+
+![田んぼの稲と白菜の苗](../images/9.7.jpg)
+
+2026.9.7.
+
+田んぼ：あと２０日で稲刈りです。　白菜：今、畑に植え付け中です。
 
 ![田んぼの様子](../images/field-report/001.jpg)
 
