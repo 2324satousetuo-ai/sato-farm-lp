@@ -79,4 +79,15 @@ cur.execute(
 )
 assert cur.execute("SELECT COUNT(*) FROM members").fetchone()[0] == 2
 print("OK member kept after email failed")
+
+page_views = cur.execute("SELECT key, count FROM page_views").fetchone()
+assert page_views == ("sato-farm-nakanojo-lp", 3750), page_views
+cur.execute(
+    """INSERT INTO page_views (key, count) VALUES (?, 1)
+       ON CONFLICT(key) DO UPDATE SET count = count + 1
+       RETURNING count""",
+    ("sato-farm-nakanojo-lp",),
+)
+assert cur.execute("SELECT count FROM page_views WHERE key=?", ("sato-farm-nakanojo-lp",)).fetchone()[0] == 3751
+print("OK page_views seeded and incremented")
 print("sqlite schema tests passed")

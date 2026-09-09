@@ -5,6 +5,7 @@ import {
   getBankTransferAccount,
 } from './order-emails.js';
 import { applyCatalogPrices, quoteAmountsForProduct } from './price-catalog.js';
+import { hitPageView } from './page-views.js';
 import { getCurrentPriceStage, isPriceAdmin, setPriceStage } from './price-stage.js';
 import {
   REGISTRATION_EMAIL_SUBJECT,
@@ -23,6 +24,22 @@ import {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (url.pathname === '/api/visits') {
+      if (request.method !== 'GET') {
+        return json({ ok: false, message: 'Method Not Allowed' }, 405);
+      }
+      if (!isSameOrigin(request)) {
+        return json({ ok: false, message: 'Forbidden' }, 403);
+      }
+      try {
+        const value = await hitPageView(env);
+        return json({ value });
+      } catch (error) {
+        console.error('page_view_failed', error);
+        return json({ ok: false, message: 'counter_failed' }, 500);
+      }
+    }
 
     if (url.pathname === '/api/register') {
       if (request.method === 'POST') {

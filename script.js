@@ -302,7 +302,6 @@
   if (counterEls.length) {
     const labelEls = document.querySelectorAll('.visit-counter-label');
     const storageKey = 'satoFarmPageViews';
-    const counterKey = 'sato-farm-nakanojo-lp';
     const locale = document.documentElement.lang === 'en' ? 'en-US' : 'ja-JP';
     const isEn = document.documentElement.lang === 'en';
 
@@ -322,7 +321,7 @@
       showCount(count);
     };
 
-    fetch('https://countapi.mileshilliard.com/api/v1/hit/' + counterKey)
+    fetch('/api/visits', { cache: 'no-store' })
       .then((response) => {
         if (!response.ok) {
           throw new Error('counter_failed');
