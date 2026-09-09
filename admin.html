@@ -410,8 +410,36 @@ async function loadOrders() {
   }
 }
 
+const BROWN_SOURCE_LABEL = {
+  "30kg": "玄米30kg",
+  "20kg相当": "玄米20kg",
+  "15kg相当": "玄米15kg",
+  "10kg相当": "玄米10kg",
+};
+
+const MILLED_YIELD_KG = {
+  "30kg": 27,
+  "20kg相当": 18,
+  "15kg相当": 13.5,
+  "10kg相当": 9,
+};
+
+const BROWN_ACTUAL_KG = {
+  "30kg": 30,
+  "20kg相当": 19.5,
+  "15kg相当": 14.5,
+  "10kg相当": 9.5,
+};
+
 function productLabel(order) {
-  return order.weight_label + "　" + (order.milled ? "精米" : "玄米");
+  if (!order.milled) {
+    if (order.weight_label === "30kg") return "玄米30kg";
+    const actual = order.actual_weight_kg ?? BROWN_ACTUAL_KG[order.weight_label];
+    return "玄米" + order.weight_label + "(実質" + actual + "kg)";
+  }
+  const yieldKg = MILLED_YIELD_KG[order.weight_label];
+  const brown = BROWN_SOURCE_LABEL[order.weight_label] || "玄米" + order.weight_label;
+  return "標準精米（白米）実質" + yieldKg + "kg(" + brown + "を精米)";
 }
 
 function orderInfoHtml(order) {

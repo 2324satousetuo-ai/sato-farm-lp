@@ -130,9 +130,10 @@
     background: var(--green-soft);
   }
 
-  .product-card .label { font-weight: 500; font-size: 15px; }
+  .product-card .copy { min-width: 0; padding-right: 12px; }
+  .product-card .label { font-weight: 500; font-size: 15px; line-height: 1.45; }
   .product-card .sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
-  .product-card .price { font-family: "Shippori Mincho", serif; font-size: 17px; color: var(--gold-deep); }
+  .product-card .price { font-family: "Shippori Mincho", serif; font-size: 17px; color: var(--gold-deep); flex-shrink: 0; }
 
   .product-card[data-unavailable="1"] {
     opacity: 0.45;
@@ -606,13 +607,29 @@ function applyPrefillFromUrl() {
   }
 }
 
-// 精米後の仕上がり重量の目安（歩留まり実測に基づく既定値）
-const MILLED_WEIGHT_ESTIMATE = {
-  "30kg": 28,
-  "20kg相当": 18.5,
-  "15kg相当": 13.5,
-  "10kg相当": 8.5,
+const BROWN_SOURCE_LABEL = {
+  "30kg": "玄米30kg",
+  "20kg相当": "玄米20kg",
+  "15kg相当": "玄米15kg",
+  "10kg相当": "玄米10kg",
 };
+
+const MILLED_YIELD_KG = {
+  "30kg": 27,
+  "20kg相当": 18,
+  "15kg相当": 13.5,
+  "10kg相当": 9,
+};
+
+function productDisplayName(p) {
+  if (!p.milled) {
+    if (p.weight_label === "30kg") return "玄米30kg";
+    return `玄米${p.weight_label}(実質${p.actual_weight_kg}kg)`;
+  }
+  const yieldKg = MILLED_YIELD_KG[p.weight_label];
+  const brown = BROWN_SOURCE_LABEL[p.weight_label] || `玄米${p.weight_label}`;
+  return `標準精米（白米）実質${yieldKg}kg(${brown}を精米)`;
+}
 
 function renderProducts() {
   const grid = el("productGrid");
@@ -623,13 +640,12 @@ function renderProducts() {
     card.dataset.id = p.id;
     const unavailable = p.status === "preparing";
     if (unavailable) card.dataset.unavailable = "1";
-    const kindLabel = p.milled ? "精米（標準）" : "玄米";
     const sub = p.milled
-      ? `標準精米のみ対応。仕上がり重量は目安（実質約${MILLED_WEIGHT_ESTIMATE[p.weight_label] ?? "-"}kg）`
-      : `手作業計量のため実測値でお届け（実質約${p.actual_weight_kg}kg）`;
+      ? "標準精米のみ対応"
+      : "手作業計量のため実測値でお届け";
     card.innerHTML = `
-      <div>
-        <div class="label">${p.weight_label}　${kindLabel}${unavailable ? '<span class="preparing-label">準備中</span>' : ""}</div>
+      <div class="copy">
+        <div class="label">${productDisplayName(p)}${unavailable ? '<span class="preparing-label">準備中</span>' : ""}</div>
         <div class="sub">${sub}</div>
       </div>
       <div class="price">${yen(p.price)}</div>

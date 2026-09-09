@@ -1,11 +1,11 @@
+import { formatProductDisplayName } from './product-display.js';
+
 export function getBankTransferAccount(env) {
   return String((env && env.BANK_TRANSFER_ACCOUNT) || '').trim();
 }
 
 export function formatProductName(product) {
-  const label = product && product.weight_label ? product.weight_label : 'お米';
-  const milled = product && (product.milled === 1 || product.milled === true);
-  return label + '　' + (milled ? '精米（標準）' : '玄米');
+  return formatProductDisplayName(product);
 }
 
 export function formatYen(amount) {

@@ -1,3 +1,4 @@
 # Copy this file to .dev.vars for local wrangler dev.
 # Do not put real secrets in git.
 RESEND_API_KEY=your_key_here
+ADMIN_SECRET=your_admin_secret_here

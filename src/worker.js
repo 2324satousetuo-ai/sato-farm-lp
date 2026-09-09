@@ -4,6 +4,8 @@ import {
   formatProductName,
   getBankTransferAccount,
 } from './order-emails.js';
+import { applyCatalogPrices, quoteAmountsForProduct } from './price-catalog.js';
+import { getCurrentPriceStage, isPriceAdmin, setPriceStage } from './price-stage.js';
 import {
   REGISTRATION_EMAIL_SUBJECT,
   REGISTRATION_EMAIL_TEXT,
@@ -152,9 +154,10 @@ async function handleDirectSales(request, env, url) {
          WHERE status IN ('available', 'preparing')
          ORDER BY milled, actual_weight_kg DESC`
       ).all();
+      const stage = await getCurrentPriceStage(env);
       return json({
         success: true,
-        products: results,
+        products: applyCatalogPrices(results, stage),
         bankAccount: getBankTransferAccount(env),
       });
     }
@@ -288,6 +291,43 @@ async function handleDirectSales(request, env, url) {
       ).all();
       return json({ success: true, members: results });
     }
+
+    if (path === '/api/admin/price-stage' && request.method === 'GET') {
+      if (!isPriceAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      const stage = await getCurrentPriceStage(env);
+      return json({ success: true, stage });
+    }
+
+    if (path === '/api/admin/price-stage' && request.method === 'POST') {
+      if (!isSameOrigin(request)) {
+        return json({ success: false, error: 'Forbidden' }, 403);
+      }
+      if (!isPriceAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      let body;
+      try {
+        body = await request.json();
+      } catch {
+        return json({ success: false, error: '不正なリクエストです。' }, 400);
+      }
+      try {
+        const result = await setPriceStage(env, body && body.stage);
+        return json({
+          success: true,
+          stage: result.stage,
+          changed: result.changed,
+          fromStage: result.fromStage,
+        });
+      } catch (error) {
+        if (error && error.code === 'invalid_stage') {
+          return json({ success: false, error: '段階は A・B・C のいずれかを指定してください' }, 400);
+        }
+        throw error;
+      }
+    }
   } catch (error) {
     console.error('direct_sales_failed', error);
     return json(
@@ -335,9 +375,12 @@ async function calculateQuote(env, { productId, prefecture, pickupDiscount }) {
     shippingFee -= 120;
   }
 
-  const productPrice = product.price;
-  const millingFee = product.milling_fee || 0;
-  const totalAmount = productPrice + millingFee + shippingFee;
+  const stage = await getCurrentPriceStage(env);
+  const amounts = quoteAmountsForProduct(product, stage);
+  const catalogPrice = amounts.catalogPrice == null ? product.price : amounts.catalogPrice;
+  const productPrice = amounts.productPrice == null ? catalogPrice : amounts.productPrice;
+  const millingFee = amounts.millingFee || 0;
+  const totalAmount = catalogPrice + shippingFee;
 
   return {
     product,

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>価格段階の切り替え | 佐藤農園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F1E1;
+    --ink: #2B2A22;
+    --ink-soft: #5B5646;
+    --gold: #B8862F;
+    --gold-deep: #8C6420;
+    --green: #3F5C3E;
+    --green-soft: #E7ECDD;
+    --error: #A8402A;
+    --line: rgba(43, 42, 34, 0.14);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 40px 20px 90px;
+  }
+
+  header { text-align: center; margin-bottom: 28px; }
+
+  header h1 {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    margin: 0 0 6px;
+  }
+  header p { font-size: 13px; color: var(--ink-soft); margin: 0; }
+
+  .panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  input[type="password"] {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 15px;
+    margin-bottom: 12px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: inherit;
+  }
+  input[type="password"]:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+  .primary-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--gold-deep);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .primary-btn:hover:not(:disabled) { background: #74530F; }
+  .primary-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
+
+  .error {
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 10px;
+    display: none;
+  }
+  .error.show { display: block; }
+
+  #stagePanel { display: none; margin-top: 28px; }
+  #stagePanel.show { display: block; }
+
+  .current {
+    font-family: "Shippori Mincho", serif;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 0 18px;
+  }
+  .current strong { color: var(--gold-deep); font-size: 22px; letter-spacing: 0.08em; }
+
+  .stage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stage-btn {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 8px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .stage-btn:hover:not(:disabled) { border-color: var(--gold); }
+  .stage-btn.current {
+    border-color: var(--gold);
+    background: var(--green-soft);
+    color: var(--green);
+  }
+  .stage-btn:disabled { cursor: not-allowed; }
+
+  .hint {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin: 16px 0 0;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .toast.show { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>価格段階の切り替え</h1>
+    <p>シミュレーターと今後の案内メールが参照する、いまの段階です</p>
+  </header>
+
+  <div class="panel">
+    <label for="secretInput">パスワード</label>
+    <input type="password" id="secretInput" placeholder="パスワード" autocomplete="off">
+    <button type="button" class="primary-btn" id="loadBtn">現在の段階を表示</button>
+    <p class="error" id="authError">パスワードが正しくありません</p>
+    <p class="error" id="loadError">読み込みに失敗しました</p>
+  </div>
+
+  <div class="panel" id="stagePanel" style="margin-top: 16px;">
+    <p class="current">いまの段階　<strong id="currentStage">-</strong></p>
+    <div class="stage-grid">
+      <button type="button" class="stage-btn" data-stage="A">A</button>
+      <button type="button" class="stage-btn" data-stage="B">B</button>
+      <button type="button" class="stage-btn" data-stage="C">C</button>
+    </div>
+    <p class="hint">ボタンを押すと確認のあと、その場で切り替わります</p>
+    <p class="error" id="switchError">切り替えに失敗しました</p>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const API_BASE = "";
+const STAGES = ["A", "B", "C"];
+
+const el = (id) => document.getElementById(id);
+
+function secret() {
+  return el("secretInput").value;
+}
+
+function showToast(message) {
+  const t = el("toast");
+  t.textContent = message;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+function setCurrent(stage) {
+  el("currentStage").textContent = stage;
+  document.querySelectorAll(".stage-btn").forEach((btn) => {
+    btn.classList.toggle("current", btn.dataset.stage === stage);
+    btn.disabled = false;
+  });
+  el("stagePanel").classList.add("show");
+}
+
+async function readStage() {
+  const res = await fetch(API_BASE + "/api/admin/price-stage", {
+    headers: { "X-Admin-Secret": secret() },
+  });
+  const data = await res.json().catch(() => ({}));
+  return { status: res.status, data };
+}
+
+el("loadBtn").addEventListener("click", async () => {
+  el("authError").classList.remove("show");
+  el("loadError").classList.remove("show");
+  if (!secret()) return;
+
+  el("loadBtn").disabled = true;
+  el("loadBtn").textContent = "確認しています…";
+  try {
+    const { status, data } = await readStage();
+    if (status === 401) {
+      el("authError").classList.add("show");
+      el("stagePanel").classList.remove("show");
+      return;
+    }
+    if (!data.success || !STAGES.includes(data.stage)) {
+      el("loadError").classList.add("show");
+      return;
+    }
+    setCurrent(data.stage);
+  } catch {
+    el("loadError").classList.add("show");
+  } finally {
+    el("loadBtn").disabled = false;
+    el("loadBtn").textContent = "現在の段階を表示";
+  }
+});
+
+el("secretInput").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") el("loadBtn").click();
+});
+
+document.querySelectorAll(".stage-btn").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const next = btn.dataset.stage;
+    const current = el("currentStage").textContent;
+    el("switchError").classList.remove("show");
+
+    if (!secret()) {
+      el("authError").classList.add("show");
+      return;
+    }
+    if (next === current) {
+      showToast("すでに " + next + " です");
+      return;
+    }
+    if (!window.confirm("価格を段階 " + next + " に切り替えます。よろしいですか？")) {
+      return;
+    }
+
+    btn.disabled = true;
+    try {
+      const res = await fetch(API_BASE + "/api/admin/price-stage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Admin-Secret": secret(),
+        },
+        body: JSON.stringify({ stage: next }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 401) {
+        el("authError").classList.add("show");
+        return;
+      }
+      if (!data.success || !STAGES.includes(data.stage)) {
+        el("switchError").classList.add("show");
+        return;
+      }
+      setCurrent(data.stage);
+      showToast(data.changed ? "段階 " + data.stage + " に切り替えました" : "すでに " + data.stage + " です");
+    } catch {
+      el("switchError").classList.add("show");
+    } finally {
+      btn.disabled = false;
+    }
+  });
+});
+</script>
+
+</body>
+</html>
