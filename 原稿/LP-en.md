@@ -301,223 +301,111 @@ Hot springs, nature, and culture in Nakanojo and Agatsuma. Start here.
 
 ---
 
-## 2026 “Grow-as-We-Go Direct Sales” for Our Rice
+## 2026 Grow-as-We-Go Direct Sales for Our Rice
 
-2026 Rice Harvest — Direct Sales
+[Grow-as-We-Go Direct Sales] Nakanojo's delicious rice “Sato Rice” (Koshihikari)
 
-We are now preparing to sell our 2026 rice harvest directly to you.
+From the Mountains to Your Table
 
-### 2026 “Grow-as-We-Go Direct Sales” for Our Rice
+We are happy to offer our 2026 rice from Sato Farms in Nakanojo, Gunma, Japan.
 
-August 16, 2026
+What we are starting is more than just an online rice shop.
 
-Our farm is in Nakanojo, Gunma Prefecture, surrounded by mountains, clean water, and cool air.
+We want to grow our rice carefully, watch how the rice plants grow, check the expected harvest, and then deliver the rice directly to our customers as much as we can.
 
-What we are trying to build is more than just an online store.
+We call this our **“Grow-as-We-Go Direct Sales”** approach.
 
-We want to create a simple way to sell our rice directly to people who want to enjoy it.
+### We Want to Deliver Nakanojo Rice Directly to You
 
-We call it **“Grow-as-We-Go Direct Sales.”**
+Nakanojo and the northern part of Gunma have clean water and a large difference between daytime and nighttime temperatures.
 
-#### Rice Grown in Nakanojo
+These conditions are good for growing rice.
 
-The Hokumo area of Gunma is known for its good rice-growing conditions.
+Koshihikari rice from this area has received the highest grade, **“Special A,”** three times in Japan’s national rice taste ranking.
 
-The difference between day and night temperatures, together with clean water, helps produce flavorful rice.
+We want to bring the rice grown in this special area to your table with as few middlemen as possible.
 
-Koshihikari rice from the Hokumo area has received the highest rank, **“Special A,” three times** in Japan’s national rice taste ranking: for the 2008, 2009, and 2020 harvests.
+That is why we started direct sales.
 
-We want to bring the rice grown in this area directly from our farm to your table.
-
-#### A Price That Changes with the Harvest
-
-Rice is grown in nature.
-
-We do not know the exact harvest amount until the rice is ready.
-
-So we do not fix the final price at the beginning of the year.
-
-Instead, we will set the price in three steps:
-
-- **At the beginning of the year:** Reference price — ¥20,000 for 30 kg of brown rice
-- **Before harvest:** Provisional price — adjusted according to how the rice is growing
-- **After harvest:** Final price — based on the harvest amount and quality
-
-We will explain the situation as clearly as possible and listen to our customers.
-
-We want to build a fair relationship through communication, rather than simply setting a price and saying, “This is the price.”
-
-#### Choose Your Purchase Interest Level
-
-Membership is free.
-
-Please choose the level that best matches your interest.
-
-- **Level 1 — I just want to receive information**　→ We will send you updates about the rice and the farm.
-- **Level 2 — I may buy, depending on the price**　→ We will contact you when the final price is decided.
-- **Level 3 — I definitely want to buy**　→ We will give you priority when we set aside rice.
-
-#### Why We Recommend Brown Rice
-
-We recommend buying our rice as **brown rice**.
-
-If you polish the rice just before cooking, you can enjoy its fresh smell, shine, and taste.
-
-You can use a small rice milling machine at home or a rice mill in your neighborhood.
-
-It takes a little extra work, but we believe it is worth it.
-
-#### Let’s Grow This Year’s Rice Together
-
-We do not yet know exactly how much rice we will harvest.
-
-We do not know the final price, either.
-
-That is why we want you to follow the rice as it grows and join us in welcoming this year’s harvest.
-
-**2026 “Grow-as-We-Go Direct Sales.”**
-
-If you like this idea, please join our membership.
-
-When the rice is ready for sale, we will contact you by email.
-
-Let’s take the first step together—from our rice fields to your table.
-
-[You can also read this article.](../blog-en/notes/rice-membership-2026.html)
-
----
-
-## About Sato Farm’s Direct Sales System
-
-August 17, 2026
-
-### We Are Building More Than an Online Store
-
-Why is this system necessary?
-
-What we are building at Sato Farm is not just an online store.
-
-We want to create a simple system that allows us to sell rice according to the amount we can actually harvest each year.
-
-First, people who are interested in our rice can join our membership.
-
-There are three levels:
-
-“I just want to know what is happening.”
-
-“I may buy, depending on the price.”
-
-“I definitely want to buy.”
-
-This helps us understand how much rice people may want.
-
-### We Sell Rice According to the Harvest
+### The Price Will Be Decided as the Rice Grows
 
 Rice is not a factory-made product.
 
-The weather can change how much rice we harvest.
+The weather can change how the rice grows and how much we can harvest. So, we do not decide everything at the beginning of the year.
 
-So we do not want to promise more rice than we can actually produce.
+Instead, we will look at the rice fields and decide the price step by step.
 
-If our own harvest is not enough, we may ask trusted farmers in our area to help us.
+- **At the beginning of the year:** Reference price — ¥20,000 for 30 kg of brown rice
+- **Before harvest:** Temporary price — adjusted according to the condition of the rice
+- **After harvest:** Final price — decided after checking the harvest and quality
 
-In this way, we can work together as a local farming community.
+We want to share information about the rice and its condition as much as possible.
 
-This is an important part of our system.
+Most importantly, we want to communicate openly with our customers.
 
-### We Want You to See the Rice as It Grows
+### Please Choose Your Purchase Interest Level
 
-We do not want to talk only about selling rice.
+Membership is free.
 
-We also want to share the story of the rice.
+Please choose the level that best matches your current interest.
 
-Planting, growing, flowering, and the expected harvest—we will share updates as the rice grows.
+**Level 1: I am interested.**
 
-We will mainly use LINE and other online tools to send these updates.
+I would like to know how the rice is growing and what is happening with sales.
 
-Before talking about the price, we want you to know how the rice is growing and what is happening in our fields.
+**Level 2: I may buy it, depending on the price.**
 
-**How is the rice growing?**
+I would like to consider buying the rice after the final price is decided.
 
-**What is happening in the rice fields?**
+**Level 3: I would really like to buy it.**
 
-We think this is an important part of buying directly from a farmer.
+I would like to receive priority information about buying the rice.
 
-### Start Small and Grow Step by Step
+This system does not mean that you have to place an order immediately.
 
-Our system is still at an early stage.
+At this stage, the final harvest amount is not yet known. We first want to understand how much rice people would like to buy. Then we can adjust our sales to the actual harvest.
 
-For now, we have started with membership registration and registration emails.
+If Sato Farms does not have enough rice for all customers, we may also work with trusted nearby farmers to help provide enough rice.
 
-We do not need to make everything perfect from the beginning.
+In this way, we hope to build a system supported by the local farming community.
 
-We will try it, listen to our customers, find problems, and improve the system step by step.
+### We Recommend Buying Brown Rice
 
-Start small.
+At Sato Farms, we recommend buying rice as **brown rice**.
 
-Learn from each year.
+If you polish the rice just before eating, you can enjoy its fresh aroma, shine, and flavor.
 
-Then make it better.
+You can use a home rice polisher or a coin-operated rice mill in your neighborhood.
 
-That is what we mean by **“Grow-as-We-Go Direct Sales.”**
+### From the Rice Field to Your Table, Growing Together
 
-We do not want to simply sell rice and finish the relationship there.
+Planting, growing, the rice plants beginning to produce ears, and finally harvesting.
 
-We want to learn from this year’s experience and use it next year.
+Rice takes many months to grow before it reaches your table.
 
-We want farmers and customers to stay connected, share the harvest, and build a relationship that can continue for many years.
+At Sato Farms, we would like to share each step of this journey with you as much as possible.
 
-**That is the kind of direct sales system Sato Farm wants to create.**
+We want you to know not only **“How much does the rice cost?”**, but also **“Where is it grown, and how is it grown?”**
 
-[You can also read this on the Farm Blog.](../blog-en/notes/rice-direct-system.html)
+Our 2026 **“Grow-as-We-Go Direct Sales”** rice is not ready yet.
+
+We do not know the final harvest amount or the final price. They will become clear as the rice continues to grow.
+
+That is why we would like you to **watch this year's rice grow with us**, while we share what is happening in the rice fields.
+
+**If you are interested in our 2026 rice, please register as a free member.**
+
+When we are ready to start selling the rice, we will contact you using the information you provide.
+
+**From this year's rice fields at Sato Farms to your table.**
+
+---
 
 ### Membership
 
 2026 “Grow-as-We-Go Direct Sales”
 
 If you like this idea, please join our membership. When the rice is ready for sale, we will contact you by email.
-
----
-
-## A Story That Begins in the Fields Before Dawn
-
-August 21, 2026
-
-Before sunrise, the fields are still quiet, as if the world is holding its breath. A thin mist hangs over the rice paddies, and the tips of the rice plants slowly begin to catch the morning light. Here in Nakanojo Town, Gunma Prefecture, a day at Sato Farms begins like this.
-
-For twenty years, I have stood in these same rice paddies. I have come to understand the ways of the wind, the mood of the soil, and the temperament of the irrigation channels. Even so, every year the rice shows us a different face. Some days, the plants stretch up shyly, as if to say, "This is how we will grow this year." Other days, they stand tall and straight, as if to warn us, "Don't let your guard down yet."
-
-It would be a waste to simply harvest these rice plants and sell them. We want to deliver not just the rice, but also the time we spent growing it, the air of the fields, and the changing of the seasons — all of it, if we possibly can. That is why we treasure this small sales system of ours.
-
-### How Sato Farm's Rice Reaches You
-
-**When we receive your order**, we first listen carefully to what you are feeling. "I'm interested." "It depends on the price." "I really want to buy it." We meet you at whatever stage you are at, while also checking the farm's energy, and we carefully prepare our order slots within a range that is not too much for us.
-
-**Once your order is confirmed**, the next step is confirming your payment. This is an iron rule that we hold dear. Rice is a living thing, and a farmer's time is also limited. That is why, only after we have confirmed your payment, we quietly switch into gear and say to ourselves, "Alright, let's give this rice our full attention."
-
-**Once payment is confirmed**, we open our A4 work instruction sheet. This sheet is the command center of our farm. Measuring the brown rice, milling it carefully, dividing it into portions, packing it into bags, and checking the shipping size — we write all of these steps down on this single sheet of paper. Then, without ever glancing at our smartphones, we quietly work with our hands in the workshop.
-
-**Finally, we bring the packages to the post office**, and when we write down the tracking number on the instruction sheet, all the steps are complete. This tracking number is like a "signpost" that guides our rice safely to your dining table, no matter how far away you are. We file the instruction sheets in a binder and keep them as precious records of the year. The actual weight after milling, the memory of the day the rice left for our customers — each of these becomes data, and that data becomes nourishment for Sato Farms.
-
-### What We Want to Protect with This System
-
-At Sato Farm, we value "the rhythm of farm life" more than "efficiency."
-
-- **The peace of mind that comes from facing each grain of rice after payment is confirmed**
-- **The flexibility to carefully adjust our order slots according to the farm's energy**
-- **The clarity of using an A4 instruction sheet, so we can focus on our work without distraction**
-- **The long-lasting relationships with faces we can see, built by meeting customers where they are**
-- **And above all, delivering Sato Farm's rice straight from the heart of our farm, in our own words**
-
-We want our writing to convey not just mechanical words, but the air of the fields, the voice of the rice, and the feel of our hands at work. We believe that is the true value of the Sato Farm LP.
-
-### Looking Forward to the Harvest Season
-
-This year, too, the rice has been working hard for us. When it sways in the wind, it looks as if it is telling us, "We are fully ready for the harvest."
-
-We will deliver that rice to your dining table, carefully and honestly. Please look forward to Sato Farm's rice. We will continue to write the story of our fields, little by little, from now on.
-
-[You can also read this on the Farm Blog.](../blog-en/notes/fields-before-dawn.html)
 
 ---
 
