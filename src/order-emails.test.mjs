@@ -5,6 +5,8 @@ import {
   formatProductName,
   formatYen,
   getBankTransferAccount,
+  normalizeTrackingNumber,
+  TRACKING_NUMBER_MAX_LENGTH,
 } from './order-emails.js';
 
 const BANK_TRANSFER_ACCOUNT = getBankTransferAccount({
@@ -55,5 +57,11 @@ const shippedNoTracking = buildOrderShippedEmail({
   trackingNumber: null,
 });
 assert.doesNotMatch(shippedNoTracking.text, /追跡番号/);
+
+assert.equal(normalizeTrackingNumber(null), '');
+assert.equal(normalizeTrackingNumber('  1234-5678-90  '), '1234-5678-90');
+assert.equal(normalizeTrackingNumber(123456789012), '123456789012');
+assert.equal(normalizeTrackingNumber({}), null);
+assert.equal(normalizeTrackingNumber('x'.repeat(TRACKING_NUMBER_MAX_LENGTH + 1)), null);
 
 console.log('order-emails tests passed');

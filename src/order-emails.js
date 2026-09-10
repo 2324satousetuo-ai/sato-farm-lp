@@ -20,6 +20,19 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;');
 }
 
+export const TRACKING_NUMBER_MAX_LENGTH = 40;
+
+export function normalizeTrackingNumber(value) {
+  if (value == null) return '';
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    value = String(value);
+  }
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (trimmed.length > TRACKING_NUMBER_MAX_LENGTH) return null;
+  return trimmed;
+}
+
 const EMAIL_SIGNATURE = '佐藤農園（佐藤節雄）';
 
 function buildEmailHtml(lines) {
@@ -79,7 +92,7 @@ export function buildOrderShippedEmail({ orderId, productName, trackingNumber })
     '商品　' + productName,
   ];
 
-  const tracking = trackingNumber ? String(trackingNumber).trim() : '';
+  const tracking = normalizeTrackingNumber(trackingNumber) || '';
   if (tracking) {
     lines.push('追跡番号　' + tracking);
   }

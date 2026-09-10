@@ -3,6 +3,7 @@ import {
   buildOrderShippedEmail,
   formatProductName,
   getBankTransferAccount,
+  normalizeTrackingNumber,
 } from './order-emails.js';
 import { applyCatalogPrices, quoteAmountsForProduct } from './price-catalog.js';
 import { hitPageView } from './page-views.js';
@@ -277,7 +278,33 @@ async function handleDirectSales(request, env, url) {
       if (!isAdmin(request, env)) {
         return json({ success: false, error: '認証エラー' }, 401);
       }
-      return markOrderCompleted(env, completedMatch[1]);
+      return markOrderCompleted(env, completedMatch[1], request);
+    }
+
+    const trackingMatch = path.match(/^\/api\/admin\/orders\/(\d+)\/tracking$/);
+    if (trackingMatch && request.method === 'POST') {
+      if (!isAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      return updateOrderTracking(env, trackingMatch[1], request);
+    }
+
+    if (path === '/api/admin/orders/shipped' && request.method === 'GET') {
+      if (!isAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      const { results } = await env.DB.prepare(
+        `SELECT o.id, o.status, o.payment_status, o.total_amount, o.ordered_at, o.paid_at,
+                o.ship_date, o.tracking_number,
+                o.recipient_name, o.shipping_postal_code, o.shipping_prefecture,
+                o.shipping_address, o.shipping_phone, o.notes,
+                p.weight_label, p.milled, p.actual_weight_kg
+         FROM orders o
+         JOIN products p ON o.product_id = p.id
+         WHERE o.status = 'completed'
+         ORDER BY o.ship_date DESC, o.id DESC`
+      ).all();
+      return json({ success: true, orders: results });
     }
 
     if (path === '/api/admin/orders' && request.method === 'GET') {
@@ -414,9 +441,21 @@ function isAdmin(request, env) {
   return Boolean(secret && env.ADMIN_SECRET && secret === env.ADMIN_SECRET);
 }
 
-async function markOrderCompleted(env, orderId) {
+async function markOrderCompleted(env, orderId, request) {
+  const parsed = await readOptionalJsonBody(request);
+  if (parsed.error) {
+    return json({ success: false, error: parsed.error }, 400);
+  }
+
+  const trackingNumber = normalizeTrackingNumber(
+    parsed.body && parsed.body.trackingNumber
+  );
+  if (trackingNumber == null) {
+    return json({ success: false, error: '追跡番号の形式が正しくありません' }, 400);
+  }
+
   const existing = await env.DB.prepare(
-    `SELECT o.status, o.payment_status, o.member_id, o.tracking_number,
+    `SELECT o.status, o.payment_status, o.member_id,
             m.email_normalized,
             p.weight_label, p.milled
      FROM orders o
@@ -441,7 +480,13 @@ async function markOrderCompleted(env, orderId) {
   }
 
   await env.DB.batch([
-    env.DB.prepare(`UPDATE orders SET status = 'completed' WHERE id = ?`).bind(orderId),
+    env.DB.prepare(
+      `UPDATE orders
+       SET status = 'completed',
+           tracking_number = ?,
+           ship_date = datetime('now')
+       WHERE id = ?`
+    ).bind(trackingNumber || null, orderId),
     env.DB.prepare(
       `UPDATE members
        SET member_level = 4, updated_at = datetime('now')
@@ -449,12 +494,14 @@ async function markOrderCompleted(env, orderId) {
     ).bind(existing.member_id),
   ]);
 
+  let emailPreview = null;
   if (hasSendableEmail(existing.email_normalized)) {
     const shipped = buildOrderShippedEmail({
       orderId,
       productName: formatProductName(existing),
-      trackingNumber: existing.tracking_number,
+      trackingNumber,
     });
+    emailPreview = { subject: shipped.subject, text: shipped.text };
     await sendEmail(
       env,
       existing.email_normalized,
@@ -466,9 +513,53 @@ async function markOrderCompleted(env, orderId) {
     );
   }
 
-  return json({
+  const payload = {
     success: true,
     message: '発送完了を記録しました。',
+  };
+  if (String((env && env.PREVIEW_EMAIL) || '') === '1') {
+    payload.emailPreview = emailPreview || {
+      subject: '',
+      text: '送信先メールがないため、発送メールは作成していません。',
+    };
+  }
+  return json(payload);
+}
+
+async function updateOrderTracking(env, orderId, request) {
+  const parsed = await readOptionalJsonBody(request);
+  if (parsed.error) {
+    return json({ success: false, error: parsed.error }, 400);
+  }
+
+  const trackingNumber = normalizeTrackingNumber(
+    parsed.body && parsed.body.trackingNumber
+  );
+  if (trackingNumber == null) {
+    return json({ success: false, error: '追跡番号の形式が正しくありません' }, 400);
+  }
+
+  const existing = await env.DB.prepare('SELECT status FROM orders WHERE id = ?')
+    .bind(orderId)
+    .first();
+
+  if (!existing) {
+    return json({ success: false, error: '注文が見つかりません' }, 404);
+  }
+  if (existing.status !== 'completed') {
+    return json(
+      { success: false, error: '発送完了後の注文のみ、追跡番号を記録できます' },
+      409
+    );
+  }
+
+  await env.DB.prepare(`UPDATE orders SET tracking_number = ? WHERE id = ?`)
+    .bind(trackingNumber || null, orderId)
+    .run();
+
+  return json({
+    success: true,
+    message: '追跡番号を保存しました。メールは再送していません。',
   });
 }
 
@@ -736,6 +827,20 @@ function isUniqueConstraint(error) {
     .filter(Boolean)
     .join(' ');
   return /UNIQUE constraint failed/i.test(text) || /SQLITE_CONSTRAINT/i.test(text);
+}
+
+async function readOptionalJsonBody(request) {
+  const text = await request.text();
+  if (!text || !String(text).trim()) return { body: {} };
+  try {
+    const parsed = JSON.parse(text);
+    if (parsed == null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return { error: '不正なリクエストです。' };
+    }
+    return { body: parsed };
+  } catch {
+    return { error: '不正なリクエストです。' };
+  }
 }
 
 function json(data, status) {

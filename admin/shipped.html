@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>管理画面 | 佐藤農園</title>
+<meta name="robots" content="noindex, nofollow">
+<title>発送済み一覧 | 佐藤農園</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -123,7 +124,7 @@
     font-family: "Shippori Mincho", serif;
     font-weight: 700;
     font-size: 16px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -137,10 +138,16 @@
     font-family: "Zen Kaku Gothic New", sans-serif;
     font-weight: 500;
   }
+  .group-note {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
 
   .order-card {
     background: #fff;
     border: 1px solid var(--line);
+    border-left: 3px solid var(--ink-soft);
     border-radius: 8px;
     padding: 16px 18px;
     margin-bottom: 10px;
@@ -150,9 +157,6 @@
     gap: 16px;
     flex-wrap: wrap;
   }
-
-  .order-card.pending { border-left: 3px solid var(--gold); }
-  .order-card.preparing { border-left: 3px solid var(--green); }
 
   .order-info { flex: 1; min-width: 220px; }
   .order-info .oid {
@@ -180,59 +184,13 @@
     white-space: nowrap;
   }
 
-  .confirm-btn {
-    background: var(--gold-deep);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 18px;
-    font-family: "Shippori Mincho", serif;
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .confirm-btn:hover:not(:disabled) { background: #74530F; }
-  .confirm-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
-
   .order-side {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 8px;
+    min-width: 180px;
   }
-
-  .print-btn {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    background: #fff;
-    color: var(--ink);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 10px 18px;
-    font-family: "Shippori Mincho", serif;
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .print-btn:hover { border-color: var(--gold); color: var(--ink); }
-
-  .complete-btn {
-    background: var(--green);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 18px;
-    font-family: "Shippori Mincho", serif;
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .complete-btn:hover:not(:disabled) { background: #2E452E; }
-  .complete-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
 
   .tracking-field {
     width: 100%;
@@ -250,22 +208,20 @@
   }
   .tracking-field input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
 
-  .status-tag {
-    font-size: 11px;
-    background: var(--green-soft);
-    color: var(--green);
-    border-radius: 100px;
-    padding: 4px 12px;
+  .save-btn {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
     white-space: nowrap;
   }
-
-  .member-counts {
-    font-size: 12px;
-    color: var(--ink-soft);
-    margin: -4px 0 12px;
-  }
-
-  .order-card.member { border-left: 3px solid var(--ink-soft); }
+  .save-btn:hover:not(:disabled) { background: #2E452E; }
+  .save-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
 
   .empty-note {
     text-align: center;
@@ -290,66 +246,6 @@
   }
   .toast.show { opacity: 1; }
 
-  .email-preview {
-    position: fixed;
-    inset: 0;
-    background: rgba(43, 42, 34, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 20;
-  }
-  .email-preview[hidden] { display: none; }
-  .email-preview-card {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 24px 22px;
-    max-width: 520px;
-    width: 100%;
-    max-height: min(80vh, 640px);
-    overflow: auto;
-  }
-  .email-preview-card h2 {
-    font-family: "Shippori Mincho", serif;
-    font-size: 18px;
-    margin: 0 0 8px;
-  }
-  .email-preview-card .email-preview-note {
-    font-size: 12px;
-    color: var(--ink-soft);
-    margin: 0 0 14px;
-  }
-  .email-preview-card .email-preview-subject {
-    font-size: 13px;
-    font-weight: 700;
-    margin: 0 0 10px;
-  }
-  .email-preview-card pre {
-    white-space: pre-wrap;
-    font-family: inherit;
-    font-size: 14px;
-    line-height: 1.7;
-    margin: 0 0 16px;
-    background: var(--paper);
-    border-radius: 6px;
-    padding: 14px 16px;
-  }
-  .email-preview-card button {
-    width: 100%;
-    padding: 11px;
-    background: var(--gold-deep);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-family: "Shippori Mincho", serif;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  .email-preview-card button:hover { background: #74530F; }
-
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -357,8 +253,8 @@
 
 <div class="wrap">
   <header>
-    <h1>佐藤農園 管理画面</h1>
-    <p>入金確認・注文状況・事前登録者の確認</p>
+    <h1>発送済み一覧</h1>
+    <p>発送が終わった注文の確認と、追跡番号の記録</p>
   </header>
 
   <div id="loginGate">
@@ -370,7 +266,7 @@
 
   <div id="main">
     <div class="toolbar">
-      <a href="/admin/shipped.html">発送済み一覧</a>
+      <a href="/admin.html">管理画面へ戻る</a>
       <div class="toolbar-actions">
         <button id="refreshBtn">一覧を更新</button>
         <button id="logoutBtn">ログアウト</button>
@@ -379,46 +275,16 @@
 
     <section class="group">
       <div class="group-title">
-        支払い待ち
-        <span class="group-count" id="pendingCount">0</span>
+        発送済み
+        <span class="group-count" id="shippedCount">0</span>
       </div>
-      <div id="pendingList"></div>
-    </section>
-
-    <section class="group">
-      <div class="group-title">
-        発送準備中（入金確認済み）
-        <span class="group-count" id="preparingCount">0</span>
-      </div>
-      <div id="preparingList"></div>
-    </section>
-
-    <section class="group">
-      <div class="group-title">
-        事前登録者
-        <span class="group-count" id="memberCount">0</span>
-      </div>
-      <p class="member-counts">
-        Lv.1 <span id="lv1Count">0</span>
-        　／　Lv.2 <span id="lv2Count">0</span>
-        　／　Lv.3 <span id="lv3Count">0</span>
-      </p>
-      <div id="memberList"></div>
+      <p class="group-note">追跡番号の保存では、発送メールは再送しません。</p>
+      <div id="shippedList"></div>
     </section>
   </div>
 </div>
 
 <div id="toast" class="toast"></div>
-
-<div id="emailPreview" class="email-preview" hidden>
-  <div class="email-preview-card">
-    <h2>発送メール（プレビュー）</h2>
-    <p class="email-preview-note">この画面はテスト確認用です。実際の送信はしていません。</p>
-    <p class="email-preview-subject" id="emailPreviewSubject"></p>
-    <pre id="emailPreviewBody"></pre>
-    <button type="button" id="emailPreviewClose">閉じる</button>
-  </div>
-</div>
 
 <script>
 const API_BASE = "";
@@ -476,24 +342,13 @@ function showToast(message) {
   setTimeout(() => t.classList.remove("show"), 2400);
 }
 
-function showEmailPreview(preview) {
-  if (!preview) return;
-  el("emailPreviewSubject").textContent = preview.subject || "";
-  el("emailPreviewBody").textContent = preview.text || "";
-  el("emailPreview").hidden = false;
-}
-
-el("emailPreviewClose").addEventListener("click", () => {
-  el("emailPreview").hidden = true;
-});
-
 function formatDate(iso) {
   if (!iso) return "";
   return iso.replace("T", " ").slice(0, 16);
 }
 
 async function tryLogin(secret) {
-  const res = await fetch(API_BASE + "/api/admin/orders", {
+  const res = await fetch(API_BASE + "/api/admin/orders/shipped", {
     headers: { "X-Admin-Secret": secret },
   });
   if (res.status === 401) return false;
@@ -537,16 +392,12 @@ el("logoutBtn").addEventListener("click", () => {
 async function showMain() {
   el("loginGate").style.display = "none";
   el("main").classList.add("show");
-  await loadAll();
-}
-
-async function loadAll() {
-  await Promise.all([loadOrders(), loadMembers()]);
+  await loadOrders();
 }
 
 async function loadOrders() {
   try {
-    const res = await fetch(API_BASE + "/api/admin/orders", {
+    const res = await fetch(API_BASE + "/api/admin/orders/shipped", {
       headers: { "X-Admin-Secret": adminSecret },
     });
     if (res.status === 401) {
@@ -556,7 +407,7 @@ async function loadOrders() {
     }
     const data = await res.json();
     if (!data.success) throw new Error(data.error);
-    renderOrders(data.orders);
+    renderOrders(data.orders || []);
   } catch (err) {
     showToast("一覧の取得に失敗しました");
   }
@@ -594,111 +445,66 @@ function productLabel(order) {
   return "標準精米（白米）実質" + yieldKg + "kg(" + brown + "を精米)";
 }
 
-function orderInfoHtml(order) {
-  const name = order.recipient_name || "（宛名なし）";
-  const notes = order.notes ? String(order.notes).trim() : "";
-  const notesHtml = notes
-    ? `<div class="notes">備考：${escapeHtml(notes)}</div>`
-    : "";
-  return `
-      <div class="order-info">
-        <div class="oid">No.${escapeHtml(order.id)}</div>
-        <div class="member">${escapeHtml(name)}</div>
-        <div class="shipping">${shippingHtml(order)}</div>
-        <div class="product">${escapeHtml(productLabel(order))}</div>
-        ${notesHtml}
-        <div class="date">注文日時：${escapeHtml(formatDate(order.ordered_at))}</div>
-      </div>`;
-}
-
 function renderOrders(orders) {
-  const pending = orders.filter((o) => o.payment_status === "pending_payment");
-  const preparing = orders.filter((o) => o.status === "preparing");
+  el("shippedCount").textContent = orders.length;
 
-  el("pendingCount").textContent = pending.length;
-  el("preparingCount").textContent = preparing.length;
-
-  const pendingList = el("pendingList");
-  pendingList.innerHTML = pending.length
+  const list = el("shippedList");
+  list.innerHTML = orders.length
     ? ""
-    : '<p class="empty-note">支払い待ちの注文はありません。</p>';
-  for (const o of pending) {
-    const card = document.createElement("div");
-    card.className = "order-card pending";
-    card.innerHTML = `
-      ${orderInfoHtml(o)}
-      <div class="order-amount">${yen(o.total_amount)}</div>
-      <button class="confirm-btn" data-id="${escapeHtml(o.id)}">入金確認</button>
-    `;
-    pendingList.appendChild(card);
-  }
+    : '<p class="empty-note">発送済みの注文はありません。</p>';
 
-  const preparingList = el("preparingList");
-  preparingList.innerHTML = preparing.length
-    ? ""
-    : '<p class="empty-note">発送準備中の注文はありません。</p>';
-  for (const o of preparing) {
+  for (const o of orders) {
     const card = document.createElement("div");
-    card.className = "order-card preparing";
+    card.className = "order-card";
+    const notes = o.notes ? String(o.notes).trim() : "";
+    const notesHtml = notes
+      ? `<div class="notes">備考：${escapeHtml(notes)}</div>`
+      : "";
+    const tracking = o.tracking_number ? String(o.tracking_number) : "";
     card.innerHTML = `
-      ${orderInfoHtml(o)}
+      <div class="order-info">
+        <div class="oid">No.${escapeHtml(o.id)}</div>
+        <div class="member">${escapeHtml(o.recipient_name || "（宛名なし）")}</div>
+        <div class="shipping">${shippingHtml(o)}</div>
+        <div class="product">${escapeHtml(productLabel(o))}</div>
+        ${notesHtml}
+        <div class="date">注文日時：${escapeHtml(formatDate(o.ordered_at))}</div>
+        <div class="date">発送日時：${escapeHtml(formatDate(o.ship_date) || "（未記録）")}</div>
+      </div>
       <div class="order-side">
         <div class="order-amount">${yen(o.total_amount)}</div>
-        <a class="print-btn" href="/admin/shipping-instruction.html?id=${encodeURIComponent(o.id)}" target="_blank" rel="noopener">指示書を印刷</a>
         <label class="tracking-field">
-          <input class="tracking-input" type="text" inputmode="numeric" autocomplete="off" maxlength="40" placeholder="追跡番号（任意）" aria-label="追跡番号">
+          <input class="tracking-input" type="text" inputmode="numeric" autocomplete="off" maxlength="40" placeholder="追跡番号" aria-label="追跡番号" value="${escapeHtml(tracking)}">
         </label>
-        <button class="complete-btn" data-id="${escapeHtml(o.id)}">発送完了</button>
+        <button class="save-btn" data-id="${escapeHtml(o.id)}">保存</button>
       </div>
     `;
-    preparingList.appendChild(card);
+    list.appendChild(card);
   }
 
-  document.querySelectorAll(".confirm-btn").forEach((btn) => {
-    btn.addEventListener("click", () => confirmPayment(btn.dataset.id, btn));
+  document.querySelectorAll(".save-btn").forEach((btn) => {
+    btn.addEventListener("click", () => saveTracking(btn.dataset.id, btn));
   });
-  document.querySelectorAll(".complete-btn").forEach((btn) => {
-    btn.addEventListener("click", () => completeShipment(btn.dataset.id, btn));
-  });
-}
-
-async function confirmPayment(orderId, btn) {
-  const ok = confirm(`注文 No.${orderId} を入金確認済みにします。よろしいですか？`);
-  if (!ok) return;
-
-  btn.disabled = true;
-  btn.textContent = "処理中…";
-
-  try {
-    const res = await fetch(API_BASE + `/api/admin/orders/${orderId}/paid`, {
-      method: "POST",
-      headers: { "X-Admin-Secret": adminSecret },
+  document.querySelectorAll(".tracking-input").forEach((input) => {
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const btn = input.closest(".order-card").querySelector(".save-btn");
+        if (btn) saveTracking(btn.dataset.id, btn);
+      }
     });
-    const data = await res.json();
-    if (!data.success) throw new Error(data.error || "処理に失敗しました");
-
-    showToast(`注文 No.${orderId} を発送準備OKにしました`);
-    await loadOrders();
-  } catch (err) {
-    showToast(err.message);
-    btn.disabled = false;
-    btn.textContent = "入金確認";
-  }
+  });
 }
 
-async function completeShipment(orderId, btn) {
-  const ok = confirm(`注文 No.${orderId} を発送完了にします。よろしいですか？`);
-  if (!ok) return;
-
+async function saveTracking(orderId, btn) {
   const card = btn.closest(".order-card");
   const trackingInput = card && card.querySelector(".tracking-input");
   const trackingNumber = trackingInput ? trackingInput.value.trim() : "";
 
   btn.disabled = true;
-  btn.textContent = "処理中…";
+  btn.textContent = "保存中…";
 
   try {
-    const res = await fetch(API_BASE + `/api/admin/orders/${orderId}/completed`, {
+    const res = await fetch(API_BASE + `/api/admin/orders/${orderId}/tracking`, {
       method: "POST",
       headers: {
         "X-Admin-Secret": adminSecret,
@@ -706,82 +512,24 @@ async function completeShipment(orderId, btn) {
       },
       body: JSON.stringify({ trackingNumber }),
     });
-    const data = await res.json();
-    if (!data.success) throw new Error(data.error || "処理に失敗しました");
-
-    showToast(`注文 No.${orderId} を発送完了にしました`);
-    showEmailPreview(data.emailPreview);
-    await loadOrders();
-  } catch (err) {
-    showToast(err.message);
-    btn.disabled = false;
-    btn.textContent = "発送完了";
-  }
-}
-
-function memberContact(member) {
-  const email = String(member.email_original || "").trim();
-  const phone = String(member.phone || "").trim();
-  if (email && phone) return email + " ／ " + phone;
-  return email || phone || "（連絡先なし）";
-}
-
-function intentLabel(intent) {
-  if (intent === "lv1") return "Lv.1";
-  if (intent === "lv2") return "Lv.2";
-  if (intent === "lv3") return "Lv.3";
-  return intent || "—";
-}
-
-async function loadMembers() {
-  try {
-    const res = await fetch(API_BASE + "/api/admin/members", {
-      headers: { "X-Admin-Secret": adminSecret },
-    });
     if (res.status === 401) {
       showToast("認証が切れました。再度ログインしてください。");
       el("logoutBtn").click();
       return;
     }
     const data = await res.json();
-    if (!data.success) throw new Error(data.error);
-    renderMembers(data.members || []);
+    if (!data.success) throw new Error(data.error || "保存に失敗しました");
+
+    showToast(data.message || `注文 No.${orderId} の追跡番号を保存しました`);
   } catch (err) {
-    showToast("事前登録者の取得に失敗しました");
+    showToast(err.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "保存";
   }
 }
 
-function renderMembers(members) {
-  const lv1 = members.filter((m) => m.purchase_intent === "lv1").length;
-  const lv2 = members.filter((m) => m.purchase_intent === "lv2").length;
-  const lv3 = members.filter((m) => m.purchase_intent === "lv3").length;
-
-  el("memberCount").textContent = members.length;
-  el("lv1Count").textContent = lv1;
-  el("lv2Count").textContent = lv2;
-  el("lv3Count").textContent = lv3;
-
-  const list = el("memberList");
-  list.innerHTML = members.length
-    ? ""
-    : '<p class="empty-note">事前登録者はまだいません。</p>';
-
-  for (const m of members) {
-    const card = document.createElement("div");
-    card.className = "order-card member";
-    card.innerHTML = `
-      <div class="order-info">
-        <div class="member">${escapeHtml(m.name || "（名前なし）")}</div>
-        <div class="product">${escapeHtml(memberContact(m))}</div>
-        <div class="date">登録日時：${escapeHtml(formatDate(m.created_at))}</div>
-      </div>
-      <span class="status-tag">${escapeHtml(intentLabel(m.purchase_intent))}</span>
-    `;
-    list.appendChild(card);
-  }
-}
-
-el("refreshBtn").addEventListener("click", loadAll);
+el("refreshBtn").addEventListener("click", loadOrders);
 
 (async function init() {
   if (adminSecret) {
