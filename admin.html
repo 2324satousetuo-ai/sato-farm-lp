@@ -185,6 +185,30 @@
   .confirm-btn:hover:not(:disabled) { background: #74530F; }
   .confirm-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
 
+  .order-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .print-btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background: #fff;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .print-btn:hover { border-color: var(--gold); color: var(--ink); }
+
   .complete-btn {
     background: var(--green);
     color: #fff;
@@ -301,7 +325,25 @@
 const API_BASE = "";
 const STORAGE_KEY = "satofarms_admin_secret";
 
-let adminSecret = sessionStorage.getItem(STORAGE_KEY) || "";
+function readAdminSecret() {
+  try {
+    return sessionStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
+function saveAdminSecret(secret) {
+  sessionStorage.setItem(STORAGE_KEY, secret);
+  try { localStorage.setItem(STORAGE_KEY, secret); } catch { /* ignore */ }
+}
+
+function clearAdminSecret() {
+  sessionStorage.removeItem(STORAGE_KEY);
+  try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
+}
+
+let adminSecret = readAdminSecret();
 
 const el = (id) => document.getElementById(id);
 const yen = (n) => "¥" + Number(n).toLocaleString("ja-JP");
@@ -366,7 +408,7 @@ el("loginBtn").addEventListener("click", async () => {
   }
   el("loginError").classList.remove("show");
   adminSecret = secret;
-  sessionStorage.setItem(STORAGE_KEY, secret);
+  saveAdminSecret(secret);
   showMain();
 });
 
@@ -376,7 +418,7 @@ el("secretInput").addEventListener("keydown", (e) => {
 
 el("logoutBtn").addEventListener("click", () => {
   adminSecret = "";
-  sessionStorage.removeItem(STORAGE_KEY);
+  clearAdminSecret();
   el("main").classList.remove("show");
   el("loginGate").style.display = "block";
   el("secretInput").value = "";
@@ -490,8 +532,11 @@ function renderOrders(orders) {
     card.className = "order-card preparing";
     card.innerHTML = `
       ${orderInfoHtml(o)}
-      <div class="order-amount">${yen(o.total_amount)}</div>
-      <button class="complete-btn" data-id="${escapeHtml(o.id)}">発送完了</button>
+      <div class="order-side">
+        <div class="order-amount">${yen(o.total_amount)}</div>
+        <a class="print-btn" href="/admin/shipping-instruction.html?id=${encodeURIComponent(o.id)}" target="_blank" rel="noopener">指示書を印刷</a>
+        <button class="complete-btn" data-id="${escapeHtml(o.id)}">発送完了</button>
+      </div>
     `;
     preparingList.appendChild(card);
   }
@@ -620,10 +665,11 @@ el("refreshBtn").addEventListener("click", loadAll);
   if (adminSecret) {
     const ok = await tryLogin(adminSecret);
     if (ok) {
+      saveAdminSecret(adminSecret);
       showMain();
       return;
     }
-    sessionStorage.removeItem(STORAGE_KEY);
+    clearAdminSecret();
     adminSecret = "";
   }
 })();

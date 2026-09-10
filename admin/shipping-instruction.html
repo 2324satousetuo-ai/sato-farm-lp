@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>出荷作業指示書 | 佐藤農園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F1E1;
+    --ink: #111;
+    --ink-soft: #5B5646;
+    --line: #111;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .screen-bar {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 18px 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .screen-bar button,
+  .screen-bar a {
+    background: #fff;
+    border: 1px solid rgba(43, 42, 34, 0.2);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+  }
+
+  .screen-bar button:hover,
+  .screen-bar a:hover { border-color: #8C6420; }
+
+  .message {
+    max-width: 210mm;
+    margin: 28px auto;
+    padding: 0 20px;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 16px auto 40px;
+    padding: 14mm 16mm 16mm;
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 8px 24px rgba(43, 42, 34, 0.12);
+  }
+
+  @media screen {
+    .sheet {
+      width: min(210mm, calc(100vw - 24px));
+      min-height: 0;
+    }
+  }
+
+  .sheet[hidden] { display: none; }
+
+  .brand {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin: 10px 0 18px;
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 8px;
+  }
+
+  h1 {
+    font-family: "Shippori Mincho", serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin: 0;
+  }
+
+  .serial {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .blank {
+    display: inline-block;
+    min-width: 7em;
+    border-bottom: 1px solid var(--line);
+    min-height: 1.2em;
+    padding: 0 4px;
+  }
+
+  .blank.wide { min-width: 12em; }
+  .blank.grow { min-width: 0; flex: 1; }
+
+  .field {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 10px 0;
+    font-size: 15px;
+  }
+
+  .label { flex: 0 0 auto; }
+
+  .address {
+    margin: 8px 0 4px 1.6em;
+    display: grid;
+    grid-template-columns: 5.5em 1fr;
+    gap: 6px 10px;
+    font-size: 15px;
+  }
+
+  .product-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    margin: 4px 0 8px 1.6em;
+    font-size: 15px;
+  }
+
+  .choice { white-space: nowrap; }
+
+  .mark {
+    display: inline-block;
+    width: 1.05em;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .notes-box {
+    min-height: 4.2em;
+    margin: 6px 0 16px 1.6em;
+    border-bottom: 1px solid var(--line);
+    white-space: pre-wrap;
+    font-size: 14px;
+    padding-bottom: 8px;
+  }
+
+  .checks-title {
+    text-align: center;
+    font-family: "Shippori Mincho", serif;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    margin: 18px 0 10px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 6px 0;
+  }
+
+  .checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    font-size: 15px;
+    align-items: start;
+  }
+
+  .check-col {
+    display: grid;
+    gap: 10px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 1.8em;
+  }
+
+  .box {
+    width: 1em;
+    height: 1em;
+    border: 1.5px solid var(--line);
+    flex: 0 0 auto;
+  }
+
+  .tracking {
+    margin-top: 22px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 15px;
+  }
+
+  .tracking .blank { min-width: 16em; }
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .screen-bar,
+    .message { display: none !important; }
+    .sheet {
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="screen-bar">
+  <button type="button" id="printBtn">このページを印刷</button>
+  <a href="../admin.html">管理画面へ戻る</a>
+</div>
+
+<p id="message" class="message">指示書を読み込んでいます…</p>
+
+<article id="sheet" class="sheet" hidden>
+  <div class="brand">直販システム　佐藤農園　satofarms.com</div>
+  <div class="title-row">
+    <h1>出荷作業指示書</h1>
+    <div class="serial">NO. <span class="blank"></span></div>
+  </div>
+
+  <div class="field">
+    <span class="label">１．注文番号：</span>
+    <span id="orderId" class="blank wide"></span>
+  </div>
+  <div class="field">
+    <span class="label">２．入金確認日：</span>
+    <span id="paidDate" class="blank wide"></span>
+  </div>
+  <div class="field">
+    <span class="label">３．入金額：</span>
+    <span id="amount" class="blank wide"></span>
+  </div>
+
+  <div class="field"><span class="label">４．お届け先：</span></div>
+  <div class="address">
+    <span>郵便番号</span><span id="postal" class="blank grow"></span>
+    <span>都道府県</span><span id="prefecture" class="blank grow"></span>
+    <span>住所</span><span id="address" class="blank grow"></span>
+    <span>宛名</span><span id="recipient" class="blank grow"></span>
+  </div>
+
+  <div class="field"><span class="label">５．商品：</span></div>
+  <div class="product-choices">
+    <span class="choice"><span id="brownMark" class="mark">□</span>玄米のまま</span>
+    <span class="choice"><span id="milledMark" class="mark">□</span>標準精米する（白米）</span>
+  </div>
+  <div class="field">
+    <span class="label">　　数量：</span>
+    <span id="quantityKg" class="blank"></span>
+    <span>kg</span>
+  </div>
+  <div class="field">
+    <span class="label">　　実質計測値：</span>
+    <span class="blank"></span>
+    <span>kg</span>
+  </div>
+
+  <div class="field"><span class="label">備考：</span></div>
+  <div id="notes" class="notes-box"></div>
+
+  <div class="checks-title">── 作業チェック ──</div>
+  <div class="checks">
+    <div class="check-col">
+      <div class="check-item"><span class="box"></span>商品・数量を確認した</div>
+      <div class="check-item"><span class="box"></span>精米した（該当する場合）</div>
+      <div class="check-item"><span class="box"></span>計量した</div>
+      <div class="check-item"><span class="box"></span>梱包した</div>
+    </div>
+    <div class="check-col">
+      <div class="check-item"><span class="box"></span>郵便局へ持ち込んだ</div>
+      <div class="check-item"><span class="box"></span>追跡番号をシステムに入力した</div>
+    </div>
+  </div>
+
+  <div class="tracking">
+    <span>■追跡番号：</span>
+    <span class="blank grow"></span>
+  </div>
+</article>
+
+<script type="module">
+import { buildShippingInstruction, readAdminSecret } from "./shipping-instruction-data.js";
+
+const el = (id) => document.getElementById(id);
+
+function text(id, value) {
+  el(id).textContent = value || "";
+}
+
+function applyInstruction(model) {
+  text("orderId", model.orderId);
+  text("paidDate", model.paidDate);
+  text("amount", model.amount);
+  text("postal", model.postal);
+  text("prefecture", model.prefecture);
+  text("address", model.address);
+  text("recipient", model.recipient);
+  el("brownMark").textContent = model.brown ? "■" : "□";
+  el("milledMark").textContent = model.milled ? "■" : "□";
+  text("quantityKg", model.quantityKg);
+  text("notes", model.notes);
+  el("sheet").hidden = false;
+}
+
+window.applyShippingInstruction = applyInstruction;
+
+el("printBtn").addEventListener("click", () => window.print());
+
+async function loadInstruction() {
+  const orderId = new URLSearchParams(location.search).get("id");
+  const message = el("message");
+  if (!orderId) {
+    message.textContent = "注文番号が指定されていません。管理画面の「指示書を印刷」から開いてください。";
+    return;
+  }
+
+  const secret = readAdminSecret(window);
+  if (!secret) {
+    message.innerHTML = '管理画面にログインしてから、もう一度「指示書を印刷」を押してください。<a href="../admin.html">管理画面へ</a>';
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/admin/orders", {
+      headers: { "X-Admin-Secret": secret },
+    });
+    if (res.status === 401) {
+      message.innerHTML = '認証が切れました。管理画面にログインし直してください。<a href="../admin.html">管理画面へ</a>';
+      return;
+    }
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || "取得に失敗しました");
+    const order = (data.orders || []).find((item) => String(item.id) === String(orderId));
+    if (!order) {
+      message.textContent = "この注文の指示書は出せません。発送準備中の一覧にあるか、もう一度管理画面から開いてください。";
+      return;
+    }
+    applyInstruction(buildShippingInstruction(order));
+    document.title = "出荷作業指示書 No." + order.id + " | 佐藤農園";
+    message.hidden = true;
+  } catch (err) {
+    message.textContent = "指示書の取得に失敗しました。通信を確認して、管理画面からやり直してください。";
+  }
+}
+
+loadInstruction();
+</script>
+
+</body>
+</html>

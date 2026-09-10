@@ -285,10 +285,10 @@ async function handleDirectSales(request, env, url) {
         return json({ success: false, error: '認証エラー' }, 401);
       }
       const { results } = await env.DB.prepare(
-        `SELECT o.id, o.status, o.payment_status, o.total_amount, o.ordered_at,
+        `SELECT o.id, o.status, o.payment_status, o.total_amount, o.ordered_at, o.paid_at,
                 o.recipient_name, o.shipping_postal_code, o.shipping_prefecture,
                 o.shipping_address, o.shipping_phone, o.notes,
-                p.weight_label, p.milled
+                p.weight_label, p.milled, p.actual_weight_kg
          FROM orders o
          JOIN products p ON o.product_id = p.id
          WHERE o.status IN ('pending_payment', 'preparing')
