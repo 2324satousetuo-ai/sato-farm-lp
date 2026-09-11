@@ -7,6 +7,17 @@ import {
 } from './order-emails.js';
 import { applyCatalogPrices, quoteAmountsForProduct } from './price-catalog.js';
 import { hitPageView } from './page-views.js';
+import {
+  attachOrderToPriceOffer,
+  isOfferToken,
+  isPriceOfferAction,
+  listPriceOfferCampaigns,
+  listPriceOfferRecipients,
+  previewPriceOffer,
+  publicOriginFromRequest,
+  recordPriceOfferResponse,
+  sendPriceOfferCampaign,
+} from './price-offer.js';
 import { getCurrentPriceStage, isPriceAdmin, setPriceStage } from './price-stage.js';
 import {
   REGISTRATION_EMAIL_SUBJECT,
@@ -336,6 +347,73 @@ async function handleDirectSales(request, env, url) {
       return json({ success: true, members: results });
     }
 
+    if (path === '/api/price-offer/respond' && request.method === 'GET') {
+      return handlePriceOfferRespondGet(request, env, url);
+    }
+
+    if (path === '/api/price-offer/respond' && request.method === 'POST') {
+      if (!isSameOrigin(request)) {
+        return json({ success: false, error: 'Forbidden' }, 403);
+      }
+      return handlePriceOfferRespondPost(request, env);
+    }
+
+    if (path === '/api/admin/price-offers/preview' && request.method === 'GET') {
+      if (!isAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      const targetIntent = url.searchParams.get('target') || 'lv3';
+      try {
+        const preview = await previewPriceOffer(env, targetIntent);
+        return json({ success: true, ...preview });
+      } catch (error) {
+        return priceOfferError(error);
+      }
+    }
+
+    if (path === '/api/admin/price-offers' && request.method === 'GET') {
+      if (!isAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      try {
+        const campaigns = await listPriceOfferCampaigns(env);
+        const requestedId = url.searchParams.get('campaignId');
+        const campaignId = requestedId || (campaigns[0] && campaigns[0].id) || null;
+        const recipients = campaignId ? await listPriceOfferRecipients(env, campaignId) : [];
+        return json({ success: true, campaigns, campaignId, recipients });
+      } catch (error) {
+        return priceOfferError(error);
+      }
+    }
+
+    if (path === '/api/admin/price-offers' && request.method === 'POST') {
+      if (!isSameOrigin(request)) {
+        return json({ success: false, error: 'Forbidden' }, 403);
+      }
+      if (!isAdmin(request, env)) {
+        return json({ success: false, error: '認証エラー' }, 401);
+      }
+      let body;
+      try {
+        body = await request.json();
+      } catch {
+        return json({ success: false, error: '不正なリクエストです。' }, 400);
+      }
+      const targetIntent = (body && body.targetIntent) || 'lv3';
+      if (targetIntent !== 'lv3') {
+        return json({ success: false, error: '今回送信できるのは Lv.3 のみです' }, 400);
+      }
+      try {
+        const result = await sendPriceOfferCampaign(env, {
+          targetIntent,
+          origin: publicOriginFromRequest(request),
+        });
+        return json({ success: true, ...result });
+      } catch (error) {
+        return priceOfferError(error);
+      }
+    }
+
     if (path === '/api/admin/price-stage' && request.method === 'GET') {
       if (!isPriceAdmin(request, env)) {
         return json({ success: false, error: '認証エラー' }, 401);
@@ -439,6 +517,84 @@ async function calculateQuote(env, { productId, prefecture, pickupDiscount }) {
 function isAdmin(request, env) {
   const secret = request.headers.get('X-Admin-Secret');
   return Boolean(secret && env.ADMIN_SECRET && secret === env.ADMIN_SECRET);
+}
+
+function priceOfferError(error) {
+  const code = error && error.code;
+  if (code === 'invalid_intent') {
+    return json({ success: false, error: '対象の会員レベルが正しくありません' }, 400);
+  }
+  if (code === 'invalid_token' || code === 'invalid_action') {
+    return json({ success: false, error: '回答リンクが正しくありません' }, 400);
+  }
+  if (code === 'not_found') {
+    return json({ success: false, error: '回答リンクが見つかりません' }, 404);
+  }
+  if (code === 'no_recipients') {
+    return json({ success: false, error: '送信できるメールアドレスの会員がいません' }, 400);
+  }
+  throw error;
+}
+
+function priceOfferHtmlError(message, status) {
+  return new Response(
+    '<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>佐藤農園</title></head><body style="font-family:sans-serif;line-height:1.7;padding:32px;"><p>' +
+      String(message) +
+      '</p><p><a href="/">トップページへ</a></p></body></html>',
+    {
+      status: status || 400,
+      headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' },
+    }
+  );
+}
+
+function handlePriceOfferRespondGet(request, env, url) {
+  const token = String(url.searchParams.get('t') || '').trim();
+  const action = String(url.searchParams.get('a') || '').trim();
+  const origin = publicOriginFromRequest(request);
+
+  if (!isOfferToken(token) || !isPriceOfferAction(action)) {
+    return Response.redirect(origin + '/price-offer.html?error=invalid', 302);
+  }
+
+  if (action !== 'buy') {
+    return Response.redirect(
+      origin + '/price-offer.html?t=' + encodeURIComponent(token) + '&a=' + encodeURIComponent(action),
+      302
+    );
+  }
+
+  return recordPriceOfferResponse(env, { token, action: 'buy' })
+    .then(() => Response.redirect(origin + '/order.html?offer=' + encodeURIComponent(token), 302))
+    .catch((error) => {
+      if (error && (error.code === 'invalid_token' || error.code === 'not_found' || error.code === 'invalid_action')) {
+        return Response.redirect(origin + '/price-offer.html?error=invalid', 302);
+      }
+      console.error('price_offer_respond_get_failed', error);
+      return priceOfferHtmlError('回答の記録に失敗しました。しばらくしてから再度お試しください。', 500);
+    });
+}
+
+async function handlePriceOfferRespondPost(request, env) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ success: false, error: '不正なリクエストです。' }, 400);
+  }
+
+  const token = typeof body.token === 'string' ? body.token.trim() : '';
+  const action = typeof body.action === 'string' ? body.action.trim() : '';
+  if (action === 'buy') {
+    return json({ success: false, error: '購入するは注文フォームからお進みください' }, 400);
+  }
+
+  try {
+    const result = await recordPriceOfferResponse(env, { token, action });
+    return json({ success: true, action: result.action, locked: result.locked });
+  } catch (error) {
+    return priceOfferError(error);
+  }
 }
 
 async function markOrderCompleted(env, orderId, request) {
@@ -666,6 +822,16 @@ async function handleCreateOrder(request, env) {
     .run();
 
   const orderId = orderResult.meta.last_row_id;
+
+  const priceOfferToken =
+    typeof body.priceOfferToken === 'string' ? body.priceOfferToken.trim() : '';
+  if (priceOfferToken) {
+    try {
+      await attachOrderToPriceOffer(env, { token: priceOfferToken, orderId });
+    } catch (error) {
+      console.error('price_offer_attach_failed', error);
+    }
+  }
 
   await env.DB.prepare(
     `INSERT INTO order_confirmations (

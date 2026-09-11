@@ -266,6 +266,20 @@
   }
 
   .order-card.member { border-left: 3px solid var(--ink-soft); }
+  .order-card.offer { border-left: 3px solid var(--gold); }
+
+  .offer-campaign-select {
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+    color: var(--ink);
+  }
+  .offer-campaign-select:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
 
   .empty-note {
     text-align: center;
@@ -336,6 +350,23 @@
     border-radius: 6px;
     padding: 14px 16px;
   }
+  .email-preview-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 16px;
+  }
+  .email-preview-links a {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 13px;
+    background: #fff;
+  }
+  .email-preview-links a:hover { border-color: var(--gold); }
   .email-preview-card button {
     width: 100%;
     padding: 11px;
@@ -405,6 +436,22 @@
       </p>
       <div id="memberList"></div>
     </section>
+
+    <section class="group">
+      <div class="group-title">価格案内</div>
+      <p class="member-counts" id="offerPreview">送信対象を読み込んでいます…</p>
+      <p class="member-counts" id="offerLastSend"></p>
+      <button type="button" class="confirm-btn" id="sendLv3OfferBtn">Lv.3へ価格案内を送信</button>
+    </section>
+
+    <section class="group">
+      <div class="group-title">
+        価格案内への回答状況
+        <span class="group-count" id="offerResponseCount">0</span>
+      </div>
+      <select id="offerCampaignSelect" class="offer-campaign-select" aria-label="価格案内の送信回"></select>
+      <div id="offerResponseList"></div>
+    </section>
   </div>
 </div>
 
@@ -412,10 +459,16 @@
 
 <div id="emailPreview" class="email-preview" hidden>
   <div class="email-preview-card">
-    <h2>発送メール（プレビュー）</h2>
-    <p class="email-preview-note">この画面はテスト確認用です。実際の送信はしていません。</p>
+    <h2 id="emailPreviewTitle">発送メール（プレビュー）</h2>
+    <p class="email-preview-note" id="emailPreviewNote">この画面はテスト確認用です。実際の送信はしていません。</p>
     <p class="email-preview-subject" id="emailPreviewSubject"></p>
     <pre id="emailPreviewBody"></pre>
+    <p class="email-preview-links" id="emailPreviewLinks" hidden>
+      <a id="emailPreviewSimulator" target="_blank" rel="noopener">シミュレーター</a>
+      <a id="emailPreviewBuy" target="_blank" rel="noopener">購入する</a>
+      <a id="emailPreviewHold" target="_blank" rel="noopener">保留</a>
+      <a id="emailPreviewPass" target="_blank" rel="noopener">見送る</a>
+    </p>
     <button type="button" id="emailPreviewClose">閉じる</button>
   </div>
 </div>
@@ -476,10 +529,24 @@ function showToast(message) {
   setTimeout(() => t.classList.remove("show"), 2400);
 }
 
-function showEmailPreview(preview) {
+function showEmailPreview(preview, options) {
   if (!preview) return;
+  const opts = options || {};
+  el("emailPreviewTitle").textContent = opts.title || "発送メール（プレビュー）";
+  el("emailPreviewNote").textContent =
+    opts.note || "この画面はテスト確認用です。実際の送信はしていません。";
   el("emailPreviewSubject").textContent = preview.subject || "";
   el("emailPreviewBody").textContent = preview.text || "";
+  const urls = preview.urls || {};
+  const links = el("emailPreviewLinks");
+  const hasLinks = urls.simulatorUrl || urls.buyUrl || urls.holdUrl || urls.passUrl;
+  links.hidden = !hasLinks;
+  if (hasLinks) {
+    el("emailPreviewSimulator").href = urls.simulatorUrl || "#";
+    el("emailPreviewBuy").href = urls.buyUrl || "#";
+    el("emailPreviewHold").href = urls.holdUrl || "#";
+    el("emailPreviewPass").href = urls.passUrl || "#";
+  }
   el("emailPreview").hidden = false;
 }
 
@@ -489,7 +556,19 @@ el("emailPreviewClose").addEventListener("click", () => {
 
 function formatDate(iso) {
   if (!iso) return "";
-  return iso.replace("T", " ").slice(0, 16);
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return "";
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(date);
+  const value = (type) => parts.find((part) => part.type === type)?.value || "";
+  return value("year") + "-" + value("month") + "-" + value("day") + " " + value("hour") + ":" + value("minute");
 }
 
 async function tryLogin(secret) {
@@ -541,7 +620,7 @@ async function showMain() {
 }
 
 async function loadAll() {
-  await Promise.all([loadOrders(), loadMembers()]);
+  await Promise.all([loadOrders(), loadMembers(), loadPriceOffers()]);
 }
 
 async function loadOrders() {
@@ -780,6 +859,191 @@ function renderMembers(members) {
     list.appendChild(card);
   }
 }
+
+function offerIntentLabel(intent) {
+  if (intent === "lv1") return "Lv.1";
+  if (intent === "lv2") return "Lv.2";
+  if (intent === "lv3") return "Lv.3";
+  return intent || "—";
+}
+
+function offerCampaignLabel(campaign) {
+  const when = formatDate(campaign.created_at) || "日時不明";
+  return when + "　" + offerIntentLabel(campaign.target_intent) + "　段階" + (campaign.price_stage || "—");
+}
+
+async function loadPriceOfferPreview() {
+  const res = await fetch(API_BASE + "/api/admin/price-offers/preview?target=lv3", {
+    headers: { "X-Admin-Secret": adminSecret },
+  });
+  if (res.status === 401) {
+    showToast("認証が切れました。再度ログインしてください。");
+    el("logoutBtn").click();
+    return null;
+  }
+  const data = await res.json();
+  if (!data.success) throw new Error(data.error);
+
+  el("offerPreview").textContent =
+    "現在の段階 " + (data.priceStage || "—") +
+    "　／　Lv.3 " + Number(data.memberCount || 0) + "人" +
+    "　／　送信対象（メールあり） " + Number(data.withEmailCount || 0) + "人" +
+    "　／　メールなし " + Number(data.withoutEmailCount || 0) + "人";
+
+  if (data.lastCampaign) {
+    el("offerLastSend").textContent =
+      "前回送信：" + formatDate(data.lastCampaign.created_at) +
+      "　段階" + (data.lastCampaign.price_stage || "—") +
+      "　" + Number(data.lastCampaign.sent_count || 0) + "通";
+  } else {
+    el("offerLastSend").textContent = "前回送信：まだありません";
+  }
+  return data;
+}
+
+function renderOfferResponses(campaigns, campaignId, recipients) {
+  const select = el("offerCampaignSelect");
+  const previous = campaignId || select.value;
+  select.innerHTML = "";
+  if (!campaigns.length) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "まだ送信していません";
+    select.appendChild(option);
+    select.disabled = true;
+  } else {
+    select.disabled = false;
+    for (const campaign of campaigns) {
+      const option = document.createElement("option");
+      option.value = campaign.id;
+      option.textContent = offerCampaignLabel(campaign);
+      select.appendChild(option);
+    }
+    if (previous && [...select.options].some((o) => o.value === previous)) {
+      select.value = previous;
+    }
+  }
+
+  el("offerResponseCount").textContent = recipients.length;
+  const list = el("offerResponseList");
+  list.innerHTML = recipients.length
+    ? ""
+    : '<p class="empty-note">この回の回答はまだありません。</p>';
+
+  for (const row of recipients) {
+    const card = document.createElement("div");
+    card.className = "order-card offer";
+    const sendLabel =
+      row.send_status === "sent" ? "送信済み" :
+      row.send_status === "failed" ? "送信失敗" :
+      row.send_status === "skipped" ? "対象外" : "未送信";
+    const when = row.responded_at
+      ? "回答日時：" + formatDate(row.responded_at)
+      : "未回答";
+    card.innerHTML = `
+      <div class="order-info">
+        <div class="member">${escapeHtml(row.name || "（名前なし）")}</div>
+        <div class="product">${escapeHtml(row.email || "（メールなし）")}　／　${escapeHtml(sendLabel)}</div>
+        <div class="date">${escapeHtml(when)}</div>
+      </div>
+      <span class="status-tag">${escapeHtml(row.statusLabel || "未回答")}</span>
+    `;
+    list.appendChild(card);
+  }
+}
+
+async function loadPriceOffers(campaignId) {
+  try {
+    await loadPriceOfferPreview();
+    const query = campaignId ? ("?campaignId=" + encodeURIComponent(campaignId)) : "";
+    const res = await fetch(API_BASE + "/api/admin/price-offers" + query, {
+      headers: { "X-Admin-Secret": adminSecret },
+    });
+    if (res.status === 401) {
+      showToast("認証が切れました。再度ログインしてください。");
+      el("logoutBtn").click();
+      return;
+    }
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error);
+    renderOfferResponses(data.campaigns || [], data.campaignId, data.recipients || []);
+  } catch (err) {
+    el("offerPreview").textContent = "価格案内の情報を取得できませんでした。";
+    showToast("価格案内の取得に失敗しました");
+  }
+}
+
+el("offerCampaignSelect").addEventListener("change", () => {
+  const campaignId = el("offerCampaignSelect").value;
+  if (campaignId) loadPriceOffers(campaignId);
+});
+
+el("sendLv3OfferBtn").addEventListener("click", async () => {
+  const btn = el("sendLv3OfferBtn");
+  if (btn.disabled) return;
+
+  let preview;
+  try {
+    preview = await loadPriceOfferPreview();
+  } catch (err) {
+    showToast("送信対象を確認できませんでした");
+    return;
+  }
+  if (!preview) return;
+
+  const count = Number(preview.withEmailCount || 0);
+  if (!count) {
+    window.alert("送信できるメールアドレスの Lv.3 会員がいません。");
+    return;
+  }
+
+  let message =
+    "Lv.3の会員 " + count + "人に、現在の段階" + (preview.priceStage || "—") +
+    "の価格案内を送信します。よろしいですか？";
+  if (preview.lastCampaign) {
+    message += "\n前回の送信は " + formatDate(preview.lastCampaign.created_at) + " です。";
+  }
+  if (!window.confirm(message)) return;
+
+  btn.disabled = true;
+  btn.textContent = "送信しています…";
+  try {
+    const res = await fetch(API_BASE + "/api/admin/price-offers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Admin-Secret": adminSecret,
+      },
+      body: JSON.stringify({ targetIntent: "lv3" }),
+    });
+    const data = await res.json();
+    if (res.status === 401) {
+      showToast("認証が切れました。再度ログインしてください。");
+      el("logoutBtn").click();
+      return;
+    }
+    if (!data.success) throw new Error(data.error || "送信に失敗しました");
+    showToast(
+      data.previewOnly
+        ? "プレビュー送信しました（実メールは送っていません）"
+        : "送信しました（成功 " + data.sent + " / 失敗 " + data.failed + "）"
+    );
+    if (data.emailPreview) {
+      showEmailPreview(data.emailPreview, {
+        title: "価格案内メール（プレビュー）",
+        note: data.previewOnly
+          ? "実メールは送っていません。下のリンクで、会員と同じ操作を確認できます。"
+          : "送信したメールの内容です。",
+      });
+    }
+    await loadPriceOffers(data.campaignId);
+  } catch (err) {
+    showToast(err.message || "送信に失敗しました");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Lv.3へ価格案内を送信";
+  }
+});
 
 el("refreshBtn").addEventListener("click", loadAll);
 

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご案内への回答 | 佐藤農園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F1E1;
+    --ink: #2B2A22;
+    --ink-soft: #5B5646;
+    --gold-deep: #8C6420;
+    --error: #A8402A;
+    --line: rgba(43, 42, 34, 0.14);
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 64px 20px 100px;
+    text-align: center;
+  }
+  h1 {
+    font-family: "Shippori Mincho", serif;
+    font-size: 22px;
+    margin: 0 0 16px;
+  }
+  p { font-size: 15px; color: var(--ink-soft); margin: 0 0 16px; }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+  }
+  .confirm-btn {
+    display: inline-block;
+    background: var(--gold-deep);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 22px;
+    font-family: "Shippori Mincho", serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .confirm-btn:hover:not(:disabled) { background: #74530F; }
+  .confirm-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
+  .error { color: var(--error); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div id="confirmPanel" hidden>
+        <h1 id="confirmTitle">ご希望の確認</h1>
+        <p id="confirmLead"></p>
+        <button type="button" class="confirm-btn" id="confirmBtn">この内容で回答する</button>
+      </div>
+      <div id="thanksPanel" hidden>
+        <h1>回答を受け付けました。ありがとうございます</h1>
+        <p>佐藤農園</p>
+        <a class="confirm-btn" href="index.html">トップページへ</a>
+      </div>
+      <div id="errorPanel" hidden>
+        <h1>リンクが無効です</h1>
+        <p class="error">この案内リンクは使えないか、期限切れの可能性があります。</p>
+        <a class="confirm-btn" href="index.html">トップページへ</a>
+      </div>
+    </div>
+  </div>
+<script>
+const ACTION_COPY = {
+  hold: {
+    title: "保留として回答します",
+    lead: "今は決めず、保留として記録します。よろしいですか？",
+  },
+  pass: {
+    title: "見送るとして回答します",
+    lead: "今回は見送るとして記録します。よろしいですか？",
+  },
+};
+
+const params = new URLSearchParams(window.location.search);
+const token = String(params.get("t") || "").trim();
+const action = String(params.get("a") || "").trim();
+const hasError = params.get("error") === "invalid";
+
+const confirmPanel = document.getElementById("confirmPanel");
+const thanksPanel = document.getElementById("thanksPanel");
+const errorPanel = document.getElementById("errorPanel");
+
+if (hasError || !token || (action !== "hold" && action !== "pass")) {
+  errorPanel.hidden = false;
+} else {
+  const copy = ACTION_COPY[action];
+  document.getElementById("confirmTitle").textContent = copy.title;
+  document.getElementById("confirmLead").textContent = copy.lead;
+  confirmPanel.hidden = false;
+}
+
+document.getElementById("confirmBtn").addEventListener("click", async () => {
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = true;
+  btn.textContent = "記録しています…";
+  try {
+    const res = await fetch("/api/price-offer/respond", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token, action }),
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || "記録に失敗しました");
+    confirmPanel.hidden = true;
+    thanksPanel.hidden = false;
+  } catch (err) {
+    confirmPanel.hidden = true;
+    errorPanel.hidden = false;
+  }
+});
+</script>
+</body>
+</html>
