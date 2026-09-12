@@ -1,6 +1,7 @@
 /**
  * ブログ原稿の Markdown を、公開用 HTML に写す。
  * 新しい原稿の初回掲載（記事ページ・一覧・新着・トップの案内）も行う。
+ * トップページの収穫状況・よくある質問も、原稿/LP.md から写す。
  * VS Code からは「サイトに載せる」タスク、または npm run サイトに載せる で実行する。
  * 話題バッジはタイトルを主に、本文は空き枠の補充。英語は対になる日本語と同じ話題にする。
  */
@@ -16,8 +17,9 @@ import {
   replaceDateLine,
 } from "./note-category.mjs";
 import { resolveNoteTopics, topicLabel } from "./note-topics.mjs";
+import { syncLpMarkdown } from "./publish-lp.mjs";
 
-const CSS_VERSION = 42;
+const CSS_VERSION = 43;
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = new Set(process.argv.slice(2));
@@ -444,7 +446,7 @@ function warnIfLpChanged() {
   try {
     const names = git(["diff", "--name-only", "HEAD", "--", "原稿/LP.md", "原稿/LP-en.md"]);
     if (!names) return;
-    console.log("※ トップページ原稿のうち、新着・農園ブログ以外の直しは、この命令では写しません。");
+    console.log("※ トップページ原稿のうち、収穫状況・よくある質問・新着・農園ブログ以外の直しは、この命令では写しません。");
   } catch {
     // git が使えないときは無視
   }
@@ -1081,6 +1083,7 @@ function publish() {
 
   written.push(...syncLpTeaser("ja", listings.ja));
   written.push(...syncLpTeaser("en", listings.en));
+  written.push(...syncLpMarkdown(root, { dryRun }));
 
   const jaListings = listingSlugMeta(listings.ja);
   const enListings = listingSlugMeta(listings.en);
@@ -1117,6 +1120,7 @@ function addAndPush(written, created = []) {
     }
     if (htmlRel === "index.html") return ["原稿/LP.md"];
     if (htmlRel === "index-en.html") return ["原稿/LP-en.md"];
+    if (htmlRel === "data/harvest.json") return ["原稿/LP.md", "原稿/LP-en.md"];
     return [];
   });
   const files = [...written, ...mdFiles];
@@ -1126,7 +1130,15 @@ function addAndPush(written, created = []) {
     return;
   }
   git(["add", "--", ...files]);
-  const message = created.length ? "新しい原稿をサイトへ載せる。" : "ブログの原稿をサイトへ写す。";
+  const hasNotes = created.length || written.some((file) => /blog(?:-en)?\//.test(file));
+  const hasLp = written.some((file) => file === "index.html" || file === "index-en.html" || file === "data/harvest.json");
+  const message = created.length
+    ? "新しい原稿をサイトへ載せる。"
+    : hasNotes && hasLp
+      ? "原稿をサイトへ写す。"
+      : hasLp
+        ? "トップページの原稿をサイトへ写す。"
+        : "ブログの原稿をサイトへ写す。";
   git(["commit", "-m", message, "--", ...files]);
   try {
     git(["push"], { stdio: "inherit" });

@@ -1,22 +1,25 @@
 {
   "harvested_ja": [
-    "にんにく・キャベツ・じゃがいも"
+    "にんにく",
+    "キャベツ",
+    "じゃがいも",
+    "玉ねぎ",
+    "トマト"
   ],
   "harvesting_ja": [
     "キュウリ",
-    "トマト",
     "なす",
-    "玉ねぎ"
+    "ニンジン"
   ],
   "harvested_en": [
     "Garlic",
     "Cabbage",
-    "Potato"
+    "Potato",
+    "Onion"
   ],
   "harvesting_en": [
     "Cucumber",
     "Tomato",
-    "Eggplant",
-    "Onion"
+    "Eggplant"
   ]
 }

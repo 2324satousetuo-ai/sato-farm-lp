@@ -23,7 +23,7 @@ export const TOPIC_ORDER = [
   "food",
   "drinks",
   "family",
-  "azuma",
+  "agatsuma",
   "fx",
   "hobbies",
 ];
@@ -129,12 +129,12 @@ export const TOPICS = [
     },
   },
   {
-    id: "azuma",
+    id: "agatsuma",
     ja: "地域・吾妻",
-    en: "Azuma",
+    en: "Agatsuma",
     keywords: {
       ja: ["吾妻", "中之条", "群馬", "地域", "町", "温泉"],
-      en: ["Azuma", "Nakanojo", "Gunma", "onsen"],
+      en: ["Agatsuma", "Nakanojo", "Gunma", "onsen"],
     },
   },
   {

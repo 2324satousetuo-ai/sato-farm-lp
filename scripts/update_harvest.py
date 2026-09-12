@@ -9,7 +9,10 @@ Usage:
       Show current values
 
   python scripts/update_harvest.py --apply
-      Apply data/harvest.json to index.html / index-en.html without prompts
+      Apply current harvest data to HTML and 原稿/LP.md / 原稿/LP-en.md
+
+The usual way is to edit the two harvest lines in 原稿/LP.md and run
+「サイトに載せる」. This script is the question-and-answer alternative.
 """
 from __future__ import annotations
 
@@ -23,6 +26,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "harvest.json"
 JA_HTML = ROOT / "index.html"
 EN_HTML = ROOT / "index-en.html"
+JA_MD = ROOT / "原稿" / "LP.md"
+EN_MD = ROOT / "原稿" / "LP-en.md"
 
 HARVEST_BLOCK_RE = re.compile(
     r'(<ul class="products__harvest">)(.*?)(</ul>)',
@@ -34,8 +39,8 @@ def split_items(text: str) -> list[str]:
     text = text.strip()
     if not text:
         return []
-    # Allow comma / Japanese comma / slash separators
-    parts = re.split(r"[,、/／]+", text)
+    # Allow comma / Japanese comma / slash / middle-dot separators
+    parts = re.split(r"[,、/／・]+", text)
     return [p.strip() for p in parts if p.strip()]
 
 
@@ -81,7 +86,38 @@ def build_block_clean(harvested: list[str], harvesting: list[str], lang: str) ->
         </ul>"""
 
 
+def parse_md_line(text: str, label: str) -> list[str] | None:
+    pattern = rf"^[-*][ \t]+{re.escape(label)}[ \t　]*(.*)$"
+    for line in text.splitlines():
+        m = re.match(pattern, line)
+        if m:
+            return split_items(m.group(1))
+    return None
+
+
+def load_from_markdown() -> dict | None:
+    if not JA_MD.exists() or not EN_MD.exists():
+        return None
+    ja = JA_MD.read_text(encoding="utf-8")
+    en = EN_MD.read_text(encoding="utf-8")
+    harvested_ja = parse_md_line(ja, "収穫しました")
+    harvesting_ja = parse_md_line(ja, "収穫中です")
+    harvested_en = parse_md_line(en, "Harvested")
+    harvesting_en = parse_md_line(en, "Currently harvesting")
+    if None in (harvested_ja, harvesting_ja, harvested_en, harvesting_en):
+        return None
+    return {
+        "harvested_ja": harvested_ja,
+        "harvesting_ja": harvesting_ja,
+        "harvested_en": harvested_en,
+        "harvesting_en": harvesting_en,
+    }
+
+
 def load_data() -> dict:
+    from_md = load_from_markdown()
+    if from_md:
+        return from_md
     if DATA.exists():
         return json.loads(DATA.read_text(encoding="utf-8"))
     return {
@@ -100,6 +136,29 @@ def save_data(data: dict) -> None:
     )
 
 
+def apply_to_markdown(data: dict) -> None:
+    jobs = (
+        (JA_MD, "収穫しました", "収穫中です", data["harvested_ja"], data["harvesting_ja"], "・"),
+        (EN_MD, "Harvested", "Currently harvesting", data["harvested_en"], data["harvesting_en"], " / "),
+    )
+    for path, label1, label2, items1, items2, sep in jobs:
+        text = path.read_text(encoding="utf-8")
+
+        def replace_line(src: str, label: str, items: list[str]) -> str:
+            joined = sep.join(items) if items else "—"
+            pattern = rf"(^[-*][ \t]+{re.escape(label)}[ \t　]*).*$"
+            new, n = re.subn(pattern, rf"\g<1>{joined}", src, count=1, flags=re.M)
+            if n != 1:
+                raise SystemExit(f"Could not find '{label}' in {path.name}")
+            return new
+
+        next_text = replace_line(text, label1, items1)
+        next_text = replace_line(next_text, label2, items2)
+        if next_text != text:
+            path.write_text(next_text, encoding="utf-8")
+            print(f"updated: {path.relative_to(ROOT)}")
+
+
 def apply_to_html(data: dict) -> None:
     for path, lang, harvested_key, harvesting_key in (
         (JA_HTML, "ja", "harvested_ja", "harvesting_ja"),
@@ -112,6 +171,7 @@ def apply_to_html(data: dict) -> None:
             raise SystemExit(f"Could not find products__harvest in {path.name}")
         path.write_text(new_html, encoding="utf-8")
         print(f"updated: {path.relative_to(ROOT)}")
+    apply_to_markdown(data)
 
 
 def show(data: dict) -> None:

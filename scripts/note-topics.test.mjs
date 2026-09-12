@@ -19,9 +19,10 @@ assert.deepEqual(extractTopicsFromTitle("夜明け前の畑と田んぼからは
 assert.deepEqual(extractTopicsFromTitle("光・風・水が織りなす稲田の朝"), ["rice"]);
 assert.deepEqual(extractTopicsFromTitle("命が芽吹く「花水」の季節"), []);
 assert.deepEqual(extractTopicsFromTitle("草を刈り、水を引く。八月最初の恒例行事"), []);
-assert.deepEqual(extractTopicsFromTitle("吾妻の温泉"), ["azuma"]);
+assert.deepEqual(extractTopicsFromTitle("吾妻の温泉"), ["agatsuma"]);
+assert.deepEqual(extractTopicsFromTitle("Agatsuma onsen"), ["agatsuma"]);
 
-assert.deepEqual(extractTopicsFromBody("5月20日に田植えを終えて。田んぼを満たす。稲の花。中之条町。"), ["rice", "azuma"]);
+assert.deepEqual(extractTopicsFromBody("5月20日に田植えを終えて。田んぼを満たす。稲の花。中之条町。"), ["rice", "agatsuma"]);
 assert.deepEqual(extractTopicsFromBody("コップ一杯の水を飲む。英語版の原稿。"), []);
 assert.deepEqual(extractTopicsFromBody("Cursor Proくん、またやってくれました。"), ["ai"]);
 assert.deepEqual(
@@ -100,8 +101,8 @@ const enLegacy = parseDateLine("Random Thoughts　August 19, 2026", "en");
 assert.deepEqual(enLegacy.keywords, []);
 assert.equal(formatDateLine(enLegacy, "en"), "August 19, 2026");
 
-assert.equal(topicLabel("azuma", "ja"), "地域・吾妻");
-assert.equal(topicLabel("azuma", "en"), "Azuma");
+assert.equal(topicLabel("agatsuma", "ja"), "地域・吾妻");
+assert.equal(topicLabel("agatsuma", "en"), "Agatsuma");
 assert.equal(readLinkLabel("ja"), "読む");
 assert.equal(readLinkLabel("en"), "Read");
 
