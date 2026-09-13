@@ -32,11 +32,11 @@ Japanese version available: [日本語で読む](../index.html)
 
 ## Current notices
 
-**[A Difficult Decision — We Are Putting Our Direct Sales System off](../blog-en/notes/a-difficult-decision.html)**
+**Direct sales are open again**
 
 **[Grow-as-We-Go Direct Sales] Nakanojo's delicious rice “Sato Rice” (Koshihikari)**
 
-■2026 harvest: Purchase guide here　■Pre-registration here
+■[2026 harvest: Purchase guide](../index-en.html#rice-register) here　■[Pre-registration](../index-en.html#pre-register) here
 
 Sato Farms URL　https://satofarms.com (satofarms.com)
 
@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- September 13, 2026　Announcement: We Are Resuming Our Direct Sales—[Read](../blog-en/notes/resume-direct-sales.html).
 - September 7, 2026　Added photos of our rice paddies and Chinese cabbage to [Farm Updates](../blog-en/field-report/).
 - September 6, 2026　Rooted in the Community—[Read](../blog-en/notes/rooted-in-the-community.html).
 - August 31, 2026　A Difficult Decision — We Are Putting Our Direct Sales System off—[Read](../blog-en/notes/a-difficult-decision.html).
 - August 30, 2026　A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo—[Read](../blog-en/notes/sagiso-festival.html).
-- August 29, 2026　Sato Farms: An Autumn Growing Note — Just Talking to Myself—[Read](../blog-en/notes/satofarms-autumn-note.html).
 
 [See all news →](../blog-en/news/)
 
@@ -219,9 +219,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- September 13, 2026　[Announcement: We Are Resuming Our Direct Sales](../blog-en/notes/resume-direct-sales.html)　Sato Farms
 - September 6, 2026　[Rooted in the Community](../blog-en/notes/rooted-in-the-community.html)　Festivals are still a wonderful thing.
 - August 31, 2026　[A Difficult Decision — We Are Putting Our Direct Sales System off](../blog-en/notes/a-difficult-decision.html)　Sato Farms
-- August 30, 2026　[A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo](../blog-en/notes/sagiso-festival.html)　A sign about Sagi-so at the exhibition
 
 [View the blog](../blog-en/)
 

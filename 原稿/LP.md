@@ -32,13 +32,11 @@ URL：https://satofarms.com（satofarms.com）
 
 ## 現在のご案内
 
-**[苦渋の決断――直販システム立ち上げ、一旦延期します](../blog/notes/a-difficult-decision.html)**
+**直販システムを再開しました**
 
 **[育てる直販] 中之条町のおいしいお米「さとう米」（コシヒカリ）**
 
-■2026年産：ご購入のご案内 はこちら　■事前会員登録はこちら　■お見積もりシミュレーターはこちら
-
-まもなく受付開始予定です。
+■[2026年産：ご購入のご案内](../index.html#rice-register)はこちら　■[事前会員登録](../index.html#pre-register)はこちら　■[お見積もりシミュレーター](../simulator.html)はこちら
 
 佐藤農園URL　https://satofarms.com（satofarms.com）
 
@@ -48,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.9.13　「直販システム、再開のお知らせ」— [読む](../blog/notes/resume-direct-sales.html)
 - 2026.9.7　田んぼと白菜の写真を[田畑の近況報告](../blog/field-report/)に追加しました。
 - 2026.9.6　「地域に根を張るということ」— [読む](../blog/notes/rooted-in-the-community.html)
 - 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦延期します」— [読む](../blog/notes/a-difficult-decision.html)
@@ -57,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.27　「コシヒカリ――美味しさと、農家の技術が育てた米」— [読む](../blog/notes/Koshihikari-rice.html)
 - 2026.8.26　「AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ」— [読む](../blog/notes/cursor-to-vscode.html)
 - 2026.8.25　「しばらくお休みします」— [読む](../blog/notes/taking-a-short-break.html)
-- 2026.8.24　「コシヒカリ――おいしさは、田んぼの時間から生まれる」を更新しました。— [読む](../blog/notes/koshihikari-field-time.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -225,9 +223,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.9.13　[直販システム、再開のお知らせ](../blog/notes/resume-direct-sales.html)　佐藤農園
 - 2026.9.6　[地域に根を張るということ](../blog/notes/rooted-in-the-community.html)　ローカルに、万歳。祭りは、やっぱりいい。
 - 2026.8.31　[苦渋の決断――直販システム立ち上げ、一旦延期します](../blog/notes/a-difficult-decision.html)　佐藤農園
-- 2026.8.30　[涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」](../blog/notes/sagiso-festival.html)　さぎ草について
 
 [ブログ一覧を見る](../blog/)
 
