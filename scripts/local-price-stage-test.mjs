@@ -74,10 +74,25 @@ try {
   assert.equal(productsA.data.success, true);
   assert.equal(Object.prototype.hasOwnProperty.call(productsA.data, 'stage'), false);
   const mapA = productMap(productsA.data.products);
+  assert.equal(productsA.data.products.length, 6);
+  assert.equal(mapA['15kg相当|0'], undefined);
+  assert.equal(mapA['15kg相当|1'], undefined);
   assert.equal(mapA['30kg|0'].price, 20000);
   assert.equal(mapA['30kg|1'].price, 22000);
   assert.equal(mapA['20kg相当|0'].price, 16000);
   assert.equal(mapA['20kg相当|1'].price, 18000);
+
+  const hidden15 = await testEnv.DB.prepare(
+    "SELECT id FROM products WHERE weight_label = '15kg相当' AND milled = 0"
+  ).first();
+  assert.ok(hidden15 && hidden15.id);
+  const quoteHidden = await read(
+    await worker.fetch(
+      jsonRequest('/api/quote', 'POST', { productId: hidden15.id, prefecture: '群馬県' }),
+      testEnv
+    )
+  );
+  assert.equal(quoteHidden.data.success, false);
 
   const milledA = mapA['30kg|1'];
   const quoteA = await read(

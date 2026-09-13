@@ -4,6 +4,7 @@ import {
   PRICE_STAGES,
   applyCatalogPrices,
   catalogPrice,
+  isOfferedForSale,
   quoteAmountsForProduct,
 } from './price-catalog.js';
 
@@ -84,3 +85,10 @@ assert.equal(Object.prototype.hasOwnProperty.call(overlaid[0], 'stage'), false);
 
 const fallback = quoteAmountsForProduct({ weight_label: 'mystery', milled: 1, price: 999 }, 'A');
 assert.deepEqual(fallback, { catalogPrice: 999, productPrice: 999, millingFee: 0 });
+
+assert.equal(isOfferedForSale({ weight_label: '30kg', milled: 0 }), true);
+assert.equal(isOfferedForSale({ weight_label: '20kg相当', milled: 1 }), true);
+assert.equal(isOfferedForSale({ weight_label: '10kg相当', milled: 0 }), true);
+assert.equal(isOfferedForSale({ weight_label: '15kg相当', milled: 0 }), false);
+assert.equal(isOfferedForSale({ weight_label: '15kg相当', milled: 1 }), false);
+assert.equal(isOfferedForSale(null), false);

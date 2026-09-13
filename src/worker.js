@@ -5,7 +5,7 @@ import {
   getBankTransferAccount,
   normalizeTrackingNumber,
 } from './order-emails.js';
-import { applyCatalogPrices, quoteAmountsForProduct } from './price-catalog.js';
+import { applyCatalogPrices, isOfferedForSale, quoteAmountsForProduct } from './price-catalog.js';
 import { hitPageView } from './page-views.js';
 import {
   attachOrderToPriceOffer,
@@ -186,7 +186,7 @@ async function handleDirectSales(request, env, url) {
       const stage = await getCurrentPriceStage(env);
       return json({
         success: true,
-        products: applyCatalogPrices(results, stage),
+        products: applyCatalogPrices(results, stage).filter(isOfferedForSale),
         bankAccount: getBankTransferAccount(env),
       });
     }
@@ -468,7 +468,7 @@ async function calculateQuote(env, { productId, prefecture, pickupDiscount }) {
     .bind(productId)
     .first();
 
-  if (!product) {
+  if (!product || !isOfferedForSale(product)) {
     throw new Error('指定された商品が見つからないか、現在受付停止中です');
   }
 

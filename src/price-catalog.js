@@ -1,7 +1,7 @@
 export const PRICE_STAGES = ['A', 'B', 'C'];
 export const DEFAULT_PRICE_STAGE = 'A';
 
-// 8商品 × 3段階。金額は口座振込用の確定値（丸めない）。
+// 価格表は8商品 × 3段階。15kg相当は仕分け負荷のため販売停止（既存注文の表示・精算用に残す）。
 const PRICE_ROWS = [
   ['30kg', 0, 20000, 18000, 16000],
   ['20kg相当', 0, 16000, 14400, 12800],
@@ -31,6 +31,12 @@ export function priceKey(weightLabel, milled) {
 
 export function productPriceKey(product) {
   return priceKey(product && product.weight_label, product && product.milled);
+}
+
+const HIDDEN_SALE_WEIGHT_LABELS = new Set(['15kg相当']);
+
+export function isOfferedForSale(product) {
+  return Boolean(product && !HIDDEN_SALE_WEIGHT_LABELS.has(product.weight_label));
 }
 
 export function catalogPrice(product, stage) {
