@@ -401,11 +401,28 @@ When we are ready to start selling the rice, we will contact you using the infor
 
 ---
 
-### Membership
+## Pre-registration
 
-2026 “Grow-as-We-Go Direct Sales”
+[Grow-as-We-Go Direct Sales] Nakanojo's delicious rice “Sato Rice” (Koshihikari)
+Pre-registration
 
-If you like this idea, please join our membership. When the rice is ready for sale, we will contact you by email.
+When we are ready to start selling this year's rice, we will contact you using the information you provide.  
+You do not need to register an address. There is no password.
+
+Registration fields:
+
+- Name (Required)
+- Email
+- Phone
+- Please enter either an email address or a phone number
+- Phone numbers should be 9–11 digits
+- Purchase interest level (Required)
+  - Lv.1: I am interested. I would like to follow future updates
+  - Lv.2: I am interested. I may buy depending on the price
+  - Lv.3: I would really like to buy it
+- I agree to the [privacy policy](../privacy-en.html) (Required)
+
+Register
 
 ---
 
@@ -448,5 +465,7 @@ Sato Farms
 [2324satou.setuo@gmail.com](mailto:2324satou.setuo@gmail.com)
 
 "Sato Farms" is the name used by Setsuo Sato as an individual farmer.
+
+[Privacy policy](../privacy-en.html)
 
 © 2026 Sato Farms

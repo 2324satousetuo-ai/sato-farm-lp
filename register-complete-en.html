@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Registration complete | Sato Farms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="notranslate">
+  <main class="thank-you-page">
+    <div class="container container--narrow">
+      <div class="form-success">
+        <p class="form-success__icon" aria-hidden="true">✓</p>
+        <h1>Thank you for registering</h1>
+        <p>Thank you for your interest in Sato Farms rice.<br>When we are ready to start selling, we will contact you using the information you provided.</p>
+
+        <div class="form-success__line" id="line-friend-section">
+          <p class="form-success__line-lead">Add the Sato Farms official LINE account as a friend to receive field reports and other updates sooner. (Optional)</p>
+          <a id="line-friend-btn" class="btn btn--line" href="#" hidden>Add LINE friend</a>
+        </div>
+
+        <a href="index-en.html" class="btn btn--primary">Back to home</a>
+      </div>
+    </div>
+  </main>
+  <script src="line-friend.config.js"></script>
+  <script>
+    (function () {
+      var config = window.SATO_FARM_LINE_FRIEND || {};
+      var url = String(config.addFriendUrl || '').trim();
+      var button = document.getElementById('line-friend-btn');
+      if (!button || !url) {
+        return;
+      }
+      button.href = url;
+      button.hidden = false;
+      button.setAttribute('target', '_blank');
+      button.setAttribute('rel', 'noopener noreferrer');
+    })();
+  </script>
+</body>
+</html>

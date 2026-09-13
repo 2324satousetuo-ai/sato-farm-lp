@@ -6,6 +6,59 @@
     return;
   }
 
+  const isEn = document.documentElement.lang === 'en';
+  const messages = isEn
+    ? {
+        nameRequired: 'Please enter your name.',
+        emailInvalid: 'Please enter a valid email address.',
+        contactRequired: 'Please enter either an email address or a phone number.',
+        intentRequired: 'Please select your purchase interest level.',
+        privacyRequired: 'Please agree to the privacy policy.',
+        fileProtocol: 'Registration is not available from a saved HTML file. Please use the live site.',
+        submitting: 'Registering…',
+        failed: 'We could not complete your registration. Please try again later.',
+      }
+    : {
+        nameRequired: '入力してください。',
+        emailInvalid: '正しいメールアドレスを入力してください。',
+        contactRequired: 'メールアドレスまたは電話番号のいずれかは必須です',
+        intentRequired: '購入関心レベルを選択してください。',
+        privacyRequired: 'プライバシーポリシーへの同意が必要です。',
+        fileProtocol: '保存したHTMLファイルからは登録できません。公開サイトからお試しください。',
+        submitting: '登録中…',
+        failed: '登録を完了できませんでした。しばらくしてから再度お試しください。',
+      };
+  const serverErrorMap = {
+    '入力してください。': messages.nameRequired,
+    '正しいメールアドレスを入力してください。': messages.emailInvalid,
+    'メールアドレスまたは電話番号のいずれかは必須です': messages.contactRequired,
+    '購入関心レベルを選択してください。': messages.intentRequired,
+    'プライバシーポリシーへの同意が必要です。': messages.privacyRequired,
+    '登録を完了できませんでした。しばらくしてから再度お試しください。': messages.failed,
+    'このメールアドレスは既に登録されています': isEn
+      ? 'This email address is already registered.'
+      : 'このメールアドレスは既に登録されています',
+    'この電話番号は既に登録されています': isEn
+      ? 'This phone number is already registered.'
+      : 'この電話番号は既に登録されています',
+    '電話番号は9〜11桁で入力してください。': isEn
+      ? 'Please enter a phone number with 9–11 digits.'
+      : '電話番号は9〜11桁で入力してください。',
+    '使用できない文字が含まれています。': isEn
+      ? 'This field contains characters that cannot be used.'
+      : '使用できない文字が含まれています。',
+    '名前は80文字以内で入力してください。': isEn
+      ? 'Please enter a name of 80 characters or fewer.'
+      : '名前は80文字以内で入力してください。',
+    '電話番号は30文字以内で入力してください。': isEn
+      ? 'Please enter a phone number of 30 characters or fewer.'
+      : '電話番号は30文字以内で入力してください。',
+  };
+
+  function localizeMessage(message) {
+    return serverErrorMap[message] || message;
+  }
+
   const submitBtn = form.querySelector('[type="submit"]');
   const statusEl = form.querySelector('.form-status');
   const completeUrl = form.dataset.completeUrl || 'register-complete.html';
@@ -74,27 +127,27 @@
     let valid = true;
 
     if (!name) {
-      setFieldError('name', '入力してください。');
+      setFieldError('name', messages.nameRequired);
       valid = false;
     }
 
     if (email && form.elements.email.validity && form.elements.email.validity.typeMismatch) {
-      setFieldError('email', '正しいメールアドレスを入力してください。');
+      setFieldError('email', messages.emailInvalid);
       valid = false;
     }
 
     if (!email && !phone) {
-      setFieldError('contact', 'メールアドレスまたは電話番号のいずれかは必須です');
+      setFieldError('contact', messages.contactRequired);
       valid = false;
     }
 
     if (!purchaseIntent) {
-      setFieldError('purchase_intent', '購入関心レベルを選択してください。');
+      setFieldError('purchase_intent', messages.intentRequired);
       valid = false;
     }
 
     if (!privacy || !privacy.checked) {
-      setFieldError('privacy_agreed', 'プライバシーポリシーへの同意が必要です。');
+      setFieldError('privacy_agreed', messages.privacyRequired);
       valid = false;
     }
 
@@ -132,7 +185,7 @@
     }
 
     if (window.location.protocol === 'file:') {
-      setStatus('保存したHTMLファイルからは登録できません。公開サイトからお試しください。', 'error');
+      setStatus(messages.fileProtocol, 'error');
       return;
     }
 
@@ -140,7 +193,7 @@
     if (submitBtn) {
       submitBtn.disabled = true;
     }
-    setStatus('登録中…', 'info');
+    setStatus(messages.submitting, 'info');
 
     const payload = {
       name: (form.elements.name.value || '').trim(),
@@ -172,11 +225,11 @@
 
       if (data.errors) {
         Object.keys(data.errors).forEach(function (fieldName) {
-          setFieldError(fieldName, data.errors[fieldName]);
+          setFieldError(fieldName, localizeMessage(data.errors[fieldName]));
         });
         setStatus('', null);
       } else {
-        setStatus(data.message || '登録を完了できませんでした。しばらくしてから再度お試しください。', 'error');
+        setStatus(localizeMessage(data.message) || messages.failed, 'error');
       }
 
       submitting = false;
@@ -184,7 +237,7 @@
         submitBtn.disabled = false;
       }
     } catch (error) {
-      setStatus('登録を完了できませんでした。しばらくしてから再度お試しください。', 'error');
+      setStatus(messages.failed, 'error');
       submitting = false;
       if (submitBtn) {
         submitBtn.disabled = false;
