@@ -10,9 +10,9 @@ import {
 } from './order-emails.js';
 
 const BANK_TRANSFER_ACCOUNT = getBankTransferAccount({
-  BANK_TRANSFER_ACCOUNT: '楽天銀行　ダンス（208）　普通　2095392　サトウ セツオ',
+  BANK_TRANSFER_ACCOUNT: 'ドコモSMTBネット銀行（0038）　リンゴ支店（105）　普通　4764566　サトウセツオ',
 });
-assert.equal(BANK_TRANSFER_ACCOUNT, '楽天銀行　ダンス（208）　普通　2095392　サトウ セツオ');
+assert.equal(BANK_TRANSFER_ACCOUNT, 'ドコモSMTBネット銀行（0038）　リンゴ支店（105）　普通　4764566　サトウセツオ');
 assert.equal(getBankTransferAccount({}), '');
 
 assert.equal(formatProductName({ weight_label: '30kg', milled: 0 }), '玄米30kg');
