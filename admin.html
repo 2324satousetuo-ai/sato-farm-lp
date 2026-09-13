@@ -152,6 +152,10 @@
   }
 
   .order-card.pending { border-left: 3px solid var(--gold); }
+  .order-card.pending.overdue {
+    border-left-color: var(--error);
+    background: #F6E8E4;
+  }
   .order-card.preparing { border-left: 3px solid var(--green); }
 
   .order-info { flex: 1; min-width: 220px; }
@@ -172,6 +176,7 @@
   .order-info .product { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
   .order-info .notes { font-size: 13px; color: var(--ink); margin-top: 8px; white-space: pre-wrap; }
   .order-info .date { font-size: 11px; color: var(--ink-soft); margin-top: 4px; }
+  .order-info .elapsed.overdue { color: var(--error); font-weight: 500; }
 
   .order-amount {
     font-family: "Shippori Mincho", serif;
@@ -571,6 +576,48 @@ function formatDate(iso) {
   return value("year") + "-" + value("month") + "-" + value("day") + " " + value("hour") + ":" + value("minute");
 }
 
+const PAYMENT_DUE_DAYS = 7;
+
+function tokyoYmd(iso) {
+  const date = iso instanceof Date ? iso : new Date(iso);
+  if (Number.isNaN(date.getTime())) return null;
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const value = (type) => Number(parts.find((part) => part.type === type)?.value);
+  const year = value("year");
+  const month = value("month");
+  const day = value("day");
+  if (!year || !month || !day) return null;
+  return { year, month, day };
+}
+
+function daysSinceOrder(iso, now) {
+  if (!iso) return null;
+  const ordered = tokyoYmd(iso);
+  const today = tokyoYmd(now || new Date());
+  if (!ordered || !today) return null;
+  const diff = Math.round(
+    (Date.UTC(today.year, today.month - 1, today.day) -
+      Date.UTC(ordered.year, ordered.month - 1, ordered.day)) / 86400000
+  );
+  return diff < 0 ? 0 : diff;
+}
+
+function isPaymentOverdue(days) {
+  return days != null && days > PAYMENT_DUE_DAYS;
+}
+
+function elapsedDaysHtml(iso) {
+  const days = daysSinceOrder(iso);
+  if (days == null) return "";
+  const overdueClass = isPaymentOverdue(days) ? " overdue" : "";
+  return `<span class="elapsed${overdueClass}">（経過${days}日）</span>`;
+}
+
 async function tryLogin(secret) {
   const res = await fetch(API_BASE + "/api/admin/orders", {
     headers: { "X-Admin-Secret": secret },
@@ -673,12 +720,13 @@ function productLabel(order) {
   return "標準精米（白米）実質" + yieldKg + "kg(" + brown + "を精米)";
 }
 
-function orderInfoHtml(order) {
+function orderInfoHtml(order, options) {
   const name = order.recipient_name || "（宛名なし）";
   const notes = order.notes ? String(order.notes).trim() : "";
   const notesHtml = notes
     ? `<div class="notes">備考：${escapeHtml(notes)}</div>`
     : "";
+  const elapsedHtml = options && options.showElapsed ? elapsedDaysHtml(order.ordered_at) : "";
   return `
       <div class="order-info">
         <div class="oid">No.${escapeHtml(order.id)}</div>
@@ -686,7 +734,7 @@ function orderInfoHtml(order) {
         <div class="shipping">${shippingHtml(order)}</div>
         <div class="product">${escapeHtml(productLabel(order))}</div>
         ${notesHtml}
-        <div class="date">注文日時：${escapeHtml(formatDate(order.ordered_at))}</div>
+        <div class="date">注文日時：${escapeHtml(formatDate(order.ordered_at))}${elapsedHtml}</div>
       </div>`;
 }
 
@@ -703,9 +751,10 @@ function renderOrders(orders) {
     : '<p class="empty-note">支払い待ちの注文はありません。</p>';
   for (const o of pending) {
     const card = document.createElement("div");
-    card.className = "order-card pending";
+    const overdue = isPaymentOverdue(daysSinceOrder(o.ordered_at));
+    card.className = "order-card pending" + (overdue ? " overdue" : "");
     card.innerHTML = `
-      ${orderInfoHtml(o)}
+      ${orderInfoHtml(o, { showElapsed: true })}
       <div class="order-amount">${yen(o.total_amount)}</div>
       <button class="confirm-btn" data-id="${escapeHtml(o.id)}">入金確認</button>
     `;
