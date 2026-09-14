@@ -5694,6 +5694,21 @@ section.is-legacy-anchor {
   line-height: 1.8;
 }
 
+.rice-direct__cta .register-section__simulator {
+  margin-top: 28px;
+  color: var(--text);
+}
+
+.register-section__simulator a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.register-section__simulator a:hover {
+  color: var(--forest-dark);
+}
+
 .register-card {
   background: var(--white);
   padding: 40px;
