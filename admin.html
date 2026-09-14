@@ -200,6 +200,21 @@
   .confirm-btn:hover:not(:disabled) { background: #74530F; }
   .confirm-btn:disabled { background: #C9C2AC; cursor: not-allowed; }
 
+  .offer-send-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    align-items: flex-start;
+  }
+
+  .offer-send-actions .confirm-btn {
+    white-space: normal;
+    text-align: left;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
   .order-side {
     display: flex;
     flex-direction: column;
@@ -446,7 +461,11 @@
       <div class="group-title">価格案内</div>
       <p class="member-counts" id="offerPreview">送信対象を読み込んでいます…</p>
       <p class="member-counts" id="offerLastSend"></p>
-      <button type="button" class="confirm-btn" id="sendLv3OfferBtn">Lv.3へ価格案内を送信</button>
+      <div class="offer-send-actions">
+        <button type="button" class="confirm-btn" id="sendUnsentOfferBtn">まだ、案内を受け取っていない人だけに送る</button>
+        <button type="button" class="confirm-btn" id="sendUnansweredOfferBtn">届いたが、まだ回答していない人にも、再送する</button>
+      </div>
+      <p class="member-counts" id="offerSendNote">どちらの場合も、すでに回答した人には送りません。</p>
     </section>
 
     <section class="group">
@@ -782,7 +801,7 @@ function renderOrders(orders) {
     preparingList.appendChild(card);
   }
 
-  document.querySelectorAll(".confirm-btn").forEach((btn) => {
+  pendingList.querySelectorAll(".confirm-btn").forEach((btn) => {
     btn.addEventListener("click", () => confirmPayment(btn.dataset.id, btn));
   });
   document.querySelectorAll(".complete-btn").forEach((btn) => {
@@ -936,7 +955,9 @@ async function loadPriceOfferPreview() {
   el("offerPreview").textContent =
     "現在の段階 " + (data.priceStage || "—") +
     "　／　Lv.3 " + Number(data.memberCount || 0) + "人" +
-    "　／　送信対象（メールあり） " + Number(data.withEmailCount || 0) + "人" +
+    "　／　メールあり " + Number(data.withEmailCount || 0) + "人" +
+    "　／　未送信 " + Number(data.unsentCount || 0) + "人" +
+    "　／　未回答（再送可） " + Number(data.unansweredCount || 0) + "人" +
     "　／　メールなし " + Number(data.withoutEmailCount || 0) + "人";
 
   if (data.lastCampaign) {
@@ -1027,8 +1048,15 @@ el("offerCampaignSelect").addEventListener("change", () => {
   if (campaignId) loadPriceOffers(campaignId);
 });
 
-el("sendLv3OfferBtn").addEventListener("click", async () => {
-  const btn = el("sendLv3OfferBtn");
+function offerAudienceLabel(audience) {
+  if (audience === "unsent") return "まだ案内を受け取っていない人";
+  if (audience === "unanswered") return "届いたがまだ回答していない人（未送信を含む）";
+  return "対象の人";
+}
+
+async function sendLv3Offer(audience) {
+  const btn = audience === "unsent" ? el("sendUnsentOfferBtn") : el("sendUnansweredOfferBtn");
+  const otherBtn = audience === "unsent" ? el("sendUnansweredOfferBtn") : el("sendUnsentOfferBtn");
   if (btn.disabled) return;
 
   let preview;
@@ -1040,21 +1068,25 @@ el("sendLv3OfferBtn").addEventListener("click", async () => {
   }
   if (!preview) return;
 
-  const count = Number(preview.withEmailCount || 0);
+  const count = audience === "unsent"
+    ? Number(preview.unsentCount || 0)
+    : Number(preview.unansweredCount || 0);
   if (!count) {
-    window.alert("送信できるメールアドレスの Lv.3 会員がいません。");
+    window.alert("今回の対象になる Lv.3 会員がいません。");
     return;
   }
 
   let message =
-    "Lv.3の会員 " + count + "人に、現在の段階" + (preview.priceStage || "—") +
-    "の価格案内を送信します。よろしいですか？";
+    offerAudienceLabel(audience) + " " + count + "人に、現在の段階" + (preview.priceStage || "—") +
+    "の価格案内を送信します。よろしいですか？\nすでに回答した人には送りません。";
   if (preview.lastCampaign) {
     message += "\n前回の送信は " + formatDate(preview.lastCampaign.created_at) + " です。";
   }
   if (!window.confirm(message)) return;
 
   btn.disabled = true;
+  otherBtn.disabled = true;
+  const original = btn.textContent;
   btn.textContent = "送信しています…";
   try {
     const res = await fetch(API_BASE + "/api/admin/price-offers", {
@@ -1063,7 +1095,7 @@ el("sendLv3OfferBtn").addEventListener("click", async () => {
         "Content-Type": "application/json",
         "X-Admin-Secret": adminSecret,
       },
-      body: JSON.stringify({ targetIntent: "lv3" }),
+      body: JSON.stringify({ targetIntent: "lv3", audience }),
     });
     const data = await res.json();
     if (res.status === 401) {
@@ -1090,9 +1122,13 @@ el("sendLv3OfferBtn").addEventListener("click", async () => {
     showToast(err.message || "送信に失敗しました");
   } finally {
     btn.disabled = false;
-    btn.textContent = "Lv.3へ価格案内を送信";
+    otherBtn.disabled = false;
+    btn.textContent = original;
   }
-});
+}
+
+el("sendUnsentOfferBtn").addEventListener("click", () => sendLv3Offer("unsent"));
+el("sendUnansweredOfferBtn").addEventListener("click", () => sendLv3Offer("unanswered"));
 
 el("refreshBtn").addEventListener("click", loadAll);
 

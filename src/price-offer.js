@@ -4,6 +4,7 @@ import { hasSendableEmail } from './validate.js';
 export const PRICE_OFFER_SUBJECT = '佐藤農園のお米、今年の価格が決まりました';
 export const PRICE_OFFER_INTENTS = ['lv1', 'lv2', 'lv3'];
 export const PRICE_OFFER_ACTIONS = ['buy', 'hold', 'pass'];
+export const PRICE_OFFER_AUDIENCES = ['unsent', 'unanswered'];
 export const PRICE_OFFER_BATCH_SIZE = 100;
 
 const OFFER_TOKEN_RE =
@@ -15,6 +16,33 @@ export function isPurchaseIntent(value) {
 
 export function isPriceOfferAction(value) {
   return PRICE_OFFER_ACTIONS.includes(value);
+}
+
+export function isPriceOfferAudience(value) {
+  return PRICE_OFFER_AUDIENCES.includes(value);
+}
+
+export function hasAnsweredPriceOffer(history) {
+  return (history || []).some(
+    (row) =>
+      row.response === 'buy' ||
+      row.response === 'hold' ||
+      row.response === 'pass' ||
+      row.order_id
+  );
+}
+
+export function hasReceivedPriceOffer(history) {
+  return (history || []).some(
+    (row) => row.send_status === 'pending' || row.send_status === 'sent'
+  );
+}
+
+export function shouldReceivePriceOffer(audience, history) {
+  if (!isPriceOfferAudience(audience)) return false;
+  if (hasAnsweredPriceOffer(history)) return false;
+  if (audience === 'unanswered') return true;
+  return !hasReceivedPriceOffer(history);
 }
 
 export function isOfferToken(value) {
@@ -175,6 +203,49 @@ function sendableAddress(member) {
   return String((member && (member.email_normalized || member.email_original)) || '').trim();
 }
 
+async function loadOfferHistoryByIntent(env, targetIntent) {
+  const { results } = await env.DB.prepare(
+    `SELECT r.member_id, r.send_status, r.response, r.order_id
+     FROM price_offer_recipients r
+     JOIN members m ON m.id = r.member_id
+     WHERE m.purchase_intent = ?`
+  )
+    .bind(targetIntent)
+    .all();
+
+  const history = {};
+  for (const row of results || []) {
+    (history[row.member_id] ||= []).push(row);
+  }
+  return history;
+}
+
+export async function listPriceOfferTargets(env, { targetIntent, audience }) {
+  if (!isPurchaseIntent(targetIntent)) {
+    const error = new Error('invalid_intent');
+    error.code = 'invalid_intent';
+    throw error;
+  }
+  if (!isPriceOfferAudience(audience)) {
+    const error = new Error('invalid_audience');
+    error.code = 'invalid_audience';
+    throw error;
+  }
+
+  const { results } = await env.DB.prepare(
+    `SELECT id, name, email_original, email_normalized
+     FROM members
+     WHERE purchase_intent = ?
+     ORDER BY created_at ASC`
+  )
+    .bind(targetIntent)
+    .all();
+
+  const withEmail = (results || []).filter(memberHasSendableEmail);
+  const history = await loadOfferHistoryByIntent(env, targetIntent);
+  return withEmail.filter((member) => shouldReceivePriceOffer(audience, history[member.id] || []));
+}
+
 export async function previewPriceOffer(env, targetIntent) {
   if (!isPurchaseIntent(targetIntent)) {
     const error = new Error('invalid_intent');
@@ -195,6 +266,13 @@ export async function previewPriceOffer(env, targetIntent) {
   const members = results || [];
   const withEmail = members.filter(memberHasSendableEmail);
   const withoutEmail = members.length - withEmail.length;
+  const history = await loadOfferHistoryByIntent(env, targetIntent);
+  const unsentCount = withEmail.filter((member) =>
+    shouldReceivePriceOffer('unsent', history[member.id] || [])
+  ).length;
+  const unansweredCount = withEmail.filter((member) =>
+    shouldReceivePriceOffer('unanswered', history[member.id] || [])
+  ).length;
 
   const lastCampaign = await env.DB.prepare(
     `SELECT c.id, c.target_intent, c.price_stage, c.subject, c.created_at,
@@ -214,6 +292,8 @@ export async function previewPriceOffer(env, targetIntent) {
     memberCount: members.length,
     withEmailCount: withEmail.length,
     withoutEmailCount: withoutEmail,
+    unsentCount,
+    unansweredCount,
     lastCampaign: lastCampaign || null,
   };
 }
@@ -246,10 +326,15 @@ export async function listPriceOfferRecipients(env, campaignId) {
   }));
 }
 
-export async function sendPriceOfferCampaign(env, { targetIntent, origin }) {
+export async function sendPriceOfferCampaign(env, { targetIntent, origin, audience }) {
   if (!isPurchaseIntent(targetIntent)) {
     const error = new Error('invalid_intent');
     error.code = 'invalid_intent';
+    throw error;
+  }
+  if (!isPriceOfferAudience(audience)) {
+    const error = new Error('invalid_audience');
+    error.code = 'invalid_audience';
     throw error;
   }
   if (!env || !env.DB) {
@@ -259,22 +344,12 @@ export async function sendPriceOfferCampaign(env, { targetIntent, origin }) {
   }
 
   const preview = await previewPriceOffer(env, targetIntent);
-  if (preview.withEmailCount === 0) {
+  const targets = await listPriceOfferTargets(env, { targetIntent, audience });
+  if (targets.length === 0) {
     const error = new Error('no_recipients');
     error.code = 'no_recipients';
     throw error;
   }
-
-  const { results } = await env.DB.prepare(
-    `SELECT id, name, email_original, email_normalized
-     FROM members
-     WHERE purchase_intent = ?
-     ORDER BY created_at ASC`
-  )
-    .bind(targetIntent)
-    .all();
-
-  const targets = (results || []).filter(memberHasSendableEmail);
   const campaignId = crypto.randomUUID();
   const now = new Date().toISOString();
   const recipients = targets.map((member) => ({
@@ -312,6 +387,7 @@ export async function sendPriceOfferCampaign(env, { targetIntent, origin }) {
   return {
     campaignId,
     targetIntent,
+    audience,
     priceStage: preview.priceStage,
     subject: PRICE_OFFER_SUBJECT,
     sent: sendResult.sent,

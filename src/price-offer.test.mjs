@@ -10,6 +10,7 @@ import {
   isOfferToken,
   isPreviewEmail,
   isPriceOfferAction,
+  isPriceOfferAudience,
   isPurchaseIntent,
   memberHasSendableEmail,
   nextResponseState,
@@ -17,6 +18,7 @@ import {
   recordPriceOfferResponse,
   responseStatusLabel,
   samplePriceOfferEmail,
+  shouldReceivePriceOffer,
 } from './price-offer.js';
 
 assert.equal(isPurchaseIntent('lv3'), true);
@@ -26,6 +28,9 @@ assert.equal(isPriceOfferAction('buy'), true);
 assert.equal(isPriceOfferAction('hold'), true);
 assert.equal(isPriceOfferAction('pass'), true);
 assert.equal(isPriceOfferAction('maybe'), false);
+assert.equal(isPriceOfferAudience('unsent'), true);
+assert.equal(isPriceOfferAudience('unanswered'), true);
+assert.equal(isPriceOfferAudience('all'), false);
 assert.equal(isOfferToken('8f3a1c2e-4b5d-6789-abcd-ef0123456789'), true);
 assert.equal(isOfferToken('not-a-token'), false);
 assert.equal(isOfferToken(''), false);
@@ -78,6 +83,30 @@ assert.equal(responseStatusLabel({ response: 'pass' }), '見送る');
 assert.equal(responseStatusLabel({ response: 'buy' }), '購入する（未注文）');
 assert.equal(responseStatusLabel({ response: 'buy', order_id: 12 }), '購入する（注文済み No.12）');
 assert.equal(responseStatusLabel({ order_id: 3 }), '購入する（注文済み No.3）');
+
+assert.equal(shouldReceivePriceOffer('unsent', []), true);
+assert.equal(shouldReceivePriceOffer('unanswered', []), true);
+assert.equal(shouldReceivePriceOffer('unsent', [{ send_status: 'sent', response: null }]), false);
+assert.equal(shouldReceivePriceOffer('unanswered', [{ send_status: 'sent', response: null }]), true);
+assert.equal(shouldReceivePriceOffer('unsent', [{ send_status: 'failed', response: null }]), true);
+assert.equal(shouldReceivePriceOffer('unsent', [{ send_status: 'skipped', response: null }]), true);
+assert.equal(
+  shouldReceivePriceOffer('unanswered', [{ send_status: 'sent', response: 'hold' }]),
+  false
+);
+assert.equal(
+  shouldReceivePriceOffer('unsent', [{ send_status: 'sent', response: 'buy' }]),
+  false
+);
+assert.equal(
+  shouldReceivePriceOffer('unanswered', [{ send_status: 'sent', response: 'pass' }]),
+  false
+);
+assert.equal(
+  shouldReceivePriceOffer('unanswered', [{ send_status: 'sent', response: null, order_id: 12 }]),
+  false
+);
+assert.equal(shouldReceivePriceOffer('all', []), false);
 
 assert.deepEqual(nextResponseState({ response: null, order_id: null }, 'hold'), {
   response: 'hold',

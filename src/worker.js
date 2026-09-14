@@ -11,6 +11,7 @@ import {
   attachOrderToPriceOffer,
   isOfferToken,
   isPriceOfferAction,
+  isPriceOfferAudience,
   listPriceOfferCampaigns,
   listPriceOfferRecipients,
   previewPriceOffer,
@@ -403,9 +404,14 @@ async function handleDirectSales(request, env, url) {
       if (targetIntent !== 'lv3') {
         return json({ success: false, error: '今回送信できるのは Lv.3 のみです' }, 400);
       }
+      const audience = body && body.audience;
+      if (!isPriceOfferAudience(audience)) {
+        return json({ success: false, error: '送信対象を選んでください' }, 400);
+      }
       try {
         const result = await sendPriceOfferCampaign(env, {
           targetIntent,
+          audience,
           origin: publicOriginFromRequest(request),
         });
         return json({ success: true, ...result });
@@ -530,8 +536,11 @@ function priceOfferError(error) {
   if (code === 'not_found') {
     return json({ success: false, error: '回答リンクが見つかりません' }, 404);
   }
+  if (code === 'invalid_audience') {
+    return json({ success: false, error: '送信対象を選んでください' }, 400);
+  }
   if (code === 'no_recipients') {
-    return json({ success: false, error: '送信できるメールアドレスの会員がいません' }, 400);
+    return json({ success: false, error: '今回の対象になる会員がいません' }, 400);
   }
   throw error;
 }
