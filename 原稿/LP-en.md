@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- September 16, 2026　When Is the Best Time to Drain a Rice Field?—[Read](../blog-en/notes/best-time-to-drain.html).
+- September 15, 2026　The Rice Field, the Vegetable Field, and the Uncertain Weather—[Read](../blog-en/notes/uncertain-weather-fields.html).
 - September 13, 2026　Announcement: We Are Resuming Our Direct Sales—[Read](../blog-en/notes/resume-direct-sales.html).
 - September 7, 2026　Added photos of our rice paddies and Chinese cabbage to [Farm Updates](../blog-en/field-report/).
 - September 6, 2026　Rooted in the Community—[Read](../blog-en/notes/rooted-in-the-community.html).
-- August 31, 2026　A Difficult Decision — We Are Putting Our Direct Sales System off—[Read](../blog-en/notes/a-difficult-decision.html).
-- August 30, 2026　A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo—[Read](../blog-en/notes/sagiso-festival.html).
 
 [See all news →](../blog-en/news/)
 
@@ -219,9 +219,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- September 16, 2026　[When Is the Best Time to Drain a Rice Field?](../blog-en/notes/best-time-to-drain.html)　It is also a matter of watching the field and reading the weather.
+- September 15, 2026　[The Rice Field, the Vegetable Field, and the Uncertain Weather](../blog-en/notes/uncertain-weather-fields.html)　And so, today again, I put on my boots and step into the field — doing what I can, one small task at a time.
 - September 13, 2026　[Announcement: We Are Resuming Our Direct Sales](../blog-en/notes/resume-direct-sales.html)　Sato Farms
-- September 6, 2026　[Rooted in the Community](../blog-en/notes/rooted-in-the-community.html)　Festivals are still a wonderful thing.
-- August 31, 2026　[A Difficult Decision — We Are Putting Our Direct Sales System off](../blog-en/notes/a-difficult-decision.html)　Sato Farms
 
 [View the blog](../blog-en/)
 

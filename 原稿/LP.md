@@ -46,6 +46,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.9.16　「田んぼの落水の最適期」— [読む](../blog/notes/best-time-to-drain.html)
+- 2026.9.15　「田んぼの様子、畑の様子――誤算つづきの天候不順」— [読む](../blog/notes/uncertain-weather-fields.html)
 - 2026.9.13　「直販システム、再開のお知らせ」— [読む](../blog/notes/resume-direct-sales.html)
 - 2026.9.7　田んぼと白菜の写真を[田畑の近況報告](../blog/field-report/)に追加しました。
 - 2026.9.6　「地域に根を張るということ」— [読む](../blog/notes/rooted-in-the-community.html)
@@ -54,8 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.29　「佐藤農園：秋の生育メモ（独り言）」— [読む](../blog/notes/satofarms-autumn-note.html)
 - 2026.8.28　「毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み」— [読む](../blog/notes/daily-automation.html)
 - 2026.8.27　「コシヒカリ――美味しさと、農家の技術が育てた米」— [読む](../blog/notes/Koshihikari-rice.html)
-- 2026.8.26　「AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ」— [読む](../blog/notes/cursor-to-vscode.html)
-- 2026.8.25　「しばらくお休みします」— [読む](../blog/notes/taking-a-short-break.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -223,9 +223,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.9.16　[田んぼの落水の最適期](../blog/notes/best-time-to-drain.html)　それが、落水のタイミングを決める基本です。
+- 2026.9.15　[田んぼの様子、畑の様子――誤算つづきの天候不順](../blog/notes/uncertain-weather-fields.html)　季節の機嫌をうかがいながら、できることをひとつずつ積み重ねていく。
 - 2026.9.13　[直販システム、再開のお知らせ](../blog/notes/resume-direct-sales.html)　佐藤農園
-- 2026.9.6　[地域に根を張るということ](../blog/notes/rooted-in-the-community.html)　ローカルに、万歳。祭りは、やっぱりいい。
-- 2026.8.31　[苦渋の決断――直販システム立ち上げ、一旦延期します](../blog/notes/a-difficult-decision.html)　佐藤農園
 
 [ブログ一覧を見る](../blog/)
 
