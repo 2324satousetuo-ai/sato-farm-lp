@@ -46,6 +46,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.9.20　「刈り取り時期の見極めは？」— [読む](../blog/notes/harvest-time.html)
+- 2026.9.19　「群馬県と北毛地域、そして中之条町」— [読む](../blog/notes/gunma-hokumo-nakanojo.html)
 - 2026.9.16　「田んぼの落水の最適期」— [読む](../blog/notes/best-time-to-drain.html)
 - 2026.9.15　「田んぼの様子、畑の様子――誤算つづきの天候不順」— [読む](../blog/notes/uncertain-weather-fields.html)
 - 2026.9.13　「直販システム、再開のお知らせ」— [読む](../blog/notes/resume-direct-sales.html)
@@ -54,8 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦延期します」— [読む](../blog/notes/a-difficult-decision.html)
 - 2026.8.30　「涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」」— [読む](../blog/notes/sagiso-festival.html)
 - 2026.8.29　「佐藤農園：秋の生育メモ（独り言）」— [読む](../blog/notes/satofarms-autumn-note.html)
-- 2026.8.28　「毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み」— [読む](../blog/notes/daily-automation.html)
-- 2026.8.27　「コシヒカリ――美味しさと、農家の技術が育てた米」— [読む](../blog/notes/Koshihikari-rice.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -128,8 +128,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ### 収穫状況
 
-- 収穫しました　にんにく・キャベツ・じゃがいも・玉ねぎ・トマト
-- 収穫中です　キュウリ・なす・ニンジン
+- 収穫しました　キャベツ・じゃがいも・玉ねぎ・トマト・キュウリ・かぼちゃ
+- 収穫中です　なす・ニンジン・ピーマン・ネギ・スイカ・（さつまいも）
 
 ---
 
@@ -223,9 +223,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.9.20　[刈り取り時期の見極めは？](../blog/notes/harvest-time.html)　最高の品質を確保するため、どの農家も、刈り取り予定日の約10日前から落水（らくすい）を行い、コンバインがスムーズに稼働するよう地表面をしっかりと乾かします。
+- 2026.9.19　[群馬県と北毛地域、そして中之条町](../blog/notes/gunma-hokumo-nakanojo.html)　佐藤農園の米づくりは、こうした北毛・中之条町の環境と深くつながっています。
 - 2026.9.16　[田んぼの落水の最適期](../blog/notes/best-time-to-drain.html)　それが、落水のタイミングを決める基本です。
-- 2026.9.15　[田んぼの様子、畑の様子――誤算つづきの天候不順](../blog/notes/uncertain-weather-fields.html)　季節の機嫌をうかがいながら、できることをひとつずつ積み重ねていく。
-- 2026.9.13　[直販システム、再開のお知らせ](../blog/notes/resume-direct-sales.html)　佐藤農園
 
 [ブログ一覧を見る](../blog/)
 
