@@ -46,7 +46,7 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
-- September 20, 2026　Harvest Time: How Do We Know When It's Ready?—[Read](../blog-en/notes/harvest-time.html).
+- September 20, 2026　How Do We Know When the Rice Is Ready to Harvest?—[Read](../blog-en/notes/harvest-time.html).
 - September 19, 2026　Gunma Prefecture, Hokumo, and Nakanojo—[Read](../blog-en/notes/gunma-hokumo-nakanojo.html).
 - September 16, 2026　When Is the Best Time to Drain a Rice Field?—[Read](../blog-en/notes/best-time-to-drain.html).
 - September 15, 2026　The Rice Field, the Vegetable Field, and the Uncertain Weather—[Read](../blog-en/notes/uncertain-weather-fields.html).
@@ -219,7 +219,7 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
-- September 20, 2026　[Harvest Time: How Do We Know When It's Ready?](../blog-en/notes/harvest-time.html)　- ③ About 80–90% of the field looks like this.
+- September 20, 2026　[How Do We Know When the Rice Is Ready to Harvest?](../blog-en/notes/harvest-time.html)　Once again, we are having a conversation with nature.
 - September 19, 2026　[Gunma Prefecture, Hokumo, and Nakanojo](../blog-en/notes/gunma-hokumo-nakanojo.html)　Mountain water. The gap between day and night temperatures. Abundant nature.
 - September 16, 2026　[When Is the Best Time to Drain a Rice Field?](../blog-en/notes/best-time-to-drain.html)　It is also a matter of watching the field and reading the weather.
 

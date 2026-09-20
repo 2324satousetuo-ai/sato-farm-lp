@@ -1,24 +1,64 @@
-# Harvest Time: How Do We Know When It's Ready?
+# How Do We Know When the Rice Is Ready to Harvest?
 
 Rice　September 20, 2026
-We are planning to harvest the rice in one week. But now, a typhoon is coming to the Kanto region. It's late September, so this happens every year. We just have to get through it.
+We are planning to harvest our rice in one week.
 
-I feel nervous about what will happen.
+But now, a typhoon is approaching the Kanto region.
 
-## The best time to harvest Koshihikari in Hokumo
+It is late September. This kind of weather happens almost every year, but we still have to deal with it.
 
-Let's check the best time to harvest Koshihikari rice in the Hokumo area of Gunma Prefecture.
+I am getting more worried about what will happen.
 
-We look at three things to decide when to harvest:
+## How Do We Know When Koshihikari Is Ready?
 
-- ① The top of the rice ear (the tip) is brown, and 2–3 grains near the bottom are still green.
-- ② The water content of the rice is about 23–24%.
-- ③ About 80–90% of the field looks like this.
+Here, I would like to take a moment to explain how we decide when Koshihikari rice is ready to harvest in the Hokumo area of Gunma.
 
-If we wait until the whole rice ear turns brown, the rice grains get too ripe. This can crack the grains and make the taste and quality worse.
+We do not decide the harvest date from just one number.
 
-To get the best quality, farmers stop watering the field about 10 days before harvest. This dries the ground so the combine harvester can move smoothly.
+We look at several signs together.
 
-In the Hokumo area, autumn mornings and evenings are very cold, and dew often stays on the rice plants. Early in the morning, the rice grains have more water in them. So it's best to start harvesting around noon or in the afternoon, after the dew has dried.
+**First, we look at the color of the rice grains.**
 
-If we harvest too late, the rice tastes worse and gets a lower quality grade. We use these three points as our guide. But sometimes it rains on the day we planned, and things don't always go as we hope.
+As the rice ripens, more grains turn yellow. A small number of green grains may still remain.
+
+**Second, we check the moisture level of the rice grains.**
+
+As a general guide, harvesting can begin when the grain moisture is around 25% or lower.
+
+**Third, we look at the whole field.**
+
+We do not judge the harvest time from just a few rice plants. We check how much of the whole field has ripened.
+
+Waiting until every grain turns completely brown can mean harvesting too late.
+
+Late harvesting can increase cracked grains and may reduce the quality and taste of the rice.
+
+In practice, farmers look at several things together, including the color of the grains, the number of days after heading, the accumulated temperature, and the moisture level.
+
+In Gunma, agricultural advisers also check the green-grain ratio and moisture in the fields when deciding the best time to harvest.
+
+Before harvest, we also drain the water from the field and let the ground become firm enough for the combine harvester.
+
+But this also needs to be done at the right time. Rice still needs water while the grains are developing, so we have to consider the weather and the condition of each field.
+
+In the Hokumo area, autumn mornings and evenings can be quite cold, and morning dew often remains on the rice plants.
+
+The rice grains also tend to have more moisture in the morning.
+
+So we usually wait until the dew has dried before starting work.
+
+On a sunny day, late morning to afternoon is often a good time for harvesting.
+
+Even so, we cannot simply say, “We will harvest on this exact day.”
+
+Each field grows a little differently, and the weather can change our plans.
+
+And this year, just one week before our planned harvest, a typhoon is approaching.
+
+Will everything go as planned?
+
+Or will we have to change our schedule again?
+
+In the end, we have to watch both the rice and the sky, and make the final decision.
+
+Once again, we are having a conversation with nature.
