@@ -435,11 +435,12 @@ function rel(file) {
 }
 
 function git(args, options = {}) {
-  return execFileSync("git", args, {
+  const out = execFileSync("git", args, {
     cwd: root,
     encoding: "utf8",
     stdio: options.stdio ?? ["ignore", "pipe", "pipe"],
-  }).trim();
+  });
+  return (out ?? "").trim();
 }
 
 function warnIfLpChanged() {
