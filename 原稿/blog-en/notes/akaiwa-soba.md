@@ -1,7 +1,7 @@
 # The Taste of My Hometown, Akaiwa
 
 Nakanojo　September 24, 2026
-Akaiwa Soba and the joy of making soba by hand.
+## Akaiwa Soba and the Joy of Making Soba by Hand
 
 ## Japanese People and Soba
 
@@ -75,9 +75,10 @@ Someday, I hope to grow my own buckwheat and share the soba with my friends.
 
 ## Around Akaiwa
 
-There are also several interesting places to visit around the Akaiwa area.
+There are also several interesting places to visit around the Akaiwa area, including Lake Nozoriko, Chatsubomigoke Park, the former Ooshi Station, and Shiriyaki Onsen. The links are gathered on the Sato Farms sightseeing page.
 
-- [Lake Nozoriko](https://nakanojo-kanko.jp/kuni/spots/%e9%87%8e%e5%8f%8d%e6%b9%96/)
-- [Chatsubomigoke Park](https://nakanojo-kanko.jp/kuni/spots/%e3%83%81%e3%83%a3%e3%83%84%e3%83%9c%e3%83%9f%e3%82%b4%e3%82%b1%e5%85%ac%e5%9c%92/)
-- [Former Ooshi Station](https://nakanojo-kanko.jp/kuni/spots/%e5%a4%aa%e5%ad%90%e9%a7%85%e8%b7%a1/)
-- [Shiriyaki Onsen](https://nakanojo-kanko.jp/kuni/hotsprings/%e5%b0%bb%e7%84%bc%e6%b8%a9%e6%b3%89/)
+- [Lake Nozoriko](../links/#spots-nakanojo)
+- [Chatsubomigoke Park](../links/#spots-nakanojo)
+- [Former Ooshi Station](../links/#spots-nakanojo)
+- [Shiriyaki Onsen](../links/#spots-nakanojo)
+- [See sightseeing links for Nakanojo](../links/#spots-nakanojo)

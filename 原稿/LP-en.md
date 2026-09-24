@@ -219,7 +219,7 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
-- September 24, 2026　[The Taste of My Hometown, Akaiwa](../blog-en/notes/akaiwa-soba.html)　- Shiriyaki Onsen
+- September 24, 2026　[The Taste of My Hometown, Akaiwa](../blog-en/notes/akaiwa-soba.html)　- See sightseeing links for Nakanojo
 - September 20, 2026　[How Do We Know When the Rice Is Ready to Harvest?](../blog-en/notes/harvest-time.html)　Once again, we are having a conversation with nature.
 - September 19, 2026　[Gunma Prefecture, Hokumo, and Nakanojo](../blog-en/notes/gunma-hokumo-nakanojo.html)　Mountain water. The gap between day and night temperatures. Abundant nature.
 

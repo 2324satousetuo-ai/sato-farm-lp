@@ -223,7 +223,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
-- 2026.9.24　[山あいの故郷・赤岩を味わう](../blog/notes/akaiwa-soba.html)　- 尻焼温泉
+- 2026.9.24　[山あいの故郷・赤岩を味わう](../blog/notes/akaiwa-soba.html)　- 中之条町の名所URL集を見る
 - 2026.9.20　[刈り取り時期の見極めは？](../blog/notes/harvest-time.html)　今年もまた、自然との相談が続いている。
 - 2026.9.19　[群馬県と北毛地域、そして中之条町](../blog/notes/gunma-hokumo-nakanojo.html)　佐藤農園の米づくりは、こうした北毛・中之条町の環境と深くつながっています。
 

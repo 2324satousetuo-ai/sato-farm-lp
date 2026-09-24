@@ -1,7 +1,7 @@
 # 山あいの故郷・赤岩を味わう
 
 中之条　2026.9.24
-赤岩そばと、手打ちの愉しみ。
+## 赤岩そばと、手打ちの愉しみ。
 
 ## 日本人と蕎麦
 
@@ -57,9 +57,10 @@
 
 ## 赤岩の周辺
 
-赤岩地区の周辺には、次の名所があります。
+赤岩地区の周辺には、野反湖、チャツボミゴケ公園、旧太子駅、尻焼温泉などの名所があります。案内は佐藤農園の名所URL集にまとめています。
 
-- [野反湖](https://nakanojo-kanko.jp/kuni/spots/%e9%87%8e%e5%8f%8d%e6%b9%96/)
-- [チャツボミゴケ公園](https://nakanojo-kanko.jp/kuni/spots/%e3%83%81%e3%83%a3%e3%83%84%e3%83%9c%e3%83%9f%e3%82%b4%e3%82%b1%e5%85%ac%e5%9c%92/)
-- [旧太子駅](https://nakanojo-kanko.jp/kuni/spots/%e5%a4%aa%e5%ad%90%e9%a7%85%e8%b7%a1/)
-- [尻焼温泉](https://nakanojo-kanko.jp/kuni/hotsprings/%e5%b0%bb%e7%84%bc%e6%b8%a9%e6%b3%89/)
+- [野反湖](../links/#spots-nakanojo)
+- [チャツボミゴケ公園](../links/#spots-nakanojo)
+- [旧太子駅](../links/#spots-nakanojo)
+- [尻焼温泉](../links/#spots-nakanojo)
+- [中之条町の名所URL集を見る](../links/#spots-nakanojo)
