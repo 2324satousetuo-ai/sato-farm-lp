@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.9.24　「山あいの故郷・赤岩を味わう」— [読む](../blog/notes/akaiwa-soba.html)
 - 2026.9.20　「刈り取り時期の見極めは？」— [読む](../blog/notes/harvest-time.html)
 - 2026.9.19　「群馬県と北毛地域、そして中之条町」— [読む](../blog/notes/gunma-hokumo-nakanojo.html)
 - 2026.9.16　「田んぼの落水の最適期」— [読む](../blog/notes/best-time-to-drain.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.9.6　「地域に根を張るということ」— [読む](../blog/notes/rooted-in-the-community.html)
 - 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦延期します」— [読む](../blog/notes/a-difficult-decision.html)
 - 2026.8.30　「涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」」— [読む](../blog/notes/sagiso-festival.html)
-- 2026.8.29　「佐藤農園：秋の生育メモ（独り言）」— [読む](../blog/notes/satofarms-autumn-note.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -223,9 +223,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.9.24　[山あいの故郷・赤岩を味わう](../blog/notes/akaiwa-soba.html)　- 尻焼温泉
 - 2026.9.20　[刈り取り時期の見極めは？](../blog/notes/harvest-time.html)　今年もまた、自然との相談が続いている。
 - 2026.9.19　[群馬県と北毛地域、そして中之条町](../blog/notes/gunma-hokumo-nakanojo.html)　佐藤農園の米づくりは、こうした北毛・中之条町の環境と深くつながっています。
-- 2026.9.16　[田んぼの落水の最適期](../blog/notes/best-time-to-drain.html)　それが、落水のタイミングを決める基本です。
 
 [ブログ一覧を見る](../blog/)
 
