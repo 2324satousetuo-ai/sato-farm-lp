@@ -10,10 +10,9 @@ ROOT = Path(__file__).resolve().parent
 IMAGES = ROOT / "images"
 CONFIG = ROOT / "site-url.config"
 
-MAPS_URL = (
-    "https://www.google.com/maps/search/?api=1&query="
-    "%E7%BE%A4%E9%A6%AC%E7%9C%8C%E5%90%BE%E5%A6%BB%E9%83%A1%E4%B8%AD%E4%B9%8B%E6%9D%A1%E7%94%BA%E4%8A%8A%E5%8B%A2%E7%94%BA15-6"
-)
+# 案内用QRは画面上で小さく出る。日本語住所をそのまま入れると模様が細かくなり、
+# スマホのカメラが読み取れなくなる。番地まで特定できる短い英字URLにする。
+MAPS_URL = "https://maps.google.com/?q=15-6+Isemachi+Nakanojo+Gunma"
 
 
 def read_site_url() -> str | None:
@@ -29,16 +28,16 @@ def read_site_url() -> str | None:
     return None
 
 
-def make_qr(data: str, path: Path, box_size: int, border: int) -> None:
+def make_qr(data: str, path: Path, box_size: int) -> None:
     qr = qrcode.QRCode(
         version=None,
         error_correction=ERROR_CORRECT_M,
         box_size=box_size,
-        border=border,
+        border=4,
     )
     qr.add_data(data)
     qr.make(fit=True)
-    img = qr.make_image(fill_color="#1a2e26", back_color="#ffffff")
+    img = qr.make_image(fill_color="#000000", back_color="#ffffff")
     path.parent.mkdir(parents=True, exist_ok=True)
     img.save(path)
     print(f"作成: {path}")
@@ -47,14 +46,14 @@ def make_qr(data: str, path: Path, box_size: int, border: int) -> None:
 def main() -> None:
     IMAGES.mkdir(parents=True, exist_ok=True)
 
-    make_qr(MAPS_URL, IMAGES / "maps-qr.png", box_size=10, border=2)
-    make_qr(MAPS_URL, IMAGES / "maps-qr-print.png", box_size=20, border=3)
+    make_qr(MAPS_URL, IMAGES / "maps-qr.png", box_size=10)
+    make_qr(MAPS_URL, IMAGES / "maps-qr-print.png", box_size=20)
 
     site_url = read_site_url()
     if site_url:
-        make_qr(site_url, IMAGES / "guide-qr.png", box_size=10, border=2)
-        make_qr(site_url, IMAGES / "guide-qr-print.png", box_size=20, border=3)
-        make_qr(site_url, IMAGES / "url-qr.png", box_size=10, border=2)
+        make_qr(site_url, IMAGES / "guide-qr.png", box_size=10)
+        make_qr(site_url, IMAGES / "guide-qr-print.png", box_size=20)
+        make_qr(site_url, IMAGES / "url-qr.png", box_size=10)
         print(f"サイトURL: {site_url}")
     else:
         print()

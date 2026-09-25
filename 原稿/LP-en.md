@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- September 25, 2026　From Harvest to Polished Rice: A Story—[Read](../blog-en/notes/harvest-to-polished-rice.html).
 - September 24, 2026　The Taste of My Hometown, Akaiwa—[Read](../blog-en/notes/akaiwa-soba.html).
 - September 20, 2026　How Do We Know When the Rice Is Ready to Harvest?—[Read](../blog-en/notes/harvest-time.html).
 - September 19, 2026　Gunma Prefecture, Hokumo, and Nakanojo—[Read](../blog-en/notes/gunma-hokumo-nakanojo.html).
 - September 16, 2026　When Is the Best Time to Drain a Rice Field?—[Read](../blog-en/notes/best-time-to-drain.html).
-- September 15, 2026　The Rice Field, the Vegetable Field, and the Uncertain Weather—[Read](../blog-en/notes/uncertain-weather-fields.html).
 
 [See all news →](../blog-en/news/)
 
@@ -88,7 +88,7 @@ We are committed to delivering safe, delicious produce by paying close attention
 
 Rice fields, vegetable plots, and fruit trees. Sales to friends, acquaintances, and neighbors. Current offerings and rice achievements.
 
-### Potato
+### Potatoes & Pumpkins
 
 Cabbage Season is over.
 
@@ -122,8 +122,8 @@ Stock & sales — inquire
 
 ### Harvest
 
-- Harvested　Cabbage / Potato / Onion / Tomato / Cucumber / Pumpkin
-- Currently harvesting　Eggplant / Carrot / Green pepper / Green onion / Watermelon / (Sweet potato)
+- Harvested　Cabbage / Potato / Onion / Tomato / Cucumber / Pumpkin / Watermelon
+- Currently harvesting　Eggplant / Carrot / Green pepper / Green onion / (Sweet potato)
 
 ---
 
@@ -219,9 +219,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- September 25, 2026　[From Harvest to Polished Rice: A Story](../blog-en/notes/harvest-to-polished-rice.html)　And so, the “white rice” that reaches our table is born.
 - September 24, 2026　[The Taste of My Hometown, Akaiwa](../blog-en/notes/akaiwa-soba.html)　- See sightseeing links for Nakanojo
 - September 20, 2026　[How Do We Know When the Rice Is Ready to Harvest?](../blog-en/notes/harvest-time.html)　Once again, we are having a conversation with nature.
-- September 19, 2026　[Gunma Prefecture, Hokumo, and Nakanojo](../blog-en/notes/gunma-hokumo-nakanojo.html)　Mountain water. The gap between day and night temperatures. Abundant nature.
 
 [View the blog](../blog-en/)
 

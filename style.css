@@ -3177,12 +3177,14 @@ body.faq-popup-open {
 
 .access__guide-qr-item img {
   display: block;
-  width: 112px;
-  height: 112px;
-  padding: 8px;
-  background: var(--cream);
+  width: min(200px, 100%);
+  height: auto;
+  aspect-ratio: 1;
+  padding: 6px;
+  background: #fff;
   border: 2px solid var(--rice-gold);
   border-radius: var(--radius);
+  box-sizing: border-box;
 }
 
 .access__guide-qr-item--site:has(.access__guide-qr-site[src=""]) {

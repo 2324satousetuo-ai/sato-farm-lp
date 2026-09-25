@@ -247,13 +247,16 @@
       const card = document.getElementById('site-qr-card');
       const urlEl = document.getElementById('site-qr-url');
 
-      img.addEventListener('load', function () {
+      function revealSiteQr() {
         if (img.naturalWidth > 0) {
           img.hidden = false;
           placeholder.hidden = true;
           card.classList.remove('qr-card--pending');
         }
-      });
+      }
+
+      img.addEventListener('load', revealSiteQr);
+      if (img.complete) revealSiteQr();
 
       img.addEventListener('error', function () {
         img.hidden = true;

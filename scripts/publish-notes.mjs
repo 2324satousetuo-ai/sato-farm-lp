@@ -19,7 +19,7 @@ import {
 import { resolveNoteTopics, topicLabel } from "./note-topics.mjs";
 import { syncLpMarkdown } from "./publish-lp.mjs";
 
-const CSS_VERSION = 43;
+const CSS_VERSION = 44;
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = new Set(process.argv.slice(2));

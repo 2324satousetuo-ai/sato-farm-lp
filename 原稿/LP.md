@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.9.25　「稲刈りから精米までの物語」— [読む](../blog/notes/harvest-to-polished-rice.html)
 - 2026.9.24　「山あいの故郷・赤岩を味わう」— [読む](../blog/notes/akaiwa-soba.html)
 - 2026.9.20　「刈り取り時期の見極めは？」— [読む](../blog/notes/harvest-time.html)
 - 2026.9.19　「群馬県と北毛地域、そして中之条町」— [読む](../blog/notes/gunma-hokumo-nakanojo.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.9.7　田んぼと白菜の写真を[田畑の近況報告](../blog/field-report/)に追加しました。
 - 2026.9.6　「地域に根を張るということ」— [読む](../blog/notes/rooted-in-the-community.html)
 - 2026.8.31　「苦渋の決断――直販システム立ち上げ、一旦延期します」— [読む](../blog/notes/a-difficult-decision.html)
-- 2026.8.30　「涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」」— [読む](../blog/notes/sagiso-festival.html)
 
 [新着情報の一覧を見る →](../blog/news/)
 
@@ -94,7 +94,7 @@ URL：https://satofarms.com（satofarms.com）
 
 田んぼ・畑・果樹。販売先は友人・知人・ご近所様。現在販売中の商品と、お米づくりの実績をご紹介します。
 
-### 新ジャガイモ
+### じゃがいも・かぼちゃ
 
 キャベツ：販売終了しました
 
@@ -128,8 +128,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ### 収穫状況
 
-- 収穫しました　キャベツ・じゃがいも・玉ねぎ・トマト・キュウリ・かぼちゃ
-- 収穫中です　なす・ニンジン・ピーマン・ネギ・スイカ・（さつまいも）
+- 収穫しました　キャベツ・じゃがいも・玉ねぎ・トマト・キュウリ・かぼちゃ・スイカ
+- 収穫中です　なす・ニンジン・ピーマン・ネギ・（さつまいも）
 
 ---
 
@@ -223,9 +223,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.9.25　[稲刈りから精米までの物語](../blog/notes/harvest-to-polished-rice.html)　こうして、食卓に並ぶ「白米」が生まれます。
 - 2026.9.24　[山あいの故郷・赤岩を味わう](../blog/notes/akaiwa-soba.html)　- 中之条町の名所URL集を見る
 - 2026.9.20　[刈り取り時期の見極めは？](../blog/notes/harvest-time.html)　今年もまた、自然との相談が続いている。
-- 2026.9.19　[群馬県と北毛地域、そして中之条町](../blog/notes/gunma-hokumo-nakanojo.html)　佐藤農園の米づくりは、こうした北毛・中之条町の環境と深くつながっています。
 
 [ブログ一覧を見る](../blog/)
 
