@@ -5195,7 +5195,7 @@ body.blog-page {
 
 .blog-list__row {
   display: grid;
-  grid-template-columns: 6.5rem 1fr auto;
+  grid-template-columns: max-content minmax(0, 1fr) auto;
   gap: 0.75rem 1rem;
   align-items: baseline;
   padding: 1rem 0.15rem;
@@ -5216,6 +5216,7 @@ a.blog-list__row:hover .blog-list__title {
   font-variant-numeric: tabular-nums;
   font-size: 0.9rem;
   color: #2c2622;
+  white-space: nowrap;
 }
 
 .blog-list__title {
@@ -5527,7 +5528,7 @@ a.blog-list__row:hover .blog-list__title {
 }
 
 .blog-list__row--news {
-  grid-template-columns: 6.5rem 1fr auto;
+  grid-template-columns: max-content minmax(0, 1fr) auto;
   align-items: start;
 }
 
