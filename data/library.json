@@ -1,0 +1,401 @@
+{
+  "note": "このファイルが農園図書館の中身です。棚の名前は shelves、題名は articles にあります。入れ替えは、shelves の items に並ぶファイル名を動かすだけです。新しい原稿は articles に1件足し、入れたい棚の items にそのファイル名を足します。題名はブログの農園図書館（blog/library/）に並べてあります。記事へのリンクは、まだ付けていません。",
+  "articles": {
+    "hana-mizu.html": {
+      "ja": "命が芽吹く「花水」の季節",
+      "en": "The Season of \"Hana-Mizu\" — When New Life Begins"
+    },
+    "mid-season-drainage.html": {
+      "ja": "分げつ遅れの田んぼ、中干しを「しないかも」の選択",
+      "en": "A Rice Field Behind in Tillering — Choosing Not to Drain the Water"
+    },
+    "best-time-to-drain.html": {
+      "ja": "田んぼの落水の最適期",
+      "en": "When Is the Best Time to Drain a Rice Field?"
+    },
+    "harvest-time.html": {
+      "ja": "刈り取り時期の見極めは？",
+      "en": "How Do We Know When the Rice Is Ready to Harvest?"
+    },
+    "satofarms-autumn-note.html": {
+      "ja": "佐藤農園：秋の生育メモ（独り言）",
+      "en": "Sato Farms: An Autumn Growing Note — Just Talking to Myself"
+    },
+    "harvest-to-polished-rice.html": {
+      "ja": "稲刈りから精米までの物語",
+      "en": "From Harvest to Polished Rice: A Story"
+    },
+    "rice-morning.html": {
+      "ja": "光・風・水が織りなす稲田の朝",
+      "en": "Morning in the Rice Fields Woven by Light, Wind, and Water"
+    },
+    "grass-and-water.html": {
+      "ja": "草を刈り、水を引く。八月最初の恒例行事",
+      "en": "Cutting Grass, Bringing Water"
+    },
+    "koshihikari-field-time.html": {
+      "ja": "コシヒカリ――おいしさは、田んぼの時間から生まれる",
+      "en": "Koshihikari: Good rice comes from the time in the rice field"
+    },
+    "fields-before-dawn.html": {
+      "ja": "夜明け前の畑と田んぼからはじまる物語",
+      "en": "A Story That Begins in the Fields Before Dawn"
+    },
+    "uncertain-weather-fields.html": {
+      "ja": "田んぼの様子、畑の様子――誤算つづきの天候不順",
+      "en": "The Rice Field, the Vegetable Field, and the Uncertain Weather"
+    },
+    "a-difficult-decision.html": {
+      "ja": "苦渋の決断――直販システム立ち上げ、一旦延期します",
+      "en": "A Difficult Decision — We Are Putting Our Direct Sales System off"
+    },
+    "Koshihikari-rice.html": {
+      "ja": "コシヒカリ――美味しさと、農家の技術が育てた米",
+      "en": "Koshihikari — The Rice That Became Japan’s Favorite",
+      "enFile": "koshihikari-rice.html"
+    },
+    "supermarket-rice-or-farmer.html": {
+      "ja": "スーパーの米と農家の米。買い方を、少し変えてみませんか。",
+      "en": "Supermarket Rice or Rice from a Farmer? Why Not Try a Different Way?"
+    },
+    "rice-membership-2026.html": {
+      "ja": "2026年産 育てる直販米のご案内",
+      "en": "2026 \"Grow-as-We-Go Direct Sales\" for Our Rice"
+    },
+    "food-self-sufficiency-37.html": {
+      "ja": "食料自給率＝過去最低の37％。この先どうなる？ いや、どうすべきか。",
+      "en": "Japan's Food Self-Sufficiency Rate Falls to a Record Low of 37% — What Happens Next? No, What Should We Do?"
+    },
+    "food-security-field.html": {
+      "ja": "日本の食料安全保障は、一枚の畑から始まる",
+      "en": "Japan's Food Security Begins with a Single Field"
+    },
+    "disasters-and-crime.html": {
+      "ja": "大変だ──天災に人災。決して他人事ではない",
+      "en": "A Difficult Time — Natural Disasters and Human Crime"
+    },
+    "cabbage-seeds-and-strength.html": {
+      "ja": "白菜の種まきと、自然の猛威。そして「日本の底力」",
+      "en": "Planting Chinese Cabbage Seeds, the Power of Nature, and Japan's Inner Strength"
+    },
+    "cabbage-miracle.html": {
+      "ja": "完全無消毒キャベツ、たった2ヶ月の奇跡物語",
+      "en": "The Two-Month Miracle: A Cabbage Story You Won’t Believe"
+    },
+    "seasons-and-vegetables.html": {
+      "ja": "佐藤農園の四季と野菜づくり",
+      "en": "The Four Seasons and Vegetable Growing at Sato Farms"
+    },
+    "cucumber-eggplant.html": {
+      "ja": "夏の主役、キュウリとナス ― 似て非なる二人の物語",
+      "en": "The Stars of Summer: Cucumber and Eggplant — Similar, Yet So Different"
+    },
+    "vine-showdown.html": {
+      "ja": "畑のツル選手権！カボチャVSさつまいも",
+      "en": "The Great Vine Showdown: Pumpkin vs. Sweet Potato"
+    },
+    "onion-heirloom-seeds.html": {
+      "ja": "玉ねぎの種購入：固定種に決めた",
+      "en": "Buying Onion Seeds: I Chose Heirloom Varieties"
+    },
+    "potato-massacre.html": {
+      "ja": "丸腰の代償——じゃがいも全滅記",
+      "en": "Unarmed and Defeated: The Potato Massacre"
+    },
+    "corn-civet.html": {
+      "ja": "とうもろこし――ハクビシンとの知恵比べ",
+      "en": "Corn — A Battle of Wits with the Civet"
+    },
+    "a-day-on-the-farm.html": {
+      "ja": "今日の一日",
+      "en": "A Day on the Farm"
+    },
+    "typhoon-and-fields.html": {
+      "ja": "台風の非常識と、畑の正直さ",
+      "en": "The Unusual Typhoon and the Honesty of the Fields"
+    },
+    "gunma-hokumo-nakanojo.html": {
+      "ja": "群馬県と北毛地域、そして中之条町",
+      "en": "Gunma Prefecture, Hokumo, and Nakanojo"
+    },
+    "akaiwa-soba.html": {
+      "ja": "山あいの故郷・赤岩を味わう",
+      "en": "The Taste of My Hometown, Akaiwa"
+    },
+    "sagiso-festival.html": {
+      "ja": "涼風を呼ぶ純白の舞い――中之条町「さぎ草祭り」",
+      "en": "A Cool White Dance in Summer — The Sagi-so Festival in Nakanojo"
+    },
+    "rice-direct-system.html": {
+      "ja": "佐藤農園の直販システムについて",
+      "en": "About Sato Farm’s Direct Sales System"
+    },
+    "rice-direct-ready.html": {
+      "ja": "佐藤農園 お米直販システム 公開です",
+      "en": "Sato Farms Rice Direct Sales System Is Ready"
+    },
+    "three-layer-order-system.html": {
+      "ja": "三層構造でつくる、健全で壊れにくい受注システム",
+      "en": "A Three-Layer Structure for a Healthy, Durable Order System"
+    },
+    "rice-delivery-struggle.html": {
+      "ja": "美味しいお米を届ける仕組み奮闘記",
+      "en": "Sato Farm — The Story Behind Making a Simple Registration Button Work"
+    },
+    "resume-direct-sales.html": {
+      "ja": "直販システム、再開のお知らせ",
+      "en": "Announcement: We Are Resuming Our Direct Sales"
+    },
+    "first-lp.html": {
+      "ja": "初めてのLP（ランディングページ）",
+      "en": "My First Landing Page"
+    },
+    "dotcom-flag.html": {
+      "ja": "ドットコムは、旗である。---satofarms.com",
+      "en": "A .com Is My Flag---satofarms.com"
+    },
+    "site-ops-note.html": {
+      "ja": "サイト運営についてのお知らせ",
+      "en": "A Note on How This Site Is Run"
+    },
+    "tilling-dotcom.html": {
+      "ja": "畑を耕すように、ドットコムを耕す",
+      "en": "Growing a Dot-Com Like Growing a Field"
+    },
+    "daily-automation.html": {
+      "ja": "毎日の「面倒」をなくす。2ヶ月かけて作った原稿アップの仕組み",
+      "en": "Getting Rid of the Daily Hassle: A System That Took Two Months to Build"
+    },
+    "mobile-maze.html": {
+      "ja": "スマホ表示の迷宮に迷い込んでいます。",
+      "en": "Lost in the maze of mobile display."
+    },
+    "no-google-translate.html": {
+      "ja": "佐藤農園LPが「Google翻訳」を使わない理由",
+      "en": "Why Sato Farms' LP Does Not Use Google Translate"
+    },
+    "cursor-pro-return.html": {
+      "ja": "Cursor Proが戻ってきた。そして、佐藤農園LPも次のステージへ進む。",
+      "en": "Cursor Pro Is Back—And Sato Farms' Landing Page Has Entered a New Stage"
+    },
+    "cursor-runaway.html": {
+      "ja": "生成AIの Cursor が暴走した。何故だ？",
+      "en": "Sato Farm LP — What Happened with Cursor"
+    },
+    "cursor-to-vscode.html": {
+      "ja": "AIとの付き合い方を見直す日。Cursorから無料のVS Codeへ、そして自動化へ",
+      "en": "Rethinking How I Work With AI: From Cursor Pro to Free VS Code, and Toward Automation"
+    },
+    "vscode-claude.html": {
+      "ja": "VSコードとClaude AI、実に優秀だ。",
+      "en": "VS Code and Claude AI: A Surprisingly Powerful Duo"
+    },
+    "taking-a-short-break.html": {
+      "ja": "しばらくお休みします",
+      "en": "Taking a Short Break"
+    },
+    "update-pause.html": {
+      "ja": "更新作業、いったん休止ーーーーにらめっこ、負けました！",
+      "en": "Pausing My Update Work — I Lost the Stare‑Down with the Code!"
+    },
+    "short-notes.html": {
+      "ja": "一言メモまとめ",
+      "en": "Short Notes (collected)"
+    },
+    "write-or-rest.html": {
+      "ja": "書きたいなら書けばいい。書きたくないなら、ペンを放り出して休めばいい。",
+      "en": "If you want to write, write. If you don't want to write, put down your pen and rest."
+    },
+    "am-i-healthy.html": {
+      "ja": "健康か？",
+      "en": "Am I Healthy?"
+    },
+    "lemon-memorial.html": {
+      "ja": "愛しの兎レモンの命日",
+      "en": "Beloved rabbit Lemon's memorial day"
+    },
+    "third-time.html": {
+      "ja": "三度目でも、伝わらなかった。",
+      "en": "Even the Third Time, It Didn't Get Through"
+    },
+    "line-friends.html": {
+      "ja": "HP開設が生んだ、LINE友達の「仕分け祭り」",
+      "en": "How My Website Launch Sparked a LINE Friend \"Purge\""
+    },
+    "rooted-in-the-community.html": {
+      "ja": "地域に根を張るということ",
+      "en": "Rooted in the Community"
+    }
+  },
+  "shelves": [
+    {
+      "id": "paddy",
+      "name": {
+        "ja": "水田・稲作",
+        "en": "Paddy Fields and Rice Growing"
+      },
+      "items": [
+        "hana-mizu.html",
+        "mid-season-drainage.html",
+        "best-time-to-drain.html",
+        "harvest-time.html",
+        "satofarms-autumn-note.html",
+        "harvest-to-polished-rice.html",
+        "rice-morning.html",
+        "grass-and-water.html",
+        "koshihikari-field-time.html",
+        "fields-before-dawn.html",
+        "uncertain-weather-fields.html",
+        "a-difficult-decision.html"
+      ]
+    },
+    {
+      "id": "koshihikari",
+      "name": {
+        "ja": "コシヒカリというお米",
+        "en": "Koshihikari"
+      },
+      "items": [
+        "Koshihikari-rice.html",
+        "koshihikari-field-time.html",
+        "harvest-to-polished-rice.html",
+        "supermarket-rice-or-farmer.html",
+        "rice-membership-2026.html",
+        "food-self-sufficiency-37.html"
+      ]
+    },
+    {
+      "id": "food-security",
+      "name": {
+        "ja": "食料安全保障",
+        "en": "Food Security"
+      },
+      "items": [
+        "food-security-field.html",
+        "food-self-sufficiency-37.html",
+        "disasters-and-crime.html",
+        "supermarket-rice-or-farmer.html",
+        "cabbage-seeds-and-strength.html",
+        "cabbage-miracle.html"
+      ]
+    },
+    {
+      "id": "crops",
+      "name": {
+        "ja": "畑の作物",
+        "en": "Field Crops"
+      },
+      "items": [
+        "seasons-and-vegetables.html",
+        "cucumber-eggplant.html",
+        "vine-showdown.html",
+        "cabbage-miracle.html",
+        "cabbage-seeds-and-strength.html",
+        "onion-heirloom-seeds.html",
+        "potato-massacre.html",
+        "corn-civet.html",
+        "a-day-on-the-farm.html",
+        "typhoon-and-fields.html",
+        "uncertain-weather-fields.html",
+        "food-security-field.html"
+      ]
+    },
+    {
+      "id": "agatsuma",
+      "name": {
+        "ja": "吾妻の自然",
+        "en": "The Nature of Agatsuma"
+      },
+      "items": [
+        "gunma-hokumo-nakanojo.html",
+        "akaiwa-soba.html",
+        "sagiso-festival.html",
+        "rice-morning.html",
+        "grass-and-water.html"
+      ]
+    },
+    {
+      "id": "cooking",
+      "name": {
+        "ja": "野菜・調理・料理",
+        "en": "Vegetables, Cooking, and Meals"
+      },
+      "items": [
+        "akaiwa-soba.html",
+        "cucumber-eggplant.html",
+        "seasons-and-vegetables.html",
+        "supermarket-rice-or-farmer.html",
+        "harvest-to-polished-rice.html"
+      ]
+    },
+    {
+      "id": "direct",
+      "name": {
+        "ja": "育てる直販（LP・システム作り）",
+        "en": "Direct Sales We Grow (the LP and its systems)"
+      },
+      "items": [
+        "rice-direct-system.html",
+        "rice-membership-2026.html",
+        "rice-direct-ready.html",
+        "three-layer-order-system.html",
+        "rice-delivery-struggle.html",
+        "a-difficult-decision.html",
+        "resume-direct-sales.html",
+        "fields-before-dawn.html",
+        "first-lp.html",
+        "dotcom-flag.html",
+        "site-ops-note.html",
+        "tilling-dotcom.html",
+        "daily-automation.html",
+        "mobile-maze.html",
+        "no-google-translate.html",
+        "cursor-pro-return.html"
+      ]
+    },
+    {
+      "id": "desk",
+      "name": {
+        "ja": "仕事机（PC・創作・仕事）",
+        "en": "The Desk (PC, writing, and work)"
+      },
+      "items": [
+        "cursor-pro-return.html",
+        "cursor-runaway.html",
+        "cursor-to-vscode.html",
+        "vscode-claude.html",
+        "taking-a-short-break.html",
+        "update-pause.html",
+        "short-notes.html",
+        "write-or-rest.html"
+      ]
+    },
+    {
+      "id": "daily",
+      "name": {
+        "ja": "日常生活・健康・思うこと",
+        "en": "Daily Life, Health, and Thoughts"
+      },
+      "items": [
+        "am-i-healthy.html",
+        "a-day-on-the-farm.html",
+        "lemon-memorial.html",
+        "third-time.html",
+        "line-friends.html",
+        "rooted-in-the-community.html",
+        "write-or-rest.html"
+      ]
+    },
+    {
+      "id": "english",
+      "name": {
+        "ja": "英語を使うということ",
+        "en": "Using English"
+      },
+      "items": [
+        "no-google-translate.html",
+        "tilling-dotcom.html"
+      ]
+    }
+  ]
+}

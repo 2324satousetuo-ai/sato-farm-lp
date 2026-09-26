@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=44">
+  <link rel="stylesheet" href="library.css?v=3">
 </head>
 <body class="notranslate">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
@@ -32,16 +33,12 @@
       </div>
       <nav class="nav" aria-label="Main navigation">
         <a href="#news">News</a>
-        <a href="#about">About</a>
+        <a href="#library">Farm Library</a>
         <a href="#nakanojo">Nakanojo</a>
         <a href="#spots">Links</a>
-        <a href="#products">Products</a>
-        <a href="#field-report">Updates</a>
         <a href="#profile">Profile</a>
         <a href="blog-en/">Blog</a>
-        <a href="#soliloquy">Featured</a>
         <a href="#faq">FAQ</a>
-        <a href="#access">Access</a>
         <a href="#rice-register">2026 Rice</a>
         <a href="index.html" class="nav__lang" lang="ja">日本語</a>
         <a href="#contact" class="nav__cta">Contact</a>
@@ -149,7 +146,16 @@
               <p class="news__text"><span class="news__headline">When Is the Best Time to Drain a Rice Field?</span>—<a href="blog-en/notes/best-time-to-drain.html" class="news__kind">Read</a>.</p>
           </li>
         </ul>
-        <p class="lp-blog-more"><a href="blog-en/news/">See all news →</a></p>
+        <p class="lp-blog-more"><a href="blog-en/news/">See all news →</a><span class="lp-blog-more__sep" aria-hidden="true">/</span><a href="blog-en/">View the blog →</a></p>
+      </div>
+    </section>
+
+    <section class="library section" id="library">
+      <div class="container">
+        <p class="section__label">Library</p>
+        <h2 class="section__title">Farm Library</h2>
+        <p class="library-lead">Ten shelves. Choose one to open it in the Farm Library. From there you can return home.</p>
+        <div id="library-mount" data-library="entrance"></div>
       </div>
     </section>
 
@@ -947,7 +953,7 @@
   </footer>
 
   <script src="form.config.js"></script>
-  <script src="script.js?v=17"></script>
+  <script src="script.js?v=22"></script>
   <script src="js/register.js"></script>
 
   <!-- Netlify Forms detection -->

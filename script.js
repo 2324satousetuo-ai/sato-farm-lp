@@ -351,8 +351,33 @@
     }
   });
 })();
+function scrollAnchor(target) {
+  if (!target || target.id === 'top') return target;
+  var heading = target.querySelector('h2');
+  if (!heading) return target;
+  if (heading.getBoundingClientRect().top - target.getBoundingClientRect().top < 180) return target;
+  var label = heading.previousElementSibling;
+  if (label && label.classList.contains('section__label')) return label;
+  return heading;
+}
+
+function scrollToSection(target) {
+  var anchor = scrollAnchor(target);
+  if (!anchor || (target && target.id === 'top')) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+  var header = document.querySelector('.header');
+  var headerH = header ? header.getBoundingClientRect().height : 72;
+  var top = anchor.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+}
+
 window.addEventListener('DOMContentLoaded', function() {
-  var sectionIds = ['top', 'news', 'products', 'field-report', 'profile', 'soliloquy', 'faq', 'spots'];
+  var sectionIds = ['top'];
+  document.querySelectorAll('main > section[id]').forEach(function (section) {
+    sectionIds.push(section.id);
+  });
   var currentIndex = -1;
 
   var arrowBtn = document.querySelector('.scroll-arrow');
@@ -363,19 +388,9 @@ window.addEventListener('DOMContentLoaded', function() {
       if (currentIndex >= sectionIds.length) {
         currentIndex = 0;
       }
-      var currentId = sectionIds[currentIndex];
-      if (currentId === 'top') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-var target = document.getElementById(currentId);
-if (target) {
-  var offset = 0;
-  if (currentId === 'profile') {
-    offset = -120;
-  }
-  var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-  window.scrollTo({ top: top, behavior: 'smooth' });
-}        
+      var target = document.getElementById(sectionIds[currentIndex]);
+      if (target) {
+        scrollToSection(target);
       }
     });
   }
@@ -417,3 +432,216 @@ if (target) {
   highlightLegacyAnchorFromHash();
   window.addEventListener('hashchange', highlightLegacyAnchorFromHash);
 });
+
+(function () {
+  var me = document.currentScript;
+  var src = me ? me.getAttribute('src') || '' : '';
+  var base = src.replace(/script\.js(?:\?.*)?$/, '');
+
+  function text(value) {
+    return value == null ? '' : String(value);
+  }
+
+  function langOf() {
+    return document.documentElement.lang === 'en' ? 'en' : 'ja';
+  }
+
+  function articleFile(article, file, lang) {
+    if (lang === 'en' && article && article.enFile) return article.enFile;
+    return file;
+  }
+
+  function titleOf(article, lang) {
+    if (!article) return '';
+    return text(article[lang] || article.ja || article.en);
+  }
+
+  function shelfName(shelf, lang) {
+    var name = shelf && shelf.name;
+    if (!name) return '';
+    return text(name[lang] || name.ja || name.en);
+  }
+
+  function ensureCss() {
+    if (document.querySelector('link[href*="library.css"]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = base + 'library.css?v=3';
+    link.setAttribute('data-library-css', '');
+    document.head.appendChild(link);
+  }
+
+  function libraryHome(hash) {
+    var suffix = hash ? '#' + String(hash).replace(/^#/, '') : '';
+    var path = location.pathname || '';
+    if (/\/(?:blog|blog-en)\/notes\//.test(path)) return '../library/' + suffix;
+    if (/\/(?:blog|blog-en)\/library(?:\/|\/index\.html)?$/.test(path)) return suffix || './';
+    if (/\/blog-en(?:\/|\/index\.html)?$/.test(path)) return 'library/' + suffix;
+    if (/\/blog(?:\/|\/index\.html)?$/.test(path)) return 'library/' + suffix;
+    return (langOf() === 'en' ? 'blog-en/library/' : 'blog/library/') + suffix;
+  }
+
+  function currentNoteFile() {
+    var name = (location.pathname || '').split('/').pop() || '';
+    return /\.html$/i.test(name) && name.toLowerCase() !== 'index.html' ? name : '';
+  }
+
+  function shelvesForFile(catalog, file) {
+    if (!file) return [];
+    var articles = catalog.articles || {};
+    return (catalog.shelves || []).filter(function (shelf) {
+      return (shelf.items || []).some(function (item) {
+        var article = articles[item];
+        return item === file || (article && article.enFile === file);
+      });
+    });
+  }
+
+  function fillShelfLink(link, shelf, index, lang) {
+    var no = document.createElement('span');
+    no.className = 'library-shelf__no';
+    no.textContent = String(index + 1);
+    var name = document.createElement('span');
+    name.className = 'library-shelf__name';
+    name.textContent = shelfName(shelf, lang);
+    link.appendChild(no);
+    link.appendChild(name);
+  }
+
+  function renderEntrance(catalog, mount) {
+    var lang = langOf();
+    var list = document.createElement('ul');
+    list.className = 'library-shelves';
+    (catalog.shelves || []).forEach(function (shelf, index) {
+      var li = document.createElement('li');
+      var link = document.createElement('a');
+      link.className = 'library-shelf';
+      link.href = libraryHome(shelf.id);
+      fillShelfLink(link, shelf, index, lang);
+      li.appendChild(link);
+      list.appendChild(li);
+    });
+    mount.replaceChildren(list);
+  }
+
+  function renderCatalog(catalog, mount) {
+    var lang = langOf();
+    var articles = catalog.articles || {};
+    var shelves = catalog.shelves || [];
+    var jump = document.createElement('nav');
+    jump.className = 'library-jump';
+    jump.setAttribute('aria-label', lang === 'en' ? 'Shelves' : '棚');
+    var board = document.createElement('div');
+    board.className = 'library-board';
+
+    shelves.forEach(function (shelf, index) {
+      var jumpLink = document.createElement('a');
+      jumpLink.className = 'library-jump__link';
+      jumpLink.href = '#' + shelf.id;
+      jumpLink.textContent = (index + 1) + ' ' + shelfName(shelf, lang);
+      jump.appendChild(jumpLink);
+
+      var room = document.createElement('section');
+      room.className = 'library-room';
+      room.id = shelf.id;
+      var title = document.createElement('h2');
+      title.className = 'library-room__title';
+      title.textContent = (index + 1) + ' ' + shelfName(shelf, lang);
+      var count = document.createElement('p');
+      count.className = 'library-room__count';
+      count.textContent = lang === 'en'
+        ? (shelf.items || []).length + ' titles'
+        : (shelf.items || []).length + '題';
+      var items = document.createElement('ul');
+      items.className = 'library-room__list';
+      (shelf.items || []).forEach(function (file) {
+        var li = document.createElement('li');
+        var card = document.createElement('p');
+        card.className = 'library-card';
+        card.textContent = titleOf(articles[file], lang);
+        li.appendChild(card);
+        items.appendChild(li);
+      });
+      var back = document.createElement('p');
+      back.className = 'library-room__back';
+      var backLink = document.createElement('a');
+      backLink.href = '#library-top';
+      backLink.textContent = lang === 'en' ? 'Back to the shelves' : '棚の一覧へ';
+      back.appendChild(backLink);
+      room.appendChild(title);
+      room.appendChild(count);
+      room.appendChild(items);
+      room.appendChild(back);
+      board.appendChild(room);
+    });
+
+    mount.replaceChildren(jump, board);
+    var hashId = (location.hash || '').replace(/^#/, '');
+    var room = hashId ? document.getElementById(hashId) : null;
+    if (room && room.classList.contains('library-room')) scrollToSection(room);
+  }
+
+  function renderCorner(catalog, mount) {
+    var lang = langOf();
+    var heading = document.createElement('h2');
+    heading.className = 'section__title';
+    heading.textContent = lang === 'en' ? 'Farm Library' : '農園図書館';
+    var lead = document.createElement('p');
+    lead.className = 'library-lead';
+    lead.textContent = lang === 'en'
+      ? 'This article sits on the shelves below. The Farm Library holds every title.'
+      : 'この記事がある棚です。十の棚の題名は、農園図書館にまとめてあります。';
+    var home = document.createElement('a');
+    home.className = 'library-return';
+    home.href = libraryHome();
+    home.textContent = lang === 'en' ? 'Open the Farm Library' : '農園図書館を見る';
+    var list = document.createElement('ul');
+    list.className = 'library-corner__shelves';
+    shelvesForFile(catalog, currentNoteFile()).forEach(function (shelf) {
+      var li = document.createElement('li');
+      var link = document.createElement('a');
+      link.href = libraryHome(shelf.id);
+      link.textContent = shelfName(shelf, lang);
+      li.appendChild(link);
+      list.appendChild(li);
+    });
+    mount.replaceChildren(heading, lead, home, list);
+  }
+
+  function mountCorner() {
+    var article = document.querySelector('.blog-article .container');
+    if (!article || document.getElementById('library-corner')) return null;
+    var corner = document.createElement('section');
+    corner.id = 'library-corner';
+    corner.className = 'library-corner';
+    corner.setAttribute('aria-label', langOf() === 'en' ? 'Farm Library' : '農園図書館');
+    var nav = article.querySelector('.blog-article__nav');
+    if (nav) article.insertBefore(corner, nav);
+    else article.appendChild(corner);
+    return corner;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var entrance = document.getElementById('library-mount');
+    var catalogMount = document.getElementById('library-catalog');
+    var corner = document.querySelector('.blog-article') ? mountCorner() : null;
+    if (!entrance && !catalogMount && !corner) return;
+    ensureCss();
+    fetch(base + 'data/library.json', { cache: 'no-store' })
+      .then(function (response) {
+        if (!response.ok) throw new Error('library_failed');
+        return response.json();
+      })
+      .then(function (catalog) {
+        if (entrance) renderEntrance(catalog, entrance);
+        if (catalogMount) renderCatalog(catalog, catalogMount);
+        if (corner) renderCorner(catalog, corner);
+      })
+      .catch(function () {
+        var message = langOf() === 'en' ? 'The shelves could not be loaded.' : '棚を読み込めませんでした。';
+        if (entrance) entrance.textContent = message;
+        if (catalogMount) catalogMount.textContent = message;
+        if (corner) corner.textContent = message;
+      });
+  });
+})();

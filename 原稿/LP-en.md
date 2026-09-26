@@ -52,7 +52,28 @@ The full news list has moved to the [blog news archive](../blog-en/news/). Only 
 - September 19, 2026　Gunma Prefecture, Hokumo, and Nakanojo—[Read](../blog-en/notes/gunma-hokumo-nakanojo.html).
 - September 16, 2026　When Is the Best Time to Drain a Rice Field?—[Read](../blog-en/notes/best-time-to-drain.html).
 
-[See all news →](../blog-en/news/)
+[See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
+
+---
+
+## Farm Library
+
+Ten shelves. Choose one to open it in the [Farm Library](../blog-en/library/). From there you can return home. Opening each article comes next.
+
+The catalog is [data/library.json](../data/library.json). Shelf names, titles, and new articles are edited in that file.
+
+1. Paddy Fields and Rice Growing
+2. Koshihikari
+3. Food Security
+4. Field Crops
+5. The Nature of Agatsuma
+6. Vegetables, Cooking, and Meals
+7. Direct Sales We Grow (the LP and its systems)
+8. The Desk (PC, writing, and work)
+9. Daily Life, Health, and Thoughts
+10. Using English
+
+The end of each article links back to the shelves that hold it.
 
 ---
 

@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=44">
+  <link rel="stylesheet" href="library.css?v=3">
 </head>
 <body class="notranslate">
   <div id="top" class="page-top-anchor" tabindex="-1" aria-hidden="true"></div>
@@ -33,16 +34,12 @@
       </div>
       <nav class="nav" aria-label="メインナビゲーション">
         <a href="#news">新着</a>
-        <a href="#about">農園について</a>
+        <a href="#library">農園図書館</a>
         <a href="#nakanojo">中之条町</a>
         <a href="#spots">名所URL</a>
-        <a href="#products">商品</a>
-        <a href="#field-report">近況</a>
         <a href="#profile">プロフィール</a>
         <a href="blog/">ブログ</a>
-        <a href="#soliloquy">おすすめ</a>
         <a href="#faq">FAQ</a>
-        <a href="#access">アクセス</a>
         <a href="#rice-register">直販米</a>
         <a href="index-en.html" class="nav__lang" lang="en">English</a>
         <a href="#contact" class="nav__cta">お問い合わせ</a>
@@ -172,7 +169,16 @@
             <p class="news__text"><span class="news__headline">「苦渋の決断――直販システム立ち上げ、一旦延期します」</span>—<a href="blog/notes/a-difficult-decision.html" class="news__kind">読む</a></p>
         </li>
         </ul>
-        <p class="lp-blog-more"><a href="blog/news/">新着情報の一覧を見る →</a></p>
+        <p class="lp-blog-more"><a href="blog/news/">新着情報の一覧を見る →</a><span class="lp-blog-more__sep" aria-hidden="true">／</span><a href="blog/">ブログを見る →</a></p>
+      </div>
+    </section>
+
+    <section class="library section" id="library">
+      <div class="container">
+        <p class="section__label">Library</p>
+        <h2 class="section__title">農園図書館</h2>
+        <p class="library-lead">十の棚です。棚を選ぶと、ブログの農園図書館が開きます。そこからトップへ戻れます。</p>
+        <div id="library-mount" data-library="entrance"></div>
       </div>
     </section>
 
@@ -959,7 +965,7 @@
   </footer>
 
   <script src="form.config.js"></script>
-  <script src="script.js?v=17"></script>
+  <script src="script.js?v=22"></script>
   <script src="js/register.js"></script>
 
   <!-- Netlify Forms detection -->
