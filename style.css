@@ -260,6 +260,70 @@ a {
   gap: 8px;
 }
 
+.header-fold {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 32px;
+  padding: 4px 14px;
+  border: 1px solid rgba(45, 74, 62, 0.35);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--forest);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.header-fold:hover {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.header-fold__label--open {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .header__tools {
+    gap: 12px;
+  }
+
+  .nav {
+    gap: 14px;
+  }
+
+  .header-fold {
+    display: inline-flex;
+  }
+
+  html:has(.header.is-folded) {
+    --header-height: 44px;
+  }
+
+  .header.is-folded .nav,
+  .header.is-folded .header__counter {
+    display: none;
+  }
+
+  .header.is-folded .logo__url {
+    display: none;
+  }
+
+  .header.is-folded .header-fold__label--close {
+    display: none;
+  }
+
+  .header.is-folded .header-fold__label--open {
+    display: inline;
+  }
+}
+
 .header__lang-btn {
   display: none;
 }

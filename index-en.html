@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=44">
+  <link rel="stylesheet" href="style.css?v=45">
   <link rel="stylesheet" href="library.css?v=3">
 </head>
 <body class="notranslate">
@@ -31,7 +31,7 @@
           <span></span>
         </button>
       </div>
-      <nav class="nav" aria-label="Main navigation">
+      <nav class="nav" id="site-nav" aria-label="Main navigation">
         <a href="#news">News</a>
         <a href="#library">Farm Library</a>
         <a href="#nakanojo">Nakanojo</a>
@@ -47,6 +47,10 @@
           <span class="visit-counter-label">Visits</span>
           <span class="visit-counter">—</span>
         </p>
+        <button type="button" class="header-fold" aria-expanded="true" aria-controls="site-nav" aria-label="Fold the menu" data-open-label="Open the menu" data-close-label="Fold the menu">
+          <span class="header-fold__label header-fold__label--close" aria-hidden="true">Fold</span>
+          <span class="header-fold__label header-fold__label--open" aria-hidden="true">Open</span>
+        </button>
       </div>
     </div>
   </header>
@@ -953,7 +957,7 @@
   </footer>
 
   <script src="form.config.js"></script>
-  <script src="script.js?v=22"></script>
+  <script src="script.js?v=23"></script>
   <script src="js/register.js"></script>
 
   <!-- Netlify Forms detection -->

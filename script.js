@@ -4,6 +4,34 @@
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.nav');
 
+  const headerFold = document.querySelector('.header-fold');
+  const siteHeader = document.querySelector('.header');
+  if (headerFold && siteHeader) {
+    const foldKey = 'sato-header-folded';
+    const applyFold = (folded) => {
+      siteHeader.classList.toggle('is-folded', folded);
+      headerFold.setAttribute('aria-expanded', folded ? 'false' : 'true');
+      headerFold.setAttribute(
+        'aria-label',
+        folded ? headerFold.getAttribute('data-open-label') : headerFold.getAttribute('data-close-label')
+      );
+    };
+    try {
+      if (sessionStorage.getItem(foldKey) === '1') applyFold(true);
+    } catch (err) {
+      /* storage unavailable */
+    }
+    headerFold.addEventListener('click', () => {
+      const folded = !siteHeader.classList.contains('is-folded');
+      applyFold(folded);
+      try {
+        sessionStorage.setItem(foldKey, folded ? '1' : '0');
+      } catch (err) {
+        /* storage unavailable */
+      }
+    });
+  }
+
   if (navToggle && nav) {
     navToggle.addEventListener('click', () => {
       const isOpen = nav.classList.toggle('is-open');
