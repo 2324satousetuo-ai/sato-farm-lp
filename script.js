@@ -494,7 +494,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('link[href*="library.css"]')) return;
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = base + 'library.css?v=3';
+    link.href = base + 'library.css?v=4';
     link.setAttribute('data-library-css', '');
     document.head.appendChild(link);
   }
@@ -536,39 +536,36 @@ window.addEventListener('DOMContentLoaded', function() {
     link.appendChild(name);
   }
 
-  function renderEntrance(catalog, mount) {
-    var lang = langOf();
+  function renderShelfList(lang, shelves, hrefFor) {
     var list = document.createElement('ul');
     list.className = 'library-shelves';
-    (catalog.shelves || []).forEach(function (shelf, index) {
+    shelves.forEach(function (shelf, index) {
       var li = document.createElement('li');
       var link = document.createElement('a');
       link.className = 'library-shelf';
-      link.href = libraryHome(shelf.id);
+      link.href = hrefFor(shelf);
       fillShelfLink(link, shelf, index, lang);
       li.appendChild(link);
       list.appendChild(li);
     });
-    mount.replaceChildren(list);
+    return list;
+  }
+
+  function renderEntrance(catalog, mount) {
+    var lang = langOf();
+    mount.replaceChildren(renderShelfList(lang, catalog.shelves || [], function (shelf) {
+      return libraryHome(shelf.id);
+    }));
   }
 
   function renderCatalog(catalog, mount) {
     var lang = langOf();
     var articles = catalog.articles || {};
     var shelves = catalog.shelves || [];
-    var jump = document.createElement('nav');
-    jump.className = 'library-jump';
-    jump.setAttribute('aria-label', lang === 'en' ? 'Shelves' : '棚');
     var board = document.createElement('div');
     board.className = 'library-board';
 
     shelves.forEach(function (shelf, index) {
-      var jumpLink = document.createElement('a');
-      jumpLink.className = 'library-jump__link';
-      jumpLink.href = '#' + shelf.id;
-      jumpLink.textContent = (index + 1) + ' ' + shelfName(shelf, lang);
-      jump.appendChild(jumpLink);
-
       var room = document.createElement('section');
       room.className = 'library-room';
       room.id = shelf.id;
@@ -603,7 +600,9 @@ window.addEventListener('DOMContentLoaded', function() {
       board.appendChild(room);
     });
 
-    mount.replaceChildren(jump, board);
+    mount.replaceChildren(renderShelfList(lang, shelves, function (shelf) {
+      return '#' + shelf.id;
+    }), board);
     var hashId = (location.hash || '').replace(/^#/, '');
     var room = hashId ? document.getElementById(hashId) : null;
     if (room && room.classList.contains('library-room')) scrollToSection(room);

@@ -56,27 +56,6 @@ The full news list has moved to the [blog news archive](../blog-en/news/). Only 
 
 ---
 
-## Farm Library
-
-Ten shelves. Choose one to open it in the [Farm Library](../blog-en/library/). From there you can return home. Opening each article comes next.
-
-The catalog is [data/library.json](../data/library.json). Shelf names, titles, and new articles are edited in that file.
-
-1. Paddy Fields and Rice Growing
-2. Koshihikari
-3. Food Security
-4. Field Crops
-5. The Nature of Agatsuma
-6. Vegetables, Cooking, and Meals
-7. Direct Sales We Grow (the LP and its systems)
-8. The Desk (PC, writing, and work)
-9. Daily Life, Health, and Thoughts
-10. Using English
-
-The end of each article links back to the shelves that hold it.
-
----
-
 ## Nakanojo: A Land of Nature and Hot Springs
 
 Rice Paddies and Fields of the Agatsuma Region
@@ -89,11 +68,6 @@ Located in northwestern Gunma's Agatsuma region, Nakanojo is a town blessed with
 - **Four seasons of Agatsuma**　Temperature swings concentrate flavor in our crops
 - **Fields and paddies**　Koshihikari rice and seasonal vegetables
 - **Hot springs & nature**　Renowned onsen towns including Shima and Sawatari
-
-### Sightseeing links
-
-- [Nakanojo　Sightseeing links](../blog-en/links/#spots-nakanojo)　Hot springs, nature, and culture
-- [Agatsuma　Sightseeing links](../blog-en/links/#spots-agatsuma)　Kusatsu, Yanba, Tsumagoi, and more
 
 ---
 
@@ -206,6 +180,27 @@ August 19, 2026. Our rice paddies.
 August 19, 2026. Our vegetable fields.
 
 [See more farm photos →](../blog-en/field-report/)
+
+---
+
+## Farm Library
+
+Ten shelves. Choose one to open it in the [Farm Library](../blog-en/library/). From there you can return home. Opening each article comes next.
+
+The catalog is [data/library.json](../data/library.json). Shelf names, titles, and new articles are edited in that file.
+
+1. Paddy Fields and Rice Growing
+2. Koshihikari
+3. Food Security
+4. Field Crops
+5. The Nature of Agatsuma
+6. Vegetables, Cooking, and Meals
+7. Direct Sales We Grow (the LP and its systems)
+8. The Desk (PC, writing, and work)
+9. Daily Life, Health, and Thoughts
+10. Using English
+
+The end of each article links back to the shelves that hold it.
 
 ---
 

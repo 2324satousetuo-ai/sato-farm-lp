@@ -1458,18 +1458,35 @@ html[lang="en"] .contact-form__catch {
 /* Nakanojo */
 .nakanojo__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px 48px;
   align-items: center;
 }
 
 .nakanojo__image {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
   background:
     linear-gradient(180deg, rgba(26, 46, 38, 0) 50%, rgba(26, 46, 38, 0.55) 100%),
     url('images/nakanojo-farm.jpg') center / cover no-repeat;
   box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 901px) {
+  .nakanojo__grid {
+    align-items: stretch;
+  }
+
+  .nakanojo__visual {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nakanojo__image {
+    aspect-ratio: auto;
+    flex: 1 1 auto;
+    min-height: 280px;
+  }
 }
 
 .nakanojo__caption {
