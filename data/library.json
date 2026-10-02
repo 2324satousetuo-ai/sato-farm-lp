@@ -225,6 +225,10 @@
     "rooted-in-the-community.html": {
       "ja": "地域に根を張るということ",
       "en": "Rooted in the Community"
+    },
+    "autumn-rains-delayed-harvest.html": {
+      "ja": "秋の長雨、稲刈り延期、そしてパソコンの泥沼",
+      "en": "Autumn Rains, a Delayed Harvest, and a Computer Quagmire"
     }
   },
   "shelves": [
@@ -235,6 +239,7 @@
         "en": "Paddy Fields and Rice Growing"
       },
       "items": [
+        "autumn-rains-delayed-harvest.html",
         "hana-mizu.html",
         "mid-season-drainage.html",
         "best-time-to-drain.html",
@@ -360,6 +365,7 @@
         "en": "The Desk (PC, writing, and work)"
       },
       "items": [
+        "autumn-rains-delayed-harvest.html",
         "cursor-pro-return.html",
         "cursor-runaway.html",
         "cursor-to-vscode.html",
@@ -377,6 +383,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "autumn-rains-delayed-harvest.html",
         "am-i-healthy.html",
         "a-day-on-the-farm.html",
         "lemon-memorial.html",
