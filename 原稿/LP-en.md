@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- October 4, 2026　Rice Harvest Complete! Preparing for Next Year's Rice—[Read](../blog-en/notes/rice-harvest-complete.html).
 - October 2, 2026　Autumn Rains, a Delayed Harvest, and a Computer Quagmire—[Read](../blog-en/notes/autumn-rains-delayed-harvest.html).
 - September 25, 2026　From Harvest to Polished Rice: A Story—[Read](../blog-en/notes/harvest-to-polished-rice.html).
 - September 24, 2026　The Taste of My Hometown, Akaiwa—[Read](../blog-en/notes/akaiwa-soba.html).
 - September 20, 2026　How Do We Know When the Rice Is Ready to Harvest?—[Read](../blog-en/notes/harvest-time.html).
-- September 19, 2026　Gunma Prefecture, Hokumo, and Nakanojo—[Read](../blog-en/notes/gunma-hokumo-nakanojo.html).
 
 [See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
 
@@ -235,9 +235,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- October 4, 2026　[Rice Harvest Complete! Preparing for Next Year's Rice](../blog-en/notes/rice-harvest-complete.html)　■ Building Healthy Soil for Next Year's Rice
 - October 2, 2026　[Autumn Rains, a Delayed Harvest, and a Computer Quagmire](../blog-en/notes/autumn-rains-delayed-harvest.html)　First, no matter what, I have to finish the rice harvest.
 - September 25, 2026　[From Harvest to Polished Rice: A Story](../blog-en/notes/harvest-to-polished-rice.html)　And so, the “white rice” that reaches our table is born.
-- September 24, 2026　[The Taste of My Hometown, Akaiwa](../blog-en/notes/akaiwa-soba.html)　- See sightseeing links for Nakanojo
 
 [View the blog](../blog-en/)
 

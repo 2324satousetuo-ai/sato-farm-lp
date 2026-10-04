@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.10.4　「稲刈り完了。そして、来年のおいしさに向けて」— [読む](../blog/notes/rice-harvest-complete.html)
 - 2026.10.2　「秋の長雨、稲刈り延期、そしてパソコンの泥沼」— [読む](../blog/notes/autumn-rains-delayed-harvest.html)
 - 2026.9.25　「稲刈りから精米までの物語」— [読む](../blog/notes/harvest-to-polished-rice.html)
 - 2026.9.24　「山あいの故郷・赤岩を味わう」— [読む](../blog/notes/akaiwa-soba.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.9.15　「田んぼの様子、畑の様子――誤算つづきの天候不順」— [読む](../blog/notes/uncertain-weather-fields.html)
 - 2026.9.13　「直販システム、再開のお知らせ」— [読む](../blog/notes/resume-direct-sales.html)
 - 2026.9.7　田んぼと白菜の写真を[田畑の近況報告](../blog/field-report/)に追加しました。
-- 2026.9.6　「地域に根を張るということ」— [読む](../blog/notes/rooted-in-the-community.html)
 
 [新着情報の一覧を見る →](../blog/news/)　／　[ブログを見る →](../blog/)
 
@@ -239,9 +239,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.10.4　[稲刈り完了。そして、来年のおいしさに向けて](../blog/notes/rice-harvest-complete.html)　こうして有機物を土に還し、豊かな土壌を育てることが、翌年もおいしいお米を実らせるための大切な基盤となる。
 - 2026.10.2　[秋の長雨、稲刈り延期、そしてパソコンの泥沼](../blog/notes/autumn-rains-delayed-harvest.html)　まずは、何としても稲刈りを終わらせなければ。
 - 2026.9.25　[稲刈りから精米までの物語](../blog/notes/harvest-to-polished-rice.html)　こうして、食卓に並ぶ「白米」が生まれます。
-- 2026.9.24　[山あいの故郷・赤岩を味わう](../blog/notes/akaiwa-soba.html)　- 中之条町の名所URL集を見る
 
 [ブログ一覧を見る](../blog/)
 
