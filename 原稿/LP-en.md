@@ -32,7 +32,7 @@ Japanese version available: [日本語で読む](../index.html)
 
 ## Current notices
 
-**Direct sales are open again**
+**2026 harvest rice: Now on sale**
 
 **[Grow-as-We-Go Direct Sales] Nakanojo's delicious rice “Sato Rice” (Koshihikari)**
 
