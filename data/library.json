@@ -229,6 +229,10 @@
     "autumn-rains-delayed-harvest.html": {
       "ja": "秋の長雨、稲刈り延期、そしてパソコンの泥沼",
       "en": "Autumn Rains, a Delayed Harvest, and a Computer Quagmire"
+    },
+    "sakamoto-fuyuyasumi.html": {
+      "ja": "坂本冬休みに笑う",
+      "en": "Laughing at Sakamoto Fuyuyasumi"
     }
   },
   "shelves": [
@@ -383,6 +387,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "sakamoto-fuyuyasumi.html",
         "autumn-rains-delayed-harvest.html",
         "am-i-healthy.html",
         "a-day-on-the-farm.html",
