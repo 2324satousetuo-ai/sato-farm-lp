@@ -64,6 +64,13 @@
   const completeUrl = form.dataset.completeUrl || 'register-complete.html';
   let submitting = false;
 
+  if (form.dataset.paused === '1') {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+    });
+    return;
+  }
+
   function setStatus(message, type) {
     if (!statusEl) {
       return;

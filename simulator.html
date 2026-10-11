@@ -350,6 +350,7 @@
 <script>
 const API_BASE = "";
 const ORDER_PAGE_URL = "order.html";
+const SIMULATOR_PAUSED = true;
 
 const PREFECTURES = [
   "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県",
@@ -436,7 +437,7 @@ function renderProducts() {
       </div>
       <div class="price">${yen(p.price)}</div>
     `;
-    if (!unavailable) {
+    if (!unavailable && !SIMULATOR_PAUSED) {
       card.addEventListener("click", () => selectProduct(p.id));
     }
     grid.appendChild(card);
@@ -444,6 +445,7 @@ function renderProducts() {
 }
 
 function selectProduct(id) {
+  if (SIMULATOR_PAUSED) return;
   const product = products.find((p) => p.id === id);
   if (!product || product.status === "preparing") return;
   selectedProductId = id;
@@ -478,6 +480,7 @@ function showExitGuide(visible) {
 }
 
 async function fetchQuote() {
+  if (SIMULATOR_PAUSED) return;
   const prefecture = el("prefecture").value;
   updateCta(prefecture);
 
@@ -509,9 +512,15 @@ async function fetchQuote() {
   }
 }
 
-el("prefecture").addEventListener("change", requestQuote);
+if (!SIMULATOR_PAUSED) {
+  el("prefecture").addEventListener("change", requestQuote);
+}
 
 populatePrefectures();
+if (SIMULATOR_PAUSED) {
+  el("ctaLink").classList.add("disabled");
+  el("ctaLink").removeAttribute("href");
+}
 loadProducts();
 </script>
 

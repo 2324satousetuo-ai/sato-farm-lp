@@ -223,7 +223,7 @@ function rawTermIndex(haystack, term, from = 0) {
   const text = String(haystack || "");
   if (term === "円") {
     const slice = text.slice(from);
-    const m = slice.match(/(?<![万億])円/);
+    const m = slice.match(/(?<![万億千])円/);
     return m ? from + m.index : -1;
   }
   if (LATIN_WORD.test(term) || /[A-Za-z]/.test(term)) {

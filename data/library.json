@@ -233,6 +233,10 @@
     "sakamoto-fuyuyasumi.html": {
       "ja": "坂本冬休みに笑う",
       "en": "Laughing at Sakamoto Fuyuyasumi"
+    },
+    "twelve-thousand-in-pocket.html": {
+      "ja": "千円札三枚と、胸ポケットの一万二千円",
+      "en": "Three Thousand Yen and the ¥12,000 in My Pocket"
     }
   },
   "shelves": [
@@ -387,6 +391,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "twelve-thousand-in-pocket.html",
         "sakamoto-fuyuyasumi.html",
         "autumn-rains-delayed-harvest.html",
         "am-i-healthy.html",
