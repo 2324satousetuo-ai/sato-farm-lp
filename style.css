@@ -1908,6 +1908,14 @@ html[lang="en"] .notice__decision {
   white-space: nowrap;
 }
 
+.notice__text--links s.notice__link-item,
+.notice__text--links s.notice__link-item a,
+.notice__text--links s.notice__link-item a strong {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.12em;
+  text-decoration-color: currentColor;
+}
+
 .notice__link-item--break {
   flex-basis: 100%;
 }
