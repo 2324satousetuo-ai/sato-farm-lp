@@ -237,6 +237,10 @@
     "twelve-thousand-in-pocket.html": {
       "ja": "千円札三枚と、胸ポケットの一万二千円",
       "en": "Three Thousand Yen and the ¥12,000 in My Pocket"
+    },
+    "letting-go-of-my-blog.html": {
+      "ja": "ブログを断捨離するのは、私か、それとも時間か",
+      "en": "Am I Letting Go of My Blog, or Is Time Doing the Job?"
     }
   },
   "shelves": [
@@ -391,6 +395,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "letting-go-of-my-blog.html",
         "twelve-thousand-in-pocket.html",
         "sakamoto-fuyuyasumi.html",
         "autumn-rains-delayed-harvest.html",
