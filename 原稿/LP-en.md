@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- October 16, 2026　Am I Letting Go of My Blog, or Is Time Doing the Job?—[Read](../blog-en/notes/letting-go-of-my-blog.html).
 - October 11, 2026　Three Thousand Yen and the ¥12,000 in My Pocket—[Read](../blog-en/notes/twelve-thousand-in-pocket.html).
 - October 9, 2026　Laughing at Sakamoto Fuyuyasumi—[Read](../blog-en/notes/sakamoto-fuyuyasumi.html).
 - October 4, 2026　Rice Harvest Complete! Preparing for Next Year's Rice—[Read](../blog-en/notes/rice-harvest-complete.html).
 - October 2, 2026　Autumn Rains, a Delayed Harvest, and a Computer Quagmire—[Read](../blog-en/notes/autumn-rains-delayed-harvest.html).
-- September 25, 2026　From Harvest to Polished Rice: A Story—[Read](../blog-en/notes/harvest-to-polished-rice.html).
 
 [See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
 
@@ -235,9 +235,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- October 16, 2026　[Am I Letting Go of My Blog, or Is Time Doing the Job?](../blog-en/notes/letting-go-of-my-blog.html)　I love traveling, and before I know it, I’m off somewhere again.
 - October 11, 2026　[Three Thousand Yen and the ¥12,000 in My Pocket](../blog-en/notes/twelve-thousand-in-pocket.html)　Mr. C, I am truly sorry.
 - October 9, 2026　[Laughing at Sakamoto Fuyuyasumi](../blog-en/notes/sakamoto-fuyuyasumi.html)　Thank you, Sakamoto Fuyuyasumi. I really had a very good time.
-- October 4, 2026　[Rice Harvest Complete! Preparing for Next Year's Rice](../blog-en/notes/rice-harvest-complete.html)　■ Building Healthy Soil for Next Year's Rice
 
 [View the blog](../blog-en/)
 
