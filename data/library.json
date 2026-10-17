@@ -241,6 +241,10 @@
     "letting-go-of-my-blog.html": {
       "ja": "ブログを断捨離するのは、私か、それとも時間か",
       "en": "Am I Letting Go of My Blog, or Is Time Doing the Job?"
+    },
+    "nomo-mania-30-years.html": {
+      "ja": "野茂マニアが見てきた30年",
+      "en": "30 Years as a Nomo Mania"
     }
   },
   "shelves": [
@@ -395,6 +399,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "nomo-mania-30-years.html",
         "letting-go-of-my-blog.html",
         "twelve-thousand-in-pocket.html",
         "sakamoto-fuyuyasumi.html",
