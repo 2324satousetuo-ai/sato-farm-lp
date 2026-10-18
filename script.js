@@ -494,7 +494,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('link[href*="library.css"]')) return;
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = base + 'library.css?v=4';
+    link.href = base + 'library.css?v=5';
     link.setAttribute('data-library-css', '');
     document.head.appendChild(link);
   }
@@ -580,10 +580,12 @@ window.addEventListener('DOMContentLoaded', function() {
       var items = document.createElement('ul');
       items.className = 'library-room__list';
       (shelf.items || []).forEach(function (file) {
+        var article = articles[file];
         var li = document.createElement('li');
-        var card = document.createElement('p');
+        var card = document.createElement('a');
         card.className = 'library-card';
-        card.textContent = titleOf(articles[file], lang);
+        card.href = '../notes/' + articleFile(article, file, lang);
+        card.textContent = titleOf(article, lang);
         li.appendChild(card);
         items.appendChild(li);
       });

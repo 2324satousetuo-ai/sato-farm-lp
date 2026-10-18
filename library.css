@@ -226,6 +226,7 @@ a.library-shelf {
 }
 
 .library-card {
+  display: block;
   margin: 0;
   padding: 12px 14px 12px 16px;
   background: var(--cream);
@@ -235,6 +236,18 @@ a.library-shelf {
   color: var(--forest-dark);
   font-weight: 700;
   line-height: 1.55;
+  text-decoration: none;
+}
+
+a.library-card:visited {
+  color: var(--forest-dark);
+}
+
+a.library-card:hover,
+a.library-card:focus-visible {
+  background: var(--white);
+  border-color: var(--forest);
+  border-left-color: var(--forest);
 }
 
 .library-room__back {

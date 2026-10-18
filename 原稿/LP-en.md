@@ -185,7 +185,7 @@ August 19, 2026. Our vegetable fields.
 
 ## Farm Library
 
-Ten shelves. Choose one to open it in the [Farm Library](../blog-en/library/). From there you can return home. Opening each article comes next.
+Ten shelves. Choose one to open it in the [Farm Library](../blog-en/library/). From there you can return home. Choose a title to open that article.
 
 The catalog is [data/library.json](../data/library.json). Shelf names, titles, and new articles are edited in that file.
 
