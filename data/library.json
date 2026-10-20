@@ -245,6 +245,10 @@
     "nomo-mania-30-years.html": {
       "ja": "野茂マニアが見てきた30年",
       "en": "30 Years as a Nomo Mania"
+    },
+    "five-stings-in-three-years.html": {
+      "ja": "この3年間で5回、ハチに刺された。次は本当に危ないかもしれない",
+      "en": "I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous."
     }
   },
   "shelves": [
@@ -399,6 +403,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "five-stings-in-three-years.html",
         "nomo-mania-30-years.html",
         "letting-go-of-my-blog.html",
         "twelve-thousand-in-pocket.html",
