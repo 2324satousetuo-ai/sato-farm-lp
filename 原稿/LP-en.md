@@ -117,8 +117,8 @@ Stock & sales — inquire
 
 ### Harvest
 
-- Harvested　Cabbage / Potato / Onion / Tomato / Cucumber / Pumpkin / Watermelon / Eggplant
-- Currently harvesting　Carrot / Green pepper / Green onion / Sweet potato / Green beans
+- Harvested　Cabbages / Potatoes / Onions / Tomatoes / Cucumbers / Pumpkins / Watermelons / Eggplants
+- Currently harvesting　Carrots / Green peppers / Green onions / Sweet potatoes / Green beans
 
 ---
 
