@@ -36,7 +36,7 @@ URL：https://satofarms.com（satofarms.com）
 
 **[育てる直販] 中之条町のおいしいお米「さとう米」（コシヒカリ）**
 
-■[2026年産：ご購入のご案内](../index.html#rice-register)はこちら　■[事前会員登録](../index.html#pre-register)はこちら　■[お見積もりシミュレーター](../simulator.html)はこちら
+~~■[2026年産：ご購入のご案内](../index.html#rice-register)はこちら~~　~~■[事前会員登録](../index.html#pre-register)はこちら~~　~~■[お見積もりシミュレーター](../simulator.html)はこちら~~
 
 佐藤農園URL　https://satofarms.com（satofarms.com）
 

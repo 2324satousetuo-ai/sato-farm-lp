@@ -1842,16 +1842,6 @@ html[lang="en"] .notice__decision {
   color: var(--forest);
 }
 
-.notice__end-line {
-  display: inline-block;
-  width: 1.7em;
-  height: 0;
-  margin: 0 0.28em;
-  border: 0;
-  border-top: 2px solid currentColor;
-  vertical-align: 0.32em;
-}
-
 .notice__paused {
   opacity: 0.4;
   pointer-events: none;

@@ -32,11 +32,11 @@ Japanese version available: [日本語で読む](../index.html)
 
 ## Current notices
 
-**2026 harvest rice: Sales ― ended ―.**
+**2026 harvest rice: Sales――ended――.**
 
 **[Grow-as-We-Go Direct Sales] Nakanojo's delicious rice “Sato Rice” (Koshihikari)**
 
-■[2026 harvest: Purchase guide](../index-en.html#rice-register) here　■[Pre-registration](../index-en.html#pre-register) here
+~~■[2026 harvest: Purchase guide](../index-en.html#rice-register) here~~　~~■[Pre-registration](../index-en.html#pre-register) here~~
 
 Sato Farms URL　https://satofarms.com (satofarms.com)
 
