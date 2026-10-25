@@ -6,14 +6,15 @@
     "トマト",
     "キュウリ",
     "かぼちゃ",
-    "スイカ"
+    "スイカ",
+    "なす"
   ],
   "harvesting_ja": [
-    "なす",
     "ニンジン",
     "ピーマン",
     "ネギ",
-    "（さつまいも）"
+    "さつまいも",
+    "インゲン豆"
   ],
   "harvested_en": [
     "Cabbage",
@@ -22,13 +23,14 @@
     "Tomato",
     "Cucumber",
     "Pumpkin",
-    "Watermelon"
+    "Watermelon",
+    "Eggplant"
   ],
   "harvesting_en": [
-    "Eggplant",
     "Carrot",
     "Green pepper",
     "Green onion",
-    "(Sweet potato)"
+    "Sweet potato",
+    "Green beans"
   ]
 }

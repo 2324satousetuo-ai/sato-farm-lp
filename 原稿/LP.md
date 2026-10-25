@@ -1,4 +1,4 @@
-# 田んぼと畑：中之条
+# 農園図書館：中之条
 
 このファイルはランディングページ（LP）の**文章原稿**です。VS Code や Obsidian での直しは、この Markdown を正本にしてください。公開サイトの見た目は `index.html` が担います。
 
@@ -13,7 +13,7 @@ URL：https://satofarms.com（satofarms.com）
 
 守れ！日本の小さな農業、小さな米づくり
 
-**田んぼと畑：中之条**
+**農園図書館：中之条**
 
 —— 田んぼと畑が育てる中之条の恵み ——
 
@@ -32,11 +32,11 @@ URL：https://satofarms.com（satofarms.com）
 
 ## 現在のご案内
 
-**2026年産米：販売ーーー終了ーーーしました。**
+**2026年産米：販売――終了――しました。**
 
 **[育てる直販] 中之条町のおいしいお米「さとう米」（コシヒカリ）**
 
-~~■[2026年産：ご購入のご案内](../index.html#rice-register)はこちら~~　~~■[事前会員登録](../index.html#pre-register)はこちら~~　~~■[お見積もりシミュレーター](../simulator.html)はこちら~~
+■[2026年産：ご購入のご案内](../index.html#rice-register)はこちら　■[事前会員登録](../index.html#pre-register)はこちら　■[お見積もりシミュレーター](../simulator.html)はこちら
 
 佐藤農園URL　https://satofarms.com（satofarms.com）
 
@@ -46,9 +46,6 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
-- 2026.10.20　「この3年間で5回、ハチに刺された。次は本当に危ないかもしれない」— [読む](../blog/notes/five-stings-in-three-years.html)
-- 2026.10.17　「野茂マニアが見てきた30年」— [読む](../blog/notes/nomo-mania-30-years.html)
-- 2026.10.16　「ブログを断捨離するのは、私か、それとも時間か」— [読む](../blog/notes/letting-go-of-my-blog.html)
 - 2026.10.11　「千円札三枚と、胸ポケットの一万二千円」— [読む](../blog/notes/twelve-thousand-in-pocket.html)
 - 2026.10.9　「坂本冬休みに笑う」— [読む](../blog/notes/sakamoto-fuyuyasumi.html)
 - 2026.10.4　「稲刈り完了。そして、来年のおいしさに向けて」— [読む](../blog/notes/rice-harvest-complete.html)
@@ -56,6 +53,9 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.9.25　「稲刈りから精米までの物語」— [読む](../blog/notes/harvest-to-polished-rice.html)
 - 2026.9.24　「山あいの故郷・赤岩を味わう」— [読む](../blog/notes/akaiwa-soba.html)
 - 2026.9.20　「刈り取り時期の見極めは？」— [読む](../blog/notes/harvest-time.html)
+- 2026.9.19　「群馬県と北毛地域、そして中之条町」— [読む](../blog/notes/gunma-hokumo-nakanojo.html)
+- 2026.9.16　「田んぼの落水の最適期」— [読む](../blog/notes/best-time-to-drain.html)
+- 2026.9.15　「田んぼの様子、畑の様子――誤算つづきの天候不順」— [読む](../blog/notes/uncertain-weather-fields.html)
 
 [新着情報の一覧を見る →](../blog/news/)　／　[ブログを見る →](../blog/)
 
@@ -123,8 +123,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ### 収穫状況
 
-- 収穫しました　キャベツ・じゃがいも・玉ねぎ・トマト・キュウリ・かぼちゃ・スイカ
-- 収穫中です　なす・ニンジン・ピーマン・ネギ・（さつまいも）
+- 収穫しました　キャベツ・じゃがいも・玉ねぎ・トマト・キュウリ・かぼちゃ・スイカ・なす
+- 収穫中です　ニンジン・ピーマン・ネギ・さつまいも・インゲン豆
 
 ---
 
@@ -175,7 +175,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ## 農園図書館
 
-十の棚です。棚を選ぶと、[ブログの農園図書館](../blog/library/)が開きます。そこからトップへ戻れます。題名を押すと、その記事が開きます。
+十の棚です。棚を選ぶと、[ブログの農園図書館](../blog/library/)が開きます。そこからトップへ戻れます。題名から記事を開く道は、次に整えます。
 
 中身の一覧は [data/library.json](../data/library.json) です。棚の名前と題名の入れ替え、新しい原稿の追加は、このファイルを直接直します。
 

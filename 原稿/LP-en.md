@@ -1,4 +1,4 @@
-# Fields and Paddies: Nakanojo
+# Farm Library: Nakanojo
 
 This file is the **English landing-page manuscript**. Edit it in VS Code or Obsidian. The live site is still served by `index-en.html`.
 
@@ -13,7 +13,7 @@ Representative: Setsuo Sato
 
 Protecting Japan's small-scale farming and rice cultivation
 
-**Fields and Paddies: Nakanojo**
+**Farm Library: Nakanojo**
 
 —— The bounty of Nakanojo, nurtured by rice fields and farms ——
 
@@ -32,11 +32,11 @@ Japanese version available: [日本語で読む](../index.html)
 
 ## Current notices
 
-**2026 harvest rice: Sales---ended---.**
+**2026 harvest rice: Sales ― ended ―.**
 
 **[Grow-as-We-Go Direct Sales] Nakanojo's delicious rice “Sato Rice” (Koshihikari)**
 
-~~■[2026 harvest: Purchase guide](../index-en.html#rice-register) here~~　~~■[Pre-registration](../index-en.html#pre-register) here~~
+■[2026 harvest: Purchase guide](../index-en.html#rice-register) here　■[Pre-registration](../index-en.html#pre-register) here
 
 Sato Farms URL　https://satofarms.com (satofarms.com)
 
@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
-- October 20, 2026　I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous.—[Read](../blog-en/notes/five-stings-in-three-years.html).
-- October 17, 2026　30 Years as a Nomo Mania—[Read](../blog-en/notes/nomo-mania-30-years.html).
-- October 16, 2026　Am I Letting Go of My Blog, or Is Time Doing the Job?—[Read](../blog-en/notes/letting-go-of-my-blog.html).
 - October 11, 2026　Three Thousand Yen and the ¥12,000 in My Pocket—[Read](../blog-en/notes/twelve-thousand-in-pocket.html).
 - October 9, 2026　Laughing at Sakamoto Fuyuyasumi—[Read](../blog-en/notes/sakamoto-fuyuyasumi.html).
+- October 4, 2026　Rice Harvest Complete! Preparing for Next Year's Rice—[Read](../blog-en/notes/rice-harvest-complete.html).
+- October 2, 2026　Autumn Rains, a Delayed Harvest, and a Computer Quagmire—[Read](../blog-en/notes/autumn-rains-delayed-harvest.html).
+- September 25, 2026　From Harvest to Polished Rice: A Story—[Read](../blog-en/notes/harvest-to-polished-rice.html).
 
 [See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
 
@@ -117,8 +117,8 @@ Stock & sales — inquire
 
 ### Harvest
 
-- Harvested　Cabbage / Potato / Onion / Tomato / Cucumber / Pumpkin / Watermelon
-- Currently harvesting　Eggplant / Carrot / Green pepper / Green onion / (Sweet potato)
+- Harvested　Cabbage / Potato / Onion / Tomato / Cucumber / Pumpkin / Watermelon / Eggplant
+- Currently harvesting　Carrot / Green pepper / Green onion / Sweet potato / Green beans
 
 ---
 
@@ -185,7 +185,7 @@ August 19, 2026. Our vegetable fields.
 
 ## Farm Library
 
-Ten shelves. Choose one to open it in the [Farm Library](../blog-en/library/). From there you can return home. Choose a title to open that article.
+Ten shelves. Choose one to open it in the [Farm Library](../blog-en/library/). From there you can return home. Opening each article comes next.
 
 The catalog is [data/library.json](../data/library.json). Shelf names, titles, and new articles are edited in that file.
 

@@ -71,7 +71,7 @@
       <a href="index-en.html" class="lang-globe-btn" id="lang-globe-btn" aria-label="English page">🌐</a>
       <div class="hero__content">
         <p class="hero__catch">守れ！日本の小さな農業、小さな米づくり</p>
-        <h1 class="hero__title">田んぼと畑：中之条</h1>
+        <h1 class="hero__title">農園図書館：中之条</h1>
         <hr class="hero__rule">
         <p class="hero__subtitle">
           <span class="hero__subtitle-dash" aria-hidden="true">——</span>
@@ -103,15 +103,15 @@
           </p>
           <p class="notice__label"><span class="notice__shade">現在のご案内</span></p>
           <p class="notice__decision">
-            <strong>2026年産米：販売ーーー終了ーーーしました。</strong>
+            <strong>2026年産米：販売<span class="notice__end-line" aria-hidden="true"></span>終了<span class="notice__end-line" aria-hidden="true"></span>しました。</strong>
           </p>
           <p class="notice__text notice__text--lead">
             <strong class="notice__em">[育てる直販] 中之条町のおいしいお米「さとう米」（コシヒカリ）</strong>
           </p>
           <p class="notice__text notice__text--links">
-            <s class="notice__link-item">■<a href="#rice-register"><strong>2026年産：ご購入のご案内</strong></a>はこちら</s>
-            <s class="notice__link-item">■<a href="#pre-register"><strong>事前会員登録</strong></a>はこちら</s>
-            <s class="notice__link-item notice__link-item--break">■<a href="simulator.html"><strong>お見積もりシミュレーター</strong></a>はこちら</s>
+            <span class="notice__link-item">■<a href="#rice-register"><strong>2026年産：ご購入のご案内</strong></a>はこちら</span>
+            <span class="notice__link-item">■<a href="#pre-register"><strong>事前会員登録</strong></a>はこちら</span>
+            <span class="notice__link-item notice__link-item--break">■<a href="simulator.html"><strong>お見積もりシミュレーター</strong></a>はこちら</span>
           </p>
           <p class="notice__highlight">
             佐藤農園URL　<a href="https://satofarms.com" class="notice__highlight-link">https://satofarms.com</a>（<a href="https://satofarms.com" class="notice__highlight-em notice__highlight-link">satofarms.com</a>）
@@ -132,18 +132,6 @@
           </div>
         </div>
         <ul class="news__list">
-<li class="news__item">
-            <time class="news__date" datetime="2026-10-20">2026.10.20</time>
-            <p class="news__text"><span class="news__headline">「この3年間で5回、ハチに刺された。次は本当に危ないかもしれない」</span>—<a href="blog/notes/five-stings-in-three-years.html" class="news__kind">読む</a></p>
-        </li>
-<li class="news__item">
-            <time class="news__date" datetime="2026-10-17">2026.10.17</time>
-            <p class="news__text"><span class="news__headline">「野茂マニアが見てきた30年」</span>—<a href="blog/notes/nomo-mania-30-years.html" class="news__kind">読む</a></p>
-        </li>
-<li class="news__item">
-            <time class="news__date" datetime="2026-10-16">2026.10.16</time>
-            <p class="news__text"><span class="news__headline">「ブログを断捨離するのは、私か、それとも時間か」</span>—<a href="blog/notes/letting-go-of-my-blog.html" class="news__kind">読む</a></p>
-        </li>
 <li class="news__item">
             <time class="news__date" datetime="2026-10-11">2026.10.11</time>
             <p class="news__text"><span class="news__headline">「千円札三枚と、胸ポケットの一万二千円」</span>—<a href="blog/notes/twelve-thousand-in-pocket.html" class="news__kind">読む</a></p>
@@ -171,6 +159,18 @@
 <li class="news__item">
             <time class="news__date" datetime="2026-09-20">2026.9.20</time>
             <p class="news__text"><span class="news__headline">「刈り取り時期の見極めは？」</span>—<a href="blog/notes/harvest-time.html" class="news__kind">読む</a></p>
+        </li>
+<li class="news__item">
+            <time class="news__date" datetime="2026-09-19">2026.9.19</time>
+            <p class="news__text"><span class="news__headline">「群馬県と北毛地域、そして中之条町」</span>—<a href="blog/notes/gunma-hokumo-nakanojo.html" class="news__kind">読む</a></p>
+        </li>
+<li class="news__item">
+            <time class="news__date" datetime="2026-09-16">2026.9.16</time>
+            <p class="news__text"><span class="news__headline">「田んぼの落水の最適期」</span>—<a href="blog/notes/best-time-to-drain.html" class="news__kind">読む</a></p>
+        </li>
+<li class="news__item">
+            <time class="news__date" datetime="2026-09-15">2026.9.15</time>
+            <p class="news__text"><span class="news__headline">「田んぼの様子、畑の様子――誤算つづきの天候不順」</span>—<a href="blog/notes/uncertain-weather-fields.html" class="news__kind">読む</a></p>
         </li>
         </ul>
         <p class="lp-blog-more"><a href="blog/news/">新着情報の一覧を見る →</a><span class="lp-blog-more__sep" aria-hidden="true">／</span><a href="blog/">ブログを見る →</a></p>
@@ -296,16 +296,17 @@
               <span class="products__harvest-crop">キュウリ</span>
               <span class="products__harvest-crop">かぼちゃ</span>
               <span class="products__harvest-crop">スイカ</span>
+              <span class="products__harvest-crop">なす</span>
             </span>
           </li>
           <li class="products__harvest-item products__harvest-item--row">
             <span class="products__harvest-label">収穫中です</span>
             <span class="products__harvest-detail">
-              <span class="products__harvest-crop">なす</span>
               <span class="products__harvest-crop">ニンジン</span>
               <span class="products__harvest-crop">ピーマン</span>
               <span class="products__harvest-crop">ネギ</span>
-              <span class="products__harvest-crop">（さつまいも）</span>
+              <span class="products__harvest-crop">さつまいも</span>
+              <span class="products__harvest-crop">インゲン豆</span>
             </span>
           </li>
         </ul>
