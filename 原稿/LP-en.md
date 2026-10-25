@@ -1,4 +1,4 @@
-# Farm Library：Nakanojo
+# Farm Library
 
 This file is the **English landing-page manuscript**. Edit it in VS Code or Obsidian. The live site is still served by `index-en.html`.
 
@@ -13,7 +13,7 @@ Representative: Setsuo Sato
 
 Protecting Japan's small-scale farming and rice cultivation
 
-**Farm Library：Nakanojo**
+**Farm Library**
 
 —— The bounty of Nakanojo, nurtured by rice fields and farms ——
 
