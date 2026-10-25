@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- October 20, 2026　I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous.—[Read](../blog-en/notes/five-stings-in-three-years.html).
+- October 17, 2026　30 Years as a Nomo Mania—[Read](../blog-en/notes/nomo-mania-30-years.html).
+- October 16, 2026　Am I Letting Go of My Blog, or Is Time Doing the Job?—[Read](../blog-en/notes/letting-go-of-my-blog.html).
 - October 11, 2026　Three Thousand Yen and the ¥12,000 in My Pocket—[Read](../blog-en/notes/twelve-thousand-in-pocket.html).
 - October 9, 2026　Laughing at Sakamoto Fuyuyasumi—[Read](../blog-en/notes/sakamoto-fuyuyasumi.html).
-- October 4, 2026　Rice Harvest Complete! Preparing for Next Year's Rice—[Read](../blog-en/notes/rice-harvest-complete.html).
-- October 2, 2026　Autumn Rains, a Delayed Harvest, and a Computer Quagmire—[Read](../blog-en/notes/autumn-rains-delayed-harvest.html).
-- September 25, 2026　From Harvest to Polished Rice: A Story—[Read](../blog-en/notes/harvest-to-polished-rice.html).
 
 [See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
 

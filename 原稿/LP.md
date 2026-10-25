@@ -46,6 +46,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.10.20　「この3年間で5回、ハチに刺された。次は本当に危ないかもしれない」— [読む](../blog/notes/five-stings-in-three-years.html)
+- 2026.10.17　「野茂マニアが見てきた30年」— [読む](../blog/notes/nomo-mania-30-years.html)
+- 2026.10.16　「ブログを断捨離するのは、私か、それとも時間か」— [読む](../blog/notes/letting-go-of-my-blog.html)
 - 2026.10.11　「千円札三枚と、胸ポケットの一万二千円」— [読む](../blog/notes/twelve-thousand-in-pocket.html)
 - 2026.10.9　「坂本冬休みに笑う」— [読む](../blog/notes/sakamoto-fuyuyasumi.html)
 - 2026.10.4　「稲刈り完了。そして、来年のおいしさに向けて」— [読む](../blog/notes/rice-harvest-complete.html)
@@ -53,9 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.9.25　「稲刈りから精米までの物語」— [読む](../blog/notes/harvest-to-polished-rice.html)
 - 2026.9.24　「山あいの故郷・赤岩を味わう」— [読む](../blog/notes/akaiwa-soba.html)
 - 2026.9.20　「刈り取り時期の見極めは？」— [読む](../blog/notes/harvest-time.html)
-- 2026.9.19　「群馬県と北毛地域、そして中之条町」— [読む](../blog/notes/gunma-hokumo-nakanojo.html)
-- 2026.9.16　「田んぼの落水の最適期」— [読む](../blog/notes/best-time-to-drain.html)
-- 2026.9.15　「田んぼの様子、畑の様子――誤算つづきの天候不順」— [読む](../blog/notes/uncertain-weather-fields.html)
 
 [新着情報の一覧を見る →](../blog/news/)　／　[ブログを見る →](../blog/)
 
