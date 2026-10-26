@@ -249,6 +249,14 @@
     "five-stings-in-three-years.html": {
       "ja": "この3年間で5回、ハチに刺された。次は本当に危ないかもしれない",
       "en": "I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous."
+    },
+    "autumn-plowing.html": {
+      "ja": "秋の田起こし、来年の米づくりへの第一歩",
+      "en": "Autumn Plowing: The First Step Toward Next Year's Rice"
+    },
+    "rice-husk-charcoal.html": {
+      "ja": "籾殻くん炭とは？ 特徴と使い方",
+      "en": "Rice Husk Charcoal: What It Is and How to Use It"
     }
   },
   "shelves": [
@@ -259,6 +267,8 @@
         "en": "Paddy Fields and Rice Growing"
       },
       "items": [
+        "rice-husk-charcoal.html",
+        "autumn-plowing.html",
         "autumn-rains-delayed-harvest.html",
         "hana-mizu.html",
         "mid-season-drainage.html",

@@ -46,6 +46,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.10.26　「籾殻くん炭とは？ 特徴と使い方」— [読む](../blog/notes/rice-husk-charcoal.html)
+- 2026.10.25　「秋の田起こし、来年の米づくりへの第一歩」— [読む](../blog/notes/autumn-plowing.html)
 - 2026.10.20　「この3年間で5回、ハチに刺された。次は本当に危ないかもしれない」— [読む](../blog/notes/five-stings-in-three-years.html)
 - 2026.10.17　「野茂マニアが見てきた30年」— [読む](../blog/notes/nomo-mania-30-years.html)
 - 2026.10.16　「ブログを断捨離するのは、私か、それとも時間か」— [読む](../blog/notes/letting-go-of-my-blog.html)
@@ -54,8 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.10.4　「稲刈り完了。そして、来年のおいしさに向けて」— [読む](../blog/notes/rice-harvest-complete.html)
 - 2026.10.2　「秋の長雨、稲刈り延期、そしてパソコンの泥沼」— [読む](../blog/notes/autumn-rains-delayed-harvest.html)
 - 2026.9.25　「稲刈りから精米までの物語」— [読む](../blog/notes/harvest-to-polished-rice.html)
-- 2026.9.24　「山あいの故郷・赤岩を味わう」— [読む](../blog/notes/akaiwa-soba.html)
-- 2026.9.20　「刈り取り時期の見極めは？」— [読む](../blog/notes/harvest-time.html)
 
 [新着情報の一覧を見る →](../blog/news/)　／　[ブログを見る →](../blog/)
 
@@ -239,9 +239,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.10.26　[籾殻くん炭とは？ 特徴と使い方](../blog/notes/rice-husk-charcoal.html)　- 仕上げの消火方法等
+- 2026.10.25　[秋の田起こし、来年の米づくりへの第一歩](../blog/notes/autumn-plowing.html)　来年も良い米を届けられるよう、土づくりから着実に進めていきたい。
 - 2026.10.20　[この3年間で5回、ハチに刺された。次は本当に危ないかもしれない](../blog/notes/five-stings-in-three-years.html)　願わくば、これ以上ハチに刺される体験談を書かずに済むことを祈るばかりだ。
-- 2026.10.17　[野茂マニアが見てきた30年](../blog/notes/nomo-mania-30-years.html)　長年MLBを見続けてきた一ファンとして、これからの日本人選手たちのさらなる躍進からも目が離せない。
-- 2026.10.16　[ブログを断捨離するのは、私か、それとも時間か](../blog/notes/letting-go-of-my-blog.html)　旅が楽しくて、気づけばあちこち飛び回っている。
 
 [ブログ一覧を見る](../blog/)
 

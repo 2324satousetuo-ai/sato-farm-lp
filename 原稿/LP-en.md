@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- October 26, 2026　Rice Husk Charcoal: What It Is and How to Use It—[Read](../blog-en/notes/rice-husk-charcoal.html).
+- October 25, 2026　Autumn Plowing: The First Step Toward Next Year's Rice—[Read](../blog-en/notes/autumn-plowing.html).
 - October 20, 2026　I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous.—[Read](../blog-en/notes/five-stings-in-three-years.html).
 - October 17, 2026　30 Years as a Nomo Mania—[Read](../blog-en/notes/nomo-mania-30-years.html).
 - October 16, 2026　Am I Letting Go of My Blog, or Is Time Doing the Job?—[Read](../blog-en/notes/letting-go-of-my-blog.html).
-- October 11, 2026　Three Thousand Yen and the ¥12,000 in My Pocket—[Read](../blog-en/notes/twelve-thousand-in-pocket.html).
-- October 9, 2026　Laughing at Sakamoto Fuyuyasumi—[Read](../blog-en/notes/sakamoto-fuyuyasumi.html).
 
 [See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
 
@@ -235,9 +235,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- October 26, 2026　[Rice Husk Charcoal: What It Is and How to Use It](../blog-en/notes/rice-husk-charcoal.html)　- How to make sure the charcoal is completely extinguished
+- October 25, 2026　[Autumn Plowing: The First Step Toward Next Year's Rice](../blog-en/notes/autumn-plowing.html)　→ Read about rice husk charcoal
 - October 20, 2026　[I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous.](../blog-en/notes/five-stings-in-three-years.html)　- Tell my doctor about my past stings and symptoms, and ask for medical advice.
-- October 17, 2026　[30 Years as a Nomo Mania](../blog-en/notes/nomo-mania-30-years.html)　## Looking to the Future
-- October 16, 2026　[Am I Letting Go of My Blog, or Is Time Doing the Job?](../blog-en/notes/letting-go-of-my-blog.html)　I love traveling, and before I know it, I’m off somewhere again.
 
 [View the blog](../blog-en/)
 
