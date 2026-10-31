@@ -257,6 +257,10 @@
     "rice-husk-charcoal.html": {
       "ja": "籾殻くん炭とは？ 特徴と使い方",
       "en": "Rice Husk Charcoal: What It Is and How to Use It"
+    },
+    "dried-persimmons.html": {
+      "ja": "秋の風物詩、干し柿づくり",
+      "en": "Dried Persimmon Season at Sato Farms"
     }
   },
   "shelves": [
@@ -356,6 +360,7 @@
         "en": "Vegetables, Cooking, and Meals"
       },
       "items": [
+        "dried-persimmons.html",
         "akaiwa-soba.html",
         "cucumber-eggplant.html",
         "seasons-and-vegetables.html",

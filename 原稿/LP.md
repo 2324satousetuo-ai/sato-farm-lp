@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.10.30　「秋の風物詩、干し柿づくり」— [読む](../blog/notes/dried-persimmons.html)
 - 2026.10.26　「籾殻くん炭とは？ 特徴と使い方」— [読む](../blog/notes/rice-husk-charcoal.html)
 - 2026.10.25　「秋の田起こし、来年の米づくりへの第一歩」— [読む](../blog/notes/autumn-plowing.html)
 - 2026.10.20　「この3年間で5回、ハチに刺された。次は本当に危ないかもしれない」— [読む](../blog/notes/five-stings-in-three-years.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.10.9　「坂本冬休みに笑う」— [読む](../blog/notes/sakamoto-fuyuyasumi.html)
 - 2026.10.4　「稲刈り完了。そして、来年のおいしさに向けて」— [読む](../blog/notes/rice-harvest-complete.html)
 - 2026.10.2　「秋の長雨、稲刈り延期、そしてパソコンの泥沼」— [読む](../blog/notes/autumn-rains-delayed-harvest.html)
-- 2026.9.25　「稲刈りから精米までの物語」— [読む](../blog/notes/harvest-to-polished-rice.html)
 
 [新着情報の一覧を見る →](../blog/news/)　／　[ブログを見る →](../blog/)
 
@@ -239,9 +239,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.10.30　[秋の風物詩、干し柿づくり](../blog/notes/dried-persimmons.html)　干してよし、生で食べてよし。今年も秋の恵みを大切にしながら、できあがりを楽しみに柿と向き合う日々が続きます。
 - 2026.10.26　[籾殻くん炭とは？ 特徴と使い方](../blog/notes/rice-husk-charcoal.html)　- 仕上げの消火方法等
 - 2026.10.25　[秋の田起こし、来年の米づくりへの第一歩](../blog/notes/autumn-plowing.html)　来年も良い米を届けられるよう、土づくりから着実に進めていきたい。
-- 2026.10.20　[この3年間で5回、ハチに刺された。次は本当に危ないかもしれない](../blog/notes/five-stings-in-three-years.html)　願わくば、これ以上ハチに刺される体験談を書かずに済むことを祈るばかりだ。
 
 [ブログ一覧を見る](../blog/)
 

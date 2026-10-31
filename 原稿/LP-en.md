@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- October 30, 2026　Dried Persimmon Season at Sato Farms—[Read](../blog-en/notes/dried-persimmons.html).
 - October 26, 2026　Rice Husk Charcoal: What It Is and How to Use It—[Read](../blog-en/notes/rice-husk-charcoal.html).
 - October 25, 2026　Autumn Plowing: The First Step Toward Next Year's Rice—[Read](../blog-en/notes/autumn-plowing.html).
 - October 20, 2026　I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous.—[Read](../blog-en/notes/five-stings-in-three-years.html).
 - October 17, 2026　30 Years as a Nomo Mania—[Read](../blog-en/notes/nomo-mania-30-years.html).
-- October 16, 2026　Am I Letting Go of My Blog, or Is Time Doing the Job?—[Read](../blog-en/notes/letting-go-of-my-blog.html).
 
 [See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
 
@@ -235,9 +235,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- October 30, 2026　[Dried Persimmon Season at Sato Farms](../blog-en/notes/dried-persimmons.html)　Dried or fresh, we enjoy the wonderful taste of autumn every year!
 - October 26, 2026　[Rice Husk Charcoal: What It Is and How to Use It](../blog-en/notes/rice-husk-charcoal.html)　- How to make sure the charcoal is completely extinguished
 - October 25, 2026　[Autumn Plowing: The First Step Toward Next Year's Rice](../blog-en/notes/autumn-plowing.html)　→ Read about rice husk charcoal
-- October 20, 2026　[I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous.](../blog-en/notes/five-stings-in-three-years.html)　- Tell my doctor about my past stings and symptoms, and ask for medical advice.
 
 [View the blog](../blog-en/)
 
