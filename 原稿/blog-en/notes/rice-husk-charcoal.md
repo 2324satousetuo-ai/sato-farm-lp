@@ -79,3 +79,7 @@ The article will cover:
 - How to start the fire
 - How long the process takes
 - How to make sure the charcoal is completely extinguished
+
+![A rice husk charcoal burner, and charcoal being made](../../images/notes/rice-husk-charcoal.jpg)
+
+Left: the rice husk charcoal burner. Right: charcoal being made.
