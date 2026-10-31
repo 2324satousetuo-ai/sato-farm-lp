@@ -261,6 +261,10 @@
     "dried-persimmons.html": {
       "ja": "秋の風物詩、干し柿づくり",
       "en": "Dried Persimmon Season at Sato Farms"
+    },
+    "sunny-autumn-fields.html": {
+      "ja": "畑の現場から｜秋晴れの日々と冬野菜の準備",
+      "en": "From the Field | Sunny Autumn Days and Winter Vegetable Prep"
     }
   },
   "shelves": [
@@ -325,6 +329,7 @@
         "en": "Field Crops"
       },
       "items": [
+        "sunny-autumn-fields.html",
         "seasons-and-vegetables.html",
         "cucumber-eggplant.html",
         "vine-showdown.html",
