@@ -38,3 +38,13 @@ Usually, people make dried persimmons from sour ones (_shibugaki_). But our tree
 Of course, they are also delicious fresh! At the local supermarket, one _Jiro-gaki_ costs about 100 to 150 yen. They taste best when they turn reddish and get a little soft.
 
 Dried or fresh, we enjoy the wonderful taste of autumn every year!
+
+![The yard tree, drying persimmons, fruit on the branch, and the harvest](../../images/notes/dried-persimmons.jpg)
+
+The persimmon tree in the yard
+
+Persimmons drying on a flat rack
+
+Jiro persimmons on the branch
+
+Harvested persimmons

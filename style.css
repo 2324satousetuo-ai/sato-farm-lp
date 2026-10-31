@@ -5497,6 +5497,30 @@ a.blog-list__row:hover .blog-list__title {
   }
 }
 
+.blog-article__strip {
+  margin: 1.7rem 0 0.4rem;
+}
+
+.blog-article__strip img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.blog-article__strip-titles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0.4rem 0 0;
+  padding: 0;
+}
+
+.blog-article__strip-titles span {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+  padding-right: 0.35rem;
+}
+
 .blog-article__nav {
   margin-top: 2.5rem;
   padding-top: 1.5rem;

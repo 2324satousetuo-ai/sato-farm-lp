@@ -19,7 +19,7 @@ import {
 import { resolveNoteTopics, topicLabel } from "./note-topics.mjs";
 import { syncLpMarkdown } from "./publish-lp.mjs";
 
-const CSS_VERSION = 45;
+const CSS_VERSION = 47;
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = new Set(process.argv.slice(2));
@@ -203,6 +203,29 @@ ${inner}
 </div>`;
 }
 
+function captionRun(lines, start) {
+  const indexes = [];
+  let j = start;
+  while (indexes.length < 4) {
+    while (j < lines.length && isBlank(lines[j])) j += 1;
+    if (j >= lines.length || !isCaptionLine(lines[j])) break;
+    indexes.push(j);
+    j += 1;
+  }
+  return indexes;
+}
+
+function renderStrip(img, titles, currentHtml) {
+  const alt = img.alt || titles.join("、");
+  const labels = titles.map((title) => `<span>${inline(title)}</span>`).join("\n    ");
+  return `<figure class="blog-article__strip">
+  ${imgTag(img.src, alt, currentHtml)}
+  <figcaption class="blog-article__strip-titles">
+    ${labels}
+  </figcaption>
+</figure>`;
+}
+
 function renderBody(lines, currentHtml) {
   const out = [];
   let i = 0;
@@ -219,6 +242,17 @@ function renderBody(lines, currentHtml) {
     }
 
     if (isImage(lines[i])) {
+      let next = i + 1;
+      while (next < lines.length && isBlank(lines[next])) next += 1;
+      if (next >= lines.length || !isImage(lines[next])) {
+        const caps = captionRun(lines, i + 1);
+        if (caps.length === 4) {
+          const img = parseImage(lines[i]);
+          out.push(renderStrip(img, caps.map((idx) => lines[idx].trim()), currentHtml));
+          i = caps[caps.length - 1] + 1;
+          continue;
+        }
+      }
       const figures = [];
       while (i < lines.length) {
         while (i < lines.length && isBlank(lines[i])) i += 1;
@@ -396,6 +430,7 @@ function plainText(html) {
   return html
     .replace(/<script[\s\S]*?<\/script>/g, " ")
     .replace(/<style[\s\S]*?<\/style>/g, " ")
+    .replace(/<img\b[^>]*\bsrc="([^"]*)"[^>]*>/gi, " $1 ")
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;/g, " ")
     .replace(/&#x27;|&#39;|&apos;/gi, "'")
@@ -492,19 +527,30 @@ function articleShell(lang, slug) {
 }
 
 function teaserExcerpt(bodyLines) {
-  const lines = bodyLines
-    .map((line) =>
-      line
-        .replace(/\*\*([^*]+)\*\*/g, "$1")
-        .replace(/`([^`]+)`/g, "$1")
-        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-        .trim(),
-    )
-    .filter(Boolean);
+  const skip = new Set();
+  for (let i = 0; i < bodyLines.length; i += 1) {
+    if (!isImage(bodyLines[i])) continue;
+    skip.add(i);
+    const caps = captionRun(bodyLines, i + 1);
+    if (caps.length === 4) caps.forEach((idx) => skip.add(idx));
+    else if (caps.length) skip.add(caps[0]);
+  }
+  const lines = bodyLines.map((line, i) => {
+    if (skip.has(i)) return "";
+    return line
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .trim();
+  });
   for (let i = lines.length - 1; i >= 0; i -= 1) {
+    if (!lines[i]) continue;
     if (lines[i].length <= 80) return lines[i];
   }
-  return lines[lines.length - 1] || "";
+  for (let i = lines.length - 1; i >= 0; i -= 1) {
+    if (lines[i]) return lines[i];
+  }
+  return "";
 }
 
 function listingMeta(slug, note) {
