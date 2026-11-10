@@ -250,6 +250,10 @@
       "ja": "この3年間で5回、ハチに刺された。次は本当に危ないかもしれない",
       "en": "I Have Been Stung by Bees and Wasps Five Times in Three Years. Next Time Could Be Dangerous."
     },
+    "32nd-reunion-nagasaki.html": {
+      "ja": "32回目の定例会、そして47都道府県最後の訪問地・長崎へ",
+      "en": "Our 32nd Reunion and My Journey to Visit All 47 Prefectures of Japan"
+    },
     "autumn-plowing.html": {
       "ja": "秋の田起こし、来年の米づくりへの第一歩",
       "en": "Autumn Plowing: The First Step Toward Next Year's Rice"
@@ -424,6 +428,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "32nd-reunion-nagasaki.html",
         "five-stings-in-three-years.html",
         "nomo-mania-30-years.html",
         "letting-go-of-my-blog.html",
