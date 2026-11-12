@@ -46,11 +46,11 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
+- November 12, 2026　What a Wooden Ramp Taught Me About the Give-and-Take of Kindness — The Sato Farms Way—[Read](../blog-en/notes/wooden-ramp-kindness.html).
 - November 9, 2026　Our 32nd Reunion and My Journey to Visit All 47 Prefectures of Japan—[Read](../blog-en/notes/32nd-reunion-nagasaki.html).
 - October 31, 2026　From the Field | Sunny Autumn Days and Winter Vegetable Prep—[Read](../blog-en/notes/sunny-autumn-fields.html).
 - October 30, 2026　Dried Persimmon Season at Sato Farms—[Read](../blog-en/notes/dried-persimmons.html).
 - October 26, 2026　Rice Husk Charcoal: What It Is and How to Use It—[Read](../blog-en/notes/rice-husk-charcoal.html).
-- October 25, 2026　Autumn Plowing: The First Step Toward Next Year's Rice—[Read](../blog-en/notes/autumn-plowing.html).
 
 [See all news →](../blog-en/news/) / [View the blog →](../blog-en/)
 
@@ -235,9 +235,9 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
+- November 12, 2026　[What a Wooden Ramp Taught Me About the Give-and-Take of Kindness — The Sato Farms Way](../blog-en/notes/wooden-ramp-kindness.html)　That is the Sato Farms way.
 - November 9, 2026　[Our 32nd Reunion and My Journey to Visit All 47 Prefectures of Japan](../blog-en/notes/32nd-reunion-nagasaki.html)　## Our Reunion in the Future and Better Access to Haneda Airport
 - October 31, 2026　[From the Field | Sunny Autumn Days and Winter Vegetable Prep](../blog-en/notes/sunny-autumn-fields.html)　## "Harvest Pot" on a Traditional Wood-Fired Stove (*Kamado*)
-- October 30, 2026　[Dried Persimmon Season at Sato Farms](../blog-en/notes/dried-persimmons.html)　Dried or fresh, we enjoy the wonderful taste of autumn every year!
 
 [View the blog](../blog-en/)
 

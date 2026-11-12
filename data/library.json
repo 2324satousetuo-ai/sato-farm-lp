@@ -269,6 +269,10 @@
     "sunny-autumn-fields.html": {
       "ja": "畑の現場から｜秋晴れの日々と冬野菜の準備",
       "en": "From the Field | Sunny Autumn Days and Winter Vegetable Prep"
+    },
+    "wooden-ramp-kindness.html": {
+      "ja": "木の台が教えてくれた「気持ち」の貸し借り ― 佐藤農園の流儀",
+      "en": "What a Wooden Ramp Taught Me About the Give-and-Take of Kindness — The Sato Farms Way"
     }
   },
   "shelves": [
@@ -428,6 +432,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "wooden-ramp-kindness.html",
         "32nd-reunion-nagasaki.html",
         "five-stings-in-three-years.html",
         "nomo-mania-30-years.html",
