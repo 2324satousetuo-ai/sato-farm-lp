@@ -273,6 +273,10 @@
     "wooden-ramp-kindness.html": {
       "ja": "木の台が教えてくれた「気持ち」の貸し借り ― 佐藤農園の流儀",
       "en": "What a Wooden Ramp Taught Me About the Give-and-Take of Kindness — The Sato Farms Way"
+    },
+    "dog-waste-on-the-road.html": {
+      "ja": "またも道端に犬のフン――マナーを守って持ち帰ってほしい",
+      "en": "Dog Waste on the Roadside Again — Please Be Responsible and Take It Home"
     }
   },
   "shelves": [
@@ -432,6 +436,7 @@
         "en": "Daily Life, Health, and Thoughts"
       },
       "items": [
+        "dog-waste-on-the-road.html",
         "wooden-ramp-kindness.html",
         "32nd-reunion-nagasaki.html",
         "five-stings-in-three-years.html",

@@ -46,6 +46,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
+- 2026.11.14　「またも道端に犬のフン――マナーを守って持ち帰ってほしい」— [読む](../blog/notes/dog-waste-on-the-road.html)
 - 2026.11.12　「木の台が教えてくれた「気持ち」の貸し借り ― 佐藤農園の流儀」— [読む](../blog/notes/wooden-ramp-kindness.html)
 - 2026.11.9　「32回目の定例会、そして47都道府県最後の訪問地・長崎へ」— [読む](../blog/notes/32nd-reunion-nagasaki.html)
 - 2026.10.31　「畑の現場から｜秋晴れの日々と冬野菜の準備」— [読む](../blog/notes/sunny-autumn-fields.html)
@@ -55,7 +56,6 @@ URL：https://satofarms.com（satofarms.com）
 - 2026.10.20　「この3年間で5回、ハチに刺された。次は本当に危ないかもしれない」— [読む](../blog/notes/five-stings-in-three-years.html)
 - 2026.10.17　「野茂マニアが見てきた30年」— [読む](../blog/notes/nomo-mania-30-years.html)
 - 2026.10.16　「ブログを断捨離するのは、私か、それとも時間か」— [読む](../blog/notes/letting-go-of-my-blog.html)
-- 2026.10.11　「千円札三枚と、胸ポケットの一万二千円」— [読む](../blog/notes/twelve-thousand-in-pocket.html)
 
 [新着情報の一覧を見る →](../blog/news/)　／　[ブログを見る →](../blog/)
 
@@ -239,9 +239,9 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
+- 2026.11.14　[またも道端に犬のフン――マナーを守って持ち帰ってほしい](../blog/notes/dog-waste-on-the-road.html)　必ず拾って持ち帰ってください！
 - 2026.11.12　[木の台が教えてくれた「気持ち」の貸し借り ― 佐藤農園の流儀](../blog/notes/wooden-ramp-kindness.html)　それが、佐藤農園の流儀だ。
 - 2026.11.9　[32回目の定例会、そして47都道府県最後の訪問地・長崎へ](../blog/notes/32nd-reunion-nagasaki.html)　次の旅、そしてその先の旅へ。新しい交通網の完成も、今から楽しみにしている。
-- 2026.10.31　[畑の現場から｜秋晴れの日々と冬野菜の準備](../blog/notes/sunny-autumn-fields.html)　畑の恵みに感謝しながら、大切な人たちと秋の味覚を分かち合う。こうした何気ない時間と笑顔こそが、私たちが農業を続ける一番のご褒美です。
 
 [ブログ一覧を見る](../blog/)
 

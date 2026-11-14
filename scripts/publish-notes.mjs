@@ -541,6 +541,7 @@ function teaserExcerpt(bodyLines) {
       .replace(/\*\*([^*]+)\*\*/g, "$1")
       .replace(/`([^`]+)`/g, "$1")
       .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/^>\s?/, "")
       .trim();
   });
   for (let i = lines.length - 1; i >= 0; i -= 1) {
