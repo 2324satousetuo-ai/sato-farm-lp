@@ -1,6 +1,6 @@
 # Mid-November Field Work | What Is Left After Planting
 
-Vegetables　Fields　November 16, 2026
+Vegetables　Fields　November 15, 2026
 It is already mid-November, and we still have plenty of work to do in the fields.
 
 ## Finished Work

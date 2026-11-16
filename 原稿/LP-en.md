@@ -46,8 +46,8 @@ Sato Farms URL　https://satofarms.com (satofarms.com)
 
 The full news list has moved to the [blog news archive](../blog-en/news/). Only the latest 5 items appear here.
 
-- November 16, 2026　Mid-November Field Work | What Is Left After Planting—[Read](../blog-en/notes/mid-november-field-work.html).
 - November 16, 2026　After Harvesting Jiro Persimmons | Making Dried Persimmons—[Read](../blog-en/notes/jiro-persimmon-harvest.html).
+- November 15, 2026　Mid-November Field Work | What Is Left After Planting—[Read](../blog-en/notes/mid-november-field-work.html).
 - November 14, 2026　Dog Waste on the Roadside Again — Please Be Responsible and Take It Home—[Read](../blog-en/notes/dog-waste-on-the-road.html).
 - November 12, 2026　What a Wooden Ramp Taught Me About the Give-and-Take of Kindness — The Sato Farms Way—[Read](../blog-en/notes/wooden-ramp-kindness.html).
 - November 9, 2026　Our 32nd Reunion and My Journey to Visit All 47 Prefectures of Japan—[Read](../blog-en/notes/32nd-reunion-nagasaki.html).
@@ -236,7 +236,7 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
 - November 16, 2026　[After Harvesting Jiro Persimmons | Making Dried Persimmons](../blog-en/notes/jiro-persimmon-harvest.html)　3. Dried persimmons: We spread them out on bamboo baskets to dry in the sun.
-- November 16, 2026　[Mid-November Field Work | What Is Left After Planting](../blog-en/notes/mid-november-field-work.html)　Next year, I plan to sow more seeds earlier in the autumn.
+- November 15, 2026　[Mid-November Field Work | What Is Left After Planting](../blog-en/notes/mid-november-field-work.html)　Next year, I plan to sow more seeds earlier in the autumn.
 - November 14, 2026　[Dog Waste on the Roadside Again — Please Be Responsible and Take It Home](../blog-en/notes/dog-waste-on-the-road.html)　PICK IT UP AND TAKE IT HOME!
 
 [View the blog](../blog-en/)

@@ -46,8 +46,8 @@ URL：https://satofarms.com（satofarms.com）
 
 ここには最新10件だけ表示しています。
 
-- 2026.11.16　「11月中旬の畑仕事｜植え付けのあとの、残りの仕事」— [読む](../blog/notes/mid-november-field-work.html)
 - 2026.11.16　「次郎柿の収穫を終えて｜干し柿づくりの話」— [読む](../blog/notes/jiro-persimmon-harvest.html)
+- 2026.11.15　「11月中旬の畑仕事｜植え付けのあとの、残りの仕事」— [読む](../blog/notes/mid-november-field-work.html)
 - 2026.11.14　「またも道端に犬のフン――マナーを守って持ち帰ってほしい」— [読む](../blog/notes/dog-waste-on-the-road.html)
 - 2026.11.12　「木の台が教えてくれた「気持ち」の貸し借り ― 佐藤農園の流儀」— [読む](../blog/notes/wooden-ramp-kindness.html)
 - 2026.11.9　「32回目の定例会、そして47都道府県最後の訪問地・長崎へ」— [読む](../blog/notes/32nd-reunion-nagasaki.html)
@@ -240,7 +240,7 @@ URL：https://satofarms.com（satofarms.com）
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
 - 2026.11.16　[次郎柿の収穫を終えて｜干し柿づくりの話](../blog/notes/jiro-persimmon-harvest.html)　3. 干し柿用：ざるに広げる平干しにしている。
-- 2026.11.16　[11月中旬の畑仕事｜植え付けのあとの、残りの仕事](../blog/notes/mid-november-field-work.html)　毎年、まきどきを見きわめるのは難しい。来年は、秋の早めの時期に多めにまいてみるつもりだ。
+- 2026.11.15　[11月中旬の畑仕事｜植え付けのあとの、残りの仕事](../blog/notes/mid-november-field-work.html)　毎年、まきどきを見きわめるのは難しい。来年は、秋の早めの時期に多めにまいてみるつもりだ。
 - 2026.11.14　[またも道端に犬のフン――マナーを守って持ち帰ってほしい](../blog/notes/dog-waste-on-the-road.html)　必ず拾って持ち帰ってください！
 
 [ブログ一覧を見る](../blog/)
