@@ -277,6 +277,14 @@
     "dog-waste-on-the-road.html": {
       "ja": "またも道端に犬のフン――マナーを守って持ち帰ってほしい",
       "en": "Dog Waste on the Roadside Again — Please Be Responsible and Take It Home"
+    },
+    "jiro-persimmon-harvest.html": {
+      "ja": "次郎柿の収穫を終えて｜干し柿づくりの話",
+      "en": "After Harvesting Jiro Persimmons | Making Dried Persimmons"
+    },
+    "mid-november-field-work.html": {
+      "ja": "11月中旬の畑仕事｜植え付けのあとの、残りの仕事",
+      "en": "Mid-November Field Work | What Is Left After Planting"
     }
   },
   "shelves": [
@@ -341,6 +349,8 @@
         "en": "Field Crops"
       },
       "items": [
+        "jiro-persimmon-harvest.html",
+        "mid-november-field-work.html",
         "sunny-autumn-fields.html",
         "seasons-and-vegetables.html",
         "cucumber-eggplant.html",
