@@ -239,7 +239,7 @@ URL：https://satofarms.com（satofarms.com）
 
 ブログ・新着・近況は専用ページへ移しました。最新の記事だけこちらに載せています。
 
-- 2026.11.16　[次郎柿の収穫を終えて｜干し柿づくりの話](../blog/notes/jiro-persimmon-harvest.html)　3. 干し柿用：ざるに広げる平干しにしている。
+- 2026.11.16　[次郎柿の収穫を終えて｜干し柿づくりの話](../blog/notes/jiro-persimmon-harvest.html)　佐藤農園では、秋の恵みを天日干しにして、じっくり仕上げている。
 - 2026.11.15　[11月中旬の畑仕事｜植え付けのあとの、残りの仕事](../blog/notes/mid-november-field-work.html)　毎年、まきどきを見きわめるのは難しい。来年は、秋の早めの時期に多めにまいてみるつもりだ。
 - 2026.11.14　[またも道端に犬のフン――マナーを守って持ち帰ってほしい](../blog/notes/dog-waste-on-the-road.html)　必ず拾って持ち帰ってください！
 

@@ -235,7 +235,7 @@ The old Random Thoughts section (#soliloquy) has moved to the [blog index](../bl
 
 Posts, news, and farm updates now live on dedicated pages. Here are a few featured posts.
 
-- November 16, 2026　[After Harvesting Jiro Persimmons | Making Dried Persimmons](../blog-en/notes/jiro-persimmon-harvest.html)　3. Dried persimmons: We spread them out on bamboo baskets to dry in the sun.
+- November 16, 2026　[After Harvesting Jiro Persimmons | Making Dried Persimmons](../blog-en/notes/jiro-persimmon-harvest.html)　At Sato Farms, we slowly dry the gifts of autumn in the warm sunshine.
 - November 15, 2026　[Mid-November Field Work | What Is Left After Planting](../blog-en/notes/mid-november-field-work.html)　Next year, I plan to sow more seeds earlier in the autumn.
 - November 14, 2026　[Dog Waste on the Roadside Again — Please Be Responsible and Take It Home](../blog-en/notes/dog-waste-on-the-road.html)　PICK IT UP AND TAKE IT HOME!
 

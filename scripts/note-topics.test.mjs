@@ -103,6 +103,19 @@ assert.equal(formatDateLine(enLegacy, "en"), "August 19, 2026");
 
 assert.equal(topicLabel("agatsuma", "ja"), "地域・吾妻");
 assert.equal(topicLabel("agatsuma", "en"), "Agatsuma");
+assert.equal(topicLabel("fruit", "ja"), "果樹・果物");
+assert.equal(topicLabel("fruit", "en"), "Fruit");
+assert.deepEqual(extractTopicsFromTitle("秋の風物詩、干し柿づくり"), ["fruit"]);
+assert.deepEqual(extractTopicsFromTitle("次郎柿の収穫を終えて｜干し柿づくりの話"), ["rice", "fruit"]);
+assert.deepEqual(extractTopicsFromBody("福岡の果樹農家で梨が盗まれた。"), []);
+assert.deepEqual(
+  resolveNoteTopics({
+    title: "次郎柿の収穫を終えて｜干し柿づくりの話",
+    keywords: ["果樹・果物"],
+    body: "畑で柿を干す。野菜もある。",
+  }),
+  ["fruit"],
+);
 assert.equal(readLinkLabel("ja"), "読む");
 assert.equal(readLinkLabel("en"), "Read");
 

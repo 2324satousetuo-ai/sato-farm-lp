@@ -19,7 +19,7 @@ import {
 import { resolveNoteTopics, topicLabel } from "./note-topics.mjs";
 import { syncLpMarkdown } from "./publish-lp.mjs";
 
-const CSS_VERSION = 47;
+const CSS_VERSION = 48;
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = new Set(process.argv.slice(2));
@@ -141,8 +141,59 @@ function isBlank(line) {
   return line.trim() === "";
 }
 
+function headingLevel(line) {
+  const m = String(line).match(/^(#{2,3})\s+/);
+  return m ? m[1].length : 0;
+}
+
 function isHeading(line) {
-  return /^##\s+/.test(line);
+  return headingLevel(line) > 0;
+}
+
+function splitCells(line) {
+  const t = String(line).trim();
+  if (!t.startsWith("|")) return null;
+  const core = t.endsWith("|") ? t.slice(1, -1) : t.slice(1);
+  return core.split("|").map((cell) => cell.trim());
+}
+
+function isDividerRow(line) {
+  const cells = splitCells(line);
+  if (!cells || cells.length < 2) return false;
+  return cells.every((cell) => /^:?-{3,}:?$/.test(cell));
+}
+
+function isTableStart(lines, i) {
+  const head = splitCells(lines[i] || "");
+  if (!head || head.length < 2) return false;
+  return isDividerRow(lines[i + 1] || "");
+}
+
+function renderTable(lines, start) {
+  const header = splitCells(lines[start]);
+  const rows = [];
+  let i = start + 2;
+  while (i < lines.length && !isBlank(lines[i]) && splitCells(lines[i])) {
+    if (!isDividerRow(lines[i])) rows.push(splitCells(lines[i]));
+    i += 1;
+  }
+  const headHtml = header.map((cell) => `<th>${inline(cell)}</th>`).join("");
+  const bodyHtml = rows
+    .map((row) => `<tr>${header.map((_, idx) => `<td>${inline(row[idx] || "")}</td>`).join("")}</tr>`)
+    .join("\n");
+  return {
+    html: `<div class="blog-article__table">
+<table>
+<thead>
+<tr>${headHtml}</tr>
+</thead>
+<tbody>
+${bodyHtml}
+</tbody>
+</table>
+</div>`,
+    next: i,
+  };
 }
 
 function isListItem(line) {
@@ -166,7 +217,7 @@ function isQuoteLine(line) {
 function isCaptionLine(line) {
   const t = line.trim();
   if (!t) return false;
-  if (isHeading(t) || isListItem(t) || isImage(t) || isQuoteLine(t) || t.startsWith("#")) return false;
+  if (isHeading(t) || isListItem(t) || isImage(t) || isQuoteLine(t) || t.startsWith("#") || t.startsWith("|")) return false;
   return t.length <= 80;
 }
 
@@ -236,8 +287,16 @@ function renderBody(lines, currentHtml) {
     }
 
     if (isHeading(lines[i])) {
-      out.push(`<h2>${inline(lines[i].replace(/^##\s+/, ""))}</h2>`);
+      const level = headingLevel(lines[i]);
+      out.push(`<h${level}>${inline(lines[i].replace(/^#{2,3}\s+/, ""))}</h${level}>`);
       i += 1;
+      continue;
+    }
+
+    if (isTableStart(lines, i)) {
+      const table = renderTable(lines, i);
+      out.push(table.html);
+      i = table.next;
       continue;
     }
 
@@ -301,10 +360,10 @@ function renderBody(lines, currentHtml) {
             i += 1;
             continue;
           }
-          if (isHeading(lines[i]) || isListItem(lines[i]) || isImage(lines[i])) break;
+          if (isHeading(lines[i]) || isListItem(lines[i]) || isImage(lines[i]) || isTableStart(lines, i)) break;
           if (lines[i].trim().length <= 40 && quoteLines.length) break;
           const para = [];
-          while (i < lines.length && !isBlank(lines[i]) && !isHeading(lines[i]) && !isListItem(lines[i]) && !isImage(lines[i])) {
+          while (i < lines.length && !isBlank(lines[i]) && !isHeading(lines[i]) && !isListItem(lines[i]) && !isImage(lines[i]) && !isTableStart(lines, i)) {
             para.push(lines[i].replace(/^>\s?/, ""));
             i += 1;
           }
@@ -331,7 +390,8 @@ function renderBody(lines, currentHtml) {
       !isHeading(lines[i]) &&
       !isListItem(lines[i]) &&
       !isImage(lines[i]) &&
-      !isQuoteLine(lines[i])
+      !isQuoteLine(lines[i]) &&
+      !isTableStart(lines, i)
     ) {
       para.push(lines[i]);
       i += 1;

@@ -15,6 +15,7 @@ export const TOPIC_ORDER = [
   "rice",
   "vegetables",
   "fields",
+  "fruit",
   "farming",
   "ai",
   "skiing",
@@ -54,6 +55,15 @@ export const TOPICS = [
     keywords: {
       ja: ["畑", "草むしり", "耕す", "土", "肥料", "種まき"],
       en: ["field", "weeding", "till", "soil", "fertilizer", "sowing"],
+    },
+  },
+  {
+    id: "fruit",
+    ja: "果樹・果物",
+    en: "Fruit",
+    keywords: {
+      ja: ["柿", "干し柿", "次郎柿", "果樹", "果物"],
+      en: ["persimmon"],
     },
   },
   {
@@ -187,6 +197,9 @@ export const BODY_WEAK_TERMS = new Set([
   "おかず",
   "販売",
   "出荷",
+  "果樹",
+  "果物",
+  "fruit",
   "water",
   "drink",
   "eat",

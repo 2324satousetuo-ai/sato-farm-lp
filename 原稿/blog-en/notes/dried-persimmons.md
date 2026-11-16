@@ -1,6 +1,6 @@
 # Dried Persimmon Season at Sato Farms
 
-October 30, 2026
+Fruit　October 30, 2026
 Autumn is here, and orange persimmons are lined up under the eaves at Sato Farms. It is time for our annual dried persimmon making!
 
 ## We Now Have Just One Tree
