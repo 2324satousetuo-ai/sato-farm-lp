@@ -198,6 +198,10 @@ URL：https://satofarms.com（satofarms.com）
 
 ![代表 佐藤節雄の似顔絵](../images/profile-caricature.svg)
 
+![座っている黒っぽい兎、レモンちゃん](../images/lemon-rabbit.jpg)
+
+レモンちゃん
+
 代表 佐藤節雄（さとうせつお）
 
 群馬県吾妻郡中之条町で、コシヒカリを中心に野菜や果樹を育てる小さな農園。  

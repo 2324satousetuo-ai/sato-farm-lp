@@ -208,6 +208,10 @@ The end of each article links back to the shelves that hold it.
 
 ![Caricature of Setsuo Sato](../images/profile-caricature.svg)
 
+![Lemon, a dark brown rabbit sitting](../images/lemon-rabbit.jpg)
+
+Lemon
+
 Setsuo Sato, Representative — Sato Farms
 
 A small farm in Nakanojo-machi, Agatsuma-gun, Gunma—growing Koshihikari rice, vegetables, and fruit trees.  
